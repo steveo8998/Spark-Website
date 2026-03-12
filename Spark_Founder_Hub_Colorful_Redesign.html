@@ -1,0 +1,2220 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Spark Academy — Dr. Michelle Peterson (Colorful Redesign)</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=DM+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body style="margin:0;padding:0;background:#FBFAF8;">
+
+<!-- ================================================================
+     SPARK ACADEMY — FOUNDER HUB PAGE (COLORFUL REDESIGN v1)
+
+     DESIGN CHANGES FROM ORIGINAL:
+     - Program color: Brand Teal (Hub Page) replaces universal teal accents
+     - Hero background: Program wash tint instead of Whisper Sage
+     - Decorative CSS triangles replace circular radial gradients
+     - Alternating sections: Program wash + Cloud White
+     - Buttons, icons, links, tuition header: all use program palette
+     - Triangle section dividers between major blocks
+     - CTA section: deep program color gradient instead of teal
+     - FAQ chevrons + hover: program color
+     - Positioning footer: five-triangle brand motif
+
+     NOTE: The sp-teal variable is KEPT for cross-site links and
+     elements that should remain brand-neutral. Only program-specific
+     accents shift to the program color.
+     ================================================================ -->
+
+
+<style>
+
+/* ===== SPARK FOUNDER HUB PAGE — COLORFUL REDESIGN GLOBAL STYLES ===== */
+
+/* --- Brand Colors (base palette — shared across all pages) --- */
+:root {
+  --sp-teal: #3D6B62;
+  --sp-gold: #C49826;
+  --sp-gold-hover: #A8821F;
+  --sp-sage: #9BB8AD;
+  --sp-white: #FBFAF8;
+  --sp-whisper: #EFF5F2;
+  --sp-text: #2E2E2E;
+  --sp-heading: #1A1A1A;
+  --sp-gray: #6B7280;
+  --sp-max: 1140px;
+
+  /* --- Program Color: Brand Teal (Hub Page) --- */
+  --sp-program: #3D6B62;
+  --sp-program-dark: #2F5A52;
+  --sp-program-deep: #234840;
+  --sp-program-light: rgba(61,107,98,0.08);
+  --sp-program-lighter: rgba(61,107,98,0.05);
+  --sp-program-wash: #EFF5F2;
+  --sp-program-whisper: #E8F0EC;
+  --sp-program-border: rgba(61,107,98,0.20);
+
+  /* --- Logo Triangle Colors (for decorative motifs) --- */
+  --sp-tri-pink: #FAC1BB;
+  --sp-tri-orange: #F9A054;
+  --sp-tri-yellow: #FFC716;
+  --sp-tri-green: #808E71;
+  --sp-tri-blue: #5E8B96;
+}
+
+/* --- Section Containers --- */
+.sp-section {
+  padding: 80px 24px;
+}
+.sp-inner {
+  max-width: var(--sp-max);
+  margin: 0 auto;
+}
+/* CHANGED: alternating section backgrounds use program wash instead of whisper sage */
+.sp-bg-sage { background: var(--sp-program-whisper); }
+.sp-bg-white { background: var(--sp-white); }
+
+/* --- Typography --- */
+.sp-h1 {
+  font-family: 'Playfair Display', serif;
+  font-size: 48px;
+  font-weight: 700;
+  line-height: 1.18;
+  color: var(--sp-heading);
+  text-align: center;
+  margin-bottom: 16px;
+  letter-spacing: -0.01em;
+}
+.sp-h2 {
+  font-family: 'Playfair Display', serif;
+  font-size: 36px;
+  font-weight: 700;
+  line-height: 1.25;
+  color: var(--sp-heading);
+  text-align: center;
+  margin-bottom: 16px;
+}
+.sp-h3 {
+  font-family: 'Playfair Display', serif;
+  font-size: 24px;
+  font-weight: 700;
+  line-height: 1.3;
+  color: var(--sp-heading);
+  margin-bottom: 12px;
+}
+.sp-intro {
+  text-align: center;
+  max-width: 680px;
+  margin: 0 auto 48px;
+  color: var(--sp-gray);
+  font-family: 'DM Sans', sans-serif;
+  font-size: 17px;
+  line-height: 1.7;
+}
+
+/* --- Buttons (CHANGED: program color instead of gold) --- */
+.sp-btn-gold {
+  display: inline-block;
+  background: var(--sp-program);
+  color: #fff;
+  padding: 14px 32px;
+  border-radius: 6px;
+  font-family: 'DM Sans', sans-serif;
+  font-weight: 600;
+  font-size: 16px;
+  text-decoration: none;
+  transition: background 0.2s, transform 0.2s;
+  box-shadow: 0 2px 8px rgba(61,107,98,0.25);
+}
+.sp-btn-gold:hover {
+  background: var(--sp-program-dark);
+  transform: translateY(-2px);
+  box-shadow: 0 4px 16px rgba(61,107,98,0.3);
+}
+.sp-btn-outline {
+  display: inline-block;
+  background: transparent;
+  color: #fff;
+  padding: 14px 32px;
+  border-radius: 6px;
+  border: 2px solid rgba(255,255,255,0.4);
+  font-family: 'DM Sans', sans-serif;
+  font-weight: 600;
+  font-size: 16px;
+  text-decoration: none;
+  transition: border-color 0.2s, background 0.2s;
+}
+.sp-btn-outline:hover {
+  border-color: #fff;
+  background: rgba(255,255,255,0.08);
+}
+
+/* --- Hero Section (CHANGED: warm peach background + triangle decorations) --- */
+.sp-hero {
+  background: var(--sp-program-wash);
+  padding: 80px 24px 64px;
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+}
+/* CHANGED: Triangle decorations instead of circular gradients */
+.sp-hero::before {
+  content: '';
+  position: absolute;
+  top: -40px;
+  right: -60px;
+  width: 0;
+  height: 0;
+  border-left: 180px solid transparent;
+  border-right: 180px solid transparent;
+  border-bottom: 320px solid rgba(61,107,98,0.08);
+  transform: rotate(15deg);
+}
+.sp-hero::after {
+  content: '';
+  position: absolute;
+  bottom: -80px;
+  left: -40px;
+  width: 0;
+  height: 0;
+  border-left: 140px solid transparent;
+  border-right: 140px solid transparent;
+  border-bottom: 250px solid rgba(61,107,98,0.06);
+  transform: rotate(-10deg);
+}
+.sp-hero-inner {
+  max-width: var(--sp-max);
+  margin: 0 auto;
+  position: relative;
+  z-index: 1;
+}
+.sp-hero-sub {
+  font-family: 'DM Sans', sans-serif;
+  font-size: 17px;
+  line-height: 1.7;
+  color: var(--sp-gray);
+  max-width: 660px;
+  margin: 0 auto 32px;
+  font-style: italic;
+}
+.sp-hero-ctas {
+  display: flex;
+  gap: 16px;
+  justify-content: center;
+  align-items: center;
+  margin-top: 36px;
+  flex-wrap: wrap;
+}
+/* CHANGED: secondary link uses program color */
+.sp-hero-secondary {
+  font-family: 'DM Sans', sans-serif;
+  font-size: 15px;
+  color: var(--sp-program-dark);
+  font-weight: 600;
+  text-decoration: none;
+  border-bottom: 1px solid rgba(61,107,98,0.4);
+  transition: border-color 0.2s;
+}
+.sp-hero-secondary:hover {
+  border-color: var(--sp-program);
+}
+/* CHANGED: trust line icons use program color */
+.sp-trust-line {
+  display: flex;
+  gap: 24px;
+  justify-content: center;
+  flex-wrap: wrap;
+  margin-top: 28px;
+  font-family: 'DM Sans', sans-serif;
+  font-size: 13px;
+  font-weight: 500;
+  color: var(--sp-gray);
+}
+.sp-trust-line span {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+.sp-trust-line svg {
+  width: 16px;
+  height: 16px;
+  color: var(--sp-program);
+}
+.sp-hero-image {
+  max-width: var(--sp-max);
+  margin: 48px auto 0;
+  border-radius: 12px;
+  overflow: hidden;
+  background: var(--sp-program-whisper);
+  min-height: 340px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: 'DM Sans', sans-serif;
+  font-size: 14px;
+  color: var(--sp-gray);
+  text-align: center;
+  padding: 40px;
+  line-height: 1.7;
+  border: 1px dashed var(--sp-program-border);
+}
+
+/* --- Triangle Section Divider (NEW — decorative motif) --- */
+.sp-triangle-divider {
+  display: flex;
+  justify-content: center;
+  align-items: flex-end;
+  gap: 4px;
+  padding: 16px 0;
+  margin: 0;
+  background: transparent;
+  position: relative;
+  z-index: 2;
+}
+.sp-triangle-divider .sp-tri {
+  display: inline-block;
+  width: 0;
+  height: 0;
+  border-left: 16px solid transparent;
+  border-right: 16px solid transparent;
+  border-bottom: 22px solid;
+}
+/* Stagger heights for a playful rhythm — must use parent selector for specificity */
+.sp-triangle-divider .sp-tri-1 { border-bottom-color: var(--sp-tri-pink); border-left-width: 14px; border-right-width: 14px; border-bottom-width: 20px; }
+.sp-triangle-divider .sp-tri-2 { border-bottom-color: var(--sp-tri-orange); border-left-width: 16px; border-right-width: 16px; border-bottom-width: 24px; }
+.sp-triangle-divider .sp-tri-3 { border-bottom-color: var(--sp-tri-yellow); border-left-width: 18px; border-right-width: 18px; border-bottom-width: 26px; }
+.sp-triangle-divider .sp-tri-4 { border-bottom-color: var(--sp-tri-green); border-left-width: 16px; border-right-width: 16px; border-bottom-width: 24px; }
+.sp-triangle-divider .sp-tri-5 { border-bottom-color: var(--sp-tri-blue); border-left-width: 14px; border-right-width: 14px; border-bottom-width: 20px; }
+
+/* --- Color Bar Section Divider (matches "document line" brand asset) --- */
+.sp-color-bar {
+  height: 5px;
+  background: linear-gradient(
+    to right,
+    var(--sp-tri-pink) 0%, var(--sp-tri-pink) 20%,
+    var(--sp-tri-orange) 20%, var(--sp-tri-orange) 40%,
+    var(--sp-tri-yellow) 40%, var(--sp-tri-yellow) 60%,
+    var(--sp-tri-green) 60%, var(--sp-tri-green) 80%,
+    var(--sp-tri-blue) 80%, var(--sp-tri-blue) 100%
+  );
+}
+
+/* --- Atmospheric Background Triangles (barely visible, felt not seen) --- */
+/* Each variant places 1-2 large triangles at different positions via clip-path.
+   Opacity is 0.03-0.04 so they register as texture, not decoration.
+   Uses the program color so they subtly reinforce the page's color identity. */
+.sp-atmos {
+  position: relative;
+  overflow: hidden;
+}
+.sp-atmos::before,
+.sp-atmos::after {
+  content: '';
+  position: absolute;
+  z-index: 0;
+  pointer-events: none;
+}
+/* Variant A: large triangle bottom-right corner */
+.sp-atmos-a::before {
+  bottom: -60px;
+  right: -80px;
+  width: 500px;
+  height: 500px;
+  background: var(--sp-program);
+  opacity: 0.035;
+  clip-path: polygon(100% 0%, 0% 100%, 100% 100%);
+}
+/* Variant B: large triangle top-left corner */
+.sp-atmos-b::before {
+  top: -40px;
+  left: -60px;
+  width: 420px;
+  height: 420px;
+  background: var(--sp-program);
+  opacity: 0.03;
+  clip-path: polygon(0% 0%, 100% 0%, 0% 100%);
+}
+/* Variant C: two smaller triangles, opposite corners */
+.sp-atmos-c::before {
+  top: -30px;
+  right: -50px;
+  width: 320px;
+  height: 320px;
+  background: var(--sp-program);
+  opacity: 0.03;
+  clip-path: polygon(50% 0%, 0% 100%, 100% 100%);
+}
+.sp-atmos-c::after {
+  bottom: -40px;
+  left: -40px;
+  width: 260px;
+  height: 260px;
+  background: var(--sp-program);
+  opacity: 0.025;
+  clip-path: polygon(50% 100%, 0% 0%, 100% 0%);
+}
+/* Variant D: single large triangle centered-right, rotated feel */
+.sp-atmos-d::before {
+  top: 50%;
+  right: -100px;
+  transform: translateY(-50%);
+  width: 460px;
+  height: 460px;
+  background: var(--sp-program);
+  opacity: 0.03;
+  clip-path: polygon(50% 0%, 0% 100%, 100% 80%);
+}
+/* All atmospheric content needs to sit above the shapes */
+.sp-atmos > * {
+  position: relative;
+  z-index: 1;
+}
+
+/* --- Prose Content Sections --- */
+.sp-prose {
+  max-width: 720px;
+  margin: 0 auto;
+}
+.sp-prose p {
+  font-family: 'DM Sans', sans-serif;
+  font-size: 17px;
+  line-height: 1.75;
+  color: var(--sp-text);
+}
+.sp-prose p + p {
+  margin-top: 20px;
+}
+.sp-prose .sp-h2 {
+  text-align: left;
+  margin-bottom: 24px;
+}
+.sp-prose .sp-h3 {
+  margin-top: 40px;
+  margin-bottom: 16px;
+}
+/* CHANGED: accent text uses program color */
+.sp-prose-accent {
+  font-family: 'DM Sans', sans-serif;
+  font-size: 18px;
+  font-weight: 600;
+  color: var(--sp-program-dark);
+  margin-top: 24px;
+}
+
+/* --- Daily Schedule Cards (CHANGED: icon backgrounds + time color) --- */
+.sp-schedule-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 20px;
+  margin-top: 48px;
+}
+.sp-schedule-card {
+  background: var(--sp-white);
+  border: 1px solid var(--sp-program-border);
+  border-radius: 12px;
+  padding: 28px 28px 24px;
+  display: flex;
+  gap: 16px;
+  align-items: flex-start;
+  transition: transform 0.2s, box-shadow 0.2s;
+}
+.sp-schedule-card:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(61,107,98,0.1);
+}
+.sp-schedule-icon {
+  flex-shrink: 0;
+  width: 48px;
+  height: 48px;
+  border-radius: 12px;
+  background: var(--sp-program-light);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.sp-schedule-icon svg {
+  width: 24px;
+  height: 24px;
+  color: var(--sp-program);
+}
+.sp-schedule-content {
+  flex: 1;
+}
+.sp-schedule-title {
+  font-family: 'DM Sans', sans-serif;
+  font-weight: 700;
+  font-size: 16px;
+  color: var(--sp-heading);
+  margin-bottom: 2px;
+}
+.sp-schedule-time {
+  font-family: 'DM Sans', sans-serif;
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--sp-program-dark);
+  margin-bottom: 8px;
+}
+.sp-schedule-desc {
+  font-family: 'DM Sans', sans-serif;
+  font-size: 15px;
+  line-height: 1.65;
+  color: var(--sp-text);
+  opacity: 0.85;
+}
+.sp-schedule-full {
+  grid-column: 1 / -1;
+}
+.sp-schedule-meta {
+  text-align: center;
+  margin-top: 32px;
+  font-family: 'DM Sans', sans-serif;
+  font-size: 15px;
+  color: var(--sp-gray);
+  font-weight: 500;
+}
+.sp-schedule-meta strong {
+  color: var(--sp-text);
+  font-weight: 600;
+}
+
+/* --- Subsection Feature Block --- */
+.sp-feature-block {
+  margin-top: 56px;
+  padding-top: 48px;
+  border-top: 1px solid var(--sp-program-border);
+}
+.sp-feature-block .sp-h3 {
+  text-align: center;
+  margin-bottom: 16px;
+}
+.sp-feature-desc {
+  max-width: 720px;
+  margin: 0 auto;
+}
+.sp-feature-desc p {
+  font-family: 'DM Sans', sans-serif;
+  font-size: 17px;
+  line-height: 1.75;
+  color: var(--sp-text);
+}
+.sp-feature-desc p + p {
+  margin-top: 20px;
+}
+
+/* --- Enrichment Pills (CHANGED: orange accent) --- */
+.sp-enrich-pills {
+  display: flex;
+  justify-content: center;
+  gap: 12px;
+  flex-wrap: wrap;
+  max-width: 700px;
+  margin: 32px auto 0;
+}
+.sp-enrich-pill {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 10px 18px;
+  background: var(--sp-white);
+  border: 1px solid var(--sp-program-border);
+  border-radius: 40px;
+  transition: border-color 0.2s, box-shadow 0.2s;
+}
+.sp-enrich-pill:hover {
+  border-color: var(--sp-program);
+  box-shadow: 0 2px 12px rgba(61,107,98,0.12);
+}
+.sp-enrich-pill-day {
+  font-family: 'DM Sans', sans-serif;
+  font-size: 11px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--sp-program-dark);
+  background: var(--sp-program-light);
+  padding: 3px 8px;
+  border-radius: 4px;
+  line-height: 1.3;
+}
+.sp-enrich-pill-subject {
+  font-family: 'DM Sans', sans-serif;
+  font-size: 15px;
+  font-weight: 600;
+  color: var(--sp-heading);
+}
+.sp-enrich-note {
+  max-width: 720px;
+  margin: 24px auto 0;
+  font-family: 'DM Sans', sans-serif;
+  font-size: 15px;
+  line-height: 1.7;
+  color: var(--sp-text);
+  text-align: center;
+}
+
+/* --- Separation / Open Door Section (CHANGED: link color) --- */
+.sp-separation-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  margin-top: 24px;
+  font-family: 'DM Sans', sans-serif;
+  font-size: 16px;
+  font-weight: 600;
+  color: var(--sp-program-dark);
+  text-decoration: none;
+  transition: gap 0.2s ease;
+}
+.sp-separation-link:hover { gap: 12px; }
+
+/* --- Tuition Card (CHANGED: orange header) --- */
+.sp-tuition-main {
+  max-width: 520px;
+  margin: 0 auto;
+  background: var(--sp-white);
+  border: 1px solid var(--sp-program-border);
+  border-radius: 16px;
+  overflow: hidden;
+}
+.sp-tuition-header {
+  background: linear-gradient(135deg, #2F5A52 0%, #3D6B62 50%, #5A8F84 100%);
+  padding: 28px 32px;
+  text-align: center;
+}
+.sp-tuition-header-label {
+  font-family: 'DM Sans', sans-serif;
+  font-size: 12px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  color: rgba(255,255,255,0.7);
+  margin-bottom: 8px;
+}
+.sp-tuition-header-price {
+  font-family: 'Playfair Display', serif;
+  font-size: 48px;
+  font-weight: 700;
+  color: #fff;
+  line-height: 1;
+}
+.sp-tuition-header-price span {
+  font-family: 'DM Sans', sans-serif;
+  font-size: 18px;
+  font-weight: 500;
+  color: rgba(255,255,255,0.65);
+}
+.sp-tuition-body {
+  padding: 28px 32px;
+}
+.sp-tuition-schedules {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+.sp-tuition-schedule-row {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+}
+.sp-tuition-schedule-check {
+  flex-shrink: 0;
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+  background: var(--sp-program-light);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.sp-tuition-schedule-check svg {
+  width: 16px;
+  height: 16px;
+  color: var(--sp-program);
+}
+.sp-tuition-schedule-label {
+  font-family: 'DM Sans', sans-serif;
+  font-size: 11px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--sp-gray);
+}
+.sp-tuition-schedule-days {
+  font-family: 'DM Sans', sans-serif;
+  font-size: 16px;
+  font-weight: 600;
+  color: var(--sp-heading);
+}
+.sp-tuition-body-note {
+  margin-top: 20px;
+  padding-top: 16px;
+  border-top: 1px solid var(--sp-program-border);
+  font-family: 'DM Sans', sans-serif;
+  font-size: 14px;
+  color: var(--sp-gray);
+  line-height: 1.6;
+  text-align: center;
+}
+
+/* Add-on strip */
+.sp-tuition-addon {
+  max-width: 520px;
+  margin: 16px auto 0;
+  background: var(--sp-white);
+  border: 1px solid var(--sp-program-border);
+  border-radius: 12px;
+  padding: 20px 28px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+}
+.sp-tuition-addon-left {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+.sp-tuition-addon-plus {
+  flex-shrink: 0;
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  background: var(--sp-program-light);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: 'DM Sans', sans-serif;
+  font-size: 18px;
+  font-weight: 700;
+  color: var(--sp-program);
+}
+.sp-tuition-addon-name {
+  font-family: 'DM Sans', sans-serif;
+  font-size: 15px;
+  font-weight: 600;
+  color: var(--sp-heading);
+}
+.sp-tuition-addon-sub {
+  font-family: 'DM Sans', sans-serif;
+  font-size: 12px;
+  color: var(--sp-gray);
+}
+.sp-tuition-addon-price {
+  font-family: 'DM Sans', sans-serif;
+  font-size: 22px;
+  font-weight: 700;
+  color: var(--sp-program);
+  white-space: nowrap;
+}
+.sp-tuition-addon-price span {
+  font-size: 13px;
+  font-weight: 500;
+  color: var(--sp-gray);
+}
+
+/* --- Tuition Details --- */
+.sp-tuition-details {
+  margin-top: 32px;
+  font-family: 'DM Sans', sans-serif;
+  font-size: 15px;
+  line-height: 1.7;
+  color: var(--sp-text);
+}
+.sp-tuition-details p + p {
+  margin-top: 12px;
+}
+.sp-tuition-details strong {
+  color: var(--sp-heading);
+  font-weight: 600;
+}
+
+/* --- All-Inclusive Tuition Note (CHANGED: orange tint) --- */
+.sp-tuition-note {
+  max-width: 720px;
+  margin: 32px auto 0;
+  padding: 24px 32px;
+  background: var(--sp-program-lighter);
+  border: 1px solid var(--sp-program-border);
+  border-radius: 10px;
+  font-family: 'DM Sans', sans-serif;
+  font-size: 15px;
+  line-height: 1.7;
+  color: var(--sp-text);
+  text-align: center;
+}
+.sp-tuition-note strong {
+  color: var(--sp-program-dark);
+  font-weight: 700;
+}
+
+/* --- Scheduling Advisory --- */
+.sp-advisory {
+  max-width: 720px;
+  margin: 0 auto;
+}
+.sp-advisory .sp-h3 {
+  text-align: left;
+}
+.sp-advisory p {
+  font-family: 'DM Sans', sans-serif;
+  font-size: 17px;
+  line-height: 1.75;
+  color: var(--sp-text);
+}
+.sp-advisory p + p {
+  margin-top: 20px;
+}
+
+/* --- Testimonial Placeholder --- */
+.sp-testimonial-section {
+  background: var(--sp-program-whisper);
+  padding: 80px 24px;
+}
+.sp-testimonial-inner {
+  max-width: 780px;
+  margin: 0 auto;
+  text-align: center;
+}
+.sp-testimonial-placeholder {
+  margin-top: 32px;
+  padding: 40px;
+  border: 1px dashed var(--sp-program-border);
+  border-radius: 12px;
+  font-family: 'DM Sans', sans-serif;
+  font-size: 16px;
+  line-height: 1.7;
+  color: var(--sp-gray);
+  font-style: italic;
+}
+
+/* --- CTA Section (CHANGED: warm deep orange instead of teal) --- */
+.sp-cta-section {
+  text-align: center;
+  background: linear-gradient(135deg, #234840 0%, #3D6B62 60%, #5A8F84 100%);
+  color: #fff;
+  padding: 80px 24px;
+  position: relative;
+  overflow: hidden;
+}
+/* Triangle decoration in CTA */
+.sp-cta-section::before {
+  content: '';
+  position: absolute;
+  top: -60px; right: -40px;
+  width: 0; height: 0;
+  border-left: 160px solid transparent;
+  border-right: 160px solid transparent;
+  border-bottom: 280px solid rgba(255,255,255,0.06);
+  transform: rotate(20deg);
+}
+.sp-cta-section::after {
+  content: '';
+  position: absolute;
+  bottom: -40px; left: -60px;
+  width: 0; height: 0;
+  border-left: 120px solid transparent;
+  border-right: 120px solid transparent;
+  border-bottom: 200px solid rgba(255,255,255,0.04);
+  transform: rotate(-15deg);
+}
+.sp-cta-section .sp-h2 { color: #fff; }
+.sp-cta-section p {
+  font-family: 'DM Sans', sans-serif;
+  color: rgba(255,255,255,0.88);
+  max-width: 600px;
+  margin: 0 auto;
+  font-size: 17px;
+  line-height: 1.7;
+}
+.sp-cta-section p + p { margin-top: 16px; }
+.sp-cta-phone {
+  color: #fff;
+  font-weight: 600;
+  text-decoration: none;
+  border-bottom: 1px solid rgba(255,255,255,0.4);
+}
+.sp-cta-phone:hover { border-color: #fff; }
+.sp-cta-buttons {
+  display: flex;
+  gap: 16px;
+  justify-content: center;
+  margin-top: 32px;
+  flex-wrap: wrap;
+}
+/* CTA primary button: white on this bg */
+.sp-cta-section .sp-btn-gold {
+  background: #fff;
+  color: var(--sp-program-deep);
+  box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+}
+.sp-cta-section .sp-btn-gold:hover {
+  background: #f8f8f8;
+  box-shadow: 0 4px 16px rgba(0,0,0,0.15);
+}
+.sp-cta-trust {
+  display: flex;
+  gap: 32px;
+  justify-content: center;
+  margin-top: 36px;
+  flex-wrap: wrap;
+}
+.sp-cta-trust-item {
+  font-family: 'DM Sans', sans-serif;
+  font-size: 13px;
+  font-weight: 500;
+  color: rgba(255,255,255,0.6);
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+.sp-cta-trust-item svg {
+  width: 16px;
+  height: 16px;
+  color: rgba(255,255,255,0.5);
+}
+
+/* --- FAQ Accordion (CHANGED: orange hover + chevron) --- */
+.sp-faq-list {
+  max-width: 780px;
+  margin: 40px auto 0;
+}
+.sp-faq-item {
+  border-bottom: 1px solid var(--sp-program-border);
+}
+.sp-faq-item:first-child {
+  border-top: 1px solid var(--sp-program-border);
+}
+.sp-faq-item summary {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 20px 0;
+  cursor: pointer;
+  list-style: none;
+  font-family: 'DM Sans', sans-serif;
+  font-size: 17px;
+  font-weight: 600;
+  color: var(--sp-heading);
+  line-height: 1.5;
+  transition: color 0.2s;
+}
+.sp-faq-item summary:hover {
+  color: var(--sp-program-dark);
+}
+.sp-faq-item summary::-webkit-details-marker { display: none; }
+.sp-faq-item summary::marker { display: none; content: ''; }
+.sp-faq-chevron {
+  flex-shrink: 0;
+  width: 24px;
+  height: 24px;
+  margin-left: 16px;
+  color: var(--sp-program);
+  transition: transform 0.3s ease;
+}
+.sp-faq-item[open] .sp-faq-chevron {
+  transform: rotate(180deg);
+  color: var(--sp-program-dark);
+}
+.sp-faq-answer {
+  padding: 0 0 24px;
+  font-family: 'DM Sans', sans-serif;
+  font-size: 16px;
+  line-height: 1.75;
+  color: var(--sp-text);
+}
+.sp-faq-answer a {
+  color: var(--sp-program-dark);
+  font-weight: 600;
+  text-decoration: none;
+  border-bottom: 1px solid rgba(61,107,98,0.3);
+}
+.sp-faq-answer a:hover {
+  border-color: var(--sp-program);
+}
+
+/* --- Positioning Footer (CHANGED: five-triangle brand motif) --- */
+.sp-positioning-footer {
+  background: var(--sp-teal);
+  padding: 28px 24px;
+  text-align: center;
+  border-top: 1px solid rgba(255,255,255,0.08);
+  position: relative;
+}
+.sp-positioning-footer p {
+  font-family: 'Playfair Display', serif;
+  font-size: 14px;
+  font-style: italic;
+  color: rgba(255,255,255,0.55);
+  max-width: 600px;
+  margin: 0 auto;
+}
+/* Five-triangle brand signature */
+.sp-footer-triangles {
+  display: flex;
+  justify-content: center;
+  gap: 4px;
+  margin-bottom: 16px;
+}
+.sp-footer-triangles .sp-ft {
+  width: 0;
+  height: 0;
+  border-left: 8px solid transparent;
+  border-right: 8px solid transparent;
+  border-bottom: 12px solid;
+  opacity: 0.4;
+}
+
+/* --- Photo Placeholder --- */
+.sp-photo-placeholder {
+  border-radius: 12px;
+  overflow: hidden;
+  background: var(--sp-program-whisper);
+  min-height: 280px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: 'DM Sans', sans-serif;
+  font-size: 14px;
+  color: var(--sp-gray);
+  text-align: center;
+  padding: 40px;
+  line-height: 1.7;
+  border: 1px dashed var(--sp-program-border);
+  margin-top: 40px;
+}
+
+/* --- Form Styles --- */
+.sp-form-group {
+  margin-bottom: 16px;
+}
+.sp-form-label {
+  display: block;
+  font-family: 'DM Sans', sans-serif;
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--sp-heading);
+  margin-bottom: 6px;
+}
+.sp-required {
+  color: var(--sp-program);
+}
+.sp-form-input, .sp-form-textarea {
+  width: 100%;
+  padding: 12px 14px;
+  border: 1px solid var(--sp-program-border);
+  border-radius: 6px;
+  font-family: 'DM Sans', sans-serif;
+  font-size: 15px;
+  background: #fff;
+  transition: border-color 0.2s;
+  box-sizing: border-box;
+}
+.sp-form-input:focus, .sp-form-textarea:focus {
+  outline: none;
+  border-color: var(--sp-program);
+  box-shadow: 0 0 0 3px rgba(61,107,98,0.12);
+}
+.sp-form-submit-teal {
+  display: inline-block;
+  background: var(--sp-program);
+  color: #fff;
+  padding: 12px 28px;
+  border: none;
+  border-radius: 6px;
+  font-family: 'DM Sans', sans-serif;
+  font-weight: 600;
+  font-size: 15px;
+  cursor: pointer;
+  transition: background 0.2s;
+  margin-top: 8px;
+}
+.sp-form-submit-teal:hover {
+  background: var(--sp-program-dark);
+}
+
+/* --- Animations --- */
+@keyframes spFadeUp {
+  from { opacity: 0; transform: translateY(24px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+.sp-hero .sp-h1 { animation: spFadeUp 0.7s ease both; }
+.sp-hero .sp-hero-sub { animation: spFadeUp 0.7s ease 0.1s both; }
+.sp-hero .sp-hero-ctas { animation: spFadeUp 0.7s ease 0.2s both; }
+.sp-hero .sp-trust-line { animation: spFadeUp 0.7s ease 0.3s both; }
+
+
+/* ===== TABLET LAYOUT (768px - 1024px) ===== */
+@media (max-width: 1024px) {
+  .sp-schedule-grid { gap: 16px; }
+  .sp-separation-link,
+  .sp-faq-answer a,
+  .sp-hero-secondary {
+    text-decoration: underline;
+    text-underline-offset: 4px;
+    text-decoration-color: rgba(61,107,98,0.4);
+  }
+}
+
+/* ===== MOBILE LAYOUT (phones: under 768px) ===== */
+@media (max-width: 767px) {
+  .sp-section { padding: 48px 20px; }
+  .sp-hero { padding: 48px 20px 40px; }
+  .sp-cta-section { padding: 48px 20px; }
+  .sp-testimonial-section { padding: 48px 20px; }
+  .sp-h1 { font-size: 32px; }
+  .sp-h2 { font-size: 28px; }
+  .sp-h3 { font-size: 21px; }
+  .sp-prose .sp-h2 { text-align: left; }
+  .sp-prose p { font-size: 16px; }
+  .sp-schedule-grid { grid-template-columns: 1fr; }
+  .sp-schedule-card { padding: 20px 18px; }
+  .sp-schedule-title { font-size: 15px; }
+  .sp-schedule-desc { font-size: 14px; }
+  .sp-enrich-pills { gap: 10px; }
+  .sp-enrich-pill { padding: 8px 14px; }
+  .sp-tuition-header-price { font-size: 40px; }
+  .sp-tuition-header { padding: 24px 20px; }
+  .sp-tuition-body { padding: 24px 20px; }
+  .sp-tuition-addon { flex-direction: column; text-align: center; gap: 10px; padding: 18px 20px; }
+  .sp-tuition-addon-left { flex-direction: column; gap: 6px; }
+  .sp-hero-image { min-height: 220px; margin-top: 32px; }
+  .sp-cta-buttons { flex-direction: column; align-items: center; margin-top: 40px; gap: 12px; }
+  .sp-cta-trust { flex-direction: column; align-items: center; gap: 14px; margin-top: 44px; padding-top: 32px; border-top: 1px solid rgba(255,255,255,0.12); }
+  .sp-hero-ctas { flex-direction: column; align-items: center; gap: 12px; }
+  .sp-testimonial-placeholder { padding: 28px 20px; }
+  .sp-photo-placeholder { min-height: 200px; padding: 28px; }
+  .sp-faq-item summary { font-size: 16px; padding: 18px 0; }
+  .sp-faq-answer { font-size: 15px; }
+  .sp-triangle-divider .sp-tri { transform: scale(0.8); }
+
+  /* Hero triangles: scale down and pull inward so they stay visible on mobile */
+  .sp-hero::before {
+    top: -20px;
+    right: -30px;
+    border-left-width: 100px;
+    border-right-width: 100px;
+    border-bottom-width: 180px;
+  }
+  .sp-hero::after {
+    bottom: -40px;
+    left: -20px;
+    border-left-width: 80px;
+    border-right-width: 80px;
+    border-bottom-width: 140px;
+  }
+
+  /* Atmospheric triangles: shrink + pull onto screen + bump opacity slightly */
+  .sp-atmos-a::before {
+    bottom: -20px;
+    right: -20px;
+    width: 240px;
+    height: 240px;
+    opacity: 0.045;
+  }
+  .sp-atmos-b::before {
+    top: -15px;
+    left: -15px;
+    width: 200px;
+    height: 200px;
+    opacity: 0.04;
+  }
+  .sp-atmos-c::before {
+    top: -10px;
+    right: -15px;
+    width: 180px;
+    height: 180px;
+    opacity: 0.04;
+  }
+  .sp-atmos-c::after {
+    bottom: -15px;
+    left: -10px;
+    width: 140px;
+    height: 140px;
+    opacity: 0.035;
+  }
+  .sp-atmos-d::before {
+    right: -30px;
+    width: 220px;
+    height: 220px;
+    opacity: 0.04;
+  }
+
+  /* CTA section triangles: same treatment */
+  .sp-cta-section::before {
+    top: -30px; right: -20px;
+    border-left-width: 90px;
+    border-right-width: 90px;
+    border-bottom-width: 160px;
+  }
+  .sp-cta-section::after {
+    bottom: -20px; left: -30px;
+    border-left-width: 70px;
+    border-right-width: 70px;
+    border-bottom-width: 120px;
+  }
+}
+
+/* ===== SMALL PHONES & FOLDABLE (under 360px) ===== */
+@media (max-width: 360px) {
+  .sp-h1 { font-size: 28px; }
+  .sp-h2 { font-size: 24px; }
+  .sp-h3 { font-size: 19px; }
+  .sp-section { padding: 36px 16px; }
+  .sp-hero { padding: 36px 16px; }
+  .sp-cta-section { padding: 36px 16px; }
+  .sp-testimonial-section { padding: 36px 16px; }
+  .sp-schedule-card { padding: 18px 16px; }
+  .sp-enrich-pill { padding: 7px 12px; }
+  .sp-enrich-pill-subject { font-size: 14px; }
+  .sp-tuition-header-price { font-size: 36px; }
+  .sp-tuition-note { padding: 20px; font-size: 14px; }
+  .sp-photo-placeholder { min-height: 160px; padding: 20px; }
+  .sp-hero-image { min-height: 160px; padding: 24px; }
+  .sp-btn-gold, .sp-btn-outline { padding: 12px 24px; font-size: 15px; }
+  .sp-faq-item summary { font-size: 15px; }
+  .sp-triangle-divider .sp-tri { transform: scale(0.65); }
+
+  /* Atmospheric: even smaller on tiny screens */
+  .sp-atmos-a::before { width: 180px; height: 180px; bottom: -10px; right: -10px; opacity: 0.05; }
+  .sp-atmos-b::before { width: 150px; height: 150px; top: -10px; left: -10px; opacity: 0.045; }
+  .sp-atmos-c::before { width: 140px; height: 140px; top: -5px; right: -10px; opacity: 0.045; }
+  .sp-atmos-c::after { width: 110px; height: 110px; bottom: -10px; left: -5px; opacity: 0.04; }
+  .sp-atmos-d::before { width: 170px; height: 170px; right: -15px; opacity: 0.045; }
+
+  /* Hero: tightest on small phones */
+  .sp-hero::before { top: -10px; right: -15px; border-left-width: 70px; border-right-width: 70px; border-bottom-width: 130px; }
+  .sp-hero::after { bottom: -20px; left: -10px; border-left-width: 55px; border-right-width: 55px; border-bottom-width: 100px; }
+
+  /* CTA: tightest */
+  .sp-cta-section::before { top: -15px; right: -10px; border-left-width: 60px; border-right-width: 60px; border-bottom-width: 110px; }
+  .sp-cta-section::after { bottom: -10px; left: -15px; border-left-width: 50px; border-right-width: 50px; border-bottom-width: 90px; }
+}
+
+
+
+/* --- Page-Specific Styles --- */
+.sp-skip-link {
+  position: absolute;
+  left: -9999px;
+  top: auto;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  z-index: 999;
+}
+.sp-skip-link:focus {
+  position: fixed;
+  top: 8px;
+  left: 8px;
+  width: auto;
+  height: auto;
+  padding: 12px 20px;
+  background: var(--sp-program);
+  color: #fff;
+  font-family: 'DM Sans', sans-serif;
+  font-size: 14px;
+  font-weight: 600;
+  border-radius: 4px;
+  text-decoration: none;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+}
+.sp-bg-teal { background: var(--sp-program); }
+.sp-body {
+  font-family: 'DM Sans', sans-serif;
+  font-size: 17px;
+  line-height: 1.65;
+  color: var(--sp-text);
+}
+.sp-btn-teal {
+  display: inline-block;
+  background: var(--sp-program);
+  color: #fff;
+  padding: 14px 32px;
+  border-radius: 4px;
+  font-family: 'DM Sans', sans-serif;
+  font-weight: 600;
+  font-size: 16px;
+  text-decoration: none;
+  transition: background 0.2s, transform 0.2s;
+}
+.sp-btn-teal:hover {
+  background: #34594f;
+  transform: translateY(-2px);
+}
+.sp-hero-body {
+  font-family: 'DM Sans', sans-serif;
+  font-size: 17px;
+  line-height: 1.75;
+  color: var(--sp-text);
+  max-width: 700px;
+  margin: 0 auto;
+  text-align: left;
+}
+.sp-hero-body p + p {
+  margin-top: 20px;
+}
+.sp-prose-pivot {
+  font-family: 'Playfair Display', serif;
+  font-size: 22px;
+  font-weight: 700;
+  color: var(--sp-program);
+  margin-top: 28px;
+  margin-bottom: 28px;
+  font-style: italic;
+}
+.sp-desktop-only { display: block; }
+.sp-mobile-only { display: none; }
+.sp-cred-table {
+  width: 100%;
+  border-collapse: separate;
+  border-spacing: 0;
+  margin-top: 32px;
+  border: 1px solid rgba(61,107,98,0.3);
+  border-radius: 12px;
+  overflow: hidden;
+}
+.sp-cred-table th,
+.sp-cred-table td {
+  font-family: 'DM Sans', sans-serif;
+  font-size: 15px;
+  line-height: 1.65;
+  color: var(--sp-text);
+  padding: 18px 24px;
+  text-align: left;
+  vertical-align: top;
+  border-bottom: 1px solid rgba(61,107,98,0.2);
+}
+.sp-cred-table th {
+  font-weight: 700;
+  color: var(--sp-heading);
+  white-space: nowrap;
+  width: 280px;
+}
+.sp-cred-table tr:last-child th,
+.sp-cred-table tr:last-child td {
+  border-bottom: none;
+}
+.sp-cred-table tr:nth-child(odd) {
+  background: rgba(61,107,98,0.03);
+}
+.sp-cred-cards {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  margin-top: 24px;
+}
+.sp-cred-card {
+  background: var(--sp-white);
+  border: 1px solid rgba(61,107,98,0.35);
+  border-radius: 12px;
+  padding: 24px;
+}
+.sp-cred-card-label {
+  font-family: 'DM Sans', sans-serif;
+  font-size: 11px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: var(--sp-program);
+  margin-bottom: 4px;
+}
+.sp-cred-card-title {
+  font-family: 'DM Sans', sans-serif;
+  font-size: 17px;
+  font-weight: 700;
+  color: var(--sp-heading);
+  margin-bottom: 8px;
+  line-height: 1.4;
+}
+.sp-cred-card-desc {
+  font-family: 'DM Sans', sans-serif;
+  font-size: 15px;
+  line-height: 1.7;
+  color: var(--sp-text);
+}
+.sp-timeline-card {
+  background: var(--sp-white);
+  border: 1px solid rgba(61,107,98,0.35);
+  border-radius: 12px;
+  padding: 24px;
+  position: relative;
+}
+.sp-timeline-card-years {
+  font-family: 'DM Sans', sans-serif;
+  font-size: 13px;
+  font-weight: 700;
+  color: var(--sp-program);
+  margin-bottom: 6px;
+}
+.sp-timeline-card-role {
+  font-family: 'DM Sans', sans-serif;
+  font-size: 17px;
+  font-weight: 700;
+  color: var(--sp-heading);
+  margin-bottom: 8px;
+  line-height: 1.4;
+}
+.sp-timeline-card-desc {
+  font-family: 'DM Sans', sans-serif;
+  font-size: 15px;
+  line-height: 1.7;
+  color: var(--sp-text);
+}
+.sp-cred-section-label {
+  font-family: 'DM Sans', sans-serif;
+  font-size: 13px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  color: var(--sp-program);
+  margin-top: 48px;
+  margin-bottom: 8px;
+}
+.sp-cred-section-label:first-child {
+  margin-top: 0;
+}
+.sp-built-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 24px;
+  margin-top: 48px;
+}
+.sp-built-card {
+  background: var(--sp-white);
+  border: 1px solid rgba(61,107,98,0.35);
+  border-radius: 12px;
+  padding: 32px 28px;
+  transition: transform 0.25s ease, box-shadow 0.25s ease;
+}
+.sp-built-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 12px 40px rgba(61,107,98,0.1);
+}
+.sp-built-full {
+  grid-column: 1 / -1;
+  max-width: 560px;
+  justify-self: center;
+  text-align: center;
+}
+.sp-built-icon {
+  width: 52px;
+  height: 52px;
+  border-radius: 14px;
+  background: rgba(61,107,98,0.08);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 20px;
+}
+.sp-built-icon svg {
+  width: 26px;
+  height: 26px;
+  color: var(--sp-program);
+}
+.sp-built-full .sp-built-icon {
+  margin: 0 auto 20px;
+}
+.sp-built-title {
+  font-family: 'DM Sans', sans-serif;
+  font-size: 18px;
+  font-weight: 700;
+  color: var(--sp-heading);
+  margin-bottom: 8px;
+  line-height: 1.35;
+}
+.sp-built-desc {
+  font-family: 'DM Sans', sans-serif;
+  font-size: 15px;
+  line-height: 1.7;
+  color: var(--sp-text);
+  opacity: 0.9;
+}
+.sp-built-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  margin-top: 20px;
+  font-family: 'DM Sans', sans-serif;
+  font-size: 15px;
+  font-weight: 600;
+  color: var(--sp-program);
+  text-decoration: underline;
+  text-decoration-color: rgba(61,107,98,0.3);
+  text-underline-offset: 3px;
+  transition: gap 0.2s ease, text-decoration-color 0.2s ease;
+}
+.sp-built-link:hover { gap: 12px; text-decoration-color: var(--sp-program); }
+.sp-educators-section {
+  background: var(--sp-program);
+  padding: 80px 24px;
+  position: relative;
+  overflow: hidden;
+}
+.sp-educators-section::before {
+  content: '';
+  position: absolute;
+  top: -100px; right: -80px;
+  width: 350px; height: 350px;
+  background: radial-gradient(circle, rgba(255,255,255,0.05) 0%, transparent 70%);
+  border-radius: 50%;
+}
+.sp-educators-section .sp-inner {
+  position: relative;
+  z-index: 1;
+}
+.sp-educators-label {
+  font-family: 'DM Sans', sans-serif;
+  font-size: 12px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.2em;
+  color: rgba(255,255,255,0.45);
+  text-align: center;
+  margin-bottom: 20px;
+}
+.sp-educators-section .sp-h2 {
+  color: #fff;
+}
+.sp-educators-sub {
+  font-family: 'Playfair Display', serif;
+  font-size: 18px;
+  font-style: italic;
+  color: rgba(255,255,255,0.7);
+  text-align: center;
+  max-width: 620px;
+  margin: 0 auto 36px;
+  line-height: 1.6;
+}
+.sp-educators-body {
+  max-width: 700px;
+  margin: 0 auto;
+}
+.sp-educators-body p {
+  font-family: 'DM Sans', sans-serif;
+  font-size: 17px;
+  line-height: 1.75;
+  color: rgba(255,255,255,0.88);
+}
+.sp-educators-body p + p {
+  margin-top: 20px;
+}
+.sp-educators-ctas {
+  text-align: center;
+  margin-top: 40px;
+}
+.sp-educators-email {
+  display: block;
+  margin-top: 20px;
+  font-family: 'DM Sans', sans-serif;
+  font-size: 15px;
+  color: rgba(255,255,255,0.6);
+}
+.sp-educators-email a {
+  color: rgba(255,255,255,0.85);
+  font-weight: 600;
+  text-decoration: none;
+  border-bottom: 1px solid rgba(255,255,255,0.35);
+  transition: border-color 0.2s;
+}
+.sp-educators-email a:hover {
+  border-color: rgba(255,255,255,0.8);
+}
+.sp-endorsement-inner {
+  max-width: 780px;
+  margin: 0 auto;
+  text-align: center;
+}
+.sp-endorsement-quote {
+  font-family: 'Playfair Display', serif;
+  font-size: 20px;
+  line-height: 1.8;
+  color: var(--sp-text);
+  font-style: italic;
+  position: relative;
+  padding: 0 20px;
+}
+.sp-endorsement-quote::before {
+  content: '\201C';
+  position: absolute;
+  top: -20px;
+  left: -10px;
+  font-size: 72px;
+  color: var(--sp-program);
+  opacity: 0.5;
+  font-family: 'Playfair Display', serif;
+  line-height: 1;
+}
+.sp-endorsement-attr {
+  margin-top: 28px;
+  font-family: 'DM Sans', sans-serif;
+  font-size: 15px;
+  font-weight: 600;
+  color: var(--sp-program);
+}
+.sp-endorsement-placeholder {
+  margin-top: 32px;
+  padding: 40px;
+  border: 1px dashed rgba(61,107,98,0.5);
+  border-radius: 12px;
+  font-family: 'DM Sans', sans-serif;
+  font-size: 16px;
+  line-height: 1.7;
+  color: var(--sp-gray);
+  font-style: italic;
+}
+.sp-cta-secondary {
+  font-family: 'DM Sans', sans-serif;
+  font-size: 15px;
+  color: rgba(255,255,255,0.8);
+  font-weight: 600;
+  text-decoration: none;
+  border-bottom: 1px solid rgba(255,255,255,0.3);
+  transition: border-color 0.2s;
+}
+.sp-cta-secondary:hover {
+  border-color: rgba(255,255,255,0.7);
+}
+.sp-hero .sp-hero-body { animation: spFadeUp 0.7s ease 0.2s both; }
+
+@media print {
+  .sp-hero::before, .sp-hero::after,
+  .sp-cta-section::before,
+  .sp-educators-section::before { display: none; }
+  .sp-btn-gold, .sp-btn-outline, .sp-btn-teal { border: 1px solid #333; }
+}
+
+@media (max-width: 1024px) {
+  .sp-built-grid { grid-template-columns: repeat(2, 1fr); }
+  .sp-built-full { max-width: 100%; }
+  .sp-built-link,
+  .sp-cta-secondary,
+  .sp-educators-email a {
+    text-decoration: underline;
+    text-underline-offset: 4px;
+    text-decoration-color: rgba(61,107,98,0.4);
+  }
+  .sp-educators-email a {
+    text-decoration-color: rgba(255,255,255,0.35);
+  }
+}
+
+@media (max-width: 767px) {
+  .sp-educators-section { padding: 48px 20px; }
+  .sp-hero-body { font-size: 16px; }
+  .sp-prose-pivot { font-size: 20px; }
+  .sp-desktop-only { display: none !important; }
+  .sp-mobile-only { display: block !important; }
+  .sp-built-grid { grid-template-columns: 1fr; }
+  .sp-built-full { max-width: 100%; }
+  .sp-built-card { padding: 24px 20px; }
+  .sp-endorsement-quote { font-size: 18px; padding: 0; }
+  .sp-endorsement-quote::before { font-size: 56px; top: -16px; left: -4px; }
+  .sp-endorsement-placeholder { padding: 28px 20px; }
+  .sp-educators-sub { font-size: 16px; }
+}
+
+@media (max-width: 360px) {
+  .sp-educators-section { padding: 36px 16px; }
+  .sp-btn-gold, .sp-btn-outline, .sp-btn-teal { padding: 12px 24px; font-size: 15px; }
+  .sp-built-card { padding: 20px 16px; }
+  .sp-cred-card { padding: 20px 16px; }
+  .sp-timeline-card { padding: 20px 16px; }
+  .sp-prose-pivot { font-size: 18px; }
+}
+
+</style>
+
+
+<!-- ==========================================================
+     BLOCK 1: HERO SECTION
+     Contains: H1 (Dr. Peterson's name + Ed.D.), positioning 
+     statement, hero body copy (3 paragraphs), portrait placeholder.
+     No CTA buttons in hero — the content is the hero.
+     To edit: Change text between > and < tags.
+     ========================================================== -->
+
+<a class="sp-skip-link" href="#origin-story">Skip to content</a>
+
+<section class="sp-hero" aria-label="About Dr. Michelle Peterson">
+  <div class="sp-hero-inner">
+
+    <h1 class="sp-h1">Dr. Michelle Peterson, Ed.D. &mdash; Educator, Researcher, and the Founder Who Built Spark for <span style="white-space:nowrap;">Children Like Yours</span></h1>
+
+    <p class="sp-positioning">The only preschool in Central Illinois founded and led by a doctoral researcher in early childhood education.</p>
+
+    <div class="sp-hero-body">
+      <p>Some educators study early childhood development. Others spend decades in the classroom. Dr.&nbsp;Michelle Peterson did both &mdash; and then built a school to put it all into practice.</p>
+      <p>With a Doctorate in Education from Illinois State University, 20 years spanning the classroom, school leadership, and doctoral research, and four Illinois teaching certifications, Dr.&nbsp;Peterson founded Spark Academy to close the gap between what research proves about how young children learn and what most preschools actually do.</p>
+      <p>This page is her story &mdash; the career that led here, the research that drives the curriculum, and the personal conviction that every child deserves a beginning built on evidence, not tradition.</p>
+    </div>
+
+    <!-- PHOTO PLACEHOLDER: Replace this div with an <img> tag when photography is ready.
+         Shot 1: Professional but warm environmental portrait of Dr. Peterson.
+         NOT a stiff corporate headshot. Smiling naturally, approachable.
+         In the Spark environment — classroom, at child-level, or near materials.
+         Business casual. Natural light. Vertical or square, min 1200px wide.
+         This photo is reused across blog author byline and consulting page.
+         LOADING: Above fold on this page. Use loading="eager". Format: WebP with JPEG fallback. -->
+    <div class="sp-hero-image" role="img" aria-label="Dr. Michelle Peterson, Ed.D., founder and executive director of Spark Academy preschool in Morton, Illinois">
+      <span><strong>Photo Placeholder</strong><br>Shot 1: Dr. Michelle Peterson &mdash; environmental portrait.<br>In Spark environment, at child-level or near materials.<br>Warm, professional, approachable. Natural light.<br>Vertical or square, min 1200px. See Shot List &mdash; Shot 1.</span>
+    </div>
+
+  </div>
+</section>
+
+<!-- Triangle Divider -->
+<div class="sp-triangle-divider">
+  <span class="sp-tri sp-tri-1"></span>
+  <span class="sp-tri sp-tri-2"></span>
+  <span class="sp-tri sp-tri-3"></span>
+  <span class="sp-tri sp-tri-4"></span>
+  <span class="sp-tri sp-tri-5"></span>
+</div>
+
+
+
+<!-- ==========================================================
+     BLOCK 2: THE ORIGIN STORY
+     Contains: H2, full origin narrative (career decade → motherhood 
+     pivot → worksheets discovery → "built the school" → LLC filing 
+     → homelike building + shoes detail), open-door philosophy anchor,
+     interior photo placeholder.
+     To edit: Change the paragraph text. Do NOT remove the open-door
+     paragraph — it's a confirmed addition from the Integration Plan.
+     ========================================================== -->
+
+<section id="origin-story" class="sp-section sp-bg-sage">
+  <div class="sp-inner">
+    <div class="sp-prose">
+
+      <h2 class="sp-h2">A Collision of Professional Life and <span style="white-space:nowrap;">Having Children of Her Own</span></h2>
+
+      <p>Dr.&nbsp;Peterson spent the first decade of her career in the classroom &mdash; teaching kindergarten in Texas, fourth and fifth grade in Peoria, and then moving into school administration, where she served as an assistant principal for 10 years at Lincoln Elementary in Morton. She led school improvement teams, co-chaired PBIS implementation, coached teachers, and drove curriculum alignment across an entire building.</p>
+
+      <p class="sp-prose-pivot">Then she became a mother.</p>
+
+      <p>When her own children started preschool, she experienced the local early childhood landscape from the other side of the table. What she found didn't match what she knew the research said was possible.</p>
+
+      <p>Worksheets with copyrights from 1987. Classrooms staffed by well-meaning adults without credentials in early childhood development. Waitlists so long that families who moved to the area after a child's birth had no chance of getting a spot. A gap between what the science of early learning demands and what the options in Central Illinois actually delivered.</p>
+
+      <p class="sp-prose-pivot">So she built the school she was looking for.</p>
+
+      <p>She filed her LLC in 2022. After two years of meticulous planning &mdash; designing the curriculum, building out the space, assembling a team of degreed and credentialed teachers &mdash; Spark Academy opened its doors on July 10, 2023.</p>
+
+      <p>The school was designed to feel homelike. Many children walk in and kick off their shoes because it feels like they belong. Every classroom, every enrichment rotation, every corner of the Developmental Play Room was built to serve one purpose: giving young children the kind of beginning that research says they deserve.</p>
+
+      <!-- Open-door philosophy anchor — Integration Plan touchpoint #10 -->
+      <p>She designed a school where parents don't drop their children off at a locked door and hope for the best. At Spark, families walk inside &mdash; into the classroom, into their child's day &mdash; because Dr.&nbsp;Peterson believes the best schools are the ones that welcome scrutiny, not avoid it.</p>
+
+    </div>
+
+    <!-- PHOTO PLACEHOLDER: Interior environment — homelike quality.
+         Shot 3: Wide shot of Spark Academy interior. Natural light,
+         child-sized furniture, organized learning materials.
+         Supports the "kids kick off their shoes" narrative.
+         LOADING: Below fold. Use loading="lazy". Format: WebP with JPEG fallback. -->
+    <div class="sp-photo-placeholder" role="img" aria-label="Spark Academy interior showing warm, homelike environment with child-sized furniture and organized learning materials">
+      <span><strong>Photo Placeholder</strong><br>Shot 3: Spark Academy interior &mdash; warm, homelike environment.<br>Natural light, child-sized furniture, organized materials.<br>Horizontal. See Shot List &mdash; Shot 3.</span>
+    </div>
+
+  </div>
+</section>
+<!-- Color Bar Divider -->
+<div class="sp-color-bar"></div>
+
+
+
+<!-- ==========================================================
+     BLOCK 3: A PERSONAL CONNECTION TO INCLUSIVE EDUCATION
+     Contains: H2, body copy about Dr. Peterson's personal connection
+     to inclusive education and her dissertation research.
+     CONTENT BOUNDARY: This section appears ONLY on this page.
+     Do NOT name Dr. Peterson's brother. Do NOT link the dissertation.
+     To edit: Change paragraph text. Keep the content boundary intact.
+     ========================================================== -->
+
+<section class="sp-section sp-bg-white sp-atmos sp-atmos-a">
+  <div class="sp-inner">
+    <div class="sp-prose">
+
+      <h2 class="sp-h2">A Personal Connection to <span style="white-space:nowrap;">Inclusive Education</span></h2>
+
+      <p>Dr.&nbsp;Peterson's dedication to inclusive education is deeply personal &mdash; rooted in growing up alongside a family member with autism. That experience shaped her understanding, long before her doctoral research confirmed it, that every child deserves an environment where they can build friendships, develop confidence, and thrive alongside their peers.</p>
+
+      <p>It's one of the reasons her dissertation research at Illinois State University focused on peer engagement in preschool settings &mdash; specifically, how naturalistic, play-based interventions help young children with autism develop meaningful social connections. And it's why Spark Academy is built as an inclusive and adaptive learning environment, designed to serve the diverse needs of all young children.</p>
+
+    </div>
+  </div>
+</section>
+<!-- Color Bar Divider -->
+<div class="sp-color-bar"></div>
+
+
+
+<!-- ==========================================================
+     BLOCK 4: CREDENTIALS & CAREER TIMELINE
+     Contains: H2, three sub-sections (Education, Certifications,
+     Career Timeline). Each has a desktop table + mobile stacked cards.
+     This block has the heaviest table work on the site.
+     To edit: Change text within <th>, <td>, or card content tags.
+     Do NOT modify the desktop-only / mobile-only swap structure.
+     ========================================================== -->
+
+<section class="sp-section sp-bg-sage sp-atmos sp-atmos-c">
+  <div class="sp-inner">
+
+    <h2 class="sp-h2">20 Years From the Classroom to the Doctorate to <span style="white-space:nowrap;">the School She Built</span></h2>
+    <p class="sp-intro">A career that spans the classroom, school leadership, doctoral research, and founding a nationally distinctive preschool &mdash; every credential earned in service of young children.</p>
+
+    <!-- ===== EDUCATION ===== -->
+    <p class="sp-cred-section-label">Education</p>
+
+    <!-- Desktop Table -->
+    <div class="sp-desktop-only">
+      <table class="sp-cred-table">
+        <tr>
+          <th>Doctor of Education (Ed.D.)</th>
+          <td>Illinois State University, Normal, IL &mdash; PK&ndash;12 Educational Administration and Foundations. Dissertation research focused on peer engagement and autism in preschool settings using Naturalistic Developmental Behavioral Interventions (NDBIs). Completed Fall 2025.</td>
+        </tr>
+        <tr>
+          <th>Master of Science</th>
+          <td>Bradley University, Peoria, IL &mdash; Educational Administration. 2012.</td>
+        </tr>
+        <tr>
+          <th>Bachelor of Science</th>
+          <td>The University of Texas at Austin &mdash; Applied Learning and Development. 2005.</td>
+        </tr>
+      </table>
+    </div>
+
+    <!-- Mobile Cards -->
+    <div class="sp-mobile-only">
+      <div class="sp-cred-cards">
+        <div class="sp-cred-card">
+          <p class="sp-cred-card-label">Doctoral Degree</p>
+          <p class="sp-cred-card-title">Doctor of Education (Ed.D.)</p>
+          <p class="sp-cred-card-desc">Illinois State University, Normal, IL &mdash; PK&ndash;12 Educational Administration and Foundations. Dissertation research focused on peer engagement and autism in preschool settings using NDBIs. Completed Fall 2025.</p>
+        </div>
+        <div class="sp-cred-card">
+          <p class="sp-cred-card-label">Master&rsquo;s Degree</p>
+          <p class="sp-cred-card-title">Master of Science</p>
+          <p class="sp-cred-card-desc">Bradley University, Peoria, IL &mdash; Educational Administration. 2012.</p>
+        </div>
+        <div class="sp-cred-card">
+          <p class="sp-cred-card-label">Bachelor&rsquo;s Degree</p>
+          <p class="sp-cred-card-title">Bachelor of Science</p>
+          <p class="sp-cred-card-desc">The University of Texas at Austin &mdash; Applied Learning and Development. 2005.</p>
+        </div>
+      </div>
+    </div>
+
+
+    <!-- ===== ILLINOIS CERTIFICATIONS ===== -->
+    <p class="sp-cred-section-label">Illinois Certifications</p>
+
+    <!-- Desktop Table -->
+    <div class="sp-desktop-only">
+      <table class="sp-cred-table">
+        <tr>
+          <th>Superintendent Certificate (anticipated)</th>
+          <td>Qualifies Dr.&nbsp;Peterson to lead an entire school district. Signals executive-level educational leadership capability.</td>
+        </tr>
+        <tr>
+          <th>Chief School Business Officer (CSBO)</th>
+          <td>Certifies expertise in financial and operational management of school systems. Directly relevant to program design and startup consulting.</td>
+        </tr>
+        <tr>
+          <th>Type 75 Administrative Certificate</th>
+          <td>Standard Illinois administrative certification for school principals and assistant principals.</td>
+        </tr>
+        <tr>
+          <th>Texas Teaching Certificate</th>
+          <td>Early Childhood through Fourth Grade. Foundation credential from the start of her career.</td>
+        </tr>
+      </table>
+    </div>
+
+    <!-- Mobile Cards -->
+    <div class="sp-mobile-only">
+      <div class="sp-cred-cards">
+        <div class="sp-cred-card">
+          <p class="sp-cred-card-label">Certification</p>
+          <p class="sp-cred-card-title">Superintendent Certificate (anticipated)</p>
+          <p class="sp-cred-card-desc">Qualifies Dr.&nbsp;Peterson to lead an entire school district. Signals executive-level educational leadership capability.</p>
+        </div>
+        <div class="sp-cred-card">
+          <p class="sp-cred-card-label">Certification</p>
+          <p class="sp-cred-card-title">Chief School Business Officer (CSBO)</p>
+          <p class="sp-cred-card-desc">Certifies expertise in financial and operational management of school systems. Directly relevant to program design and startup consulting.</p>
+        </div>
+        <div class="sp-cred-card">
+          <p class="sp-cred-card-label">Certification</p>
+          <p class="sp-cred-card-title">Type 75 Administrative Certificate</p>
+          <p class="sp-cred-card-desc">Standard Illinois administrative certification for school principals and assistant principals.</p>
+        </div>
+        <div class="sp-cred-card">
+          <p class="sp-cred-card-label">Certification</p>
+          <p class="sp-cred-card-title">Texas Teaching Certificate</p>
+          <p class="sp-cred-card-desc">Early Childhood through Fourth Grade. Foundation credential from the start of her career.</p>
+        </div>
+      </div>
+    </div>
+
+
+    <!-- ===== CAREER TIMELINE ===== -->
+    <p class="sp-cred-section-label">Career Timeline</p>
+
+    <!-- Desktop Table -->
+    <div class="sp-desktop-only">
+      <table class="sp-cred-table">
+        <tr>
+          <th>2022&ndash;Present</th>
+          <td><strong>Founder &amp; Executive Director, Spark Academy, Morton, IL</strong><br>Established and operates a play-based, inclusive preschool serving 320+ families. Full operational responsibility: curriculum development, staffing, licensing compliance, facilities, community partnerships, and the design of the Purposeful Play Framework.</td>
+        </tr>
+        <tr>
+          <th>2015&ndash;2023</th>
+          <td><strong>Assistant Principal, Lincoln Elementary, Morton CUSD 709</strong><br>Led school-wide instructional initiatives, teacher coaching, PBIS implementation (founding co-chair), curriculum alignment, crisis response, and special education program oversight. 10 years of building-level administrative leadership.</td>
+        </tr>
+        <tr>
+          <th>2013&ndash;2015</th>
+          <td><strong>Assistant Principal (ISU S.A.M. Program), Unit 5, Bloomington, IL</strong><br>Supported instructional leadership, teacher evaluation, and student behavior systems across two elementary buildings.</td>
+        </tr>
+        <tr>
+          <th>2008&ndash;2013</th>
+          <td><strong>Teacher (4th&ndash;5th Grade) &amp; Interim Director of Summer Programs, Peoria Academy</strong><br>Classroom teacher, curriculum writer, accreditation team member, hiring committee. Broad range of institutional leadership roles.</td>
+        </tr>
+        <tr>
+          <th>2005&ndash;2007</th>
+          <td><strong>Kindergarten &amp; 2nd Grade Teacher, Temple ISD, Texas</strong><br>Career foundation in early childhood and elementary classroom instruction.</td>
+        </tr>
+      </table>
+    </div>
+
+    <!-- Mobile Cards -->
+    <div class="sp-mobile-only">
+      <div class="sp-cred-cards">
+        <div class="sp-timeline-card">
+          <p class="sp-timeline-card-years">2022&ndash;Present</p>
+          <p class="sp-timeline-card-role">Founder &amp; Executive Director, Spark Academy, Morton, IL</p>
+          <p class="sp-timeline-card-desc">Established and operates a play-based, inclusive preschool serving 320+ families. Full operational responsibility: curriculum development, staffing, licensing compliance, facilities, community partnerships, and the design of the Purposeful Play Framework.</p>
+        </div>
+        <div class="sp-timeline-card">
+          <p class="sp-timeline-card-years">2015&ndash;2023</p>
+          <p class="sp-timeline-card-role">Assistant Principal, Lincoln Elementary, Morton CUSD 709</p>
+          <p class="sp-timeline-card-desc">Led school-wide instructional initiatives, teacher coaching, PBIS implementation (founding co-chair), curriculum alignment, crisis response, and special education program oversight. 10 years of building-level administrative leadership.</p>
+        </div>
+        <div class="sp-timeline-card">
+          <p class="sp-timeline-card-years">2013&ndash;2015</p>
+          <p class="sp-timeline-card-role">Assistant Principal (ISU S.A.M. Program), Unit 5, Bloomington, IL</p>
+          <p class="sp-timeline-card-desc">Supported instructional leadership, teacher evaluation, and student behavior systems across two elementary buildings.</p>
+        </div>
+        <div class="sp-timeline-card">
+          <p class="sp-timeline-card-years">2008&ndash;2013</p>
+          <p class="sp-timeline-card-role">Teacher (4th&ndash;5th Grade) &amp; Interim Director of Summer Programs, Peoria Academy</p>
+          <p class="sp-timeline-card-desc">Classroom teacher, curriculum writer, accreditation team member, hiring committee. Broad range of institutional leadership roles.</p>
+        </div>
+        <div class="sp-timeline-card">
+          <p class="sp-timeline-card-years">2005&ndash;2007</p>
+          <p class="sp-timeline-card-role">Kindergarten &amp; 2nd Grade Teacher, Temple ISD, Texas</p>
+          <p class="sp-timeline-card-desc">Career foundation in early childhood and elementary classroom instruction.</p>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</section>
+<!-- Color Bar Divider -->
+<div class="sp-color-bar"></div>
+
+
+
+<!-- ==========================================================
+     BLOCK 5: WHAT SHE BUILT AT SPARK
+     Contains: H2, intro paragraph, 7 feature cards in a grid
+     showing what Dr. Peterson's credentials produced at Spark.
+     Internal link to Purposeful Play Framework page.
+     To edit: Change text within card content tags.
+     ========================================================== -->
+
+<section class="sp-section sp-bg-white sp-atmos sp-atmos-b">
+  <div class="sp-inner">
+
+    <h2 class="sp-h2">Research Into Practice &mdash; Every Day, <span style="white-space:nowrap;">in Every Classroom</span></h2>
+    <p class="sp-intro">Dr.&nbsp;Peterson didn't just study how young children learn. She built a school that applies those findings every day. Here's what that looks like at Spark Academy.</p>
+
+    <div class="sp-built-grid">
+
+      <!-- Card 1: Purposeful Play Framework -->
+      <div class="sp-built-card">
+        <div class="sp-built-icon">
+          <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M12 6.042A8.967 8.967 0 006 3.75c-1.052 0-2.062.18-3 .512v14.25A8.987 8.987 0 016 18c2.305 0 4.408.867 6 2.292m0-14.25a8.966 8.966 0 016-2.292c1.052 0 2.062.18 3 .512v14.25A8.987 8.987 0 0018 18a8.967 8.967 0 00-6 2.292m0-14.25v14.25"/></svg>
+        </div>
+        <p class="sp-built-title">The Purposeful Play Framework</p>
+        <p class="sp-built-desc">Spark's proprietary curriculum framework, developed by Dr.&nbsp;Peterson and built on the Experience Early Learning curriculum. Integrates individualized developmental assessment, purposeful play, daily enrichment, and the Developmental Play Room into a cohesive approach grounded in research.</p>
+        <a href="/purposeful-play-framework/" class="sp-built-link" data-cta-type="nav-link" data-cta-text="Purposeful Play Framework - Founder Hub">Explore the Purposeful Play Framework &#8594;</a>
+      </div>
+
+      <!-- Card 2: 5:1 Ratio -->
+      <div class="sp-built-card">
+        <div class="sp-built-icon">
+          <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M15 19.128a9.38 9.38 0 002.625.372 9.337 9.337 0 004.121-.952 4.125 4.125 0 00-7.533-2.493M15 19.128v-.003c0-1.113-.285-2.16-.786-3.07M15 19.128v.106A12.318 12.318 0 018.624 21c-2.331 0-4.512-.645-6.374-1.766l-.001-.109a6.375 6.375 0 0111.964-3.07M12 6.375a3.375 3.375 0 11-6.75 0 3.375 3.375 0 016.75 0zm8.25 2.25a2.625 2.625 0 11-5.25 0 2.625 2.625 0 015.25 0z"/></svg>
+        </div>
+        <p class="sp-built-title">A 5:1 Student-to-Teacher Ratio</p>
+        <p class="sp-built-desc">The lowest ratio of any preschool in the area. Classes capped at 10&ndash;12 students across 4 sections. This isn't a marketing number &mdash; it's what makes individualization possible.</p>
+      </div>
+
+      <!-- Card 3: Degreed Teachers -->
+      <div class="sp-built-card">
+        <div class="sp-built-icon">
+          <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M4.26 10.147a60.436 60.436 0 00-.491 6.347A48.627 48.627 0 0112 20.904a48.627 48.627 0 018.232-4.41 60.46 60.46 0 00-.491-6.347m-15.482 0a50.57 50.57 0 00-2.658-.813A59.905 59.905 0 0112 3.493a59.902 59.902 0 0110.399 5.84c-.896.248-1.783.52-2.658.814m-15.482 0A50.697 50.697 0 0112 13.489a50.702 50.702 0 017.74-3.342M6.75 15a.75.75 0 100-1.5.75.75 0 000 1.5zm0 0v-3.675A55.378 55.378 0 0112 8.443m-7.007 11.55A5.981 5.981 0 006.75 15.75v-1.5"/></svg>
+        </div>
+        <p class="sp-built-title">Degreed &amp; Credentialed Teachers</p>
+        <p class="sp-built-desc">Every teacher at Spark holds a degree and credential in education. &ldquo;A lot of people just have people who like kids. They don't necessarily have a degree or credential.&rdquo;</p>
+      </div>
+
+      <!-- Card 4: Developmental Play Room -->
+      <div class="sp-built-card">
+        <div class="sp-built-icon">
+          <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M9.813 15.904L9 18.75l-.813-2.846a4.5 4.5 0 00-3.09-3.09L2.25 12l2.846-.813a4.5 4.5 0 003.09-3.09L9 5.25l.813 2.846a4.5 4.5 0 003.09 3.09L15.75 12l-2.846.813a4.5 4.5 0 00-3.09 3.09zM18.259 8.715L18 9.75l-.259-1.035a3.375 3.375 0 00-2.455-2.456L14.25 6l1.036-.259a3.375 3.375 0 002.455-2.456L18 2.25l.259 1.035a3.375 3.375 0 002.455 2.456L21.75 6l-1.036.259a3.375 3.375 0 00-2.455 2.456zM16.894 20.567L16.5 21.75l-.394-1.183a2.25 2.25 0 00-1.423-1.423L13.5 18.75l1.183-.394a2.25 2.25 0 001.423-1.423l.394-1.183.394 1.183a2.25 2.25 0 001.423 1.423l1.183.394-1.183.394a2.25 2.25 0 00-1.423 1.423z"/></svg>
+        </div>
+        <p class="sp-built-title">The Developmental Play Room</p>
+        <p class="sp-built-desc">A dedicated, separate play environment that transforms monthly around new themes. The only playroom of its kind in the area &mdash; changed out every month, with pre-academic skills intentionally embedded.</p>
+      </div>
+
+      <!-- Card 5: Daily Enrichment -->
+      <div class="sp-built-card">
+        <div class="sp-built-icon">
+          <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M12 18v-5.25m0 0a6.01 6.01 0 001.5-.189m-1.5.189a6.01 6.01 0 01-1.5-.189m3.75 7.478a12.06 12.06 0 01-4.5 0m3.75 2.383a14.406 14.406 0 01-3 0M14.25 18v-.192c0-.983.658-1.823 1.508-2.316a7.5 7.5 0 10-7.517 0c.85.493 1.509 1.333 1.509 2.316V18"/></svg>
+        </div>
+        <p class="sp-built-title">Daily Enrichment Rotation</p>
+        <p class="sp-built-desc">Five daily enrichments built into every program: Spanish (Mon), STEM (Tue), Art (Wed), Communication (Thu), Music &amp; Movement (Fri). Not after-school extras &mdash; core programming.</p>
+      </div>
+
+      <!-- Card 6: Inclusive Environment -->
+      <div class="sp-built-card">
+        <div class="sp-built-icon">
+          <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M21 8.25c0-2.485-2.099-4.5-4.688-4.5-1.935 0-3.597 1.126-4.312 2.733-.715-1.607-2.377-2.733-4.313-2.733C5.1 3.75 3 5.765 3 8.25c0 7.22 9 12 9 12s9-4.78 9-12z"/></svg>
+        </div>
+        <p class="sp-built-title">An Inclusive Learning Environment</p>
+        <p class="sp-built-desc">Built from the ground up as an inclusive, adaptive environment. Outside providers are welcomed into the building to support individual children. Inclusivity is structural, not a footnote.</p>
+      </div>
+
+      <!-- Card 7: 320+ Families (full-width centered) -->
+      <div class="sp-built-card sp-built-full">
+        <div class="sp-built-icon">
+          <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M2.25 12l8.954-8.955c.44-.439 1.152-.439 1.591 0L21.75 12M4.5 9.75v10.125c0 .621.504 1.125 1.125 1.125H9.75v-4.875c0-.621.504-1.125 1.125-1.125h2.25c.621 0 1.125.504 1.125 1.125V21h4.125c.621 0 1.125-.504 1.125-1.125V9.75M8.25 21h8.25"/></svg>
+        </div>
+        <p class="sp-built-title">320+ Families Served</p>
+        <p class="sp-built-desc">Since opening in July 2023, Spark has served over 320 families across Central Illinois. A cumulative record of trust.</p>
+      </div>
+
+    </div>
+
+  </div>
+</section>
+<!-- Color Bar Divider -->
+<div class="sp-color-bar"></div>
+
+
+
+<!-- ==========================================================
+     BLOCK 6: FOR EDUCATORS — CONSULTING BRIDGE
+     Contains: Audience label, H2, italic subheadline, body copy
+     describing consulting services, two CTAs (gold button + email).
+     VISUAL SEPARATOR: Full Mist Teal background signals audience shift.
+     Per Consulting Funnel Wireframe: parents naturally skip past this;
+     educators immediately recognize it's for them.
+     Photo placeholder for professional setting shot.
+     To edit: Change the body copy or CTA text.
+     ========================================================== -->
+
+<section class="sp-educators-section" id="for-educators">
+  <div class="sp-inner">
+
+    <p class="sp-educators-label">For Educators &amp; Organizations</p>
+
+    <h2 class="sp-h2">Two Decades of Experience &mdash; Now Available to <span style="white-space:nowrap;">Your Organization</span></h2>
+
+    <p class="sp-educators-sub">Research-driven consulting in early childhood education, inclusive practices, and program development.</p>
+
+    <div class="sp-educators-body">
+      <p>Dr.&nbsp;Peterson's expertise extends beyond Spark Academy. Drawing on her doctoral research, a decade of school leadership, and the daily practice of running a nationally distinctive preschool, she offers consulting services to educators, school leaders, and organizations seeking research-driven solutions in early childhood education.</p>
+
+      <p>Her consulting work spans NDBI implementation, developmental playroom design, inclusive classroom strategies, staff training, program evaluation, preschool startup guidance, improvement science methodology, and speaking engagements.</p>
+
+      <p>Whether you're a preschool owner looking to strengthen your program, a school district exploring inclusive practices, or a church launching a children's ministry &mdash; Dr.&nbsp;Peterson brings the same evidence-based rigor to your organization that she applies to Spark every day.</p>
+    </div>
+
+    <!-- PHOTO PLACEHOLDER: Dr. Peterson in professional setting.
+         Shot 4: Reviewing materials at desk, leading a meeting,
+         or working on curriculum. Positions her as a consultant.
+         LOADING: Below fold. Use loading="lazy". -->
+    <!-- Note: Photo can be placed here when available.
+         For now, the section works well without a placeholder box
+         inside the teal background — the text is the focus. -->
+
+    <div class="sp-educators-ctas">
+      <a href="/consulting/" class="sp-btn-gold" data-cta-type="consulting-primary" data-cta-text="Explore Consulting Services - Founder Hub">Work with Dr. Peterson &mdash; Explore Consulting Services</a>
+      <p class="sp-educators-email">Or email Dr.&nbsp;Peterson directly: <a href="mailto:consulting@sparkacademymorton.com" data-cta-type="consulting-email" data-cta-text="Consulting Email - Founder Hub">consulting@sparkacademymorton.com</a></p>
+    </div>
+
+  </div>
+</section>
+<!-- Color Bar Divider -->
+<div class="sp-color-bar"></div>
+
+
+
+<!-- ==========================================================
+     BLOCK 7: PROFESSIONAL ENDORSEMENT
+     Contains: Pull quote with attribution (placeholder).
+     STATUS: ⚠️ PENDING — Awaiting Dr. Peterson's input.
+     When a professional endorsement is confirmed:
+     1. Replace the placeholder div with the quote markup
+     2. Uncomment the sp-endorsement-quote and sp-endorsement-attr
+     3. Delete the placeholder div
+     To edit: Replace placeholder text with actual endorsement.
+     ========================================================== -->
+
+<section class="sp-section sp-bg-sage sp-atmos sp-atmos-d">
+  <div class="sp-endorsement-inner">
+
+    <h2 class="sp-h2">What Colleagues Are Saying</h2>
+
+    <!-- ACTIVE ENDORSEMENT — Uncomment when endorsement is confirmed:
+    <div style="margin-top: 40px;">
+      <p class="sp-endorsement-quote">
+        [Endorsement quote text goes here — replace this entire bracket.]
+      </p>
+      <p class="sp-endorsement-attr">&mdash; [Name], [Title/Organization]</p>
+    </div>
+    -->
+
+    <!-- PLACEHOLDER — Delete this div when the endorsement is confirmed: -->
+    <div class="sp-endorsement-placeholder">
+      <strong>Professional endorsement placeholder.</strong><br>
+      Awaiting Dr.&nbsp;Peterson's input. Strongest candidate: Ms. Brenna / Shine Therapy Services (19 years of experience). This endorsement serves both audiences &mdash; parents see external credibility, educators see peer recognition. Confirm with Dr.&nbsp;Peterson which endorsement(s) to use and under which name.<br><br>
+      <em>When ready: uncomment the quote markup above and delete this placeholder.</em>
+    </div>
+
+  </div>
+</section>
+<!-- Color Bar Divider -->
+<div class="sp-color-bar"></div>
+
+
+
+<!-- ==========================================================
+     BLOCK 7B: INLINE "HAVE A QUESTION?" FORM
+     Contains: H3, micro-copy, 3-field form (name, email, question).
+     Placed after Block 7, before the Final CTA Block.
+     To edit: Change the micro-copy or field labels.
+
+     PHASE 5 NOTE: Replace the <form> with Kadence Advanced Form block.
+     Keep the outer container and id="question-form" for anchor linking.
+     Configure: inline success message (NOT redirect), email notification
+     + auto-respond + database entry. GA4 event: question_form_submit.
+     ========================================================== -->
+
+<section class="sp-section sp-bg-sage" id="question-form" style="scroll-margin-top:80px;">
+  <div class="sp-inner">
+    <div style="max-width:580px; margin:0 auto; padding:36px 32px; background:var(--sp-program-wash); border:1px solid var(--sp-program-border); border-radius:12px; text-align:center;">
+      <h3 class="sp-h3" style="text-align:center; margin-bottom:8px;">Have a Question?</h3>
+      <p style="font-family:'DM Sans',sans-serif; font-size:15px; color:var(--sp-gray); line-height:1.6; margin-bottom:24px;">Want to learn more about Spark or Dr. Peterson's background? We'd love to hear from you.</p>
+
+      <form style="text-align:left;">
+        <div class="sp-form-group">
+          <label class="sp-form-label">Your Name <span class="sp-required">*</span></label>
+          <input type="text" class="sp-form-input" placeholder="First and last name" required>
+        </div>
+
+        <div class="sp-form-group">
+          <label class="sp-form-label">Email Address <span class="sp-required">*</span></label>
+          <input type="email" class="sp-form-input" placeholder="you@email.com" required>
+        </div>
+
+        <div class="sp-form-group">
+          <label class="sp-form-label">What Would You Like to Know? <span class="sp-required">*</span></label>
+          <textarea class="sp-form-textarea" placeholder="Your question about Spark Academy..." style="min-height:100px;" required></textarea>
+        </div>
+
+        <button type="submit" class="sp-form-submit-teal" data-cta-type="form-submit" data-cta-text="Send Your Question - Founder Hub">Send Your Question</button>
+      </form>
+    </div>
+  </div>
+</section>
+<!-- Color Bar Divider -->
+<div class="sp-color-bar"></div>
+
+
+
+<!-- ==========================================================
+     BLOCK 8: FINAL CTA BLOCK
+     Contains: H2, body copy, phone number, primary CTA (tour),
+     secondary CTA (programs), trust signals bar.
+     Parent-facing — consulting CTA is confined to Block 6.
+     To edit: Change the paragraph text or button labels.
+     ========================================================== -->
+
+<section class="sp-cta-section">
+  <div class="sp-inner">
+
+    <h2 class="sp-h2">Come See What Dr. Peterson <span style="white-space:nowrap;">Has Built</span></h2>
+
+    <p>Everything on this page becomes real the moment you walk through our doors. Schedule a tour and see the classrooms, meet Dr.&nbsp;Peterson, and discover what a preschool built on doctoral-level research and genuine care looks like from the inside.</p>
+
+    <p>Or, if you'd prefer to explore further first, take a closer look at our programs and find the right fit for your child.</p>
+
+    <p>Prefer to call? Reach us at <a href="tel:3092913292" class="sp-cta-phone" data-cta-type="phone" data-cta-text="Phone - Bottom CTA Founder Hub">309-291-3292</a></p>
+
+    <div class="sp-cta-buttons">
+      <a href="/schedule-a-tour/" class="sp-btn-gold" data-cta-type="primary" data-cta-text="Schedule a Tour - Bottom Founder Hub">Schedule a Tour</a>
+      <a href="/programs/" class="sp-cta-secondary" data-cta-type="secondary" data-cta-text="Explore Programs - Bottom Founder Hub">Explore Our Programs &#8594;</a>
+    </div>
+
+    <div class="sp-cta-trust">
+      <span class="sp-cta-trust-item">
+        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M4.26 10.147a60.436 60.436 0 00-.491 6.347A48.627 48.627 0 0112 20.904a48.627 48.627 0 018.232-4.41 60.46 60.46 0 00-.491-6.347m-15.482 0a50.57 50.57 0 00-2.658-.813A59.905 59.905 0 0112 3.493a59.902 59.902 0 0110.399 5.84c-.896.248-1.783.52-2.658.814m-15.482 0A50.697 50.697 0 0112 13.489a50.702 50.702 0 017.74-3.342M6.75 15a.75.75 0 100-1.5.75.75 0 000 1.5zm0 0v-3.675A55.378 55.378 0 0112 8.443m-7.007 11.55A5.981 5.981 0 006.75 15.75v-1.5"/></svg>
+        Dr. Michelle Peterson, Ed.D. &mdash; Founder &amp; Executive Director
+      </span>
+      <span class="sp-cta-trust-item">
+        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M15 19.128a9.38 9.38 0 002.625.372 9.337 9.337 0 004.121-.952 4.125 4.125 0 00-7.533-2.493M15 19.128v-.003c0-1.113-.285-2.16-.786-3.07M15 19.128v.106A12.318 12.318 0 018.624 21c-2.331 0-4.512-.645-6.374-1.766l-.001-.109a6.375 6.375 0 0111.964-3.07M12 6.375a3.375 3.375 0 11-6.75 0 3.375 3.375 0 016.75 0zm8.25 2.25a2.625 2.625 0 11-5.25 0 2.625 2.625 0 015.25 0z"/></svg>
+        5:1 Student-to-Teacher Ratio
+      </span>
+      <span class="sp-cta-trust-item">
+        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M9 12.75L11.25 15 15 9.75m-3-7.036A11.959 11.959 0 013.598 6 11.99 11.99 0 003 9.749c0 5.592 3.824 10.29 9 11.623 5.176-1.332 9-6.03 9-11.622 0-1.31-.21-2.571-.598-3.751h-.152c-3.196 0-6.1-1.248-8.25-3.285z"/></svg>
+        DCFS Licensed &middot; Serving Central Illinois Since 2023
+      </span>
+      <span class="sp-cta-trust-item">
+        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M2.25 12l8.954-8.955c.44-.439 1.152-.439 1.591 0L21.75 12M4.5 9.75v10.125c0 .621.504 1.125 1.125 1.125H9.75v-4.875c0-.621.504-1.125 1.125-1.125h2.25c.621 0 1.125.504 1.125 1.125V21h4.125c.621 0 1.125-.504 1.125-1.125V9.75M8.25 21h8.25"/></svg>
+        320+ Families Served
+      </span>
+    </div>
+
+  </div>
+</section>
+<!-- Color Bar Divider -->
+<div class="sp-color-bar"></div>
+
+
+
+<!-- ==========================================================
+     BLOCK 9: POSITIONING STATEMENT (FOOTER ACCENT)
+     Contains: Positioning statement text.
+     To edit: Change the text inside the <p> tag.
+     ========================================================== -->
+
+<div class="sp-positioning-footer">
+  <div class="sp-footer-triangles">
+    <span class="sp-ft" style="border-bottom-color: var(--sp-tri-pink);"></span>
+    <span class="sp-ft" style="border-bottom-color: var(--sp-tri-orange);"></span>
+    <span class="sp-ft" style="border-bottom-color: var(--sp-tri-yellow);"></span>
+    <span class="sp-ft" style="border-bottom-color: var(--sp-tri-green);"></span>
+    <span class="sp-ft" style="border-bottom-color: var(--sp-tri-blue);"></span>
+  </div>
+  <p>The only preschool in Central Illinois founded and led by a doctoral researcher in early childhood education.</p>
+</div>
+
+</body>
+</html>

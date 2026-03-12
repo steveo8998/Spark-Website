@@ -1,0 +1,590 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Spark Academy — Tour Confirmed (Colorful Redesign)</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=DM+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body style="margin:0;padding:0;background:#FBFAF8;">
+
+<!-- ================================================================
+     SPARK ACADEMY — TOUR CONFIRMED (COLORFUL REDESIGN v1)
+
+     DESIGN CHANGES FROM ORIGINAL:
+     - Colorful triangle divider after hero section
+     - Color bar divider before footer/final section
+     - Footer triangles (if positioning footer present)
+     - Program color variables added (teal — brand neutral)
+     - Light-touch treatment: page is too short for atmospheric triangles
+
+     NOTE: This is a small confirmation/form page. The colorful redesign
+     adds brand triangle motifs without heavy atmospheric treatment.
+     ================================================================ -->
+
+
+<style>
+
+/* ===== SPARK TOUR CONFIRMED — GLOBAL STYLES ===== */
+
+/* --- Brand Colors --- */
+:root {
+  --sp-teal: #3D6B62;
+  --sp-gold: #C49826;
+  --sp-gold-hover: #A8821F;
+  --sp-sage: #9BB8AD;
+  --sp-white: #FBFAF8;
+  --sp-whisper: #EFF5F2;
+  --sp-text: #2E2E2E;
+  --sp-heading: #1A1A1A;
+  --sp-gray: #6B7280;
+  --sp-max: 1140px;
+}
+
+/* --- Scroll Margin for Anchor Targets --- */
+[id] {
+  scroll-margin-top: 80px;
+}
+
+/* --- Section Containers --- */
+.sp-section {
+  padding: 80px 24px;
+}
+.sp-inner {
+  max-width: var(--sp-max);
+  margin: 0 auto;
+}
+.sp-bg-sage { background: var(--sp-whisper); }
+.sp-bg-white { background: var(--sp-white); }
+
+/* --- Hero / Confirmation Section --- */
+.sp-confirm-hero {
+  background: var(--sp-whisper);
+  padding: 80px 24px 64px;
+  text-align: center;
+}
+.sp-confirm-inner {
+  max-width: 720px;
+  margin: 0 auto;
+}
+.sp-confirm-icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 72px;
+  height: 72px;
+  border-radius: 50%;
+  background: var(--sp-teal);
+  margin: 0 auto 32px;
+}
+.sp-confirm-icon svg {
+  width: 36px;
+  height: 36px;
+  color: #fff;
+}
+.sp-h1 {
+  font-family: 'Playfair Display', serif;
+  font-size: 48px;
+  font-weight: 700;
+  line-height: 1.2;
+  color: var(--sp-heading);
+  margin-bottom: 24px;
+  letter-spacing: -0.01em;
+}
+.sp-confirm-body {
+  font-family: 'DM Sans', sans-serif;
+  font-size: 18px;
+  line-height: 1.75;
+  color: var(--sp-text);
+  max-width: 600px;
+  margin: 0 auto;
+}
+.sp-confirm-body p + p {
+  margin-top: 16px;
+}
+
+/* --- What to Expect Section --- */
+.sp-expect-wrap {
+  max-width: 720px;
+  margin: 0 auto;
+}
+.sp-h2 {
+  font-family: 'Playfair Display', serif;
+  font-size: 32px;
+  font-weight: 700;
+  line-height: 1.25;
+  color: var(--sp-heading);
+  text-align: center;
+  margin-bottom: 12px;
+}
+.sp-expect-intro {
+  font-family: 'DM Sans', sans-serif;
+  font-size: 17px;
+  line-height: 1.7;
+  color: var(--sp-gray);
+  text-align: center;
+  margin-bottom: 40px;
+}
+.sp-expect-list {
+  display: flex;
+  flex-direction: column;
+  gap: 28px;
+}
+.sp-expect-item {
+  font-family: 'DM Sans', sans-serif;
+  font-size: 17px;
+  line-height: 1.7;
+  color: var(--sp-text);
+}
+.sp-expect-item strong {
+  color: var(--sp-teal);
+  font-weight: 700;
+  font-size: 17px;
+}
+
+/* --- Survey Section --- */
+.sp-survey-wrap {
+  max-width: 640px;
+  margin: 0 auto;
+  text-align: center;
+}
+.sp-survey-headline {
+  font-family: 'DM Sans', sans-serif;
+  font-size: 17px;
+  font-weight: 500;
+  line-height: 1.6;
+  color: var(--sp-gray);
+  margin-bottom: 24px;
+}
+.sp-survey-placeholder {
+  background: var(--sp-white);
+  border: 2px dashed var(--sp-sage);
+  border-radius: 12px;
+  padding: 48px 32px;
+  color: var(--sp-gray);
+  font-family: 'DM Sans', sans-serif;
+  font-size: 15px;
+  line-height: 1.6;
+}
+.sp-survey-placeholder code {
+  display: block;
+  margin-top: 12px;
+  font-family: monospace;
+  font-size: 13px;
+  color: var(--sp-teal);
+  background: rgba(61,107,98,0.06);
+  padding: 8px 12px;
+  border-radius: 4px;
+}
+
+/* --- Next Steps Section --- */
+.sp-next-wrap {
+  max-width: 600px;
+  margin: 0 auto;
+  text-align: center;
+}
+.sp-next-headline {
+  font-family: 'DM Sans', sans-serif;
+  font-size: 18px;
+  font-weight: 600;
+  line-height: 1.5;
+  color: var(--sp-heading);
+  margin-bottom: 28px;
+}
+.sp-next-links {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 20px;
+}
+.sp-next-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  font-family: 'DM Sans', sans-serif;
+  font-size: 17px;
+  font-weight: 600;
+  color: var(--sp-teal);
+  text-decoration: none;
+  transition: gap 0.2s ease;
+}
+.sp-next-link:hover {
+  gap: 12px;
+}
+
+/* ===== RESPONSIVE — Tablet (768–1024px) ===== */
+@media (max-width: 1024px) {
+  .sp-confirm-hero {
+    padding: 64px 24px 48px;
+  }
+  .sp-section {
+    padding: 64px 24px;
+  }
+  .sp-h1 {
+    font-size: 36px;
+  }
+  .sp-h2 {
+    font-size: 28px;
+  }
+  .sp-confirm-body {
+    font-size: 17px;
+  }
+
+  /* Tappable link underlines for touch devices */
+  .sp-next-link {
+    text-decoration: underline;
+    text-underline-offset: 4px;
+    text-decoration-color: rgba(61,107,98,0.4);
+  }
+}
+
+/* ===== RESPONSIVE — Mobile (360–767px) ===== */
+@media (max-width: 767px) {
+  .sp-confirm-hero {
+    padding: 48px 20px 40px;
+  }
+  .sp-section {
+    padding: 48px 20px;
+  }
+  .sp-h1 {
+    font-size: 30px;
+  }
+  .sp-h2 {
+    font-size: 26px;
+  }
+  .sp-confirm-icon {
+    width: 60px;
+    height: 60px;
+    margin-bottom: 24px;
+  }
+  .sp-confirm-icon svg {
+    width: 30px;
+    height: 30px;
+  }
+  .sp-confirm-body {
+    font-size: 16px;
+  }
+  .sp-expect-item {
+    font-size: 16px;
+  }
+  .sp-next-link {
+    font-size: 16px;
+  }
+  .sp-survey-placeholder {
+    padding: 32px 20px;
+  }
+}
+
+/* ===== RESPONSIVE — Foldable / Small Phone (below 360px) ===== */
+@media (max-width: 360px) {
+  .sp-confirm-hero {
+    padding: 40px 16px 32px;
+  }
+  .sp-section {
+    padding: 40px 16px;
+  }
+  .sp-h1 {
+    font-size: 27px;
+  }
+  .sp-h2 {
+    font-size: 24px;
+  }
+  .sp-confirm-icon {
+    width: 52px;
+    height: 52px;
+    margin-bottom: 20px;
+  }
+  .sp-confirm-icon svg {
+    width: 26px;
+    height: 26px;
+  }
+  .sp-survey-placeholder {
+    padding: 24px 16px;
+  }
+}
+
+/* --- Print Stylesheet --- */
+@media print {
+  .sp-confirm-hero, .sp-section {
+    padding: 24px 0;
+  }
+  .sp-confirm-icon {
+    display: none;
+  }
+  .sp-survey-placeholder {
+    border: 1px solid #ccc;
+  }
+}
+
+
+
+/* --- Colorful Redesign: Brand & Program Colors --- */
+:root {
+  /* Logo Triangle Colors (decorative motifs) */
+  --sp-tri-pink: #FAC1BB;
+  --sp-tri-orange: #F9A054;
+  --sp-tri-yellow: #FFC716;
+  --sp-tri-green: #808E71;
+  --sp-tri-blue: #5E8B96;
+
+  /* Program Color (Teal — Hub/Small Page) */
+  --sp-program: #3D6B62;
+  --sp-program-dark: #2F5A52;
+  --sp-program-deep: #234840;
+  --sp-program-light: rgba(61,107,98,0.08);
+  --sp-program-lighter: rgba(61,107,98,0.05);
+  --sp-program-wash: #EFF5F2;
+  --sp-program-whisper: #E8F0EC;
+  --sp-program-border: rgba(61,107,98,0.20);
+}
+
+/* --- Triangle Section Divider (After Hero) --- */
+.sp-triangle-divider {
+  display: flex;
+  justify-content: center;
+  align-items: flex-end;
+  gap: 10px;
+  padding: 18px 0 14px;
+  background: transparent;
+}
+.sp-tri {
+  width: 0;
+  height: 0;
+  border-left: solid transparent;
+  border-right: solid transparent;
+  border-bottom: solid;
+  opacity: 0.7;
+}
+.sp-tri-1 { border-bottom-color: var(--sp-tri-pink); border-left-width: 14px; border-right-width: 14px; border-bottom-width: 20px; }
+.sp-tri-2 { border-bottom-color: var(--sp-tri-orange); border-left-width: 11px; border-right-width: 11px; border-bottom-width: 16px; }
+.sp-tri-3 { border-bottom-color: var(--sp-tri-yellow); border-left-width: 16px; border-right-width: 16px; border-bottom-width: 23px; }
+.sp-tri-4 { border-bottom-color: var(--sp-tri-green); border-left-width: 10px; border-right-width: 10px; border-bottom-width: 14px; }
+.sp-tri-5 { border-bottom-color: var(--sp-tri-blue); border-left-width: 13px; border-right-width: 13px; border-bottom-width: 18px; }
+
+/* --- Color Bar Divider (Between Sections) --- */
+.sp-color-bar {
+  display: flex;
+  height: 4px;
+  width: 100%;
+}
+.sp-color-bar::before,
+.sp-color-bar::after {
+  content: '';
+  flex: 1;
+}
+.sp-color-bar::before {
+  background: linear-gradient(90deg,
+    var(--sp-tri-pink) 0%,
+    var(--sp-tri-orange) 25%,
+    var(--sp-tri-yellow) 50%
+  );
+}
+.sp-color-bar::after {
+  background: linear-gradient(90deg,
+    var(--sp-tri-yellow) 0%,
+    var(--sp-tri-green) 50%,
+    var(--sp-tri-blue) 100%
+  );
+}
+
+/* --- Footer Triangles --- */
+.sp-footer-triangles {
+  display: flex;
+  justify-content: center;
+  gap: 8px;
+  margin-bottom: 16px;
+}
+.sp-ft {
+  width: 0;
+  height: 0;
+  border-left: 8px solid transparent;
+  border-right: 8px solid transparent;
+  border-bottom: 11px solid;
+  opacity: 0.6;
+}
+
+/* --- Responsive: Triangle Divider --- */
+@media (max-width: 767px) {
+  .sp-triangle-divider {
+    gap: 8px;
+    padding: 14px 0 10px;
+    transform: scale(0.8);
+  }
+}
+@media (max-width: 360px) {
+  .sp-triangle-divider {
+    transform: scale(0.65);
+  }
+}
+
+</style>
+
+
+<!-- ==========================================================
+     BLOCK 1: HERO — CONFIRMATION MESSAGE
+     The warm confirmation a parent sees immediately after
+     submitting the tour booking form.
+     
+     SAFE TO EDIT: Heading text, paragraph text.
+     DO NOT EDIT: HTML structure, CSS classes, SVG icon.
+     ========================================================== -->
+
+<section class="sp-confirm-hero" aria-label="Tour booking confirmation">
+  <div class="sp-confirm-inner">
+
+    <!-- Confirmation checkmark icon -->
+    <div class="sp-confirm-icon" aria-hidden="true">
+      <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2.5" stroke="currentColor">
+        <path stroke-linecap="round" stroke-linejoin="round" d="M4.5 12.75l6 6 9-13.5"/>
+      </svg>
+    </div>
+
+    <h1 class="sp-h1">We Can't Wait to Welcome <span style="white-space:nowrap;">Your Family</span></h1>
+
+    <div class="sp-confirm-body">
+      <p>Thank you for reaching out! We're looking forward to meeting you and learning what makes your child special.</p>
+      <p>Someone from our team will be in touch soon to confirm a time that works for your family.</p>
+    </div>
+
+  </div>
+</section>
+
+<!-- Triangle Divider -->
+<div class="sp-triangle-divider">
+  <span class="sp-tri sp-tri-1"></span>
+  <span class="sp-tri sp-tri-2"></span>
+  <span class="sp-tri sp-tri-3"></span>
+  <span class="sp-tri sp-tri-4"></span>
+  <span class="sp-tri sp-tri-5"></span>
+</div>
+
+
+
+<!-- ==========================================================
+     BLOCK 2: WHAT TO EXPECT ON YOUR TOUR
+     Reduces no-shows by making the tour feel concrete and 
+     approachable. Each item addresses a specific parent need:
+     authority, tangibility, authenticity, and permission.
+     
+     SAFE TO EDIT: Heading text, bold labels, paragraph text.
+     DO NOT EDIT: HTML structure, CSS classes.
+     
+     ⚠️ NEEDS DR. PETERSON'S INPUT: Confirm "every tour begins 
+     with a personal conversation with Dr. Peterson" — if other 
+     staff sometimes lead tours, change to "our founder or a 
+     member of our leadership team."
+     ========================================================== -->
+
+<section class="sp-section sp-bg-white">
+  <div class="sp-expect-wrap">
+
+    <h2 class="sp-h2">What to Expect on <span style="white-space:nowrap;">Your Tour</span></h2>
+    <p class="sp-expect-intro">When you visit Spark Academy, here's what your tour will look like:</p>
+
+    <div class="sp-expect-list">
+
+      <div class="sp-expect-item">
+        <strong>Meet Dr. Peterson.</strong> Every tour begins with a personal conversation with our founder, Dr. Michelle Peterson, Ed.D. She'll ask about your child, your family's priorities, and what you're looking for in a preschool.
+      </div>
+
+      <div class="sp-expect-item">
+        <strong>See the classrooms.</strong> You'll walk through our learning spaces — including the Developmental Playroom, which changes monthly with fresh materials designed to build creativity, problem-solving, and collaboration.
+      </div>
+
+      <div class="sp-expect-item">
+        <strong>Watch learning in action.</strong> If your visit aligns with the school day, you'll see our teachers and children in the middle of a real morning — not a rehearsed presentation.
+      </div>
+
+      <div class="sp-expect-item">
+        <strong>Ask anything.</strong> There's no script and no sales pitch. Bring every question you have — about curriculum, daily schedules, how teachers handle big emotions, or how Spark supports children with different learning styles. Your tour is a conversation, not a performance.
+      </div>
+
+    </div>
+
+  </div>
+</section>
+
+
+<!-- ==========================================================
+     BLOCK 3: EMBEDDED SURVEY
+     Tally survey placeholder — "What finally made you decide 
+     to reach out today?" Implemented during Phase 5 via 
+     Tally embed script. Connected to Google Sheets for 
+     monthly KPI review.
+     
+     PHASE 5 INSTRUCTIONS:
+     1. Create a Tally form with the question and 6 answer options
+        listed below. No email collection (anonymous).
+     2. Connect the Tally form to a Google Sheet named
+        "Spark — Tour Conversion Survey" (or similar).
+     3. Replace the placeholder <div> below with the Tally 
+        embed code (iframe or script). Keep the surrounding
+        section structure intact.
+     4. Test that responses appear in the Google Sheet.
+     
+     SURVEY QUESTION: "What finally made you decide to reach 
+     out today?"
+     ANSWER OPTIONS:
+       • Dr. Peterson's background and credentials
+       • A recommendation from another parent
+       • Something I read on the blog
+       • The school's philosophy and approach
+       • I found you on Google and liked what I saw
+       • Other
+     ========================================================== -->
+
+<section class="sp-section sp-bg-sage">
+  <div class="sp-survey-wrap">
+
+    <p class="sp-survey-headline">Before you go — one quick question that helps us serve families better:</p>
+
+    <!-- ⬇️ PHASE 5: Replace this placeholder with Tally embed code ⬇️ -->
+    <div class="sp-survey-placeholder">
+      <strong>Survey embed area</strong><br>
+      "What finally made you decide to reach out today?"<br><br>
+      Replace this placeholder with the Tally embed code during Phase 5 setup.
+      <code><!-- Tally embed goes here --></code>
+    </div>
+    <!-- ⬆️ END Tally placeholder ⬆️ -->
+
+  </div>
+</section>
+
+
+<!-- ==========================================================
+     BLOCK 4: NEXT STEPS
+     Three links that keep the parent on-site and moving 
+     through the funnel after booking. Each serves a distinct 
+     purpose: authority (Founder Hub), program narrowing 
+     (Programs), and peer validation (Testimonials).
+     
+     SAFE TO EDIT: Link text, URLs.
+     DO NOT EDIT: HTML structure, CSS classes.
+     ========================================================== -->
+
+
+<!-- Color Bar Divider -->
+<div class="sp-color-bar"></div>
+
+<section class="sp-section sp-bg-white">
+  <div class="sp-next-wrap">
+
+    <p class="sp-next-headline">While you wait, here are a few ways to get to know Spark:</p>
+
+    <div class="sp-next-links">
+      <a href="/dr-michelle-peterson/" class="sp-next-link" data-cta-type="internal-link" data-cta-text="Meet Dr. Peterson">
+        Meet Dr. Peterson &#8594;
+      </a>
+      <a href="/programs/" class="sp-next-link" data-cta-type="internal-link" data-cta-text="Explore Our Programs">
+        Explore Our Programs &#8594;
+      </a>
+      <a href="/testimonials/" class="sp-next-link" data-cta-type="internal-link" data-cta-text="Read What Other Parents Say">
+        Read What Other Parents Say &#8594;
+      </a>
+    </div>
+
+  </div>
+</section>
+
+</body>
+</html>

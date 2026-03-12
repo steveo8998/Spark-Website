@@ -1,0 +1,2177 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Spark Academy — Summer Camp (Colorful Redesign)</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=DM+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body style="margin:0;padding:0;background:#FBFAF8;">
+
+<!-- ================================================================
+     SPARK ACADEMY — SUMMER CAMP PAGE (COLORFUL REDESIGN v1)
+
+     DESIGN CHANGES FROM ORIGINAL:
+     - Program color: Sunny Yellow-Orange (Summer Camp) replaces universal teal accents
+     - Hero background: Program wash tint instead of Whisper Sage
+     - Decorative CSS triangles replace circular radial gradients
+     - Alternating sections: Program wash + Cloud White
+     - Buttons, icons, links, tuition header: all use program palette
+     - Triangle section dividers between major blocks
+     - CTA section: deep program color gradient instead of teal
+     - FAQ chevrons + hover: program color
+     - Positioning footer: five-triangle brand motif
+
+     NOTE: The sp-teal variable is KEPT for cross-site links and
+     elements that should remain brand-neutral. Only program-specific
+     accents shift to the program color.
+     ================================================================ -->
+
+
+<style>
+
+/* ===== SPARK SUMMER CAMP PAGE — COLORFUL REDESIGN GLOBAL STYLES ===== */
+
+/* --- Brand Colors (base palette — shared across all pages) --- */
+:root {
+  --sp-teal: #3D6B62;
+  --sp-gold: #C49826;
+  --sp-gold-hover: #A8821F;
+  --sp-sage: #9BB8AD;
+  --sp-white: #FBFAF8;
+  --sp-whisper: #EFF5F2;
+  --sp-text: #2E2E2E;
+  --sp-heading: #1A1A1A;
+  --sp-gray: #6B7280;
+  --sp-max: 1140px;
+
+  /* --- Program Color: Sunny Yellow-Orange (Summer Camp) --- */
+  --sp-program: #F5B835;
+  --sp-program-dark: #D9A020;
+  --sp-program-deep: #B58518;
+  --sp-program-light: rgba(245,184,53,0.10);
+  --sp-program-lighter: rgba(245,184,53,0.06);
+  --sp-program-wash: #FFFAED;
+  --sp-program-whisper: #FFF6E0;
+  --sp-program-border: rgba(245,184,53,0.28);
+
+  /* --- Logo Triangle Colors (for decorative motifs) --- */
+  --sp-tri-pink: #FAC1BB;
+  --sp-tri-orange: #F9A054;
+  --sp-tri-yellow: #FFC716;
+  --sp-tri-green: #808E71;
+  --sp-tri-blue: #5E8B96;
+}
+
+/* --- Section Containers --- */
+.sp-section {
+  padding: 80px 24px;
+}
+.sp-inner {
+  max-width: var(--sp-max);
+  margin: 0 auto;
+}
+/* CHANGED: alternating section backgrounds use program wash instead of whisper sage */
+.sp-bg-sage { background: var(--sp-program-whisper); }
+.sp-bg-white { background: var(--sp-white); }
+
+/* --- Typography --- */
+.sp-h1 {
+  font-family: 'Playfair Display', serif;
+  font-size: 48px;
+  font-weight: 700;
+  line-height: 1.18;
+  color: var(--sp-heading);
+  text-align: center;
+  margin-bottom: 16px;
+  letter-spacing: -0.01em;
+}
+.sp-h2 {
+  font-family: 'Playfair Display', serif;
+  font-size: 36px;
+  font-weight: 700;
+  line-height: 1.25;
+  color: var(--sp-heading);
+  text-align: center;
+  margin-bottom: 16px;
+}
+.sp-h3 {
+  font-family: 'Playfair Display', serif;
+  font-size: 24px;
+  font-weight: 700;
+  line-height: 1.3;
+  color: var(--sp-heading);
+  margin-bottom: 12px;
+}
+.sp-intro {
+  text-align: center;
+  max-width: 680px;
+  margin: 0 auto 48px;
+  color: var(--sp-gray);
+  font-family: 'DM Sans', sans-serif;
+  font-size: 17px;
+  line-height: 1.7;
+}
+
+/* --- Buttons (CHANGED: program color instead of gold) --- */
+.sp-btn-gold {
+  display: inline-block;
+  background: var(--sp-program);
+  color: #fff;
+  padding: 14px 32px;
+  border-radius: 6px;
+  font-family: 'DM Sans', sans-serif;
+  font-weight: 600;
+  font-size: 16px;
+  text-decoration: none;
+  transition: background 0.2s, transform 0.2s;
+  box-shadow: 0 2px 8px rgba(245,184,53,0.25);
+}
+.sp-btn-gold:hover {
+  background: var(--sp-program-dark);
+  transform: translateY(-2px);
+  box-shadow: 0 4px 16px rgba(245,184,53,0.3);
+}
+.sp-btn-outline {
+  display: inline-block;
+  background: transparent;
+  color: #fff;
+  padding: 14px 32px;
+  border-radius: 6px;
+  border: 2px solid rgba(255,255,255,0.4);
+  font-family: 'DM Sans', sans-serif;
+  font-weight: 600;
+  font-size: 16px;
+  text-decoration: none;
+  transition: border-color 0.2s, background 0.2s;
+}
+.sp-btn-outline:hover {
+  border-color: #fff;
+  background: rgba(255,255,255,0.08);
+}
+
+/* --- Hero Section (CHANGED: warm peach background + triangle decorations) --- */
+.sp-hero {
+  background: var(--sp-program-wash);
+  padding: 80px 24px 64px;
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+}
+/* CHANGED: Triangle decorations instead of circular gradients */
+.sp-hero::before {
+  content: '';
+  position: absolute;
+  top: -40px;
+  right: -60px;
+  width: 0;
+  height: 0;
+  border-left: 180px solid transparent;
+  border-right: 180px solid transparent;
+  border-bottom: 320px solid rgba(245,184,53,0.08);
+  transform: rotate(15deg);
+}
+.sp-hero::after {
+  content: '';
+  position: absolute;
+  bottom: -80px;
+  left: -40px;
+  width: 0;
+  height: 0;
+  border-left: 140px solid transparent;
+  border-right: 140px solid transparent;
+  border-bottom: 250px solid rgba(245,184,53,0.06);
+  transform: rotate(-10deg);
+}
+.sp-hero-inner {
+  max-width: var(--sp-max);
+  margin: 0 auto;
+  position: relative;
+  z-index: 1;
+}
+.sp-hero-sub {
+  font-family: 'DM Sans', sans-serif;
+  font-size: 17px;
+  line-height: 1.7;
+  color: var(--sp-gray);
+  max-width: 660px;
+  margin: 0 auto 32px;
+  font-style: italic;
+}
+.sp-hero-ctas {
+  display: flex;
+  gap: 16px;
+  justify-content: center;
+  align-items: center;
+  margin-top: 36px;
+  flex-wrap: wrap;
+}
+/* CHANGED: secondary link uses program color */
+.sp-hero-secondary {
+  font-family: 'DM Sans', sans-serif;
+  font-size: 15px;
+  color: var(--sp-program-dark);
+  font-weight: 600;
+  text-decoration: none;
+  border-bottom: 1px solid rgba(245,184,53,0.4);
+  transition: border-color 0.2s;
+}
+.sp-hero-secondary:hover {
+  border-color: var(--sp-program);
+}
+/* CHANGED: trust line icons use program color */
+.sp-trust-line {
+  display: flex;
+  gap: 24px;
+  justify-content: center;
+  flex-wrap: wrap;
+  margin-top: 28px;
+  font-family: 'DM Sans', sans-serif;
+  font-size: 13px;
+  font-weight: 500;
+  color: var(--sp-gray);
+}
+.sp-trust-line span {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+.sp-trust-line svg {
+  width: 16px;
+  height: 16px;
+  color: var(--sp-program);
+}
+.sp-hero-image {
+  max-width: var(--sp-max);
+  margin: 48px auto 0;
+  border-radius: 12px;
+  overflow: hidden;
+  background: var(--sp-program-whisper);
+  min-height: 340px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: 'DM Sans', sans-serif;
+  font-size: 14px;
+  color: var(--sp-gray);
+  text-align: center;
+  padding: 40px;
+  line-height: 1.7;
+  border: 1px dashed var(--sp-program-border);
+}
+
+/* --- Triangle Section Divider (NEW — decorative motif) --- */
+.sp-triangle-divider {
+  display: flex;
+  justify-content: center;
+  align-items: flex-end;
+  gap: 4px;
+  padding: 16px 0;
+  margin: 0;
+  background: transparent;
+  position: relative;
+  z-index: 2;
+}
+.sp-triangle-divider .sp-tri {
+  display: inline-block;
+  width: 0;
+  height: 0;
+  border-left: 16px solid transparent;
+  border-right: 16px solid transparent;
+  border-bottom: 22px solid;
+}
+/* Stagger heights for a playful rhythm — must use parent selector for specificity */
+.sp-triangle-divider .sp-tri-1 { border-bottom-color: var(--sp-tri-pink); border-left-width: 14px; border-right-width: 14px; border-bottom-width: 20px; }
+.sp-triangle-divider .sp-tri-2 { border-bottom-color: var(--sp-tri-orange); border-left-width: 16px; border-right-width: 16px; border-bottom-width: 24px; }
+.sp-triangle-divider .sp-tri-3 { border-bottom-color: var(--sp-tri-yellow); border-left-width: 18px; border-right-width: 18px; border-bottom-width: 26px; }
+.sp-triangle-divider .sp-tri-4 { border-bottom-color: var(--sp-tri-green); border-left-width: 16px; border-right-width: 16px; border-bottom-width: 24px; }
+.sp-triangle-divider .sp-tri-5 { border-bottom-color: var(--sp-tri-blue); border-left-width: 14px; border-right-width: 14px; border-bottom-width: 20px; }
+
+/* --- Color Bar Section Divider (matches "document line" brand asset) --- */
+.sp-color-bar {
+  height: 5px;
+  background: linear-gradient(
+    to right,
+    var(--sp-tri-pink) 0%, var(--sp-tri-pink) 20%,
+    var(--sp-tri-orange) 20%, var(--sp-tri-orange) 40%,
+    var(--sp-tri-yellow) 40%, var(--sp-tri-yellow) 60%,
+    var(--sp-tri-green) 60%, var(--sp-tri-green) 80%,
+    var(--sp-tri-blue) 80%, var(--sp-tri-blue) 100%
+  );
+}
+
+/* --- Atmospheric Background Triangles (barely visible, felt not seen) --- */
+/* Each variant places 1-2 large triangles at different positions via clip-path.
+   Opacity is 0.03-0.04 so they register as texture, not decoration.
+   Uses the program color so they subtly reinforce the page's color identity. */
+.sp-atmos {
+  position: relative;
+  overflow: hidden;
+}
+.sp-atmos::before,
+.sp-atmos::after {
+  content: '';
+  position: absolute;
+  z-index: 0;
+  pointer-events: none;
+}
+/* Variant A: large triangle bottom-right corner */
+.sp-atmos-a::before {
+  bottom: -60px;
+  right: -80px;
+  width: 500px;
+  height: 500px;
+  background: var(--sp-program);
+  opacity: 0.035;
+  clip-path: polygon(100% 0%, 0% 100%, 100% 100%);
+}
+/* Variant B: large triangle top-left corner */
+.sp-atmos-b::before {
+  top: -40px;
+  left: -60px;
+  width: 420px;
+  height: 420px;
+  background: var(--sp-program);
+  opacity: 0.03;
+  clip-path: polygon(0% 0%, 100% 0%, 0% 100%);
+}
+/* Variant C: two smaller triangles, opposite corners */
+.sp-atmos-c::before {
+  top: -30px;
+  right: -50px;
+  width: 320px;
+  height: 320px;
+  background: var(--sp-program);
+  opacity: 0.03;
+  clip-path: polygon(50% 0%, 0% 100%, 100% 100%);
+}
+.sp-atmos-c::after {
+  bottom: -40px;
+  left: -40px;
+  width: 260px;
+  height: 260px;
+  background: var(--sp-program);
+  opacity: 0.025;
+  clip-path: polygon(50% 100%, 0% 0%, 100% 0%);
+}
+/* Variant D: single large triangle centered-right, rotated feel */
+.sp-atmos-d::before {
+  top: 50%;
+  right: -100px;
+  transform: translateY(-50%);
+  width: 460px;
+  height: 460px;
+  background: var(--sp-program);
+  opacity: 0.03;
+  clip-path: polygon(50% 0%, 0% 100%, 100% 80%);
+}
+/* All atmospheric content needs to sit above the shapes */
+.sp-atmos > * {
+  position: relative;
+  z-index: 1;
+}
+
+/* --- Prose Content Sections --- */
+.sp-prose {
+  max-width: 720px;
+  margin: 0 auto;
+}
+.sp-prose p {
+  font-family: 'DM Sans', sans-serif;
+  font-size: 17px;
+  line-height: 1.75;
+  color: var(--sp-text);
+}
+.sp-prose p + p {
+  margin-top: 20px;
+}
+.sp-prose .sp-h2 {
+  text-align: left;
+  margin-bottom: 24px;
+}
+.sp-prose .sp-h3 {
+  margin-top: 40px;
+  margin-bottom: 16px;
+}
+/* CHANGED: accent text uses program color */
+.sp-prose-accent {
+  font-family: 'DM Sans', sans-serif;
+  font-size: 18px;
+  font-weight: 600;
+  color: var(--sp-program-dark);
+  margin-top: 24px;
+}
+
+/* --- Daily Schedule Cards (CHANGED: icon backgrounds + time color) --- */
+.sp-schedule-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 20px;
+  margin-top: 48px;
+}
+.sp-schedule-card {
+  background: var(--sp-white);
+  border: 1px solid var(--sp-program-border);
+  border-radius: 12px;
+  padding: 28px 28px 24px;
+  display: flex;
+  gap: 16px;
+  align-items: flex-start;
+  transition: transform 0.2s, box-shadow 0.2s;
+}
+.sp-schedule-card:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(245,184,53,0.1);
+}
+.sp-schedule-icon {
+  flex-shrink: 0;
+  width: 48px;
+  height: 48px;
+  border-radius: 12px;
+  background: var(--sp-program-light);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.sp-schedule-icon svg {
+  width: 24px;
+  height: 24px;
+  color: var(--sp-program);
+}
+.sp-schedule-content {
+  flex: 1;
+}
+.sp-schedule-title {
+  font-family: 'DM Sans', sans-serif;
+  font-weight: 700;
+  font-size: 16px;
+  color: var(--sp-heading);
+  margin-bottom: 2px;
+}
+.sp-schedule-time {
+  font-family: 'DM Sans', sans-serif;
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--sp-program-dark);
+  margin-bottom: 8px;
+}
+.sp-schedule-desc {
+  font-family: 'DM Sans', sans-serif;
+  font-size: 15px;
+  line-height: 1.65;
+  color: var(--sp-text);
+  opacity: 0.85;
+}
+.sp-schedule-full {
+  grid-column: 1 / -1;
+}
+.sp-schedule-meta {
+  text-align: center;
+  margin-top: 32px;
+  font-family: 'DM Sans', sans-serif;
+  font-size: 15px;
+  color: var(--sp-gray);
+  font-weight: 500;
+}
+.sp-schedule-meta strong {
+  color: var(--sp-text);
+  font-weight: 600;
+}
+
+/* --- Subsection Feature Block --- */
+.sp-feature-block {
+  margin-top: 56px;
+  padding-top: 48px;
+  border-top: 1px solid var(--sp-program-border);
+}
+.sp-feature-block .sp-h3 {
+  text-align: center;
+  margin-bottom: 16px;
+}
+.sp-feature-desc {
+  max-width: 720px;
+  margin: 0 auto;
+}
+.sp-feature-desc p {
+  font-family: 'DM Sans', sans-serif;
+  font-size: 17px;
+  line-height: 1.75;
+  color: var(--sp-text);
+}
+.sp-feature-desc p + p {
+  margin-top: 20px;
+}
+
+/* --- Enrichment Pills (CHANGED: orange accent) --- */
+.sp-enrich-pills {
+  display: flex;
+  justify-content: center;
+  gap: 12px;
+  flex-wrap: wrap;
+  max-width: 700px;
+  margin: 32px auto 0;
+}
+.sp-enrich-pill {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 10px 18px;
+  background: var(--sp-white);
+  border: 1px solid var(--sp-program-border);
+  border-radius: 40px;
+  transition: border-color 0.2s, box-shadow 0.2s;
+}
+.sp-enrich-pill:hover {
+  border-color: var(--sp-program);
+  box-shadow: 0 2px 12px rgba(245,184,53,0.12);
+}
+.sp-enrich-pill-day {
+  font-family: 'DM Sans', sans-serif;
+  font-size: 11px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--sp-program-dark);
+  background: var(--sp-program-light);
+  padding: 3px 8px;
+  border-radius: 4px;
+  line-height: 1.3;
+}
+.sp-enrich-pill-subject {
+  font-family: 'DM Sans', sans-serif;
+  font-size: 15px;
+  font-weight: 600;
+  color: var(--sp-heading);
+}
+.sp-enrich-note {
+  max-width: 720px;
+  margin: 24px auto 0;
+  font-family: 'DM Sans', sans-serif;
+  font-size: 15px;
+  line-height: 1.7;
+  color: var(--sp-text);
+  text-align: center;
+}
+
+/* --- Separation / Open Door Section (CHANGED: link color) --- */
+.sp-separation-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  margin-top: 24px;
+  font-family: 'DM Sans', sans-serif;
+  font-size: 16px;
+  font-weight: 600;
+  color: var(--sp-program-dark);
+  text-decoration: none;
+  transition: gap 0.2s ease;
+}
+.sp-separation-link:hover { gap: 12px; }
+
+/* --- Tuition Card (CHANGED: orange header) --- */
+.sp-tuition-main {
+  max-width: 520px;
+  margin: 0 auto;
+  background: var(--sp-white);
+  border: 1px solid var(--sp-program-border);
+  border-radius: 16px;
+  overflow: hidden;
+}
+.sp-tuition-header {
+  background: linear-gradient(135deg, #D9A020 0%, var(--sp-program) 50%, #F9D06A 100%);
+  padding: 28px 32px;
+  text-align: center;
+}
+.sp-tuition-header-label {
+  font-family: 'DM Sans', sans-serif;
+  font-size: 12px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  color: rgba(255,255,255,0.7);
+  margin-bottom: 8px;
+}
+.sp-tuition-header-price {
+  font-family: 'Playfair Display', serif;
+  font-size: 48px;
+  font-weight: 700;
+  color: #fff;
+  line-height: 1;
+}
+.sp-tuition-header-price span {
+  font-family: 'DM Sans', sans-serif;
+  font-size: 18px;
+  font-weight: 500;
+  color: rgba(255,255,255,0.65);
+}
+.sp-tuition-body {
+  padding: 28px 32px;
+}
+.sp-tuition-schedules {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+.sp-tuition-schedule-row {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+}
+.sp-tuition-schedule-check {
+  flex-shrink: 0;
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+  background: var(--sp-program-light);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.sp-tuition-schedule-check svg {
+  width: 16px;
+  height: 16px;
+  color: var(--sp-program);
+}
+.sp-tuition-schedule-label {
+  font-family: 'DM Sans', sans-serif;
+  font-size: 11px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--sp-gray);
+}
+.sp-tuition-schedule-days {
+  font-family: 'DM Sans', sans-serif;
+  font-size: 16px;
+  font-weight: 600;
+  color: var(--sp-heading);
+}
+.sp-tuition-body-note {
+  margin-top: 20px;
+  padding-top: 16px;
+  border-top: 1px solid var(--sp-program-border);
+  font-family: 'DM Sans', sans-serif;
+  font-size: 14px;
+  color: var(--sp-gray);
+  line-height: 1.6;
+  text-align: center;
+}
+
+/* Add-on strip */
+.sp-tuition-addon {
+  max-width: 520px;
+  margin: 16px auto 0;
+  background: var(--sp-white);
+  border: 1px solid var(--sp-program-border);
+  border-radius: 12px;
+  padding: 20px 28px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+}
+.sp-tuition-addon-left {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+.sp-tuition-addon-plus {
+  flex-shrink: 0;
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  background: var(--sp-program-light);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: 'DM Sans', sans-serif;
+  font-size: 18px;
+  font-weight: 700;
+  color: var(--sp-program);
+}
+.sp-tuition-addon-name {
+  font-family: 'DM Sans', sans-serif;
+  font-size: 15px;
+  font-weight: 600;
+  color: var(--sp-heading);
+}
+.sp-tuition-addon-sub {
+  font-family: 'DM Sans', sans-serif;
+  font-size: 12px;
+  color: var(--sp-gray);
+}
+.sp-tuition-addon-price {
+  font-family: 'DM Sans', sans-serif;
+  font-size: 22px;
+  font-weight: 700;
+  color: var(--sp-program);
+  white-space: nowrap;
+}
+.sp-tuition-addon-price span {
+  font-size: 13px;
+  font-weight: 500;
+  color: var(--sp-gray);
+}
+
+/* --- Tuition Details --- */
+.sp-tuition-details {
+  margin-top: 32px;
+  font-family: 'DM Sans', sans-serif;
+  font-size: 15px;
+  line-height: 1.7;
+  color: var(--sp-text);
+}
+.sp-tuition-details p + p {
+  margin-top: 12px;
+}
+.sp-tuition-details strong {
+  color: var(--sp-heading);
+  font-weight: 600;
+}
+
+/* --- All-Inclusive Tuition Note (CHANGED: orange tint) --- */
+.sp-tuition-note {
+  max-width: 720px;
+  margin: 32px auto 0;
+  padding: 24px 32px;
+  background: var(--sp-program-lighter);
+  border: 1px solid var(--sp-program-border);
+  border-radius: 10px;
+  font-family: 'DM Sans', sans-serif;
+  font-size: 15px;
+  line-height: 1.7;
+  color: var(--sp-text);
+  text-align: center;
+}
+.sp-tuition-note strong {
+  color: var(--sp-program-dark);
+  font-weight: 700;
+}
+
+/* --- Scheduling Advisory --- */
+.sp-advisory {
+  max-width: 720px;
+  margin: 0 auto;
+}
+.sp-advisory .sp-h3 {
+  text-align: left;
+}
+.sp-advisory p {
+  font-family: 'DM Sans', sans-serif;
+  font-size: 17px;
+  line-height: 1.75;
+  color: var(--sp-text);
+}
+.sp-advisory p + p {
+  margin-top: 20px;
+}
+
+/* --- Testimonial Placeholder --- */
+.sp-testimonial-section {
+  background: var(--sp-program-whisper);
+  padding: 80px 24px;
+}
+.sp-testimonial-inner {
+  max-width: 780px;
+  margin: 0 auto;
+  text-align: center;
+}
+.sp-testimonial-placeholder {
+  margin-top: 32px;
+  padding: 40px;
+  border: 1px dashed var(--sp-program-border);
+  border-radius: 12px;
+  font-family: 'DM Sans', sans-serif;
+  font-size: 16px;
+  line-height: 1.7;
+  color: var(--sp-gray);
+  font-style: italic;
+}
+
+/* --- CTA Section (CHANGED: warm deep orange instead of teal) --- */
+.sp-cta-section {
+  text-align: center;
+  background: linear-gradient(135deg, #B58518 0%, var(--sp-program) 60%, #F9D06A 100%);
+  color: #fff;
+  padding: 80px 24px;
+  position: relative;
+  overflow: hidden;
+}
+/* Triangle decoration in CTA */
+.sp-cta-section::before {
+  content: '';
+  position: absolute;
+  top: -60px; right: -40px;
+  width: 0; height: 0;
+  border-left: 160px solid transparent;
+  border-right: 160px solid transparent;
+  border-bottom: 280px solid rgba(255,255,255,0.06);
+  transform: rotate(20deg);
+}
+.sp-cta-section::after {
+  content: '';
+  position: absolute;
+  bottom: -40px; left: -60px;
+  width: 0; height: 0;
+  border-left: 120px solid transparent;
+  border-right: 120px solid transparent;
+  border-bottom: 200px solid rgba(255,255,255,0.04);
+  transform: rotate(-15deg);
+}
+.sp-cta-section .sp-h2 { color: #fff; }
+.sp-cta-section p {
+  font-family: 'DM Sans', sans-serif;
+  color: rgba(255,255,255,0.88);
+  max-width: 600px;
+  margin: 0 auto;
+  font-size: 17px;
+  line-height: 1.7;
+}
+.sp-cta-section p + p { margin-top: 16px; }
+.sp-cta-phone {
+  color: #fff;
+  font-weight: 600;
+  text-decoration: none;
+  border-bottom: 1px solid rgba(255,255,255,0.4);
+}
+.sp-cta-phone:hover { border-color: #fff; }
+.sp-cta-buttons {
+  display: flex;
+  gap: 16px;
+  justify-content: center;
+  margin-top: 32px;
+  flex-wrap: wrap;
+}
+/* CTA primary button: white on this bg */
+.sp-cta-section .sp-btn-gold {
+  background: #fff;
+  color: var(--sp-program-deep);
+  box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+}
+.sp-cta-section .sp-btn-gold:hover {
+  background: #f8f8f8;
+  box-shadow: 0 4px 16px rgba(0,0,0,0.15);
+}
+.sp-cta-trust {
+  display: flex;
+  gap: 32px;
+  justify-content: center;
+  margin-top: 36px;
+  flex-wrap: wrap;
+}
+.sp-cta-trust-item {
+  font-family: 'DM Sans', sans-serif;
+  font-size: 13px;
+  font-weight: 500;
+  color: rgba(255,255,255,0.6);
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+.sp-cta-trust-item svg {
+  width: 16px;
+  height: 16px;
+  color: rgba(255,255,255,0.5);
+}
+
+/* --- FAQ Accordion (CHANGED: orange hover + chevron) --- */
+.sp-faq-list {
+  max-width: 780px;
+  margin: 40px auto 0;
+}
+.sp-faq-item {
+  border-bottom: 1px solid var(--sp-program-border);
+}
+.sp-faq-item:first-child {
+  border-top: 1px solid var(--sp-program-border);
+}
+.sp-faq-item summary {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 20px 0;
+  cursor: pointer;
+  list-style: none;
+  font-family: 'DM Sans', sans-serif;
+  font-size: 17px;
+  font-weight: 600;
+  color: var(--sp-heading);
+  line-height: 1.5;
+  transition: color 0.2s;
+}
+.sp-faq-item summary:hover {
+  color: var(--sp-program-dark);
+}
+.sp-faq-item summary::-webkit-details-marker { display: none; }
+.sp-faq-item summary::marker { display: none; content: ''; }
+.sp-faq-chevron {
+  flex-shrink: 0;
+  width: 24px;
+  height: 24px;
+  margin-left: 16px;
+  color: var(--sp-program);
+  transition: transform 0.3s ease;
+}
+.sp-faq-item[open] .sp-faq-chevron {
+  transform: rotate(180deg);
+  color: var(--sp-program-dark);
+}
+.sp-faq-answer {
+  padding: 0 0 24px;
+  font-family: 'DM Sans', sans-serif;
+  font-size: 16px;
+  line-height: 1.75;
+  color: var(--sp-text);
+}
+.sp-faq-answer a {
+  color: var(--sp-program-dark);
+  font-weight: 600;
+  text-decoration: none;
+  border-bottom: 1px solid rgba(245,184,53,0.3);
+}
+.sp-faq-answer a:hover {
+  border-color: var(--sp-program);
+}
+
+/* --- Positioning Footer (CHANGED: five-triangle brand motif) --- */
+.sp-positioning-footer {
+  background: var(--sp-teal);
+  padding: 28px 24px;
+  text-align: center;
+  border-top: 1px solid rgba(255,255,255,0.08);
+  position: relative;
+}
+.sp-positioning-footer p {
+  font-family: 'Playfair Display', serif;
+  font-size: 14px;
+  font-style: italic;
+  color: rgba(255,255,255,0.55);
+  max-width: 600px;
+  margin: 0 auto;
+}
+/* Five-triangle brand signature */
+.sp-footer-triangles {
+  display: flex;
+  justify-content: center;
+  gap: 4px;
+  margin-bottom: 16px;
+}
+.sp-footer-triangles .sp-ft {
+  width: 0;
+  height: 0;
+  border-left: 8px solid transparent;
+  border-right: 8px solid transparent;
+  border-bottom: 12px solid;
+  opacity: 0.4;
+}
+
+/* --- Photo Placeholder --- */
+.sp-photo-placeholder {
+  border-radius: 12px;
+  overflow: hidden;
+  background: var(--sp-program-whisper);
+  min-height: 280px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: 'DM Sans', sans-serif;
+  font-size: 14px;
+  color: var(--sp-gray);
+  text-align: center;
+  padding: 40px;
+  line-height: 1.7;
+  border: 1px dashed var(--sp-program-border);
+  margin-top: 40px;
+}
+
+/* --- Form Styles --- */
+.sp-form-group {
+  margin-bottom: 16px;
+}
+.sp-form-label {
+  display: block;
+  font-family: 'DM Sans', sans-serif;
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--sp-heading);
+  margin-bottom: 6px;
+}
+.sp-required {
+  color: var(--sp-program);
+}
+.sp-form-input, .sp-form-textarea {
+  width: 100%;
+  padding: 12px 14px;
+  border: 1px solid var(--sp-program-border);
+  border-radius: 6px;
+  font-family: 'DM Sans', sans-serif;
+  font-size: 15px;
+  background: #fff;
+  transition: border-color 0.2s;
+  box-sizing: border-box;
+}
+.sp-form-input:focus, .sp-form-textarea:focus {
+  outline: none;
+  border-color: var(--sp-program);
+  box-shadow: 0 0 0 3px rgba(245,184,53,0.12);
+}
+.sp-form-submit-teal {
+  display: inline-block;
+  background: var(--sp-program);
+  color: #fff;
+  padding: 12px 28px;
+  border: none;
+  border-radius: 6px;
+  font-family: 'DM Sans', sans-serif;
+  font-weight: 600;
+  font-size: 15px;
+  cursor: pointer;
+  transition: background 0.2s;
+  margin-top: 8px;
+}
+.sp-form-submit-teal:hover {
+  background: var(--sp-program-dark);
+}
+
+/* --- Animations --- */
+@keyframes spFadeUp {
+  from { opacity: 0; transform: translateY(24px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+.sp-hero .sp-h1 { animation: spFadeUp 0.7s ease both; }
+.sp-hero .sp-hero-sub { animation: spFadeUp 0.7s ease 0.1s both; }
+.sp-hero .sp-hero-ctas { animation: spFadeUp 0.7s ease 0.2s both; }
+.sp-hero .sp-trust-line { animation: spFadeUp 0.7s ease 0.3s both; }
+
+
+/* ===== TABLET LAYOUT (768px - 1024px) ===== */
+@media (max-width: 1024px) {
+  .sp-schedule-grid { gap: 16px; }
+  .sp-separation-link,
+  .sp-faq-answer a,
+  .sp-hero-secondary {
+    text-decoration: underline;
+    text-underline-offset: 4px;
+    text-decoration-color: rgba(245,184,53,0.4);
+  }
+}
+
+/* ===== MOBILE LAYOUT (phones: under 768px) ===== */
+@media (max-width: 767px) {
+  .sp-section { padding: 48px 20px; }
+  .sp-hero { padding: 48px 20px 40px; }
+  .sp-cta-section { padding: 48px 20px; }
+  .sp-testimonial-section { padding: 48px 20px; }
+  .sp-h1 { font-size: 32px; }
+  .sp-h2 { font-size: 28px; }
+  .sp-h3 { font-size: 21px; }
+  .sp-prose .sp-h2 { text-align: left; }
+  .sp-prose p { font-size: 16px; }
+  .sp-schedule-grid { grid-template-columns: 1fr; }
+  .sp-schedule-card { padding: 20px 18px; }
+  .sp-schedule-title { font-size: 15px; }
+  .sp-schedule-desc { font-size: 14px; }
+  .sp-enrich-pills { gap: 10px; }
+  .sp-enrich-pill { padding: 8px 14px; }
+  .sp-tuition-header-price { font-size: 40px; }
+  .sp-tuition-header { padding: 24px 20px; }
+  .sp-tuition-body { padding: 24px 20px; }
+  .sp-tuition-addon { flex-direction: column; text-align: center; gap: 10px; padding: 18px 20px; }
+  .sp-tuition-addon-left { flex-direction: column; gap: 6px; }
+  .sp-hero-image { min-height: 220px; margin-top: 32px; }
+  .sp-cta-buttons { flex-direction: column; align-items: center; margin-top: 40px; gap: 12px; }
+  .sp-cta-trust { flex-direction: column; align-items: center; gap: 14px; margin-top: 44px; padding-top: 32px; border-top: 1px solid rgba(255,255,255,0.12); }
+  .sp-hero-ctas { flex-direction: column; align-items: center; gap: 12px; }
+  .sp-testimonial-placeholder { padding: 28px 20px; }
+  .sp-photo-placeholder { min-height: 200px; padding: 28px; }
+  .sp-faq-item summary { font-size: 16px; padding: 18px 0; }
+  .sp-faq-answer { font-size: 15px; }
+  .sp-triangle-divider .sp-tri { transform: scale(0.8); }
+
+  /* Hero triangles: scale down and pull inward so they stay visible on mobile */
+  .sp-hero::before {
+    top: -20px;
+    right: -30px;
+    border-left-width: 100px;
+    border-right-width: 100px;
+    border-bottom-width: 180px;
+  }
+  .sp-hero::after {
+    bottom: -40px;
+    left: -20px;
+    border-left-width: 80px;
+    border-right-width: 80px;
+    border-bottom-width: 140px;
+  }
+
+  /* Atmospheric triangles: shrink + pull onto screen + bump opacity slightly */
+  .sp-atmos-a::before {
+    bottom: -20px;
+    right: -20px;
+    width: 240px;
+    height: 240px;
+    opacity: 0.045;
+  }
+  .sp-atmos-b::before {
+    top: -15px;
+    left: -15px;
+    width: 200px;
+    height: 200px;
+    opacity: 0.04;
+  }
+  .sp-atmos-c::before {
+    top: -10px;
+    right: -15px;
+    width: 180px;
+    height: 180px;
+    opacity: 0.04;
+  }
+  .sp-atmos-c::after {
+    bottom: -15px;
+    left: -10px;
+    width: 140px;
+    height: 140px;
+    opacity: 0.035;
+  }
+  .sp-atmos-d::before {
+    right: -30px;
+    width: 220px;
+    height: 220px;
+    opacity: 0.04;
+  }
+
+  /* CTA section triangles: same treatment */
+  .sp-cta-section::before {
+    top: -30px; right: -20px;
+    border-left-width: 90px;
+    border-right-width: 90px;
+    border-bottom-width: 160px;
+  }
+  .sp-cta-section::after {
+    bottom: -20px; left: -30px;
+    border-left-width: 70px;
+    border-right-width: 70px;
+    border-bottom-width: 120px;
+  }
+}
+
+/* ===== SMALL PHONES & FOLDABLE (under 360px) ===== */
+@media (max-width: 360px) {
+  .sp-h1 { font-size: 28px; }
+  .sp-h2 { font-size: 24px; }
+  .sp-h3 { font-size: 19px; }
+  .sp-section { padding: 36px 16px; }
+  .sp-hero { padding: 36px 16px; }
+  .sp-cta-section { padding: 36px 16px; }
+  .sp-testimonial-section { padding: 36px 16px; }
+  .sp-schedule-card { padding: 18px 16px; }
+  .sp-enrich-pill { padding: 7px 12px; }
+  .sp-enrich-pill-subject { font-size: 14px; }
+  .sp-tuition-header-price { font-size: 36px; }
+  .sp-tuition-note { padding: 20px; font-size: 14px; }
+  .sp-photo-placeholder { min-height: 160px; padding: 20px; }
+  .sp-hero-image { min-height: 160px; padding: 24px; }
+  .sp-btn-gold, .sp-btn-outline { padding: 12px 24px; font-size: 15px; }
+  .sp-faq-item summary { font-size: 15px; }
+  .sp-triangle-divider .sp-tri { transform: scale(0.65); }
+
+  /* Atmospheric: even smaller on tiny screens */
+  .sp-atmos-a::before { width: 180px; height: 180px; bottom: -10px; right: -10px; opacity: 0.05; }
+  .sp-atmos-b::before { width: 150px; height: 150px; top: -10px; left: -10px; opacity: 0.045; }
+  .sp-atmos-c::before { width: 140px; height: 140px; top: -5px; right: -10px; opacity: 0.045; }
+  .sp-atmos-c::after { width: 110px; height: 110px; bottom: -10px; left: -5px; opacity: 0.04; }
+  .sp-atmos-d::before { width: 170px; height: 170px; right: -15px; opacity: 0.045; }
+
+  /* Hero: tightest on small phones */
+  .sp-hero::before { top: -10px; right: -15px; border-left-width: 70px; border-right-width: 70px; border-bottom-width: 130px; }
+  .sp-hero::after { bottom: -20px; left: -10px; border-left-width: 55px; border-right-width: 55px; border-bottom-width: 100px; }
+
+  /* CTA: tightest */
+  .sp-cta-section::before { top: -15px; right: -10px; border-left-width: 60px; border-right-width: 60px; border-bottom-width: 110px; }
+  .sp-cta-section::after { bottom: -10px; left: -15px; border-left-width: 50px; border-right-width: 50px; border-bottom-width: 90px; }
+}
+
+
+
+/* --- Page-Specific Styles --- */
+.sp-hero-urgency {
+  font-family: 'DM Sans', sans-serif;
+  font-size: 15px;
+  color: var(--sp-text);
+  font-weight: 500;
+  margin-top: 20px;
+  max-width: 600px;
+  margin-left: auto;
+  margin-right: auto;
+}
+.sp-hero-urgency strong {
+  color: var(--sp-heading);
+  font-weight: 700;
+}
+.sp-age-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 20px;
+  margin-top: 48px;
+}
+.sp-age-card {
+  background: var(--sp-white);
+  border: 1px solid rgba(245,184,53,0.35);
+  border-radius: 12px;
+  padding: 28px 24px;
+  text-align: center;
+  transition: box-shadow 0.2s, transform 0.2s;
+}
+.sp-age-card:hover {
+  box-shadow: 0 4px 20px rgba(245,184,53,0.1);
+  transform: translateY(-3px);
+}
+.sp-age-card-icon {
+  width: 52px;
+  height: 52px;
+  margin: 0 auto 16px;
+  border-radius: 50%;
+  background: rgba(245,184,53,0.08);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.sp-age-card-icon svg {
+  width: 26px;
+  height: 26px;
+  color: var(--sp-program);
+}
+.sp-age-card-name {
+  font-family: 'Playfair Display', serif;
+  font-size: 20px;
+  font-weight: 700;
+  color: var(--sp-heading);
+  margin-bottom: 6px;
+}
+.sp-age-card-ages {
+  font-family: 'DM Sans', sans-serif;
+  font-size: 15px;
+  font-weight: 600;
+  color: var(--sp-program);
+}
+.sp-details-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 16px;
+  margin-top: 48px;
+}
+.sp-detail-card {
+  background: var(--sp-white);
+  border: 1px solid rgba(245,184,53,0.35);
+  border-radius: 12px;
+  padding: 24px;
+  display: flex;
+  gap: 14px;
+  align-items: flex-start;
+}
+.sp-detail-icon {
+  flex-shrink: 0;
+  width: 44px;
+  height: 44px;
+  border-radius: 10px;
+  background: rgba(245,184,53,0.08);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.sp-detail-icon svg {
+  width: 22px;
+  height: 22px;
+  color: var(--sp-program);
+}
+.sp-detail-label {
+  font-family: 'DM Sans', sans-serif;
+  font-size: 12px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--sp-gray);
+  margin-bottom: 4px;
+}
+.sp-detail-value {
+  font-family: 'DM Sans', sans-serif;
+  font-size: 16px;
+  font-weight: 600;
+  color: var(--sp-heading);
+  line-height: 1.4;
+}
+.sp-pricing-table {
+  max-width: 720px;
+  margin: 48px auto 0;
+  border-collapse: collapse;
+  width: 100%;
+  font-family: 'DM Sans', sans-serif;
+}
+.sp-pricing-table thead th {
+  background: var(--sp-program);
+  color: #fff;
+  font-size: 13px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  padding: 14px 20px;
+  text-align: left;
+}
+.sp-pricing-table thead th:first-child {
+  border-radius: 10px 0 0 0;
+}
+.sp-pricing-table thead th:last-child {
+  border-radius: 0 10px 0 0;
+}
+.sp-pricing-table tbody td {
+  padding: 16px 20px;
+  font-size: 15px;
+  color: var(--sp-text);
+  border-bottom: 1px solid rgba(245,184,53,0.25);
+}
+.sp-pricing-table tbody tr:last-child td {
+  border-bottom: none;
+}
+.sp-pricing-table tbody tr:last-child td:first-child {
+  border-radius: 0 0 0 10px;
+}
+.sp-pricing-table tbody tr:last-child td:last-child {
+  border-radius: 0 0 10px 0;
+}
+.sp-pricing-table tbody td:first-child {
+  font-weight: 700;
+  color: var(--sp-heading);
+}
+.sp-pricing-table tbody td:nth-child(2) {
+  font-weight: 700;
+  color: var(--sp-program);
+  font-size: 17px;
+}
+.sp-pricing-table tbody {
+  background: var(--sp-white);
+}
+.sp-pricing-table {
+  border: 1px solid rgba(245,184,53,0.35);
+  border-radius: 10px;
+  overflow: hidden;
+}
+.sp-pricing-cards {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  max-width: 500px;
+  margin: 48px auto 0;
+}
+.sp-pricing-card {
+  background: var(--sp-white);
+  border: 1px solid rgba(245,184,53,0.35);
+  border-radius: 12px;
+  padding: 20px;
+}
+.sp-pricing-card-option {
+  font-family: 'DM Sans', sans-serif;
+  font-size: 12px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--sp-gray);
+  margin-bottom: 6px;
+}
+.sp-pricing-card-price {
+  font-family: 'DM Sans', sans-serif;
+  font-size: 24px;
+  font-weight: 700;
+  color: var(--sp-program);
+  margin-bottom: 6px;
+}
+.sp-pricing-card-detail {
+  font-family: 'DM Sans', sans-serif;
+  font-size: 14px;
+  color: var(--sp-text);
+  line-height: 1.6;
+}
+.sp-desktop-only { display: block; }
+.sp-mobile-only { display: none; }
+.sp-deadline-callout {
+  max-width: 720px;
+  margin: 40px auto 0;
+  padding: 28px 32px;
+  background: rgba(196,152,38,0.06);
+  border: 1px solid rgba(196,152,38,0.25);
+  border-left: 4px solid var(--sp-gold);
+  border-radius: 10px;
+  display: flex;
+  gap: 16px;
+  align-items: flex-start;
+}
+.sp-deadline-icon {
+  flex-shrink: 0;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background: rgba(196,152,38,0.12);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.sp-deadline-icon svg {
+  width: 20px;
+  height: 20px;
+  color: var(--sp-gold);
+}
+.sp-deadline-text {
+  font-family: 'DM Sans', sans-serif;
+  font-size: 15px;
+  line-height: 1.7;
+  color: var(--sp-text);
+}
+.sp-deadline-text strong {
+  color: var(--sp-heading);
+  font-weight: 700;
+}
+.sp-value-reframe {
+  max-width: 720px;
+  margin: 40px auto 0;
+  text-align: center;
+  font-family: 'DM Sans', sans-serif;
+}
+.sp-value-reframe-amount {
+  font-family: 'Playfair Display', serif;
+  font-size: 42px;
+  font-weight: 700;
+  color: var(--sp-program);
+  line-height: 1;
+  margin-bottom: 8px;
+}
+.sp-value-reframe-label {
+  font-size: 15px;
+  color: var(--sp-gray);
+  font-weight: 500;
+  line-height: 1.6;
+}
+.sp-diff-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 24px;
+  margin-top: 48px;
+}
+.sp-diff-card {
+  background: var(--sp-white);
+  border: 1px solid rgba(245,184,53,0.35);
+  border-radius: 12px;
+  padding: 32px 28px;
+}
+.sp-diff-card-icon {
+  width: 48px;
+  height: 48px;
+  border-radius: 12px;
+  background: rgba(245,184,53,0.08);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 16px;
+}
+.sp-diff-card-icon svg {
+  width: 24px;
+  height: 24px;
+  color: var(--sp-program);
+}
+.sp-diff-card-title {
+  font-family: 'DM Sans', sans-serif;
+  font-size: 18px;
+  font-weight: 700;
+  color: var(--sp-heading);
+  margin-bottom: 10px;
+}
+.sp-diff-card-desc {
+  font-family: 'DM Sans', sans-serif;
+  font-size: 15px;
+  line-height: 1.7;
+  color: var(--sp-text);
+}
+.sp-diff-card-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  margin-top: 14px;
+  font-family: 'DM Sans', sans-serif;
+  font-size: 15px;
+  font-weight: 600;
+  color: var(--sp-program);
+  text-decoration: none;
+  transition: gap 0.2s ease;
+}
+.sp-diff-card-link:hover { gap: 10px; }
+
+@media (max-width: 1024px) {
+  .sp-age-grid { grid-template-columns: repeat(2, 1fr); }
+  .sp-details-grid { grid-template-columns: repeat(2, 1fr); }
+  .sp-diff-grid { gap: 20px; }
+  .sp-hero-secondary,
+  .sp-diff-card-link,
+  .sp-faq-answer a {
+    text-decoration: underline;
+    text-underline-offset: 4px;
+    text-decoration-color: rgba(245,184,53,0.4);
+  }
+}
+
+@media (max-width: 767px) {
+  .sp-age-grid { grid-template-columns: repeat(2, 1fr); gap: 14px; }
+  .sp-age-card { padding: 22px 16px; }
+  .sp-age-card-name { font-size: 18px; }
+  .sp-age-card-ages { font-size: 14px; }
+  .sp-details-grid { grid-template-columns: 1fr; gap: 12px; }
+  .sp-desktop-only { display: none !important; }
+  .sp-mobile-only { display: block !important; }
+  .sp-diff-grid { grid-template-columns: 1fr; }
+  .sp-deadline-callout { flex-direction: column; padding: 22px 20px; }
+  .sp-value-reframe-amount { font-size: 36px; }
+}
+
+@media (max-width: 360px) {
+  .sp-age-card { padding: 18px 12px; }
+  .sp-age-card-name { font-size: 16px; }
+  .sp-age-card-icon { width: 44px; height: 44px; }
+  .sp-age-card-icon svg { width: 22px; height: 22px; }
+  .sp-diff-card { padding: 24px 20px; }
+  .sp-value-reframe-amount { font-size: 32px; }
+  .sp-deadline-callout { padding: 18px 16px; }
+}
+
+</style>
+
+
+<!-- ==========================================================
+     BLOCK 1: HERO SECTION
+     Contains: H1, subheadline (with "happy, tired kids" line),
+     primary CTA (call to register with May 30 urgency),
+     secondary CTA (Have a Question?), trust line, hero photo.
+     To edit: Change text between > and < tags.
+     ========================================================== -->
+
+<section class="sp-hero">
+  <div class="sp-hero-inner">
+
+    <h1 class="sp-h1">The Summer They'll Talk About <span style="white-space:nowrap;">All Year</span></h1>
+
+    <p class="sp-hero-sub">Camp Play at Spark Academy is a play-based summer day camp for ages 3&ndash;11. Eight weeks of science, art, cooking, LEGOs, dramatic play, and outdoor adventures &mdash; in small groups, led by the same credentialed team that runs Spark's school-year programs. Mornings only. Designed for happy, tired kids at pickup.</p>
+
+    <div class="sp-hero-ctas">
+      <a href="tel:3092913292" class="sp-btn-gold" data-cta-type="primary" data-cta-text="Call to Register - Hero">Call to Register &mdash; 309-291-3292</a>
+      <a href="#question-form" class="sp-hero-secondary" data-cta-type="secondary" data-cta-text="Have a Question - Hero">Have a Question? We'd Love to Hear From You</a>
+    </div>
+
+    <p class="sp-hero-urgency">Spots fill fast. <strong>Weekly and full-summer pricing available until May 30.</strong></p>
+
+    <div class="sp-trust-line">
+      <span>
+        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M15 19.128a9.38 9.38 0 002.625.372 9.337 9.337 0 004.121-.952 4.125 4.125 0 00-7.533-2.493M15 19.128v-.003c0-1.113-.285-2.16-.786-3.07M15 19.128v.106A12.318 12.318 0 018.624 21c-2.331 0-4.512-.645-6.374-1.766l-.001-.109a6.375 6.375 0 0111.964-3.07M12 6.375a3.375 3.375 0 11-6.75 0 3.375 3.375 0 016.75 0zm8.25 2.25a2.625 2.625 0 11-5.25 0 2.625 2.625 0 015.25 0z"/></svg>
+        Ages 3&ndash;11
+      </span>
+      <span>
+        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M6.75 3v2.25M17.25 3v2.25M3 18.75V7.5a2.25 2.25 0 012.25-2.25h13.5A2.25 2.25 0 0121 7.5v11.25m-18 0A2.25 2.25 0 005.25 21h13.5A2.25 2.25 0 0021 18.75m-18 0v-7.5A2.25 2.25 0 015.25 9h13.5A2.25 2.25 0 0121 11.25v7.5"/></svg>
+        June 1 &ndash; July 31
+      </span>
+      <span>
+        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M12 6v6h4.5m4.5 0a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+        Mon&ndash;Fri, 8:30 AM &ndash; 12:00 PM
+      </span>
+      <span>
+        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M15 19.128a9.38 9.38 0 002.625.372 9.337 9.337 0 004.121-.952 4.125 4.125 0 00-7.533-2.493M15 19.128v-.003c0-1.113-.285-2.16-.786-3.07M15 19.128v.106A12.318 12.318 0 018.624 21c-2.331 0-4.512-.645-6.374-1.766l-.001-.109a6.375 6.375 0 0111.964-3.07M12 6.375a3.375 3.375 0 11-6.75 0 3.375 3.375 0 016.75 0zm8.25 2.25a2.625 2.625 0 11-5.25 0 2.625 2.625 0 015.25 0z"/></svg>
+        Small Groups
+      </span>
+      <span>
+        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M4.26 10.147a60.436 60.436 0 00-.491 6.347A48.627 48.627 0 0112 20.904a48.627 48.627 0 018.232-4.41 60.46 60.46 0 00-.491-6.347m-15.482 0a50.57 50.57 0 00-2.658-.813A59.905 59.905 0 0112 3.493a59.902 59.902 0 0110.399 5.84c-.896.248-1.783.52-2.658.814m-15.482 0A50.697 50.697 0 0112 13.489a50.702 50.702 0 017.74-3.342M6.75 15a.75.75 0 100-1.5.75.75 0 000 1.5zm0 0v-3.675A55.378 55.378 0 0112 8.443m-7.007 11.55A5.981 5.981 0 006.75 15.75v-1.5"/></svg>
+        Credentialed Staff
+      </span>
+    </div>
+
+    <!-- PHOTO PLACEHOLDER: Replace this div with an <img> tag when photography is ready.
+         Recommended: Wide, sun-drenched outdoor shot — multiple children, multiple 
+         ages, running/playing/engaged in a group activity. Joy, movement, summer energy. 
+         Warm, bright, alive. Horizontal, min 2400px wide. -->
+    <div class="sp-hero-image" role="img" aria-label="Children of multiple ages playing outdoors at Camp Play summer day camp at Spark Academy in Morton, Illinois">
+      <span><strong>Hero Photo Placeholder</strong><br>Wide outdoor shot &mdash; multiple children, multiple ages, summer energy.<br>Sun, movement, joy. Warm and bright.<br>Horizontal, min 2400px wide. See Copy Deck &mdash; Photo Direction.</span>
+    </div>
+
+  </div>
+</section>
+
+<!-- Triangle Divider -->
+<div class="sp-triangle-divider">
+  <span class="sp-tri sp-tri-1"></span>
+  <span class="sp-tri sp-tri-2"></span>
+  <span class="sp-tri sp-tri-3"></span>
+  <span class="sp-tri sp-tri-4"></span>
+  <span class="sp-tri sp-tri-5"></span>
+</div>
+
+
+
+<!-- ==========================================================
+     BLOCK 2: WHAT CAMP PLAY IS
+     Contains: H2 "A Perfect Blend of Structure and Freedom,"
+     three body paragraphs describing the program, photo placeholder.
+     To edit: Change the paragraph text.
+     ========================================================== -->
+
+<section class="sp-section sp-bg-white sp-atmos sp-atmos-a">
+  <div class="sp-inner">
+    <div class="sp-prose">
+
+      <h2 class="sp-h2">A Perfect Blend of Structure <span style="white-space:nowrap;">and Freedom</span></h2>
+
+      <p>Camp Play isn't daycare with a summer label. It's an intentionally designed program where children spend their mornings exploring, creating, experimenting, and playing &mdash; the same way they would during Spark's school year, but with the energy and spirit of summer woven through everything.</p>
+
+      <p>Every day, your child moves through a mix of hands-on activities designed for their age group: science experiments, art projects, cooking challenges, LEGO building, dramatic play, and outdoor games. The activities rotate. The groups stay small. And the adults in the room are the same credentialed teachers and staff who lead Spark's year-round programs &mdash; not seasonal hires filling seats.</p>
+
+      <p>Camp runs Monday through Friday, 8:30 AM to 12:00 PM. Your child arrives, dives into a morning packed with things they'll want to tell you about at lunch, and goes home ready for an afternoon nap or a backyard adventure.</p>
+
+    </div>
+
+    <!-- PHOTO PLACEHOLDER: Replace with 3–4 activity photos: science experiment, 
+         art project, outdoor games, cooking or LEGOs. Children active and engaged. -->
+    <div class="sp-photo-placeholder" style="max-width:720px; margin-left:auto; margin-right:auto;" role="img" aria-label="Children engaged in Camp Play summer activities including science, art, cooking, and outdoor games at Spark Academy">
+      <span><strong>Photo Placeholder</strong><br>3&ndash;4 activity shots: science experiment, art project, outdoor games, cooking or LEGOs.<br>Children active and engaged. Natural light, summer energy.<br>Horizontal, min 1600px wide. See Copy Deck &mdash; Photo Direction.</span>
+    </div>
+
+  </div>
+</section>
+<!-- Color Bar Divider -->
+<div class="sp-color-bar"></div>
+
+
+
+<!-- ==========================================================
+     BLOCK 3: AGE GROUPS
+     Contains: H2, intro paragraph, 4 age-group cards in a grid,
+     closing reassurance paragraph.
+     
+     ⚠️ PLACEHOLDER: The group names (Little Explorers, Adventure 
+     Builders, Trailblazers, Summit Squad) are suggestions. 
+     Dr. Peterson may have preferred names. Confirm before launch.
+     
+     To edit: Change the group names in .sp-age-card-name or 
+     the age ranges in .sp-age-card-ages.
+     ========================================================== -->
+
+<section class="sp-section sp-bg-sage sp-atmos sp-atmos-c">
+  <div class="sp-inner">
+
+    <h2 class="sp-h2">Four Groups. One Camp. Every Child <span style="white-space:nowrap;">in the Right Place.</span></h2>
+    <p class="sp-intro">Camp Play serves children ages 3 through 11, divided into four age-based groups so every activity, every interaction, and every expectation is matched to your child's developmental stage.</p>
+
+    <!-- ⚠️ PLACEHOLDER: Group names below need Dr. Peterson's confirmation. 
+         Replace names as needed — do not change the HTML structure. -->
+    <div class="sp-age-grid">
+
+      <!-- Group 1 -->
+      <div class="sp-age-card">
+        <div class="sp-age-card-icon">
+          <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M15.182 15.182a4.5 4.5 0 01-6.364 0M21 12a9 9 0 11-18 0 9 9 0 0118 0zM9.75 9.75c0 .414-.168.75-.375.75S9 10.164 9 9.75 9.168 9 9.375 9s.375.336.375.75zm-.375 0h.008v.015h-.008V9.75zm5.625 0c0 .414-.168.75-.375.75s-.375-.336-.375-.75.168-.75.375-.75.375.336.375.75zm-.375 0h.008v.015h-.008V9.75z"/></svg>
+        </div>
+        <div class="sp-age-card-name">Little Explorers</div>
+        <div class="sp-age-card-ages">Ages 3 &amp; 4</div>
+      </div>
+
+      <!-- Group 2 -->
+      <div class="sp-age-card">
+        <div class="sp-age-card-icon">
+          <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M11.48 3.499a.562.562 0 011.04 0l2.125 5.111a.563.563 0 00.475.345l5.518.442c.499.04.701.663.321.988l-4.204 3.602a.563.563 0 00-.182.557l1.285 5.385a.562.562 0 01-.84.61l-4.725-2.885a.563.563 0 00-.586 0L6.982 20.54a.562.562 0 01-.84-.61l1.285-5.386a.562.562 0 00-.182-.557l-4.204-3.602a.563.563 0 01.321-.988l5.518-.442a.563.563 0 00.475-.345L11.48 3.5z"/></svg>
+        </div>
+        <div class="sp-age-card-name">Adventure Builders</div>
+        <div class="sp-age-card-ages">Ages 5 &amp; 6</div>
+      </div>
+
+      <!-- Group 3 -->
+      <div class="sp-age-card">
+        <div class="sp-age-card-icon">
+          <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M15.362 5.214A8.252 8.252 0 0112 21 8.25 8.25 0 016.038 7.048 8.287 8.287 0 009 9.6a8.983 8.983 0 013.361-6.867 8.21 8.21 0 003 2.48z"/><path stroke-linecap="round" stroke-linejoin="round" d="M12 18a3.75 3.75 0 00.495-7.467 5.99 5.99 0 00-1.925 3.546 5.974 5.974 0 01-2.133-1.001A3.75 3.75 0 0012 18z"/></svg>
+        </div>
+        <div class="sp-age-card-name">Trailblazers</div>
+        <div class="sp-age-card-ages">Ages 7 &amp; 8</div>
+      </div>
+
+      <!-- Group 4 -->
+      <div class="sp-age-card">
+        <div class="sp-age-card-icon">
+          <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M3 13.125C3 12.504 3.504 12 4.125 12h2.25c.621 0 1.125.504 1.125 1.125v6.75C7.5 20.496 6.996 21 6.375 21h-2.25A1.125 1.125 0 013 19.875v-6.75zM9.75 8.625c0-.621.504-1.125 1.125-1.125h2.25c.621 0 1.125.504 1.125 1.125v11.25c0 .621-.504 1.125-1.125 1.125h-2.25a1.125 1.125 0 01-1.125-1.125V8.625zM16.5 4.125c0-.621.504-1.125 1.125-1.125h2.25C20.496 3 21 3.504 21 4.125v15.75c0 .621-.504 1.125-1.125 1.125h-2.25a1.125 1.125 0 01-1.125-1.125V4.125z"/></svg>
+        </div>
+        <div class="sp-age-card-name">Summit Squad</div>
+        <div class="sp-age-card-ages">Ages 9&ndash;11</div>
+      </div>
+
+    </div>
+
+    <p style="max-width:680px; margin:40px auto 0; text-align:center; font-family:'DM Sans',sans-serif; font-size:16px; line-height:1.7; color:var(--sp-text);">Your three-year-old isn't in a group with a ten-year-old. Your nine-year-old isn't doing toddler activities. Each group has its own activity plan, its own energy, and its own staff &mdash; all under the same Camp Play umbrella.</p>
+
+  </div>
+</section>
+<!-- Color Bar Divider -->
+<div class="sp-color-bar"></div>
+
+
+
+<!-- ==========================================================
+     BLOCK 4: SUMMER 2026 DETAILS
+     ⚠️ UPDATEABLE CONTENT BLOCK — Update the dates, pricing,
+     deposit details, and deadline annually. The rest of the page
+     (what Camp Play is, age groups, differentiators) is perennial.
+     
+     Contains: H2, 6 detail info cards, pricing table (desktop)
+     and pricing cards (mobile), May 30 deadline callout,
+     per-morning value reframe.
+     
+     To edit: Change dates, prices, and deadline in the detail 
+     cards, pricing table rows, and deadline callout text.
+     ========================================================== -->
+
+<section class="sp-section sp-bg-white sp-atmos sp-atmos-b">
+  <div class="sp-inner">
+
+    <!-- ⚠️ START UPDATEABLE CONTENT — Update dates, pricing, and deadline each year.
+         Everything below this comment through "END UPDATEABLE CONTENT" is 2026-specific. -->
+
+    <h2 class="sp-h2">Camp Play 2026 &mdash; Everything <span style="white-space:nowrap;">You Need to Know</span></h2>
+
+    <!-- Key Details Cards -->
+    <div class="sp-details-grid">
+
+      <div class="sp-detail-card">
+        <div class="sp-detail-icon">
+          <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M6.75 3v2.25M17.25 3v2.25M3 18.75V7.5a2.25 2.25 0 012.25-2.25h13.5A2.25 2.25 0 0121 7.5v11.25m-18 0A2.25 2.25 0 005.25 21h13.5A2.25 2.25 0 0021 18.75m-18 0v-7.5A2.25 2.25 0 015.25 9h13.5A2.25 2.25 0 0121 11.25v7.5"/></svg>
+        </div>
+        <div>
+          <div class="sp-detail-label">Dates</div>
+          <div class="sp-detail-value">June 1 &ndash; July 31, 2026</div>
+        </div>
+      </div>
+
+      <div class="sp-detail-card">
+        <div class="sp-detail-icon">
+          <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M18.364 18.364A9 9 0 005.636 5.636m12.728 12.728A9 9 0 015.636 5.636m12.728 12.728L5.636 5.636"/></svg>
+        </div>
+        <div>
+          <div class="sp-detail-label">Week Off</div>
+          <div class="sp-detail-value">June 29 &ndash; July 3</div>
+        </div>
+      </div>
+
+      <div class="sp-detail-card">
+        <div class="sp-detail-icon">
+          <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25H12"/></svg>
+        </div>
+        <div>
+          <div class="sp-detail-label">Total Duration</div>
+          <div class="sp-detail-value">8 weeks &middot; 40 camp days</div>
+        </div>
+      </div>
+
+      <div class="sp-detail-card">
+        <div class="sp-detail-icon">
+          <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M12 6v6h4.5m4.5 0a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+        </div>
+        <div>
+          <div class="sp-detail-label">Daily Schedule</div>
+          <div class="sp-detail-value">Mon&ndash;Fri, 8:30 AM &ndash; 12:00 PM</div>
+        </div>
+      </div>
+
+      <div class="sp-detail-card">
+        <div class="sp-detail-icon">
+          <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M18 18.72a9.094 9.094 0 003.741-.479 3 3 0 00-4.682-2.72m.94 3.198l.001.031c0 .225-.012.447-.037.666A11.944 11.944 0 0112 21c-2.17 0-4.207-.576-5.963-1.584A6.062 6.062 0 016 18.719m12 0a5.971 5.971 0 00-.941-3.197m0 0A5.995 5.995 0 0012 12.75a5.995 5.995 0 00-5.058 2.772m0 0a3 3 0 00-4.681 2.72 8.986 8.986 0 003.74.477m.94-3.197a5.971 5.971 0 00-.94 3.197M15 6.75a3 3 0 11-6 0 3 3 0 016 0zm6 3a2.25 2.25 0 11-4.5 0 2.25 2.25 0 014.5 0zm-13.5 0a2.25 2.25 0 11-4.5 0 2.25 2.25 0 014.5 0z"/></svg>
+        </div>
+        <div>
+          <div class="sp-detail-label">Ages</div>
+          <div class="sp-detail-value">3&ndash;11 (grouped by age)</div>
+        </div>
+      </div>
+
+      <div class="sp-detail-card">
+        <div class="sp-detail-icon">
+          <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M9.53 16.122a3 3 0 00-5.78 1.128 2.25 2.25 0 01-2.4 2.245 4.5 4.5 0 008.4-2.245c0-.399-.078-.78-.22-1.128zm0 0a15.998 15.998 0 003.388-1.62m-5.043-.025a15.994 15.994 0 011.622-3.395m3.42 3.42a15.995 15.995 0 004.764-4.648l3.876-5.814a1.151 1.151 0 00-1.597-1.597L14.146 6.32a15.996 15.996 0 00-4.649 4.763m3.42 3.42a6.776 6.776 0 00-3.42-3.42"/></svg>
+        </div>
+        <div>
+          <div class="sp-detail-label">Activities</div>
+          <div class="sp-detail-value">Science &middot; Art &middot; Cooking &middot; LEGOs &middot; Dramatic Play &middot; Outdoor Games</div>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- Pricing: Desktop Table -->
+    <div class="sp-desktop-only">
+      <table class="sp-pricing-table">
+        <thead>
+          <tr>
+            <th>Option</th>
+            <th>Price</th>
+            <th>Details</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Day Rate</td>
+            <td>$50/day</td>
+            <td>Available any time, no commitment</td>
+          </tr>
+          <tr>
+            <td>Weekly Rate</td>
+            <td>$225/week</td>
+            <td>$250 non-refundable deposit required (applies toward tuition)</td>
+          </tr>
+          <tr>
+            <td>Full Summer</td>
+            <td>$1,500</td>
+            <td>All 8 weeks &middot; $250 non-refundable deposit (applies toward tuition)</td>
+          </tr>
+          <tr>
+            <td>Sibling Discount</td>
+            <td>10% off</td>
+            <td>Applied to 2nd child and beyond</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <!-- Pricing: Mobile Stacked Cards -->
+    <div class="sp-mobile-only">
+      <div class="sp-pricing-cards">
+
+        <div class="sp-pricing-card">
+          <div class="sp-pricing-card-option">Day Rate</div>
+          <div class="sp-pricing-card-price">$50/day</div>
+          <div class="sp-pricing-card-detail">Available any time, no commitment</div>
+        </div>
+
+        <div class="sp-pricing-card">
+          <div class="sp-pricing-card-option">Weekly Rate</div>
+          <div class="sp-pricing-card-price">$225/week</div>
+          <div class="sp-pricing-card-detail">$250 non-refundable deposit required (applies toward tuition)</div>
+        </div>
+
+        <div class="sp-pricing-card">
+          <div class="sp-pricing-card-option">Full Summer</div>
+          <div class="sp-pricing-card-price">$1,500</div>
+          <div class="sp-pricing-card-detail">All 8 weeks &middot; $250 non-refundable deposit (applies toward tuition)</div>
+        </div>
+
+        <div class="sp-pricing-card">
+          <div class="sp-pricing-card-option">Sibling Discount</div>
+          <div class="sp-pricing-card-price">10% off</div>
+          <div class="sp-pricing-card-detail">Applied to 2nd child and beyond</div>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- May 30 Deadline Callout -->
+    <div class="sp-deadline-callout">
+      <div class="sp-deadline-icon">
+        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M6.75 3v2.25M17.25 3v2.25M3 18.75V7.5a2.25 2.25 0 012.25-2.25h13.5A2.25 2.25 0 0121 7.5v11.25m-18 0A2.25 2.25 0 005.25 21h13.5A2.25 2.25 0 0021 18.75m-18 0v-7.5A2.25 2.25 0 015.25 9h13.5A2.25 2.25 0 0121 11.25v7.5m-9-6h.008v.008H12v-.008zM12 15h.008v.008H12V15zm0 2.25h.008v.008H12v-.008zM9.75 15h.008v.008H9.75V15zm0 2.25h.008v.008H9.75v-.008zM7.5 15h.008v.008H7.5V15zm0 2.25h.008v.008H7.5v-.008zm6.75-4.5h.008v.008h-.008v-.008zm0 2.25h.008v.008h-.008V15zm0 2.25h.008v.008h-.008v-.008zm2.25-4.5h.008v.008H16.5v-.008zm0 2.25h.008v.008H16.5V15z"/></svg>
+      </div>
+      <div class="sp-deadline-text">
+        <strong>Weekly and full-summer pricing available through May 30, 2026</strong> &mdash; or until spots fill, whichever comes first. After May 30, all registrations are at the day rate only. This is not a sale. It's how Camp Play enrollment works: families who commit early get the best rate. Families who register later still get the same great camp &mdash; just at the per-day price.
+      </div>
+    </div>
+
+    <!-- Per-Morning Value Reframe -->
+    <div class="sp-value-reframe">
+      <div class="sp-value-reframe-amount">$37.50</div>
+      <div class="sp-value-reframe-label">per morning at the full-summer rate &mdash; for play-based, small-group,<br>credentialed-staff summer programming. Compare that to any alternative.</div>
+    </div>
+
+    <!-- ⚠️ END UPDATEABLE CONTENT -->
+
+  </div>
+</section>
+<!-- Color Bar Divider -->
+<div class="sp-color-bar"></div>
+
+
+
+<!-- ==========================================================
+     BLOCK 5: WHAT MAKES CAMP PLAY DIFFERENT
+     Contains: H2, 4 differentiator cards in a 2-column grid.
+     Links Dr. Peterson's name to /dr-michelle-peterson/.
+     To edit: Change the card title or description text.
+     ========================================================== -->
+
+<section class="sp-section sp-bg-sage sp-atmos sp-atmos-d">
+  <div class="sp-inner">
+
+    <h2 class="sp-h2">Not Every Summer Camp Is Built <span style="white-space:nowrap;">the Same</span></h2>
+
+    <div class="sp-diff-grid">
+
+      <!-- Card 1: Small Groups -->
+      <div class="sp-diff-card">
+        <div class="sp-diff-card-icon">
+          <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M15 19.128a9.38 9.38 0 002.625.372 9.337 9.337 0 004.121-.952 4.125 4.125 0 00-7.533-2.493M15 19.128v-.003c0-1.113-.285-2.16-.786-3.07M15 19.128v.106A12.318 12.318 0 018.624 21c-2.331 0-4.512-.645-6.374-1.766l-.001-.109a6.375 6.375 0 0111.964-3.07M12 6.375a3.375 3.375 0 11-6.75 0 3.375 3.375 0 016.75 0zm8.25 2.25a2.625 2.625 0 11-5.25 0 2.625 2.625 0 015.25 0z"/></svg>
+        </div>
+        <div class="sp-diff-card-title">Small Groups</div>
+        <div class="sp-diff-card-desc">Camp Play maintains the same small-group philosophy as Spark's school-year programs. Your child isn't one of fifty kids in a gymnasium. They're in a group matched to their age, with adults who know their name.</div>
+      </div>
+
+      <!-- Card 2: Credentialed Staff -->
+      <div class="sp-diff-card">
+        <div class="sp-diff-card-icon">
+          <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M9 12.75L11.25 15 15 9.75M21 12c0 1.268-.63 2.39-1.593 3.068a3.745 3.745 0 01-1.043 3.296 3.745 3.745 0 01-3.296 1.043A3.745 3.745 0 0112 21c-1.268 0-2.39-.63-3.068-1.593a3.746 3.746 0 01-3.296-1.043 3.745 3.745 0 01-1.043-3.296A3.745 3.745 0 013 12c0-1.268.63-2.39 1.593-3.068a3.745 3.745 0 011.043-3.296 3.746 3.746 0 013.296-1.043A3.746 3.746 0 0112 3c1.268 0 2.39.63 3.068 1.593a3.746 3.746 0 013.296 1.043 3.746 3.746 0 011.043 3.296A3.745 3.745 0 0121 12z"/></svg>
+        </div>
+        <div class="sp-diff-card-title">Credentialed Staff</div>
+        <div class="sp-diff-card-desc">The people leading Camp Play are the same qualified, credentialed teachers and staff who run Spark Academy during the school year. This isn't a summer job for college students &mdash; it's an extension of the school your family already trusts (or is about to discover).</div>
+      </div>
+
+      <!-- Card 3: Play with Purpose -->
+      <div class="sp-diff-card">
+        <div class="sp-diff-card-icon">
+          <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M12 18v-5.25m0 0a6.01 6.01 0 001.5-.189m-1.5.189a6.01 6.01 0 01-1.5-.189m3.75 7.478a12.06 12.06 0 01-4.5 0m3.75 2.383a14.406 14.406 0 01-3 0M14.25 18v-.192c0-.983.658-1.823 1.508-2.316a7.5 7.5 0 10-7.517 0c.85.493 1.509 1.333 1.509 2.316V18"/></svg>
+        </div>
+        <div class="sp-diff-card-title">Play with Purpose</div>
+        <div class="sp-diff-card-desc">Every activity is designed &mdash; not improvised. The science experiments, the art projects, the cooking challenges &mdash; they're chosen because they build something specific: curiosity, confidence, collaboration, and the kind of skills children carry into the school year ahead.</div>
+      </div>
+
+      <!-- Card 4: Led by Dr. Peterson -->
+      <div class="sp-diff-card">
+        <div class="sp-diff-card-icon">
+          <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M4.26 10.147a60.436 60.436 0 00-.491 6.347A48.627 48.627 0 0112 20.904a48.627 48.627 0 018.232-4.41 60.46 60.46 0 00-.491-6.347m-15.482 0a50.57 50.57 0 00-2.658-.813A59.905 59.905 0 0112 3.493a59.902 59.902 0 0110.399 5.84c-.896.248-1.783.52-2.658.814m-15.482 0A50.697 50.697 0 0112 13.489a50.702 50.702 0 017.74-3.342M6.75 15a.75.75 0 100-1.5.75.75 0 000 1.5zm0 0v-3.675A55.378 55.378 0 0112 8.443m-7.007 11.55A5.981 5.981 0 006.75 15.75v-1.5"/></svg>
+        </div>
+        <div class="sp-diff-card-title">Led by Dr. Michelle Peterson, Ed.D.</div>
+        <div class="sp-diff-card-desc">Camp Play operates under the same doctoral-level oversight as every other Spark program. Dr. Peterson designed the program structure, selected the activity framework, and leads the team. That continuity of quality is something most summer camps simply cannot offer.</div>
+        <a href="/dr-michelle-peterson/" class="sp-diff-card-link">Meet Dr. Peterson &#8594;</a>
+      </div>
+
+    </div>
+
+  </div>
+</section>
+<!-- Color Bar Divider -->
+<div class="sp-color-bar"></div>
+
+
+
+<!-- ==========================================================
+     BLOCK 6: TESTIMONIALS (PLACEHOLDER)
+     Contains: H2, placeholder message.
+     This section will be updated when parent testimonials 
+     specific to Camp Play are collected.
+     To edit: Replace the placeholder div with actual testimonials.
+     ========================================================== -->
+
+<section class="sp-testimonial-section">
+  <div class="sp-testimonial-inner">
+    <h2 class="sp-h2">From Camp Play Families</h2>
+
+    <div class="sp-testimonial-placeholder">
+      Parent testimonials for Camp Play are coming soon. In the meantime, we'd love for you to hear what our families have to say &mdash; call <a href="tel:3092913292" style="color:var(--sp-program-dark); font-weight:600; text-decoration:none; border-bottom:1px solid rgba(245,184,53,0.3);">309-291-3292</a> and ask them yourself.
+    </div>
+  </div>
+</section>
+<!-- Color Bar Divider -->
+<div class="sp-color-bar"></div>
+
+
+
+<!-- ==========================================================
+     BLOCK 7: HOW TO REGISTER — CTA BLOCK
+     Contains: H2 "Secure Your Child's Spot," registration copy
+     with May 30 urgency restated, primary CTA (call), secondary
+     CTA (Have a Question?), trust line.
+     To edit: Change the paragraph text or button labels.
+     ========================================================== -->
+
+<section class="sp-cta-section">
+  <div class="sp-inner" style="position:relative;z-index:1;">
+
+    <h2 class="sp-h2" style="color:#fff;">Secure Your Child's Spot &mdash; <span style="white-space:nowrap;">Before May 30</span></h2>
+
+    <p>Registration for Camp Play is by phone. Call <a href="tel:3092913292" class="sp-cta-phone">309-291-3292</a> and our team will help you choose the right option &mdash; day, weekly, or full summer &mdash; and answer any questions about age groups, activities, or scheduling.</p>
+
+    <p><strong style="color:#fff;">Remember:</strong> Weekly and full-summer pricing are available through May 30, 2026, or until spots fill. After that date, all registrations are at the day rate ($50/day). If you know your child is coming to Camp Play this summer, locking in your rate now is the simplest decision you'll make all spring.</p>
+
+    <div class="sp-cta-buttons">
+      <a href="tel:3092913292" class="sp-btn-gold" data-cta-type="primary" data-cta-text="Call to Register - Bottom">Call to Register &mdash; 309-291-3292</a>
+      <a href="#question-form" class="sp-btn-outline" data-cta-type="secondary" data-cta-text="Have a Question - Bottom">Have a Question? We'd Love to Hear From You</a>
+    </div>
+    <p style="font-family:'DM Sans',sans-serif;font-size:14px;color:rgba(255,255,255,0.55);margin-top:20px;max-width:460px;">Not sure yet? Send us a question and someone from our team will be in touch.</p>
+
+    <div class="sp-cta-trust">
+      <span class="sp-cta-trust-item">
+        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M18 18.72a9.094 9.094 0 003.741-.479 3 3 0 00-4.682-2.72m.94 3.198l.001.031c0 .225-.012.447-.037.666A11.944 11.944 0 0112 21c-2.17 0-4.207-.576-5.963-1.584A6.062 6.062 0 016 18.719m12 0a5.971 5.971 0 00-.941-3.197m0 0A5.995 5.995 0 0012 12.75a5.995 5.995 0 00-5.058 2.772m0 0a3 3 0 00-4.681 2.72 8.986 8.986 0 003.74.477m.94-3.197a5.971 5.971 0 00-.94 3.197M15 6.75a3 3 0 11-6 0 3 3 0 016 0zm6 3a2.25 2.25 0 11-4.5 0 2.25 2.25 0 014.5 0zm-13.5 0a2.25 2.25 0 11-4.5 0 2.25 2.25 0 014.5 0z"/></svg>
+        Ages 3&ndash;11
+      </span>
+      <span class="sp-cta-trust-item">
+        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M15 19.128a9.38 9.38 0 002.625.372 9.337 9.337 0 004.121-.952 4.125 4.125 0 00-7.533-2.493M15 19.128v-.003c0-1.113-.285-2.16-.786-3.07M15 19.128v.106A12.318 12.318 0 018.624 21c-2.331 0-4.512-.645-6.374-1.766l-.001-.109a6.375 6.375 0 0111.964-3.07M12 6.375a3.375 3.375 0 11-6.75 0 3.375 3.375 0 016.75 0zm8.25 2.25a2.625 2.625 0 11-5.25 0 2.625 2.625 0 015.25 0z"/></svg>
+        Small Groups
+      </span>
+      <span class="sp-cta-trust-item">
+        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M9 12.75L11.25 15 15 9.75M21 12c0 1.268-.63 2.39-1.593 3.068a3.745 3.745 0 01-1.043 3.296 3.745 3.745 0 01-3.296 1.043A3.745 3.745 0 0112 21c-1.268 0-2.39-.63-3.068-1.593a3.746 3.746 0 01-3.296-1.043 3.745 3.745 0 01-1.043-3.296A3.745 3.745 0 013 12c0-1.268.63-2.39 1.593-3.068a3.745 3.745 0 011.043-3.296 3.746 3.746 0 013.296-1.043A3.746 3.746 0 0112 3c1.268 0 2.39.63 3.068 1.593a3.746 3.746 0 013.296 1.043 3.746 3.746 0 011.043 3.296A3.745 3.745 0 0121 12z"/></svg>
+        Credentialed Staff
+      </span>
+      <span class="sp-cta-trust-item">
+        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M4.26 10.147a60.436 60.436 0 00-.491 6.347A48.627 48.627 0 0112 20.904a48.627 48.627 0 018.232-4.41 60.46 60.46 0 00-.491-6.347m-15.482 0a50.57 50.57 0 00-2.658-.813A59.905 59.905 0 0112 3.493a59.902 59.902 0 0110.399 5.84c-.896.248-1.783.52-2.658.814m-15.482 0A50.697 50.697 0 0112 13.489a50.702 50.697 0 017.74-3.342M6.75 15a.75.75 0 100-1.5.75.75 0 000 1.5zm0 0v-3.675A55.378 55.378 0 0112 8.443m-7.007 11.55A5.981 5.981 0 006.75 15.75v-1.5"/></svg>
+        Led by Dr. Michelle Peterson, Ed.D.
+      </span>
+    </div>
+
+  </div>
+</section>
+<!-- Color Bar Divider -->
+<div class="sp-color-bar"></div>
+
+
+
+<!-- ==========================================================
+     BLOCK 8: FAQ
+     Contains: H2, 6 FAQ items using native HTML <details>/<summary> 
+     accordion pattern. No JavaScript required.
+     To edit: Change the question text in <summary> or answer 
+     text in .sp-faq-answer divs.
+     ========================================================== -->
+
+<section class="sp-section sp-bg-sage sp-atmos sp-atmos-a">
+  <div class="sp-inner">
+
+    <h2 class="sp-h2">Questions About <span style="white-space:nowrap;">Camp Play</span></h2>
+
+    <div class="sp-faq-list">
+
+      <!-- FAQ 1 -->
+      <details class="sp-faq-item">
+        <summary>
+          What ages can attend Camp Play?
+          <svg class="sp-faq-chevron" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M19.5 8.25l-7.5 7.5-7.5-7.5"/></svg>
+        </summary>
+        <div class="sp-faq-answer">
+          Camp Play is open to children ages 3 through 11. Children are divided into four age-based groups (3/4, 5/6, 7/8, and 9&ndash;11) so every activity and interaction is matched to your child's developmental stage.
+        </div>
+      </details>
+
+      <!-- FAQ 2 -->
+      <details class="sp-faq-item">
+        <summary>
+          What are the hours?
+          <svg class="sp-faq-chevron" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M19.5 8.25l-7.5 7.5-7.5-7.5"/></svg>
+        </summary>
+        <div class="sp-faq-answer">
+          Camp runs Monday through Friday, 8:30 AM to 12:00 PM. Drop-off begins at 8:30 and pickup is at noon.
+        </div>
+      </details>
+
+      <!-- FAQ 3 -->
+      <details class="sp-faq-item">
+        <summary>
+          Do I have to commit to the full summer?
+          <svg class="sp-faq-chevron" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M19.5 8.25l-7.5 7.5-7.5-7.5"/></svg>
+        </summary>
+        <div class="sp-faq-answer">
+          No. You can register for individual days, individual weeks, or the full eight-week session. The pricing structure rewards longer commitments &mdash; but the day rate is always available for families who need flexibility.
+        </div>
+      </details>
+
+      <!-- FAQ 4 -->
+      <details class="sp-faq-item">
+        <summary>
+          What happens during the week of June 29 &ndash; July 3?
+          <svg class="sp-faq-chevron" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M19.5 8.25l-7.5 7.5-7.5-7.5"/></svg>
+        </summary>
+        <div class="sp-faq-answer">
+          Camp is closed that week. Camp Play runs for eight total weeks between June 1 and July 31, with one week off for the Fourth of July holiday.
+        </div>
+      </details>
+
+      <!-- FAQ 5 -->
+      <details class="sp-faq-item">
+        <summary>
+          Is there a sibling discount?
+          <svg class="sp-faq-chevron" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M19.5 8.25l-7.5 7.5-7.5-7.5"/></svg>
+        </summary>
+        <div class="sp-faq-answer">
+          Yes. Families with more than one child enrolled receive a 10% discount on the second child and beyond.
+        </div>
+      </details>
+
+      <!-- FAQ 6 -->
+      <details class="sp-faq-item">
+        <summary>
+          What if I register after May 30?
+          <svg class="sp-faq-chevron" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M19.5 8.25l-7.5 7.5-7.5-7.5"/></svg>
+        </summary>
+        <div class="sp-faq-answer">
+          After May 30, weekly and full-summer pricing is no longer available. All registrations after that date (or once spots fill, whichever comes first) are at the day rate of $50 per day. Your child still gets the same Camp Play experience &mdash; the only difference is the rate.
+        </div>
+      </details>
+
+    </div>
+
+  </div>
+</section>
+<!-- Color Bar Divider -->
+<div class="sp-color-bar"></div>
+
+
+
+<!-- ==========================================================
+     BLOCK 8B: INLINE "HAVE A QUESTION?" FORM
+     Contains: H3, micro-copy, 3-field form (name, email, question).
+     Placed after Block 8 (FAQ), before the Positioning Statement.
+     To edit: Change the micro-copy or field labels.
+
+     PHASE 5 NOTE: Replace the <form> with Kadence Advanced Form block.
+     Keep the outer container and id="question-form" for anchor linking.
+     Configure: inline success message (NOT redirect), email notification
+     + auto-respond + database entry. GA4 event: question_form_submit.
+     ========================================================== -->
+
+<section class="sp-section sp-bg-sage" id="question-form" style="scroll-margin-top:80px;">
+  <div class="sp-inner">
+    <div style="max-width:580px; margin:0 auto; padding:36px 32px; background:var(--sp-program-wash); border:1px solid var(--sp-program-border); border-radius:12px; text-align:center;">
+      <h3 class="sp-h3" style="text-align:center; margin-bottom:8px;">Have a Question?</h3>
+      <p style="font-family:'DM Sans',sans-serif; font-size:15px; color:var(--sp-gray); line-height:1.6; margin-bottom:24px;">Questions about Camp Play &mdash; ages, weeks, what to expect? Send us a note and we'll be in touch.</p>
+
+      <form style="text-align:left;">
+        <div class="sp-form-group">
+          <label class="sp-form-label">Your Name <span class="sp-required">*</span></label>
+          <input type="text" class="sp-form-input" placeholder="First and last name" required>
+        </div>
+
+        <div class="sp-form-group">
+          <label class="sp-form-label">Email Address <span class="sp-required">*</span></label>
+          <input type="email" class="sp-form-input" placeholder="you@email.com" required>
+        </div>
+
+        <div class="sp-form-group">
+          <label class="sp-form-label">What Would You Like to Know? <span class="sp-required">*</span></label>
+          <textarea class="sp-form-textarea" placeholder="Your question about Summer Camp..." style="min-height:100px;" required></textarea>
+        </div>
+
+        <button type="submit" class="sp-form-submit-teal" data-cta-type="form-submit" data-cta-text="Send Your Question - Summer Camp">Send Your Question</button>
+      </form>
+    </div>
+  </div>
+</section>
+<!-- Color Bar Divider -->
+<div class="sp-color-bar"></div>
+
+
+
+<!-- ==========================================================
+     BLOCK 9: POSITIONING STATEMENT (FOOTER ACCENT)
+     Contains: Positioning statement text.
+     To edit: Change the text inside the <p> tag.
+     ========================================================== -->
+
+<div class="sp-positioning-footer">
+  <div class="sp-footer-triangles">
+    <span class="sp-ft" style="border-bottom-color: var(--sp-tri-pink);"></span>
+    <span class="sp-ft" style="border-bottom-color: var(--sp-tri-orange);"></span>
+    <span class="sp-ft" style="border-bottom-color: var(--sp-tri-yellow);"></span>
+    <span class="sp-ft" style="border-bottom-color: var(--sp-tri-green);"></span>
+    <span class="sp-ft" style="border-bottom-color: var(--sp-tri-blue);"></span>
+  </div>
+  <p>The only preschool in Central Illinois founded and led by a doctoral researcher in early childhood education.</p>
+</div>
+
+</body>
+</html>

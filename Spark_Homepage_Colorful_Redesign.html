@@ -1,0 +1,2370 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Spark Academy — Homepage (Colorful Redesign)</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=DM+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body style="margin:0;padding:0;background:#FBFAF8;">
+
+<!-- ================================================================
+     SPARK ACADEMY — HOMEPAGE PAGE (COLORFUL REDESIGN v1)
+
+     DESIGN CHANGES FROM ORIGINAL:
+     - Program color: Brand Teal (Hub Page) replaces universal teal accents
+     - Hero background: Program wash tint instead of Whisper Sage
+     - Decorative CSS triangles replace circular radial gradients
+     - Alternating sections: Program wash + Cloud White
+     - Buttons, icons, links, tuition header: all use program palette
+     - Triangle section dividers between major blocks
+     - CTA section: deep program color gradient instead of teal
+     - FAQ chevrons + hover: program color
+     - Positioning footer: five-triangle brand motif
+
+     NOTE: The sp-teal variable is KEPT for cross-site links and
+     elements that should remain brand-neutral. Only program-specific
+     accents shift to the program color.
+     ================================================================ -->
+
+
+<style>
+
+/* ===== SPARK HOMEPAGE PAGE — COLORFUL REDESIGN GLOBAL STYLES ===== */
+
+/* --- Brand Colors (base palette — shared across all pages) --- */
+:root {
+  --sp-teal: #3D6B62;
+  --sp-gold: #C49826;
+  --sp-gold-hover: #A8821F;
+  --sp-sage: #9BB8AD;
+  --sp-white: #FBFAF8;
+  --sp-whisper: #EFF5F2;
+  --sp-text: #2E2E2E;
+  --sp-heading: #1A1A1A;
+  --sp-gray: #6B7280;
+  --sp-max: 1140px;
+
+  /* --- Program Color: Brand Teal (Hub Page) --- */
+  --sp-program: #3D6B62;
+  --sp-program-dark: #2F5A52;
+  --sp-program-deep: #234840;
+  --sp-program-light: rgba(61,107,98,0.08);
+  --sp-program-lighter: rgba(61,107,98,0.05);
+  --sp-program-wash: #EFF5F2;
+  --sp-program-whisper: #E8F0EC;
+  --sp-program-border: rgba(61,107,98,0.20);
+
+  /* --- Logo Triangle Colors (for decorative motifs) --- */
+  --sp-tri-pink: #FAC1BB;
+  --sp-tri-orange: #F9A054;
+  --sp-tri-yellow: #FFC716;
+  --sp-tri-green: #808E71;
+  --sp-tri-blue: #5E8B96;
+}
+
+/* --- Section Containers --- */
+.sp-section {
+  padding: 80px 24px;
+}
+.sp-inner {
+  max-width: var(--sp-max);
+  margin: 0 auto;
+}
+/* CHANGED: alternating section backgrounds use program wash instead of whisper sage */
+.sp-bg-sage { background: var(--sp-program-whisper); }
+.sp-bg-white { background: var(--sp-white); }
+
+/* --- Typography --- */
+.sp-h1 {
+  font-family: 'Playfair Display', serif;
+  font-size: 48px;
+  font-weight: 700;
+  line-height: 1.18;
+  color: var(--sp-heading);
+  text-align: center;
+  margin-bottom: 16px;
+  letter-spacing: -0.01em;
+}
+.sp-h2 {
+  font-family: 'Playfair Display', serif;
+  font-size: 36px;
+  font-weight: 700;
+  line-height: 1.25;
+  color: var(--sp-heading);
+  text-align: center;
+  margin-bottom: 16px;
+}
+.sp-h3 {
+  font-family: 'Playfair Display', serif;
+  font-size: 24px;
+  font-weight: 700;
+  line-height: 1.3;
+  color: var(--sp-heading);
+  margin-bottom: 12px;
+}
+.sp-intro {
+  text-align: center;
+  max-width: 680px;
+  margin: 0 auto 48px;
+  color: var(--sp-gray);
+  font-family: 'DM Sans', sans-serif;
+  font-size: 17px;
+  line-height: 1.7;
+}
+
+/* --- Buttons (CHANGED: program color instead of gold) --- */
+.sp-btn-gold {
+  display: inline-block;
+  background: var(--sp-program);
+  color: #fff;
+  padding: 14px 32px;
+  border-radius: 6px;
+  font-family: 'DM Sans', sans-serif;
+  font-weight: 600;
+  font-size: 16px;
+  text-decoration: none;
+  transition: background 0.2s, transform 0.2s;
+  box-shadow: 0 2px 8px rgba(61,107,98,0.25);
+}
+.sp-btn-gold:hover {
+  background: var(--sp-program-dark);
+  transform: translateY(-2px);
+  box-shadow: 0 4px 16px rgba(61,107,98,0.3);
+}
+.sp-btn-outline {
+  display: inline-block;
+  background: transparent;
+  color: #fff;
+  padding: 14px 32px;
+  border-radius: 6px;
+  border: 2px solid rgba(255,255,255,0.4);
+  font-family: 'DM Sans', sans-serif;
+  font-weight: 600;
+  font-size: 16px;
+  text-decoration: none;
+  transition: border-color 0.2s, background 0.2s;
+}
+.sp-btn-outline:hover {
+  border-color: #fff;
+  background: rgba(255,255,255,0.08);
+}
+
+/* --- Hero Section (CHANGED: warm peach background + triangle decorations) --- */
+.sp-hero {
+  background: var(--sp-program-wash);
+  padding: 80px 24px 64px;
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+}
+/* CHANGED: Triangle decorations instead of circular gradients */
+.sp-hero::before {
+  content: '';
+  position: absolute;
+  top: -40px;
+  right: -60px;
+  width: 0;
+  height: 0;
+  border-left: 180px solid transparent;
+  border-right: 180px solid transparent;
+  border-bottom: 320px solid rgba(61,107,98,0.08);
+  transform: rotate(15deg);
+}
+.sp-hero::after {
+  content: '';
+  position: absolute;
+  bottom: -80px;
+  left: -40px;
+  width: 0;
+  height: 0;
+  border-left: 140px solid transparent;
+  border-right: 140px solid transparent;
+  border-bottom: 250px solid rgba(61,107,98,0.06);
+  transform: rotate(-10deg);
+}
+.sp-hero-inner {
+  max-width: var(--sp-max);
+  margin: 0 auto;
+  position: relative;
+  z-index: 1;
+}
+.sp-hero-sub {
+  font-family: 'DM Sans', sans-serif;
+  font-size: 17px;
+  line-height: 1.7;
+  color: var(--sp-gray);
+  max-width: 660px;
+  margin: 0 auto 32px;
+  font-style: italic;
+}
+.sp-hero-ctas {
+  display: flex;
+  gap: 16px;
+  justify-content: center;
+  align-items: center;
+  margin-top: 36px;
+  flex-wrap: wrap;
+}
+/* CHANGED: secondary link uses program color */
+.sp-hero-secondary {
+  font-family: 'DM Sans', sans-serif;
+  font-size: 15px;
+  color: var(--sp-program-dark);
+  font-weight: 600;
+  text-decoration: none;
+  border-bottom: 1px solid rgba(61,107,98,0.4);
+  transition: border-color 0.2s;
+}
+.sp-hero-secondary:hover {
+  border-color: var(--sp-program);
+}
+/* CHANGED: trust line icons use program color */
+.sp-trust-line {
+  display: flex;
+  gap: 24px;
+  justify-content: center;
+  flex-wrap: wrap;
+  margin-top: 28px;
+  font-family: 'DM Sans', sans-serif;
+  font-size: 13px;
+  font-weight: 500;
+  color: var(--sp-gray);
+}
+.sp-trust-line span {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+.sp-trust-line svg {
+  width: 16px;
+  height: 16px;
+  color: var(--sp-program);
+}
+.sp-hero-image {
+  max-width: var(--sp-max);
+  margin: 48px auto 0;
+  border-radius: 12px;
+  overflow: hidden;
+  background: var(--sp-program-whisper);
+  min-height: 340px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: 'DM Sans', sans-serif;
+  font-size: 14px;
+  color: var(--sp-gray);
+  text-align: center;
+  padding: 40px;
+  line-height: 1.7;
+  border: 1px dashed var(--sp-program-border);
+}
+
+/* --- Triangle Section Divider (NEW — decorative motif) --- */
+.sp-triangle-divider {
+  display: flex;
+  justify-content: center;
+  align-items: flex-end;
+  gap: 4px;
+  padding: 16px 0;
+  margin: 0;
+  background: transparent;
+  position: relative;
+  z-index: 2;
+}
+.sp-triangle-divider .sp-tri {
+  display: inline-block;
+  width: 0;
+  height: 0;
+  border-left: 16px solid transparent;
+  border-right: 16px solid transparent;
+  border-bottom: 22px solid;
+}
+/* Stagger heights for a playful rhythm — must use parent selector for specificity */
+.sp-triangle-divider .sp-tri-1 { border-bottom-color: var(--sp-tri-pink); border-left-width: 14px; border-right-width: 14px; border-bottom-width: 20px; }
+.sp-triangle-divider .sp-tri-2 { border-bottom-color: var(--sp-tri-orange); border-left-width: 16px; border-right-width: 16px; border-bottom-width: 24px; }
+.sp-triangle-divider .sp-tri-3 { border-bottom-color: var(--sp-tri-yellow); border-left-width: 18px; border-right-width: 18px; border-bottom-width: 26px; }
+.sp-triangle-divider .sp-tri-4 { border-bottom-color: var(--sp-tri-green); border-left-width: 16px; border-right-width: 16px; border-bottom-width: 24px; }
+.sp-triangle-divider .sp-tri-5 { border-bottom-color: var(--sp-tri-blue); border-left-width: 14px; border-right-width: 14px; border-bottom-width: 20px; }
+
+/* --- Color Bar Section Divider (matches "document line" brand asset) --- */
+.sp-color-bar {
+  height: 5px;
+  background: linear-gradient(
+    to right,
+    var(--sp-tri-pink) 0%, var(--sp-tri-pink) 20%,
+    var(--sp-tri-orange) 20%, var(--sp-tri-orange) 40%,
+    var(--sp-tri-yellow) 40%, var(--sp-tri-yellow) 60%,
+    var(--sp-tri-green) 60%, var(--sp-tri-green) 80%,
+    var(--sp-tri-blue) 80%, var(--sp-tri-blue) 100%
+  );
+}
+
+/* --- Atmospheric Background Triangles (barely visible, felt not seen) --- */
+/* Each variant places 1-2 large triangles at different positions via clip-path.
+   Opacity is 0.03-0.04 so they register as texture, not decoration.
+   Uses the program color so they subtly reinforce the page's color identity. */
+.sp-atmos {
+  position: relative;
+  overflow: hidden;
+}
+.sp-atmos::before,
+.sp-atmos::after {
+  content: '';
+  position: absolute;
+  z-index: 0;
+  pointer-events: none;
+}
+/* Variant A: large triangle bottom-right corner */
+.sp-atmos-a::before {
+  bottom: -60px;
+  right: -80px;
+  width: 500px;
+  height: 500px;
+  background: var(--sp-program);
+  opacity: 0.035;
+  clip-path: polygon(100% 0%, 0% 100%, 100% 100%);
+}
+/* Variant B: large triangle top-left corner */
+.sp-atmos-b::before {
+  top: -40px;
+  left: -60px;
+  width: 420px;
+  height: 420px;
+  background: var(--sp-program);
+  opacity: 0.03;
+  clip-path: polygon(0% 0%, 100% 0%, 0% 100%);
+}
+/* Variant C: two smaller triangles, opposite corners */
+.sp-atmos-c::before {
+  top: -30px;
+  right: -50px;
+  width: 320px;
+  height: 320px;
+  background: var(--sp-program);
+  opacity: 0.03;
+  clip-path: polygon(50% 0%, 0% 100%, 100% 100%);
+}
+.sp-atmos-c::after {
+  bottom: -40px;
+  left: -40px;
+  width: 260px;
+  height: 260px;
+  background: var(--sp-program);
+  opacity: 0.025;
+  clip-path: polygon(50% 100%, 0% 0%, 100% 0%);
+}
+/* Variant D: single large triangle centered-right, rotated feel */
+.sp-atmos-d::before {
+  top: 50%;
+  right: -100px;
+  transform: translateY(-50%);
+  width: 460px;
+  height: 460px;
+  background: var(--sp-program);
+  opacity: 0.03;
+  clip-path: polygon(50% 0%, 0% 100%, 100% 80%);
+}
+/* All atmospheric content needs to sit above the shapes */
+.sp-atmos > * {
+  position: relative;
+  z-index: 1;
+}
+
+/* --- Prose Content Sections --- */
+.sp-prose {
+  max-width: 720px;
+  margin: 0 auto;
+}
+.sp-prose p {
+  font-family: 'DM Sans', sans-serif;
+  font-size: 17px;
+  line-height: 1.75;
+  color: var(--sp-text);
+}
+.sp-prose p + p {
+  margin-top: 20px;
+}
+.sp-prose .sp-h2 {
+  text-align: left;
+  margin-bottom: 24px;
+}
+.sp-prose .sp-h3 {
+  margin-top: 40px;
+  margin-bottom: 16px;
+}
+/* CHANGED: accent text uses program color */
+.sp-prose-accent {
+  font-family: 'DM Sans', sans-serif;
+  font-size: 18px;
+  font-weight: 600;
+  color: var(--sp-program-dark);
+  margin-top: 24px;
+}
+
+/* --- Daily Schedule Cards (CHANGED: icon backgrounds + time color) --- */
+.sp-schedule-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 20px;
+  margin-top: 48px;
+}
+.sp-schedule-card {
+  background: var(--sp-white);
+  border: 1px solid var(--sp-program-border);
+  border-radius: 12px;
+  padding: 28px 28px 24px;
+  display: flex;
+  gap: 16px;
+  align-items: flex-start;
+  transition: transform 0.2s, box-shadow 0.2s;
+}
+.sp-schedule-card:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(61,107,98,0.1);
+}
+.sp-schedule-icon {
+  flex-shrink: 0;
+  width: 48px;
+  height: 48px;
+  border-radius: 12px;
+  background: var(--sp-program-light);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.sp-schedule-icon svg {
+  width: 24px;
+  height: 24px;
+  color: var(--sp-program);
+}
+.sp-schedule-content {
+  flex: 1;
+}
+.sp-schedule-title {
+  font-family: 'DM Sans', sans-serif;
+  font-weight: 700;
+  font-size: 16px;
+  color: var(--sp-heading);
+  margin-bottom: 2px;
+}
+.sp-schedule-time {
+  font-family: 'DM Sans', sans-serif;
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--sp-program-dark);
+  margin-bottom: 8px;
+}
+.sp-schedule-desc {
+  font-family: 'DM Sans', sans-serif;
+  font-size: 15px;
+  line-height: 1.65;
+  color: var(--sp-text);
+  opacity: 0.85;
+}
+.sp-schedule-full {
+  grid-column: 1 / -1;
+}
+.sp-schedule-meta {
+  text-align: center;
+  margin-top: 32px;
+  font-family: 'DM Sans', sans-serif;
+  font-size: 15px;
+  color: var(--sp-gray);
+  font-weight: 500;
+}
+.sp-schedule-meta strong {
+  color: var(--sp-text);
+  font-weight: 600;
+}
+
+/* --- Subsection Feature Block --- */
+.sp-feature-block {
+  margin-top: 56px;
+  padding-top: 48px;
+  border-top: 1px solid var(--sp-program-border);
+}
+.sp-feature-block .sp-h3 {
+  text-align: center;
+  margin-bottom: 16px;
+}
+.sp-feature-desc {
+  max-width: 720px;
+  margin: 0 auto;
+}
+.sp-feature-desc p {
+  font-family: 'DM Sans', sans-serif;
+  font-size: 17px;
+  line-height: 1.75;
+  color: var(--sp-text);
+}
+.sp-feature-desc p + p {
+  margin-top: 20px;
+}
+
+/* --- Enrichment Pills (CHANGED: orange accent) --- */
+.sp-enrich-pills {
+  display: flex;
+  justify-content: center;
+  gap: 12px;
+  flex-wrap: wrap;
+  max-width: 700px;
+  margin: 32px auto 0;
+}
+.sp-enrich-pill {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 10px 18px;
+  background: var(--sp-white);
+  border: 1px solid var(--sp-program-border);
+  border-radius: 40px;
+  transition: border-color 0.2s, box-shadow 0.2s;
+}
+.sp-enrich-pill:hover {
+  border-color: var(--sp-program);
+  box-shadow: 0 2px 12px rgba(61,107,98,0.12);
+}
+.sp-enrich-pill-day {
+  font-family: 'DM Sans', sans-serif;
+  font-size: 11px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--sp-program-dark);
+  background: var(--sp-program-light);
+  padding: 3px 8px;
+  border-radius: 4px;
+  line-height: 1.3;
+}
+.sp-enrich-pill-subject {
+  font-family: 'DM Sans', sans-serif;
+  font-size: 15px;
+  font-weight: 600;
+  color: var(--sp-heading);
+}
+.sp-enrich-note {
+  max-width: 720px;
+  margin: 24px auto 0;
+  font-family: 'DM Sans', sans-serif;
+  font-size: 15px;
+  line-height: 1.7;
+  color: var(--sp-text);
+  text-align: center;
+}
+
+/* --- Separation / Open Door Section (CHANGED: link color) --- */
+.sp-separation-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  margin-top: 24px;
+  font-family: 'DM Sans', sans-serif;
+  font-size: 16px;
+  font-weight: 600;
+  color: var(--sp-program-dark);
+  text-decoration: none;
+  transition: gap 0.2s ease;
+}
+.sp-separation-link:hover { gap: 12px; }
+
+/* --- Tuition Card (CHANGED: orange header) --- */
+.sp-tuition-main {
+  max-width: 520px;
+  margin: 0 auto;
+  background: var(--sp-white);
+  border: 1px solid var(--sp-program-border);
+  border-radius: 16px;
+  overflow: hidden;
+}
+.sp-tuition-header {
+  background: linear-gradient(135deg, #2F5A52 0%, #3D6B62 50%, #5A8F84 100%);
+  padding: 28px 32px;
+  text-align: center;
+}
+.sp-tuition-header-label {
+  font-family: 'DM Sans', sans-serif;
+  font-size: 12px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  color: rgba(255,255,255,0.7);
+  margin-bottom: 8px;
+}
+.sp-tuition-header-price {
+  font-family: 'Playfair Display', serif;
+  font-size: 48px;
+  font-weight: 700;
+  color: #fff;
+  line-height: 1;
+}
+.sp-tuition-header-price span {
+  font-family: 'DM Sans', sans-serif;
+  font-size: 18px;
+  font-weight: 500;
+  color: rgba(255,255,255,0.65);
+}
+.sp-tuition-body {
+  padding: 28px 32px;
+}
+.sp-tuition-schedules {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+.sp-tuition-schedule-row {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+}
+.sp-tuition-schedule-check {
+  flex-shrink: 0;
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+  background: var(--sp-program-light);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.sp-tuition-schedule-check svg {
+  width: 16px;
+  height: 16px;
+  color: var(--sp-program);
+}
+.sp-tuition-schedule-label {
+  font-family: 'DM Sans', sans-serif;
+  font-size: 11px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--sp-gray);
+}
+.sp-tuition-schedule-days {
+  font-family: 'DM Sans', sans-serif;
+  font-size: 16px;
+  font-weight: 600;
+  color: var(--sp-heading);
+}
+.sp-tuition-body-note {
+  margin-top: 20px;
+  padding-top: 16px;
+  border-top: 1px solid var(--sp-program-border);
+  font-family: 'DM Sans', sans-serif;
+  font-size: 14px;
+  color: var(--sp-gray);
+  line-height: 1.6;
+  text-align: center;
+}
+
+/* Add-on strip */
+.sp-tuition-addon {
+  max-width: 520px;
+  margin: 16px auto 0;
+  background: var(--sp-white);
+  border: 1px solid var(--sp-program-border);
+  border-radius: 12px;
+  padding: 20px 28px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+}
+.sp-tuition-addon-left {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+.sp-tuition-addon-plus {
+  flex-shrink: 0;
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  background: var(--sp-program-light);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: 'DM Sans', sans-serif;
+  font-size: 18px;
+  font-weight: 700;
+  color: var(--sp-program);
+}
+.sp-tuition-addon-name {
+  font-family: 'DM Sans', sans-serif;
+  font-size: 15px;
+  font-weight: 600;
+  color: var(--sp-heading);
+}
+.sp-tuition-addon-sub {
+  font-family: 'DM Sans', sans-serif;
+  font-size: 12px;
+  color: var(--sp-gray);
+}
+.sp-tuition-addon-price {
+  font-family: 'DM Sans', sans-serif;
+  font-size: 22px;
+  font-weight: 700;
+  color: var(--sp-program);
+  white-space: nowrap;
+}
+.sp-tuition-addon-price span {
+  font-size: 13px;
+  font-weight: 500;
+  color: var(--sp-gray);
+}
+
+/* --- Tuition Details --- */
+.sp-tuition-details {
+  margin-top: 32px;
+  font-family: 'DM Sans', sans-serif;
+  font-size: 15px;
+  line-height: 1.7;
+  color: var(--sp-text);
+}
+.sp-tuition-details p + p {
+  margin-top: 12px;
+}
+.sp-tuition-details strong {
+  color: var(--sp-heading);
+  font-weight: 600;
+}
+
+/* --- All-Inclusive Tuition Note (CHANGED: orange tint) --- */
+.sp-tuition-note {
+  max-width: 720px;
+  margin: 32px auto 0;
+  padding: 24px 32px;
+  background: var(--sp-program-lighter);
+  border: 1px solid var(--sp-program-border);
+  border-radius: 10px;
+  font-family: 'DM Sans', sans-serif;
+  font-size: 15px;
+  line-height: 1.7;
+  color: var(--sp-text);
+  text-align: center;
+}
+.sp-tuition-note strong {
+  color: var(--sp-program-dark);
+  font-weight: 700;
+}
+
+/* --- Scheduling Advisory --- */
+.sp-advisory {
+  max-width: 720px;
+  margin: 0 auto;
+}
+.sp-advisory .sp-h3 {
+  text-align: left;
+}
+.sp-advisory p {
+  font-family: 'DM Sans', sans-serif;
+  font-size: 17px;
+  line-height: 1.75;
+  color: var(--sp-text);
+}
+.sp-advisory p + p {
+  margin-top: 20px;
+}
+
+/* --- Testimonial Placeholder --- */
+.sp-testimonial-section {
+  background: var(--sp-program-whisper);
+  padding: 80px 24px;
+}
+.sp-testimonial-inner {
+  max-width: 780px;
+  margin: 0 auto;
+  text-align: center;
+}
+.sp-testimonial-placeholder {
+  margin-top: 32px;
+  padding: 40px;
+  border: 1px dashed var(--sp-program-border);
+  border-radius: 12px;
+  font-family: 'DM Sans', sans-serif;
+  font-size: 16px;
+  line-height: 1.7;
+  color: var(--sp-gray);
+  font-style: italic;
+}
+
+/* --- CTA Section (CHANGED: warm deep orange instead of teal) --- */
+.sp-cta-section {
+  text-align: center;
+  background: linear-gradient(135deg, #234840 0%, #3D6B62 60%, #5A8F84 100%);
+  color: #fff;
+  padding: 80px 24px;
+  position: relative;
+  overflow: hidden;
+}
+/* Triangle decoration in CTA */
+.sp-cta-section::before {
+  content: '';
+  position: absolute;
+  top: -60px; right: -40px;
+  width: 0; height: 0;
+  border-left: 160px solid transparent;
+  border-right: 160px solid transparent;
+  border-bottom: 280px solid rgba(255,255,255,0.06);
+  transform: rotate(20deg);
+}
+.sp-cta-section::after {
+  content: '';
+  position: absolute;
+  bottom: -40px; left: -60px;
+  width: 0; height: 0;
+  border-left: 120px solid transparent;
+  border-right: 120px solid transparent;
+  border-bottom: 200px solid rgba(255,255,255,0.04);
+  transform: rotate(-15deg);
+}
+.sp-cta-section .sp-h2 { color: #fff; }
+.sp-cta-section p {
+  font-family: 'DM Sans', sans-serif;
+  color: rgba(255,255,255,0.88);
+  max-width: 600px;
+  margin: 0 auto;
+  font-size: 17px;
+  line-height: 1.7;
+}
+.sp-cta-section p + p { margin-top: 16px; }
+.sp-cta-phone {
+  color: #fff;
+  font-weight: 600;
+  text-decoration: none;
+  border-bottom: 1px solid rgba(255,255,255,0.4);
+}
+.sp-cta-phone:hover { border-color: #fff; }
+.sp-cta-buttons {
+  display: flex;
+  gap: 16px;
+  justify-content: center;
+  margin-top: 32px;
+  flex-wrap: wrap;
+}
+/* CTA primary button: white on this bg */
+.sp-cta-section .sp-btn-gold {
+  background: #fff;
+  color: var(--sp-program-deep);
+  box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+}
+.sp-cta-section .sp-btn-gold:hover {
+  background: #f8f8f8;
+  box-shadow: 0 4px 16px rgba(0,0,0,0.15);
+}
+.sp-cta-trust {
+  display: flex;
+  gap: 32px;
+  justify-content: center;
+  margin-top: 36px;
+  flex-wrap: wrap;
+}
+.sp-cta-trust-item {
+  font-family: 'DM Sans', sans-serif;
+  font-size: 13px;
+  font-weight: 500;
+  color: rgba(255,255,255,0.6);
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+.sp-cta-trust-item svg {
+  width: 16px;
+  height: 16px;
+  color: rgba(255,255,255,0.5);
+}
+
+/* --- FAQ Accordion (CHANGED: orange hover + chevron) --- */
+.sp-faq-list {
+  max-width: 780px;
+  margin: 40px auto 0;
+}
+.sp-faq-item {
+  border-bottom: 1px solid var(--sp-program-border);
+}
+.sp-faq-item:first-child {
+  border-top: 1px solid var(--sp-program-border);
+}
+.sp-faq-item summary {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 20px 0;
+  cursor: pointer;
+  list-style: none;
+  font-family: 'DM Sans', sans-serif;
+  font-size: 17px;
+  font-weight: 600;
+  color: var(--sp-heading);
+  line-height: 1.5;
+  transition: color 0.2s;
+}
+.sp-faq-item summary:hover {
+  color: var(--sp-program-dark);
+}
+.sp-faq-item summary::-webkit-details-marker { display: none; }
+.sp-faq-item summary::marker { display: none; content: ''; }
+.sp-faq-chevron {
+  flex-shrink: 0;
+  width: 24px;
+  height: 24px;
+  margin-left: 16px;
+  color: var(--sp-program);
+  transition: transform 0.3s ease;
+}
+.sp-faq-item[open] .sp-faq-chevron {
+  transform: rotate(180deg);
+  color: var(--sp-program-dark);
+}
+.sp-faq-answer {
+  padding: 0 0 24px;
+  font-family: 'DM Sans', sans-serif;
+  font-size: 16px;
+  line-height: 1.75;
+  color: var(--sp-text);
+}
+.sp-faq-answer a {
+  color: var(--sp-program-dark);
+  font-weight: 600;
+  text-decoration: none;
+  border-bottom: 1px solid rgba(61,107,98,0.3);
+}
+.sp-faq-answer a:hover {
+  border-color: var(--sp-program);
+}
+
+/* --- Positioning Footer (CHANGED: five-triangle brand motif) --- */
+.sp-positioning-footer {
+  background: var(--sp-teal);
+  padding: 28px 24px;
+  text-align: center;
+  border-top: 1px solid rgba(255,255,255,0.08);
+  position: relative;
+}
+.sp-positioning-footer p {
+  font-family: 'Playfair Display', serif;
+  font-size: 14px;
+  font-style: italic;
+  color: rgba(255,255,255,0.55);
+  max-width: 600px;
+  margin: 0 auto;
+}
+/* Five-triangle brand signature */
+.sp-footer-triangles {
+  display: flex;
+  justify-content: center;
+  gap: 4px;
+  margin-bottom: 16px;
+}
+.sp-footer-triangles .sp-ft {
+  width: 0;
+  height: 0;
+  border-left: 8px solid transparent;
+  border-right: 8px solid transparent;
+  border-bottom: 12px solid;
+  opacity: 0.4;
+}
+
+/* --- Photo Placeholder --- */
+.sp-photo-placeholder {
+  border-radius: 12px;
+  overflow: hidden;
+  background: var(--sp-program-whisper);
+  min-height: 280px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: 'DM Sans', sans-serif;
+  font-size: 14px;
+  color: var(--sp-gray);
+  text-align: center;
+  padding: 40px;
+  line-height: 1.7;
+  border: 1px dashed var(--sp-program-border);
+  margin-top: 40px;
+}
+
+/* --- Form Styles --- */
+.sp-form-group {
+  margin-bottom: 16px;
+}
+.sp-form-label {
+  display: block;
+  font-family: 'DM Sans', sans-serif;
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--sp-heading);
+  margin-bottom: 6px;
+}
+.sp-required {
+  color: var(--sp-program);
+}
+.sp-form-input, .sp-form-textarea {
+  width: 100%;
+  padding: 12px 14px;
+  border: 1px solid var(--sp-program-border);
+  border-radius: 6px;
+  font-family: 'DM Sans', sans-serif;
+  font-size: 15px;
+  background: #fff;
+  transition: border-color 0.2s;
+  box-sizing: border-box;
+}
+.sp-form-input:focus, .sp-form-textarea:focus {
+  outline: none;
+  border-color: var(--sp-program);
+  box-shadow: 0 0 0 3px rgba(61,107,98,0.12);
+}
+.sp-form-submit-teal {
+  display: inline-block;
+  background: var(--sp-program);
+  color: #fff;
+  padding: 12px 28px;
+  border: none;
+  border-radius: 6px;
+  font-family: 'DM Sans', sans-serif;
+  font-weight: 600;
+  font-size: 15px;
+  cursor: pointer;
+  transition: background 0.2s;
+  margin-top: 8px;
+}
+.sp-form-submit-teal:hover {
+  background: var(--sp-program-dark);
+}
+
+/* --- Animations --- */
+@keyframes spFadeUp {
+  from { opacity: 0; transform: translateY(24px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+.sp-hero .sp-h1 { animation: spFadeUp 0.7s ease both; }
+.sp-hero .sp-hero-sub { animation: spFadeUp 0.7s ease 0.1s both; }
+.sp-hero .sp-hero-ctas { animation: spFadeUp 0.7s ease 0.2s both; }
+.sp-hero .sp-trust-line { animation: spFadeUp 0.7s ease 0.3s both; }
+
+
+/* ===== TABLET LAYOUT (768px - 1024px) ===== */
+@media (max-width: 1024px) {
+  .sp-schedule-grid { gap: 16px; }
+  .sp-separation-link,
+  .sp-faq-answer a,
+  .sp-hero-secondary {
+    text-decoration: underline;
+    text-underline-offset: 4px;
+    text-decoration-color: rgba(61,107,98,0.4);
+  }
+}
+
+/* ===== MOBILE LAYOUT (phones: under 768px) ===== */
+@media (max-width: 767px) {
+  .sp-section { padding: 48px 20px; }
+  .sp-hero { padding: 48px 20px 40px; }
+  .sp-cta-section { padding: 48px 20px; }
+  .sp-testimonial-section { padding: 48px 20px; }
+  .sp-h1 { font-size: 32px; }
+  .sp-h2 { font-size: 28px; }
+  .sp-h3 { font-size: 21px; }
+  .sp-prose .sp-h2 { text-align: left; }
+  .sp-prose p { font-size: 16px; }
+  .sp-schedule-grid { grid-template-columns: 1fr; }
+  .sp-schedule-card { padding: 20px 18px; }
+  .sp-schedule-title { font-size: 15px; }
+  .sp-schedule-desc { font-size: 14px; }
+  .sp-enrich-pills { gap: 10px; }
+  .sp-enrich-pill { padding: 8px 14px; }
+  .sp-tuition-header-price { font-size: 40px; }
+  .sp-tuition-header { padding: 24px 20px; }
+  .sp-tuition-body { padding: 24px 20px; }
+  .sp-tuition-addon { flex-direction: column; text-align: center; gap: 10px; padding: 18px 20px; }
+  .sp-tuition-addon-left { flex-direction: column; gap: 6px; }
+  .sp-hero-image { min-height: 220px; margin-top: 32px; }
+  .sp-cta-buttons { flex-direction: column; align-items: center; margin-top: 40px; gap: 12px; }
+  .sp-cta-trust { flex-direction: column; align-items: center; gap: 14px; margin-top: 44px; padding-top: 32px; border-top: 1px solid rgba(255,255,255,0.12); }
+  .sp-hero-ctas { flex-direction: column; align-items: center; gap: 12px; }
+  .sp-testimonial-placeholder { padding: 28px 20px; }
+  .sp-photo-placeholder { min-height: 200px; padding: 28px; }
+  .sp-faq-item summary { font-size: 16px; padding: 18px 0; }
+  .sp-faq-answer { font-size: 15px; }
+  .sp-triangle-divider .sp-tri { transform: scale(0.8); }
+
+  /* Hero triangles: scale down and pull inward so they stay visible on mobile */
+  .sp-hero::before {
+    top: -20px;
+    right: -30px;
+    border-left-width: 100px;
+    border-right-width: 100px;
+    border-bottom-width: 180px;
+  }
+  .sp-hero::after {
+    bottom: -40px;
+    left: -20px;
+    border-left-width: 80px;
+    border-right-width: 80px;
+    border-bottom-width: 140px;
+  }
+
+  /* Atmospheric triangles: shrink + pull onto screen + bump opacity slightly */
+  .sp-atmos-a::before {
+    bottom: -20px;
+    right: -20px;
+    width: 240px;
+    height: 240px;
+    opacity: 0.045;
+  }
+  .sp-atmos-b::before {
+    top: -15px;
+    left: -15px;
+    width: 200px;
+    height: 200px;
+    opacity: 0.04;
+  }
+  .sp-atmos-c::before {
+    top: -10px;
+    right: -15px;
+    width: 180px;
+    height: 180px;
+    opacity: 0.04;
+  }
+  .sp-atmos-c::after {
+    bottom: -15px;
+    left: -10px;
+    width: 140px;
+    height: 140px;
+    opacity: 0.035;
+  }
+  .sp-atmos-d::before {
+    right: -30px;
+    width: 220px;
+    height: 220px;
+    opacity: 0.04;
+  }
+
+  /* CTA section triangles: same treatment */
+  .sp-cta-section::before {
+    top: -30px; right: -20px;
+    border-left-width: 90px;
+    border-right-width: 90px;
+    border-bottom-width: 160px;
+  }
+  .sp-cta-section::after {
+    bottom: -20px; left: -30px;
+    border-left-width: 70px;
+    border-right-width: 70px;
+    border-bottom-width: 120px;
+  }
+}
+
+/* ===== SMALL PHONES & FOLDABLE (under 360px) ===== */
+@media (max-width: 360px) {
+  .sp-h1 { font-size: 28px; }
+  .sp-h2 { font-size: 24px; }
+  .sp-h3 { font-size: 19px; }
+  .sp-section { padding: 36px 16px; }
+  .sp-hero { padding: 36px 16px; }
+  .sp-cta-section { padding: 36px 16px; }
+  .sp-testimonial-section { padding: 36px 16px; }
+  .sp-schedule-card { padding: 18px 16px; }
+  .sp-enrich-pill { padding: 7px 12px; }
+  .sp-enrich-pill-subject { font-size: 14px; }
+  .sp-tuition-header-price { font-size: 36px; }
+  .sp-tuition-note { padding: 20px; font-size: 14px; }
+  .sp-photo-placeholder { min-height: 160px; padding: 20px; }
+  .sp-hero-image { min-height: 160px; padding: 24px; }
+  .sp-btn-gold, .sp-btn-outline { padding: 12px 24px; font-size: 15px; }
+  .sp-faq-item summary { font-size: 15px; }
+  .sp-triangle-divider .sp-tri { transform: scale(0.65); }
+
+  /* Atmospheric: even smaller on tiny screens */
+  .sp-atmos-a::before { width: 180px; height: 180px; bottom: -10px; right: -10px; opacity: 0.05; }
+  .sp-atmos-b::before { width: 150px; height: 150px; top: -10px; left: -10px; opacity: 0.045; }
+  .sp-atmos-c::before { width: 140px; height: 140px; top: -5px; right: -10px; opacity: 0.045; }
+  .sp-atmos-c::after { width: 110px; height: 110px; bottom: -10px; left: -5px; opacity: 0.04; }
+  .sp-atmos-d::before { width: 170px; height: 170px; right: -15px; opacity: 0.045; }
+
+  /* Hero: tightest on small phones */
+  .sp-hero::before { top: -10px; right: -15px; border-left-width: 70px; border-right-width: 70px; border-bottom-width: 130px; }
+  .sp-hero::after { bottom: -20px; left: -10px; border-left-width: 55px; border-right-width: 55px; border-bottom-width: 100px; }
+
+  /* CTA: tightest */
+  .sp-cta-section::before { top: -15px; right: -10px; border-left-width: 60px; border-right-width: 60px; border-bottom-width: 110px; }
+  .sp-cta-section::after { bottom: -10px; left: -15px; border-left-width: 50px; border-right-width: 50px; border-bottom-width: 90px; }
+}
+
+
+
+/* --- Page-Specific Styles --- */
+.sp-skip-link {
+  position: absolute;
+  left: -9999px;
+  top: auto;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  z-index: 999;
+}
+.sp-skip-link:focus {
+  position: fixed;
+  top: 8px;
+  left: 8px;
+  width: auto;
+  height: auto;
+  padding: 12px 20px;
+  background: var(--sp-program);
+  color: #fff;
+  font-family: 'DM Sans', sans-serif;
+  font-size: 14px;
+  font-weight: 600;
+  border-radius: 4px;
+  text-decoration: none;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+}
+.sp-bg-teal { background: var(--sp-program); }
+.sp-body {
+  font-family: 'DM Sans', sans-serif;
+  font-size: 17px;
+  line-height: 1.65;
+  color: var(--sp-text);
+}
+.sp-btn-outline-dark {
+  display: inline-block;
+  background: transparent;
+  color: var(--sp-program);
+  padding: 14px 32px;
+  border-radius: 4px;
+  border: 2px solid rgba(61,107,98,0.3);
+  font-family: 'DM Sans', sans-serif;
+  font-weight: 600;
+  font-size: 16px;
+  text-decoration: none;
+  transition: border-color 0.2s, background 0.2s;
+}
+.sp-btn-outline-dark:hover {
+  border-color: var(--sp-program);
+  background: rgba(61,107,98,0.04);
+}
+.sp-tagline {
+  font-family: 'DM Sans', sans-serif;
+  font-size: 15px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.15em;
+  color: var(--sp-program);
+  margin-bottom: 24px;
+}
+.sp-hero-body {
+  font-family: 'DM Sans', sans-serif;
+  font-size: 17px;
+  line-height: 1.75;
+  color: var(--sp-text);
+  max-width: 700px;
+  margin: 0 auto;
+  text-align: left;
+}
+.sp-hero-body p + p {
+  margin-top: 20px;
+}
+.sp-proof-bar {
+  background: var(--sp-white);
+  padding: 40px 24px;
+  border-bottom: 1px solid rgba(61,107,98,0.2);
+}
+.sp-proof-grid {
+  max-width: var(--sp-max);
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: repeat(6, 1fr);
+  gap: 16px;
+}
+.sp-proof-item {
+  text-align: center;
+  padding: 12px 8px;
+}
+.sp-proof-icon {
+  width: 44px;
+  height: 44px;
+  margin: 0 auto 10px;
+  background: rgba(61,107,98,0.08);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.sp-proof-icon svg {
+  width: 22px;
+  height: 22px;
+  color: var(--sp-program);
+}
+.sp-proof-label {
+  font-family: 'DM Sans', sans-serif;
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--sp-heading);
+  line-height: 1.4;
+}
+.sp-program-grid-home {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 24px;
+  margin-top: 48px;
+  justify-content: center;
+}
+.sp-program-grid-home .sp-hcard {
+  flex: 0 1 calc(33.333% - 16px);
+  min-width: 280px;
+}
+.sp-hcard {
+  background: var(--sp-white);
+  border-radius: 14px;
+  overflow: hidden;
+  box-shadow: 0 2px 12px rgba(0,0,0,0.06);
+  text-decoration: none;
+  color: var(--sp-text);
+  display: flex;
+  flex-direction: column;
+  transition: transform 0.25s ease, box-shadow 0.25s ease;
+}
+.sp-hcard:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 12px 40px rgba(61,107,98,0.1);
+}
+.sp-hcard-header {
+  padding: 22px 24px 18px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+}
+.sp-hcard-fresh3 .sp-hcard-header { background: linear-gradient(135deg, #b08a22 0%, #C49826 40%, #d4ab42 100%); }
+.sp-hcard-3s .sp-hcard-header { background: linear-gradient(135deg, #345b53 0%, #3D6B62 40%, #528a7f 100%); }
+.sp-hcard-4s .sp-hcard-header { background: linear-gradient(135deg, #82a196 0%, #9BB8AD 40%, #b0cac0 100%); }
+.sp-hcard-kprep .sp-hcard-header { background: linear-gradient(135deg, #274740 0%, #30574e 40%, #3D6B62 100%); }
+.sp-hcard-kinder .sp-hcard-header { background: linear-gradient(135deg, #3a5f4e 0%, #4a7261 40%, #5d8674 100%); }
+.sp-hcard-info { flex: 1; min-width: 0; }
+.sp-hcard-badge {
+  display: inline-block;
+  font-family: 'DM Sans', sans-serif;
+  font-size: 10px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  color: rgba(255,255,255,0.85);
+  background: rgba(255,255,255,0.2);
+  padding: 3px 10px;
+  border-radius: 12px;
+  margin-bottom: 6px;
+}
+.sp-hcard-title {
+  font-family: 'Playfair Display', serif;
+  font-size: 22px;
+  font-weight: 700;
+  color: #fff;
+  line-height: 1.2;
+}
+.sp-hcard-tagline {
+  font-family: 'Playfair Display', serif;
+  font-size: 13px;
+  font-style: italic;
+  color: rgba(255,255,255,0.7);
+  margin-top: 4px;
+  line-height: 1.4;
+}
+.sp-hcard-age {
+  flex-shrink: 0;
+  text-align: center;
+  background: rgba(255,255,255,0.18);
+  border-radius: 12px;
+  padding: 10px 14px 8px;
+  min-width: 62px;
+}
+.sp-hcard-age-num {
+  font-family: 'Playfair Display', serif;
+  font-size: 32px;
+  font-weight: 700;
+  color: #fff;
+  line-height: 1;
+}
+.sp-hcard-age-label {
+  font-family: 'DM Sans', sans-serif;
+  font-size: 9px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: rgba(255,255,255,0.7);
+  margin-top: 2px;
+}
+.sp-hcard-body {
+  padding: 20px 24px 24px;
+  flex-grow: 1;
+  display: flex;
+  flex-direction: column;
+}
+.sp-hcard-details {
+  display: grid;
+  grid-template-columns: auto 1fr;
+  gap: 0;
+  font-family: 'DM Sans', sans-serif;
+  font-size: 14px;
+  margin-bottom: 18px;
+}
+.sp-hcard-details dt,
+.sp-hcard-details dd {
+  padding: 8px 10px;
+  display: flex;
+  align-items: center;
+}
+.sp-hcard-details dt {
+  font-weight: 600;
+  color: var(--sp-gray);
+  text-transform: uppercase;
+  font-size: 11px;
+  letter-spacing: 0.06em;
+}
+.sp-hcard-details dd {
+  font-weight: 500;
+  color: var(--sp-text);
+}
+.sp-hcard-details dt:nth-of-type(odd),
+.sp-hcard-details dd:nth-of-type(odd) {
+  background: rgba(61,107,98,0.04);
+}
+.sp-hcard-cta {
+  font-family: 'DM Sans', sans-serif;
+  font-weight: 600;
+  font-size: 15px;
+  margin-top: auto;
+  text-decoration: underline;
+  text-underline-offset: 3px;
+  transition: text-decoration-color 0.2s ease;
+}
+.sp-hcard-4s .sp-hcard-title { color: var(--sp-heading); }
+.sp-hcard-4s .sp-hcard-badge { color: var(--sp-heading); background: rgba(0,0,0,0.1); }
+.sp-hcard-4s .sp-hcard-tagline { color: rgba(46,46,46,0.6); }
+.sp-hcard-4s .sp-hcard-age-num { color: var(--sp-heading); }
+.sp-hcard-4s .sp-hcard-age-label { color: rgba(46,46,46,0.6); }
+.sp-hcard-4s .sp-hcard-age { background: rgba(0,0,0,0.08); }
+.sp-hcard-fresh3 .sp-hcard-cta { color: var(--sp-gold); text-decoration-color: rgba(196,152,38,0.3); }
+.sp-hcard-3s .sp-hcard-cta,
+.sp-hcard-4s .sp-hcard-cta,
+.sp-hcard-kprep .sp-hcard-cta,
+.sp-hcard-kinder .sp-hcard-cta { color: var(--sp-program); text-decoration-color: rgba(61,107,98,0.3); }
+.sp-hcard:hover .sp-hcard-cta { gap: 10px; }
+.sp-hcard-fresh3:hover .sp-hcard-cta { text-decoration-color: var(--sp-gold); }
+.sp-hcard-3s:hover .sp-hcard-cta,
+.sp-hcard-4s:hover .sp-hcard-cta,
+.sp-hcard-kprep:hover .sp-hcard-cta,
+.sp-hcard-kinder:hover .sp-hcard-cta { text-decoration-color: var(--sp-program); }
+.sp-programs-help {
+  text-align: center;
+  margin-top: 32px;
+  font-family: 'DM Sans', sans-serif;
+  font-size: 16px;
+  color: var(--sp-gray);
+}
+.sp-programs-help a {
+  color: var(--sp-program);
+  font-weight: 600;
+  text-decoration: underline;
+  text-decoration-color: rgba(61,107,98,0.3);
+  text-underline-offset: 3px;
+}
+.sp-programs-help a:hover { text-decoration-color: var(--sp-program); }
+.sp-supp-grid {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+  margin-top: 48px;
+}
+.sp-supp-card {
+  display: grid;
+  grid-template-columns: 220px 1fr;
+  background: var(--sp-white);
+  border: 1px solid rgba(61,107,98,0.35);
+  border-radius: 12px;
+  overflow: hidden;
+  text-decoration: none;
+  color: var(--sp-text);
+  transition: transform 0.25s ease, box-shadow 0.25s ease;
+}
+.sp-supp-card:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 12px 40px rgba(61,107,98,0.1);
+}
+.sp-supp-visual {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  gap: 12px;
+  padding: 32px;
+}
+.sp-supp-visual-1 { background: linear-gradient(135deg, #EFF5F2 0%, #d4e6dd 100%); }
+.sp-supp-visual-2 { background: linear-gradient(135deg, #faf5eb 0%, #f0e4c8 100%); }
+.sp-supp-visual-3 { background: linear-gradient(135deg, #EFF5F2 0%, #d4e0da 100%); }
+.sp-supp-icon {
+  width: 64px;
+  height: 64px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.sp-supp-icon-1 { background: var(--sp-program); }
+.sp-supp-icon-2 { background: var(--sp-gold); }
+.sp-supp-icon-3 { background: var(--sp-program); }
+.sp-supp-icon svg { width: 28px; height: 28px; color: #fff; }
+.sp-supp-visual-label {
+  font-family: 'DM Sans', sans-serif;
+  font-size: 12px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: var(--sp-gray);
+  text-align: center;
+}
+.sp-supp-content {
+  padding: 32px;
+  display: flex;
+  flex-direction: column;
+}
+.sp-supp-badge {
+  display: inline-block;
+  font-family: 'DM Sans', sans-serif;
+  font-size: 11px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  padding: 4px 12px;
+  border-radius: 20px;
+  margin-bottom: 12px;
+  width: fit-content;
+}
+.sp-supp-badge-1 { color: var(--sp-program); background: rgba(61,107,98,0.08); }
+.sp-supp-badge-2 { color: var(--sp-gold); background: rgba(196,152,38,0.1); }
+.sp-supp-badge-3 { color: var(--sp-program); background: rgba(61,107,98,0.15); }
+.sp-supp-title {
+  font-family: 'Playfair Display', serif;
+  font-size: 22px;
+  font-weight: 700;
+  color: var(--sp-heading);
+  margin-bottom: 8px;
+}
+.sp-supp-meta {
+  font-family: 'DM Sans', sans-serif;
+  font-size: 13px;
+  color: var(--sp-gray);
+  margin-bottom: 16px;
+  line-height: 1.6;
+}
+.sp-supp-meta strong { color: var(--sp-text); font-weight: 600; }
+.sp-supp-desc {
+  font-family: 'DM Sans', sans-serif;
+  font-size: 15px;
+  line-height: 1.7;
+  color: var(--sp-text);
+  opacity: 0.85;
+  flex-grow: 1;
+  margin-bottom: 20px;
+}
+.sp-supp-cta {
+  font-family: 'DM Sans', sans-serif;
+  font-weight: 600;
+  font-size: 15px;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  text-decoration: underline;
+  text-underline-offset: 3px;
+  transition: gap 0.2s ease, text-decoration-color 0.2s ease;
+}
+.sp-supp-cta-1 { text-decoration-color: rgba(61,107,98,0.3); }
+.sp-supp-cta-2 { text-decoration-color: rgba(196,152,38,0.3); }
+.sp-supp-cta-3 { text-decoration-color: rgba(61,107,98,0.3); }
+.sp-supp-card:hover .sp-supp-cta-1 { text-decoration-color: var(--sp-program); }
+.sp-supp-card:hover .sp-supp-cta-2 { text-decoration-color: var(--sp-gold); }
+.sp-supp-card:hover .sp-supp-cta-3 { text-decoration-color: var(--sp-program); }
+.sp-supp-cta-1 { color: var(--sp-program); }
+.sp-supp-cta-2 { color: var(--sp-gold); }
+.sp-supp-cta-3 { color: var(--sp-program); }
+.sp-supp-card:hover .sp-supp-cta { gap: 10px; }
+.sp-split-reverse .sp-split-text {
+  order: 2;
+}
+.sp-split-reverse .sp-split-image {
+  order: 1;
+}
+.sp-split-text .sp-h2 {
+  text-align: left;
+}
+.sp-split-text p {
+  font-family: 'DM Sans', sans-serif;
+  font-size: 17px;
+  line-height: 1.75;
+  color: var(--sp-text);
+}
+.sp-split-text p + p {
+  margin-top: 20px;
+}
+.sp-split-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  margin-top: 24px;
+  font-family: 'DM Sans', sans-serif;
+  font-size: 16px;
+  font-weight: 600;
+  color: var(--sp-program);
+  text-decoration: underline;
+  text-decoration-color: rgba(61,107,98,0.3);
+  text-underline-offset: 3px;
+  transition: gap 0.2s ease, text-decoration-color 0.2s ease;
+}
+.sp-split-link:hover { gap: 12px; text-decoration-color: var(--sp-program); }
+.sp-split-image {
+  border-radius: 12px;
+  overflow: hidden;
+  background: #e8ede9;
+  min-height: 380px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: 'DM Sans', sans-serif;
+  font-size: 14px;
+  color: var(--sp-gray);
+  text-align: center;
+  padding: 40px;
+  line-height: 1.7;
+  border: 1px dashed rgba(61,107,98,0.3);
+}
+.sp-testimonial-content {
+  margin-top: 40px;
+}
+.sp-testimonial-quote {
+  font-family: 'Playfair Display', serif;
+  font-size: 20px;
+  line-height: 1.8;
+  color: var(--sp-text);
+  font-style: italic;
+  position: relative;
+  padding: 0 20px;
+}
+.sp-testimonial-quote::before {
+  content: '\201C';
+  position: absolute;
+  top: -20px;
+  left: -10px;
+  font-size: 72px;
+  color: var(--sp-program);
+  opacity: 0.5;
+  font-family: 'Playfair Display', serif;
+  line-height: 1;
+}
+.sp-testimonial-attr {
+  margin-top: 28px;
+  font-family: 'DM Sans', sans-serif;
+  font-size: 15px;
+  font-weight: 600;
+  color: var(--sp-program);
+}
+.sp-testimonial-link {
+  display: inline-block;
+  margin-top: 28px;
+  font-family: 'DM Sans', sans-serif;
+  font-size: 15px;
+  font-weight: 600;
+  color: var(--sp-program);
+  text-decoration: underline;
+  text-decoration-color: rgba(61,107,98,0.3);
+  text-underline-offset: 3px;
+  transition: text-decoration-color 0.2s;
+}
+.sp-testimonial-link:hover { text-decoration-color: var(--sp-program); }
+.sp-community-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 48px;
+  align-items: start;
+  margin-top: 40px;
+}
+.sp-community-text p {
+  font-family: 'DM Sans', sans-serif;
+  font-size: 17px;
+  line-height: 1.75;
+  color: var(--sp-text);
+}
+.sp-community-text p + p { margin-top: 20px; }
+.sp-contact-block {
+  margin-top: 32px;
+  padding: 24px;
+  background: rgba(61,107,98,0.04);
+  border-radius: 10px;
+  border: 1px solid rgba(61,107,98,0.25);
+}
+.sp-contact-row {
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+  font-family: 'DM Sans', sans-serif;
+  font-size: 15px;
+  color: var(--sp-text);
+  line-height: 1.6;
+}
+.sp-contact-row + .sp-contact-row { margin-top: 14px; }
+.sp-contact-row svg {
+  width: 20px;
+  height: 20px;
+  color: var(--sp-program);
+  flex-shrink: 0;
+  margin-top: 2px;
+}
+.sp-contact-row a {
+  color: var(--sp-program);
+  font-weight: 600;
+  text-decoration: none;
+}
+.sp-community-map {
+  border-radius: 12px;
+  overflow: hidden;
+  background: #e8ede9;
+  min-height: 360px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: 'DM Sans', sans-serif;
+  font-size: 14px;
+  color: var(--sp-gray);
+  text-align: center;
+  padding: 40px;
+  line-height: 1.7;
+  border: 1px dashed rgba(61,107,98,0.3);
+}
+.sp-hero .sp-tagline { animation: spFadeUp 0.7s ease 0.1s both; }
+.sp-hero .sp-hero-body { animation: spFadeUp 0.7s ease 0.3s both; }
+
+@media (max-width: 1024px) {
+  .sp-program-grid-home .sp-hcard { flex: 0 1 calc(50% - 12px); }
+  .sp-proof-grid { grid-template-columns: repeat(3, 1fr); gap: 16px 12px; }
+}
+
+@media (max-width: 767px) {
+  .sp-proof-bar { padding: 32px 20px; }
+  .sp-proof-grid { grid-template-columns: repeat(2, 1fr); gap: 20px 12px; }
+  .sp-program-grid-home .sp-hcard { flex: 0 0 100%; }
+  .sp-hcard-title { font-size: 20px; }
+  .sp-hcard-tagline { font-size: 12px; }
+  .sp-supp-card { grid-template-columns: 1fr; }
+  .sp-supp-visual { padding: 24px; min-height: auto; flex-direction: row; gap: 16px; }
+  .sp-supp-icon { width: 48px; height: 48px; }
+  .sp-supp-icon svg { width: 24px; height: 24px; }
+  .sp-split-reverse .sp-split-text { order: 1; }
+  .sp-split-reverse .sp-split-image { order: 2; }
+  .sp-split-text .sp-h2 { text-align: center; }
+  .sp-split-image { min-height: 260px; }
+  .sp-community-grid { grid-template-columns: 1fr; gap: 32px; }
+  .sp-community-map { min-height: 260px; }
+  .sp-testimonial-quote { font-size: 18px; padding: 0; }
+  .sp-testimonial-quote::before { font-size: 56px; top: -16px; left: -4px; }
+  .sp-hero-body { font-size: 16px; }
+  .sp-tagline { font-size: 11px; letter-spacing: 0.12em; margin-bottom: 16px; }
+}
+
+@media (max-width: 360px) {
+  .sp-proof-bar { padding: 24px 16px; }
+  .sp-hcard-header { padding: 18px 20px 14px; }
+  .sp-hcard-title { font-size: 18px; }
+  .sp-hcard-body { padding: 16px 20px 20px; }
+  .sp-hcard-age-num { font-size: 28px; }
+  .sp-supp-content { padding: 24px 20px; }
+  .sp-supp-title { font-size: 19px; }
+  .sp-split-image { min-height: 200px; padding: 24px; }
+  .sp-community-map { min-height: 200px; padding: 24px; }
+  .sp-contact-block { padding: 20px; }
+  .sp-testimonial-quote { font-size: 16px; }
+  .sp-btn-gold, .sp-btn-outline, .sp-btn-outline-dark { padding: 12px 24px; font-size: 15px; }
+  .sp-tagline { font-size: 10px; }
+}
+
+@media print {
+  .sp-hero::before, .sp-hero::after,
+  .sp-cta-section::before,
+  .sp-proof-icon { display: none; }
+  .sp-cta-section, .sp-bg-teal { background: #fff !important; color: var(--sp-text) !important; }
+  .sp-btn-gold, .sp-btn-outline, .sp-btn-outline-dark { border: 1px solid var(--sp-text); background: #fff !important; color: var(--sp-text) !important; }
+  .sp-hero-image, .sp-split-image, .sp-community-map { border: 1px solid #ccc; min-height: 100px; }
+  a.sp-hcard::after, a.sp-supp-card::after { content: none; }
+  .sp-hcard-header { background: #eee !important; }
+  .sp-hcard-title, .sp-hcard-badge, .sp-hcard-tagline, .sp-hcard-age-num, .sp-hcard-age-label { color: var(--sp-text) !important; }
+}
+
+</style>
+
+
+<!-- ==========================================================
+     BLOCK 1: HERO SECTION
+     Contains: H1, tagline, positioning statement, body copy,
+     primary + secondary CTA, hero image placeholder.
+     To edit: Change text between > and < tags.
+     ========================================================== -->
+
+<!-- Skip link: Kadence theme may provide its own — if so, remove this one. -->
+<a href="#sp-programs" class="sp-skip-link">Skip to programs</a>
+
+<section class="sp-hero" aria-label="Spark Academy hero introduction">
+  <div class="sp-hero-inner">
+
+    <p class="sp-tagline">Purposeful Play. Exceptional Beginnings.</p>
+
+    <h1 class="sp-h1">Where Curious Minds Become<br>Confident Learners</h1>
+
+    <p class="sp-positioning">The only preschool in Central Illinois founded and led by a doctoral researcher in early childhood education.</p>
+
+    <div class="sp-hero-body">
+      <p>Your child's first school experience shapes everything that follows &mdash; how they see themselves as learners, how they build friendships, how they walk into kindergarten. At Spark Academy, every part of their day is designed with that in mind.</p>
+      <p>Founded by Dr. Michelle Peterson, Ed.D., Spark Academy brings doctoral-level expertise to a warm, homelike setting where your child is known by name and nurtured by design. Small class sizes, a 5:1 student-to-teacher ratio, and all-inclusive tuition &mdash; everything from curriculum to daily snacks &mdash; mean you can focus on what matters most: watching your child thrive.</p>
+    </div>
+
+    <div class="sp-hero-ctas">
+      <a href="/schedule-a-tour/" class="sp-btn-gold" data-cta-type="primary" data-cta-text="Schedule a Tour - Hero">Schedule a Tour</a>
+      <a href="#question-form" class="sp-hero-secondary" data-cta-type="secondary" data-cta-text="Have a Question - Hero">Have a Question? We'd Love to Hear From You</a>
+    </div>
+
+    <!-- PHOTO PLACEHOLDER: Replace this div with an <img> tag when photography is ready.
+         Recommended: Wide-angle shot of 2-3 children in hands-on learning. Natural light. 
+         Homelike interior. Horizontal, min 2400px wide.
+         LOADING: This is the LCP element. Use loading="eager" fetchpriority="high".
+         Format: WebP with JPEG fallback via <picture>. Target LCP < 2.5s. -->
+    <div class="sp-hero-image" role="img" aria-label="Children engaged in hands-on learning activities at Spark Academy preschool in Morton, Illinois">
+      <span><strong>Hero Photo Placeholder</strong><br>Wide-angle shot of 2&ndash;3 children engaged in hands-on learning.<br>Natural light, homelike interior, teacher in background.<br>Horizontal, min 2400px wide. See Shot List &mdash; Shot 1.</span>
+    </div>
+
+  </div>
+</section>
+
+<!-- Triangle Divider -->
+<div class="sp-triangle-divider">
+  <span class="sp-tri sp-tri-1"></span>
+  <span class="sp-tri sp-tri-2"></span>
+  <span class="sp-tri sp-tri-3"></span>
+  <span class="sp-tri sp-tri-4"></span>
+  <span class="sp-tri sp-tri-5"></span>
+</div>
+
+
+
+<!-- ==========================================================
+     BLOCK 2: PROOF BAR
+     Contains: 6 trust signal items with SVG icons.
+     To edit: Change the text inside sp-proof-label spans.
+     ========================================================== -->
+
+<div class="sp-proof-bar">
+  <div class="sp-proof-grid">
+
+    <div class="sp-proof-item">
+      <div class="sp-proof-icon">
+        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M15 19.128a9.38 9.38 0 002.625.372 9.337 9.337 0 004.121-.952 4.125 4.125 0 00-7.533-2.493M15 19.128v-.003c0-1.113-.285-2.16-.786-3.07M15 19.128v.106A12.318 12.318 0 018.624 21c-2.331 0-4.512-.645-6.374-1.766l-.001-.109a6.375 6.375 0 0111.964-3.07M12 6.375a3.375 3.375 0 11-6.75 0 3.375 3.375 0 016.75 0zm8.25 2.25a2.625 2.625 0 11-5.25 0 2.625 2.625 0 015.25 0z"/></svg>
+      </div>
+      <span class="sp-proof-label">5:1 Student-to-<br>Teacher Ratio</span>
+    </div>
+
+    <div class="sp-proof-item">
+      <div class="sp-proof-icon">
+        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M4.26 10.147a60.436 60.436 0 00-.491 6.347A48.627 48.627 0 0112 20.904a48.627 48.627 0 018.232-4.41 60.46 60.46 0 00-.491-6.347m-15.482 0a50.57 50.57 0 00-2.658-.813A59.905 59.905 0 0112 3.493a59.902 59.902 0 0110.399 5.84c-.896.248-1.783.52-2.658.814m-15.482 0A50.697 50.697 0 0112 13.489a50.702 50.702 0 017.74-3.342M6.75 15a.75.75 0 100-1.5.75.75 0 000 1.5zm0 0v-3.675A55.378 55.378 0 0112 8.443m-7.007 11.55A5.981 5.981 0 006.75 15.75v-1.5"/></svg>
+      </div>
+      <span class="sp-proof-label">Doctoral-Led<br>Curriculum</span>
+    </div>
+
+    <div class="sp-proof-item">
+      <div class="sp-proof-icon">
+        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M9 12.75L11.25 15 15 9.75m-3-7.036A11.959 11.959 0 013.598 6 11.99 11.99 0 003 9.749c0 5.592 3.824 10.29 9 11.623 5.176-1.332 9-6.03 9-11.622 0-1.31-.21-2.571-.598-3.751h-.152c-3.196 0-6.1-1.248-8.25-3.285z"/></svg>
+      </div>
+      <span class="sp-proof-label">DCFS<br>Licensed</span>
+    </div>
+
+    <div class="sp-proof-item">
+      <div class="sp-proof-icon">
+        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M11.48 3.499a.562.562 0 011.04 0l2.125 5.111a.563.563 0 00.475.345l5.518.442c.499.04.701.663.321.988l-4.204 3.602a.563.563 0 00-.182.557l1.285 5.385a.562.562 0 01-.84.61l-4.725-2.885a.563.563 0 00-.586 0l-4.725 2.885a.562.562 0 01-.84-.61l1.285-5.386a.562.562 0 00-.182-.557l-4.204-3.602a.563.563 0 01.321-.988l5.518-.442a.563.563 0 00.475-.345L11.48 3.5z"/></svg>
+      </div>
+      <span class="sp-proof-label">Degreed &amp;<br>Credentialed Teachers</span>
+    </div>
+
+    <div class="sp-proof-item">
+      <div class="sp-proof-icon">
+        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M15.75 6a3.75 3.75 0 11-7.5 0 3.75 3.75 0 017.5 0zM4.501 20.118a7.5 7.5 0 0114.998 0A17.933 17.933 0 0112 21.75c-2.676 0-5.216-.584-7.499-1.632z"/></svg>
+      </div>
+      <span class="sp-proof-label">Ages 3 Through<br>Kindergarten</span>
+    </div>
+
+    <div class="sp-proof-item">
+      <div class="sp-proof-icon">
+        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M13.5 10.5V6.75a4.5 4.5 0 119 0v3.75M3.75 21.75h10.5a2.25 2.25 0 002.25-2.25v-6.75a2.25 2.25 0 00-2.25-2.25H3.75a2.25 2.25 0 00-2.25 2.25v6.75a2.25 2.25 0 002.25 2.25z"/></svg>
+      </div>
+      <span class="sp-proof-label">Open-Door<br>Classrooms</span>
+    </div>
+
+  </div>
+</div>
+
+
+<!-- ==========================================================
+     BLOCK 3: PROGRAMS AT A GLANCE
+     Contains: H2, subheadline, 5 program cards (Fresh 3's first),
+     help text with link, and all-inclusive tuition note.
+     To edit: Change program names, ages, schedules, tuition.
+     Cards stack to 1 column on mobile automatically.
+     ========================================================== -->
+
+<section class="sp-section sp-bg-white" id="sp-programs">
+  <div class="sp-inner">
+    <h2 class="sp-h2">A Program Designed for Every Stage</h2>
+    <p class="sp-intro">From first friendships in our 3's program to kindergarten readiness and beyond &mdash; your child grows with Spark every step of the way.</p>
+
+    <div class="sp-program-grid-home">
+
+      <!-- Card 1: Fresh 3's Fridays -->
+      <a href="/fresh-3s-fridays/" class="sp-hcard sp-hcard-fresh3" data-cta-type="program-card" data-cta-text="Fresh 3s Fridays - Programs">
+        <div class="sp-hcard-header">
+          <div class="sp-hcard-info">
+            <span class="sp-hcard-badge">Starting Point</span>
+            <h3 class="sp-hcard-title">Fresh 3's Fridays</h3>
+            <p class="sp-hcard-tagline">Their very first classroom, on their terms</p>
+          </div>
+          <div class="sp-hcard-age">
+            <div class="sp-hcard-age-num">3</div>
+            <div class="sp-hcard-age-label">years</div>
+          </div>
+        </div>
+        <div class="sp-hcard-body">
+          <dl class="sp-hcard-details">
+            <dt>Schedule</dt><dd>Fridays, 8:30&ndash;11:30 AM</dd>
+            <dt>Tuition</dt><dd>$100/month</dd>
+          </dl>
+          <span class="sp-hcard-cta">Explore Fresh 3's Fridays &#8594;</span>
+        </div>
+      </a>
+
+      <!-- Card 2: 3's Preschool -->
+      <a href="/preschool-3s/" class="sp-hcard sp-hcard-3s" data-cta-type="program-card" data-cta-text="3s Preschool - Programs">
+        <div class="sp-hcard-header">
+          <div class="sp-hcard-info">
+            <span class="sp-hcard-badge">For 3-Year-Olds</span>
+            <h3 class="sp-hcard-title">3's Preschool</h3>
+            <p class="sp-hcard-tagline">Building confidence through every discovery</p>
+          </div>
+          <div class="sp-hcard-age">
+            <div class="sp-hcard-age-num">3</div>
+            <div class="sp-hcard-age-label">years</div>
+          </div>
+        </div>
+        <div class="sp-hcard-body">
+          <dl class="sp-hcard-details">
+            <dt>Ages</dt><dd>Must be 3 by first day of school</dd>
+            <dt>Schedule</dt><dd>T/Th or M/W, 8:30&ndash;11:30 AM</dd>
+            <dt>Starting At</dt><dd>$350/month</dd>
+          </dl>
+          <span class="sp-hcard-cta">Explore the 3's Program &#8594;</span>
+        </div>
+      </a>
+
+      <!-- Card 3: 4's Preschool -->
+      <a href="/preschool-4s/" class="sp-hcard sp-hcard-4s" data-cta-type="program-card" data-cta-text="4s Preschool - Programs">
+        <div class="sp-hcard-header">
+          <div class="sp-hcard-info">
+            <span class="sp-hcard-badge">For 4-Year-Olds</span>
+            <h3 class="sp-hcard-title">4's Preschool</h3>
+            <p class="sp-hcard-tagline">Ready for more &mdash; and building toward kindergarten</p>
+          </div>
+          <div class="sp-hcard-age">
+            <div class="sp-hcard-age-num">4</div>
+            <div class="sp-hcard-age-label">years</div>
+          </div>
+        </div>
+        <div class="sp-hcard-body">
+          <dl class="sp-hcard-details">
+            <dt>Ages</dt><dd>Must be 4 by first day of school</dd>
+            <dt>Schedule</dt><dd>2, 3, or 5 day options, 8:30&ndash;11:30 AM</dd>
+            <dt>Starting At</dt><dd>$350/month</dd>
+          </dl>
+          <span class="sp-hcard-cta">Explore the 4's Program &#8594;</span>
+        </div>
+      </a>
+
+      <!-- Card 4: Kindergarten Prep -->
+      <a href="/kindergarten-prep/" class="sp-hcard sp-hcard-kprep" data-cta-type="program-card" data-cta-text="Kindergarten Prep - Programs">
+        <div class="sp-hcard-header">
+          <div class="sp-hcard-info">
+            <span class="sp-hcard-badge">Age 5+</span>
+            <h3 class="sp-hcard-title">Kindergarten Prep</h3>
+            <p class="sp-hcard-tagline">The bridge year that sets the foundation</p>
+          </div>
+          <div class="sp-hcard-age">
+            <div class="sp-hcard-age-num">5</div>
+            <div class="sp-hcard-age-label">years</div>
+          </div>
+        </div>
+        <div class="sp-hcard-body">
+          <dl class="sp-hcard-details">
+            <dt>Ages</dt><dd>Must be 5 by November 30</dd>
+            <dt>Schedule</dt><dd>2, 3, or 5 day options, 8:00&ndash;12:00 PM</dd>
+            <dt>Starting At</dt><dd>$400/month</dd>
+          </dl>
+          <span class="sp-hcard-cta">Explore Kindergarten Prep &#8594;</span>
+        </div>
+      </a>
+
+      <!-- Card 5: Kindergarten -->
+      <a href="/kindergarten/" class="sp-hcard sp-hcard-kinder" data-cta-type="program-card" data-cta-text="Kindergarten - Programs">
+        <div class="sp-hcard-header">
+          <div class="sp-hcard-info">
+            <span class="sp-hcard-badge">Age 5+</span>
+            <h3 class="sp-hcard-title">Kindergarten</h3>
+            <p class="sp-hcard-tagline">Not free kindergarten &mdash; better kindergarten</p>
+          </div>
+          <div class="sp-hcard-age">
+            <div class="sp-hcard-age-num">5+</div>
+            <div class="sp-hcard-age-label">years</div>
+          </div>
+        </div>
+        <div class="sp-hcard-body">
+          <dl class="sp-hcard-details">
+            <dt>Ages</dt><dd>Must be 5 by September 30</dd>
+            <dt>Schedule</dt><dd>M&ndash;F, 8:00&ndash;12:00 PM</dd>
+            <dt>Tuition</dt><dd>$700/month</dd>
+          </dl>
+          <span class="sp-hcard-cta">Explore Kindergarten &#8594;</span>
+        </div>
+      </a>
+
+    </div>
+
+    <p class="sp-programs-help">Not sure which program is right for your child? <a href="/programs/" data-cta-type="nav-link" data-cta-text="Find the Perfect Fit - Programs">We'd love to help you find the perfect fit.</a></p>
+
+    <div class="sp-tuition-note">
+      <strong>All-inclusive tuition &mdash; no hidden costs.</strong> Every core program's tuition covers everything: teachers, curriculum, all school supplies, art materials, and daily snacks. No supply lists. No surprise fees. No mid-year add-ons. Tuition is billed over a 10-month school year, September through May. $100 non-refundable deposit holds your spot. 10% discount for full-year tuition paid by August 15.
+    </div>
+
+  </div>
+</section>
+<!-- Color Bar Divider -->
+<div class="sp-color-bar"></div>
+
+
+
+<!-- ==========================================================
+     BLOCK 4: BEYOND THE CLASSROOM
+     Contains: H2, subheadline, 3 horizontal supplemental cards
+     (Discovery Station, After-School Enrichment, Camp Play).
+     To edit: Change program details, descriptions, or prices.
+     Cards stack vertically on mobile automatically.
+     ========================================================== -->
+
+<section class="sp-section sp-bg-sage sp-atmos sp-atmos-a">
+  <div class="sp-inner">
+    <h2 class="sp-h2">More Ways to Spark</h2>
+    <p class="sp-intro">Spark Academy offers enrichment, activities, and summer programming for children beyond our core preschool &mdash; from homeschool families to school-age kids looking for something new.</p>
+
+    <div class="sp-supp-grid">
+
+      <!-- Discovery Station -->
+      <a href="/homeschool-enrichment/" class="sp-supp-card" data-cta-type="program-card" data-cta-text="Discovery Station - Beyond Classroom">
+        <div class="sp-supp-visual sp-supp-visual-1">
+          <div class="sp-supp-icon sp-supp-icon-1"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M12 21v-8.25M15.75 21v-8.25M8.25 21v-8.25M3 9l9-6 9 6m-1.5 12V10.332A48.36 48.36 0 0012 9.75c-2.551 0-5.056.2-7.5.582V21M3 21h18M12 6.75h.008v.008H12V6.75z"/></svg></div>
+          <div class="sp-supp-visual-label">Tues &amp; Thurs<br>Ages 5&ndash;11</div>
+        </div>
+        <div class="sp-supp-content">
+          <span class="sp-supp-badge sp-supp-badge-1">Homeschool Families</span>
+          <h3 class="sp-supp-title">Discovery Station</h3>
+          <p class="sp-supp-meta"><strong>Tuesdays &amp; Thursdays, 1:00&ndash;3:50 PM</strong> &middot; Up to 6 classes/week<br>Starting at $180/class</p>
+          <p class="sp-supp-desc">Drop-off enrichment classes designed for homeschool families. Spanish, STEM, theater, cooking, and more &mdash; taught by credentialed instructors in small groups. Your child builds friendships and independence while you get a few hours back.</p>
+          <span class="sp-supp-cta sp-supp-cta-1">Explore Discovery Station &#8594;</span>
+        </div>
+      </a>
+
+      <!-- After-School Enrichment -->
+      <a href="/after-school-programs/" class="sp-supp-card" data-cta-type="program-card" data-cta-text="After-School Enrichment - Beyond Classroom">
+        <div class="sp-supp-visual sp-supp-visual-2">
+          <div class="sp-supp-icon sp-supp-icon-2"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M9.813 15.904L9 18.75l-.813-2.846a4.5 4.5 0 00-3.09-3.09L2.25 12l2.846-.813a4.5 4.5 0 003.09-3.09L9 5.25l.813 2.846a4.5 4.5 0 003.09 3.09L15.75 12l-2.846.813a4.5 4.5 0 00-3.09 3.09zM18.259 8.715L18 9.75l-.259-1.035a3.375 3.375 0 00-2.455-2.456L14.25 6l1.036-.259a3.375 3.375 0 002.455-2.456L18 2.25l.259 1.035a3.375 3.375 0 002.455 2.456L21.75 6l-1.036.259a3.375 3.375 0 00-2.455 2.456z"/></svg></div>
+          <div class="sp-supp-visual-label">Tuesdays 4&ndash;5 PM<br>Ages 5&ndash;11+</div>
+        </div>
+        <div class="sp-supp-content">
+          <span class="sp-supp-badge sp-supp-badge-2">Open to All Kids</span>
+          <h3 class="sp-supp-title">After-School Enrichment</h3>
+          <p class="sp-supp-meta"><strong>Tuesdays, 4:00&ndash;5:00 PM</strong> &middot; 12-week semesters<br>$180/semester</p>
+          <p class="sp-supp-desc">Semester-based activity classes for any school-age child &mdash; public, private, or homeschool. Theater, cooking, games, art, and more. One hour a week of something they can't get anywhere else. Not homework help &mdash; the best hour of their week.</p>
+          <span class="sp-supp-cta sp-supp-cta-2">See What's Running Now &#8594;</span>
+        </div>
+      </a>
+
+      <!-- Camp Play -->
+      <a href="/summer-camp/" class="sp-supp-card" data-cta-type="program-card" data-cta-text="Camp Play - Beyond Classroom">
+        <div class="sp-supp-visual sp-supp-visual-3">
+          <div class="sp-supp-icon sp-supp-icon-3"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M12 3v2.25m6.364.386l-1.591 1.591M21 12h-2.25m-.386 6.364l-1.591-1.591M12 18.75V21m-4.773-4.227l-1.591 1.591M5.25 12H3m4.227-4.773L5.636 5.636M15.75 12a3.75 3.75 0 11-7.5 0 3.75 3.75 0 017.5 0z"/></svg></div>
+          <div class="sp-supp-visual-label">Summer 2026<br>Ages 3&ndash;11</div>
+        </div>
+        <div class="sp-supp-content">
+          <span class="sp-supp-badge sp-supp-badge-3">Summer 2026</span>
+          <h3 class="sp-supp-title">Camp Play</h3>
+          <p class="sp-supp-meta"><strong>Mon&ndash;Fri, 8:30 AM&ndash;12:00 PM</strong> &middot; June 1&ndash;July 31<br>Starting at $50/day</p>
+          <p class="sp-supp-desc">Eight weeks of science, art, cooking, LEGOs, dramatic play, and outdoor adventures in small groups led by Spark's credentialed team. Mornings only, June through July. Designed for happy, tired kids at pickup.</p>
+          <span class="sp-supp-cta sp-supp-cta-3">Plan Your Child's Summer &#8594;</span>
+        </div>
+      </a>
+
+    </div>
+  </div>
+</section>
+<!-- Color Bar Divider -->
+<div class="sp-color-bar"></div>
+
+
+
+<!-- ==========================================================
+     BLOCK 5: THE PURPOSEFUL PLAY FRAMEWORK
+     Contains: H2, body copy (3 paragraphs including open-door),
+     "Learn more" link, image placeholder.
+     Split layout: text left, image right on desktop.
+     To edit: Change the paragraph text.
+     ========================================================== -->
+
+<section class="sp-section sp-bg-white sp-atmos sp-atmos-c">
+  <div class="sp-inner">
+    <div class="sp-split">
+
+      <div class="sp-split-text">
+        <h2 class="sp-h2">Every Moment Is Designed<br>with Purpose</h2>
+        <p>At Spark, play isn't recess. It's the research-proven method through which young children build the neural pathways for language, problem-solving, and self-regulation.</p>
+        <p>The Purposeful Play Framework &mdash; developed by Dr. Michelle Peterson and built on the Experience Early Learning curriculum &mdash; structures every part of your child's day around intentional, play-based learning experiences. From the Developmental Play Room that transforms monthly to daily enrichment in Spanish, STEM, art, communication, and music &mdash; nothing at Spark is accidental.</p>
+        <p>And if you ever want to see it for yourself &mdash; just come in. Spark families don't wait in the parking lot at pickup. They walk into the classroom, talk to their child's teacher, and see the day's work still on the table. Our doors are open to parents anytime, because the best schools are the ones that invite you inside.</p>
+        <a href="/purposeful-play-framework/" class="sp-split-link" data-cta-type="nav-link" data-cta-text="Learn More About Approach - Purposeful Play">Learn more about our approach &#8594;</a>
+      </div>
+
+      <!-- PHOTO PLACEHOLDER: Replace this div with an <img> tag when photography is ready.
+           Recommended: Child in Developmental Play Room — building, experimenting, or 
+           themed dramatic play. Room should look intentionally designed. Vertical or square.
+           LOADING: Below fold. Use loading="lazy". Format: WebP with JPEG fallback. -->
+      <div class="sp-split-image" role="img" aria-label="Child exploring the Developmental Play Room at Spark Academy, a monthly rotating play-based learning environment">
+        <span><strong>Photo Placeholder</strong><br>Child engaged in Developmental Play Room activity.<br>Intentionally designed space, monthly theme visible.<br>Vertical or square. See Shot List &mdash; Shot 7.</span>
+      </div>
+
+    </div>
+  </div>
+</section>
+<!-- Color Bar Divider -->
+<div class="sp-color-bar"></div>
+
+
+
+<!-- ==========================================================
+     BLOCK 6: MEET DR. MICHELLE PETERSON
+     Contains: H2, body copy (3 paragraphs), "Meet Dr. Peterson" 
+     link, portrait placeholder.
+     Split layout: image left, text right (reversed from Block 5).
+     To edit: Change the paragraph text.
+     ========================================================== -->
+
+<section class="sp-section sp-bg-sage sp-atmos sp-atmos-b">
+  <div class="sp-inner">
+    <div class="sp-split sp-split-reverse">
+
+      <div class="sp-split-text">
+        <h2 class="sp-h2">Led by a Researcher.<br>Built by a Mother.</h2>
+        <p>Dr. Michelle Peterson didn't just study early childhood education &mdash; she built a school around what the research says works.</p>
+        <p>With a doctorate in education from Illinois State University, 20 years in the classroom and school administration, and four Illinois teaching certifications, Dr. Peterson founded Spark Academy to close the gap between what research proves about how young children learn and what most preschools actually do.</p>
+        <p>When you visit Spark, you won't find worksheets from 1987. You'll find a learning environment that's been reimagined from the ground up &mdash; where every enrichment, every classroom setup, and every interaction is grounded in evidence and delivered with care.</p>
+        <a href="/dr-michelle-peterson/" class="sp-split-link" data-cta-type="nav-link" data-cta-text="Meet Dr Peterson - Founder">Meet Dr. Peterson &#8594;</a>
+      </div>
+
+      <!-- PHOTO PLACEHOLDER: Replace this div with an <img> tag when photography is ready.
+           Recommended: Professional but warm portrait of Dr. Peterson in the Spark 
+           environment. Smiling, approachable. Business casual. Natural light.
+           Vertical or square, min 1200px wide.
+           LOADING: Below fold. Use loading="lazy". Format: WebP with JPEG fallback. -->
+      <div class="sp-split-image" role="img" aria-label="Dr. Michelle Peterson, Ed.D., founder and executive director of Spark Academy preschool in Morton, Illinois">
+        <span><strong>Photo Placeholder</strong><br>Dr. Michelle Peterson &mdash; professional but warm portrait.<br>In Spark environment, at child-level or near materials.<br>Vertical or square, min 1200px. See Shot List &mdash; Shot 8.</span>
+      </div>
+
+    </div>
+  </div>
+</section>
+<!-- Color Bar Divider -->
+<div class="sp-color-bar"></div>
+
+
+
+<!-- ==========================================================
+     BLOCK 7: TESTIMONIAL SPOTLIGHT
+     Contains: H2, Holly's testimonial quote, attribution,
+     link to testimonials page.
+     To edit: Change the quote text or attribution.
+     ========================================================== -->
+
+<section class="sp-testimonial-section">
+  <div class="sp-testimonial-inner">
+    <h2 class="sp-h2">What Spark Families Are Saying</h2>
+
+    <div class="sp-testimonial-content">
+      <div class="sp-testimonial-quote">
+        One thing my husband and I strive to teach and instill in him is curiosity, and Spark is the perfect place for this. Since beginning at Spark, our son has begun to notice and identify letters while we are out and about. Spark is a wonderful partner with us as we seek together to spur on our son's love of learning and exploration.
+      </div>
+      <p class="sp-testimonial-attr">&mdash; Holly, Spark Academy Parent</p>
+    </div>
+
+    <a href="/testimonials/" class="sp-testimonial-link" data-cta-type="nav-link" data-cta-text="Read More From Spark Families - Testimonials">Read more from Spark families &#8594;</a>
+  </div>
+</section>
+<!-- Color Bar Divider -->
+<div class="sp-color-bar"></div>
+
+
+
+<!-- ==========================================================
+     BLOCK 8: COMMUNITY & LOCATION
+     Contains: H2, body copy naming 6 communities, contact info
+     block (address, phone, email), map/building photo placeholder.
+     To edit: Change the paragraph text, address, phone, or email.
+     ========================================================== -->
+
+<section class="sp-section sp-bg-white sp-atmos sp-atmos-d">
+  <div class="sp-inner">
+    <h2 class="sp-h2">A Homelike School in the Heart of Morton</h2>
+
+    <div class="sp-community-grid">
+
+      <div class="sp-community-text">
+        <p>Spark Academy is located at 1989 North Morton Avenue in Morton, Illinois &mdash; a warm, intentionally designed space that feels more like a second home than a school.</p>
+        <p>Serving families from Morton, Washington, East Peoria, Peoria, Germantown Hills, and across Central Illinois, Spark is a short drive from communities throughout the greater Peoria metro. Small class sizes, a 5:1 student-to-teacher ratio, and a building designed for young learners make Spark a place where your child will feel safe, known, and excited to return.</p>
+
+        <div class="sp-contact-block">
+          <div class="sp-contact-row">
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M15 10.5a3 3 0 11-6 0 3 3 0 016 0z"/><path stroke-linecap="round" stroke-linejoin="round" d="M19.5 10.5c0 7.142-7.5 11.25-7.5 11.25S4.5 17.642 4.5 10.5a7.5 7.5 0 1115 0z"/></svg>
+            <span>1989 North Morton Avenue, Morton, IL 61550</span>
+          </div>
+          <div class="sp-contact-row">
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M2.25 6.75c0 8.284 6.716 15 15 15h2.25a2.25 2.25 0 002.25-2.25v-1.372c0-.516-.351-.966-.852-1.091l-4.423-1.106c-.44-.11-.902.055-1.173.417l-.97 1.293c-.282.376-.769.542-1.21.38a12.035 12.035 0 01-7.143-7.143c-.162-.441.004-.928.38-1.21l1.293-.97c.363-.271.527-.734.417-1.173L6.963 3.102a1.125 1.125 0 00-1.091-.852H4.5A2.25 2.25 0 002.25 4.5v2.25z"/></svg>
+            <a href="tel:3092913292" data-cta-type="phone" data-cta-text="Phone - Contact Block">309-291-3292</a>
+          </div>
+          <div class="sp-contact-row">
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M21.75 6.75v10.5a2.25 2.25 0 01-2.25 2.25h-15a2.25 2.25 0 01-2.25-2.25V6.75m19.5 0A2.25 2.25 0 0019.5 4.5h-15a2.25 2.25 0 00-2.25 2.25m19.5 0v.243a2.25 2.25 0 01-1.07 1.916l-7.5 4.615a2.25 2.25 0 01-2.36 0L3.32 8.91a2.25 2.25 0 01-1.07-1.916V6.75"/></svg>
+            <a href="/cdn-cgi/l/email-protection#f3808392819892909297969e8a9e9c81879c9db3949e929a9fdd909c9e" data-cta-type="email" data-cta-text="Email - Contact Block"><span class="__cf_email__" data-cfemail="f6858697849d97959792939b8f9b9984829998b6919b979f9ad895999b">[email&#160;protected]</span></a>
+          </div>
+        </div>
+      </div>
+
+      <!-- MAP/BUILDING PLACEHOLDER: Replace with Google Maps embed or building photo.
+           Option A: <iframe> Google Maps embed of 1989 N Morton Ave, Morton, IL 61550.
+           Option B: Building exterior photo — warm, homelike, good weather.
+           LOADING: Below fold. Use loading="lazy". If iframe, add loading="lazy" to iframe. -->
+      <div class="sp-community-map" role="img" aria-label="Spark Academy preschool building located at 1989 North Morton Avenue in Morton, Illinois">
+        <span><strong>Map / Building Photo Placeholder</strong><br>Option A: Google Maps embed<br>Option B: Exterior building photo &mdash; warm, inviting, homelike.<br>See Shot List &mdash; Shot 9.</span>
+      </div>
+
+    </div>
+  </div>
+</section>
+<!-- Color Bar Divider -->
+<div class="sp-color-bar"></div>
+
+
+
+<!-- ==========================================================
+     BLOCK 9: FINAL CTA BLOCK
+     Contains: H2, body copy, phone link, two CTA buttons,
+     trust signals row.
+     To edit: Change the paragraph text or button labels.
+     ========================================================== -->
+
+<section class="sp-cta-section">
+  <div class="sp-inner">
+    <h2 class="sp-h2">See What a Day at Spark Looks Like</h2>
+    <p>The best way to experience Spark is in person. Schedule a tour and see the classrooms, meet Dr. Peterson, and find out how your child's learning path would be designed around who they are.</p>
+    <p>Prefer to call? Reach us at <a href="tel:3092913292" class="sp-cta-phone" data-cta-type="phone" data-cta-text="Phone - Bottom CTA">309-291-3292</a></p>
+    <div class="sp-cta-buttons">
+      <a href="/schedule-a-tour/" class="sp-btn-gold" data-cta-type="primary" data-cta-text="Schedule a Tour - Bottom">Schedule a Tour</a>
+      <a href="#question-form" class="sp-btn-outline" data-cta-type="secondary" data-cta-text="Have a Question - Bottom">Have a Question? We'd Love to Hear From You</a>
+    </div>
+    <div class="sp-cta-trust">
+      <span class="sp-cta-trust-item">
+        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M4.26 10.147a60.436 60.436 0 00-.491 6.347A48.627 48.627 0 0112 20.904a48.627 48.627 0 018.232-4.41 60.46 60.46 0 00-.491-6.347m-15.482 0a50.57 50.57 0 00-2.658-.813A59.905 59.905 0 0112 3.493a59.902 59.902 0 0110.399 5.84c-.896.248-1.783.52-2.658.814m-15.482 0A50.697 50.697 0 0112 13.489a50.702 50.702 0 017.74-3.342M6.75 15a.75.75 0 100-1.5.75.75 0 000 1.5zm0 0v-3.675A55.378 55.378 0 0112 8.443m-7.007 11.55A5.981 5.981 0 006.75 15.75v-1.5"/></svg>
+        Founded by Dr. Michelle Peterson, Ed.D.
+      </span>
+      <span class="sp-cta-trust-item">
+        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M15 19.128a9.38 9.38 0 002.625.372 9.337 9.337 0 004.121-.952 4.125 4.125 0 00-7.533-2.493M15 19.128v-.003c0-1.113-.285-2.16-.786-3.07M15 19.128v.106A12.318 12.318 0 018.624 21c-2.331 0-4.512-.645-6.374-1.766l-.001-.109a6.375 6.375 0 0111.964-3.07M12 6.375a3.375 3.375 0 11-6.75 0 3.375 3.375 0 016.75 0zm8.25 2.25a2.625 2.625 0 11-5.25 0 2.625 2.625 0 015.25 0z"/></svg>
+        5:1 Student-to-Teacher Ratio
+      </span>
+      <span class="sp-cta-trust-item">
+        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M9 12.75L11.25 15 15 9.75m-3-7.036A11.959 11.959 0 013.598 6 11.99 11.99 0 003 9.749c0 5.592 3.824 10.29 9 11.623 5.176-1.332 9-6.03 9-11.622 0-1.31-.21-2.571-.598-3.751h-.152c-3.196 0-6.1-1.248-8.25-3.285z"/></svg>
+        DCFS Licensed &middot; Morton, IL
+      </span>
+    </div>
+  </div>
+</section>
+<!-- Color Bar Divider -->
+<div class="sp-color-bar"></div>
+
+
+
+<!-- ==========================================================
+     BLOCK 9B: INLINE "HAVE A QUESTION?" FORM
+     Contains: H3, micro-copy, 3-field form (name, email, question).
+     Placed after the Final CTA Block so both CTAs can smooth-scroll
+     to this anchor. Uses the same reusable design pattern as all
+     inline question forms across the site.
+     To edit: Change the micro-copy or field labels.
+
+     PHASE 5 NOTE: Replace the <form> with Kadence Advanced Form block.
+     Keep the outer container and id="question-form" for anchor linking.
+     Configure: inline success message (NOT redirect), email notification
+     + auto-respond + database entry. GA4 event: question_form_submit.
+     ========================================================== -->
+
+<section class="sp-section sp-bg-sage" id="question-form" style="scroll-margin-top:80px;">
+  <div class="sp-inner">
+    <div style="max-width:580px; margin:0 auto; padding:36px 32px; background:var(--sp-program-wash); border:1px solid var(--sp-program-border); border-radius:12px; text-align:center;">
+      <h3 class="sp-h3" style="text-align:center; margin-bottom:8px;">Have a Question?</h3>
+      <p style="font-family:'DM Sans',sans-serif; font-size:15px; color:var(--sp-gray); line-height:1.6; margin-bottom:24px;">Thinking about Spark but not quite ready to visit? Send us your question and we'll get back to you personally.</p>
+
+      <form style="text-align:left;">
+        <div class="sp-form-group">
+          <label class="sp-form-label">Your Name <span class="sp-required">*</span></label>
+          <input type="text" class="sp-form-input" placeholder="First and last name" required>
+        </div>
+
+        <div class="sp-form-group">
+          <label class="sp-form-label">Email Address <span class="sp-required">*</span></label>
+          <input type="email" class="sp-form-input" placeholder="you@email.com" required>
+        </div>
+
+        <div class="sp-form-group">
+          <label class="sp-form-label">What Would You Like to Know? <span class="sp-required">*</span></label>
+          <textarea class="sp-form-textarea" placeholder="Your question about Spark Academy..." style="min-height:100px;" required></textarea>
+        </div>
+
+        <button type="submit" class="sp-form-submit-teal" data-cta-type="form-submit" data-cta-text="Send Your Question - Homepage">Send Your Question</button>
+      </form>
+    </div>
+  </div>
+</section>
+<!-- Color Bar Divider -->
+<div class="sp-color-bar"></div>
+
+
+
+<!-- ==========================================================
+     BLOCK 10: POSITIONING STATEMENT (FOOTER ACCENT)
+     Contains: Positioning statement text.
+     To edit: Change the text inside the <p> tag.
+     ========================================================== -->
+
+<div class="sp-positioning-footer">
+  <div class="sp-footer-triangles">
+    <span class="sp-ft" style="border-bottom-color: var(--sp-tri-pink);"></span>
+    <span class="sp-ft" style="border-bottom-color: var(--sp-tri-orange);"></span>
+    <span class="sp-ft" style="border-bottom-color: var(--sp-tri-yellow);"></span>
+    <span class="sp-ft" style="border-bottom-color: var(--sp-tri-green);"></span>
+    <span class="sp-ft" style="border-bottom-color: var(--sp-tri-blue);"></span>
+  </div>
+  <p>The only preschool in Central Illinois founded and led by a doctoral researcher in early childhood education.</p>
+</div>
+
+</body>
+</html>

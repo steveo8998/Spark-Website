@@ -1,0 +1,539 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Spark Academy — Consulting Thank You (Colorful Redesign)</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=DM+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body style="margin:0;padding:0;background:#FBFAF8;">
+
+<!-- ================================================================
+     SPARK ACADEMY — CONSULTING THANK YOU (COLORFUL REDESIGN v1)
+
+     DESIGN CHANGES FROM ORIGINAL:
+     - Colorful triangle divider after hero section
+     - Color bar divider before footer/final section
+     - Footer triangles (if positioning footer present)
+     - Program color variables added (teal — brand neutral)
+     - Light-touch treatment: page is too short for atmospheric triangles
+
+     NOTE: This is a small confirmation/form page. The colorful redesign
+     adds brand triangle motifs without heavy atmospheric treatment.
+     ================================================================ -->
+
+
+<style>
+
+/* ===== SPARK CONSULTING THANK-YOU PAGE — GLOBAL STYLES ===== */
+
+/* --- Brand Colors --- */
+:root {
+  --sp-teal: #3D6B62;
+  --sp-teal-hover: #2F554D;
+  --sp-gold: #C49826;
+  --sp-gold-hover: #A8821F;
+  --sp-sage: #9BB8AD;
+  --sp-white: #FBFAF8;
+  --sp-whisper: #EFF5F2;
+  --sp-text: #2E2E2E;
+  --sp-heading: #1A1A1A;
+  --sp-gray: #6B7280;
+  --sp-max: 1140px;
+}
+
+/* --- Page Container --- */
+.sp-ty-page {
+  max-width: 680px;
+  margin: 0 auto;
+  padding: 0 24px;
+}
+
+/* --- Section Containers --- */
+.sp-section {
+  padding: 80px 24px;
+}
+.sp-bg-white { background: var(--sp-white); }
+.sp-bg-sage { background: var(--sp-whisper); }
+
+/* --- Typography --- */
+.sp-h1 {
+  font-family: 'Playfair Display', serif;
+  font-size: 48px;
+  font-weight: 700;
+  line-height: 1.2;
+  color: var(--sp-heading);
+  text-align: center;
+  margin-bottom: 24px;
+  letter-spacing: -0.01em;
+}
+.sp-h2 {
+  font-family: 'Playfair Display', serif;
+  font-size: 28px;
+  font-weight: 700;
+  line-height: 1.3;
+  color: var(--sp-heading);
+  margin-bottom: 16px;
+}
+.sp-body {
+  font-family: 'DM Sans', sans-serif;
+  font-size: 17px;
+  line-height: 1.75;
+  color: var(--sp-text);
+}
+
+/* --- Hero Section --- */
+.sp-ty-hero {
+  background: var(--sp-whisper);
+  padding: 80px 24px 64px;
+  text-align: center;
+}
+.sp-ty-hero-inner {
+  max-width: 680px;
+  margin: 0 auto;
+}
+.sp-ty-accent {
+  width: 48px;
+  height: 3px;
+  background: var(--sp-teal);
+  margin: 0 auto 32px;
+  border-radius: 2px;
+}
+.sp-ty-confirm {
+  font-family: 'DM Sans', sans-serif;
+  font-size: 17px;
+  line-height: 1.75;
+  color: var(--sp-text);
+  max-width: 560px;
+  margin: 0 auto;
+}
+.sp-ty-checkmark {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 56px;
+  height: 56px;
+  margin: 0 auto 24px;
+  border-radius: 50%;
+  background: rgba(61,107,98,0.1);
+}
+.sp-ty-checkmark svg {
+  width: 28px;
+  height: 28px;
+  color: var(--sp-teal);
+}
+
+/* --- Credential Card --- */
+.sp-ty-credential {
+  max-width: 680px;
+  margin: 0 auto;
+}
+.sp-ty-credential-card {
+  background: var(--sp-white);
+  border: 1px solid rgba(155,184,173,0.35);
+  border-radius: 12px;
+  padding: 32px 36px;
+}
+.sp-ty-credential-card .sp-h2 {
+  font-size: 22px;
+  margin-bottom: 14px;
+  color: var(--sp-teal);
+}
+.sp-ty-credential-card p {
+  font-family: 'DM Sans', sans-serif;
+  font-size: 16px;
+  line-height: 1.75;
+  color: var(--sp-text);
+}
+.sp-ty-credential-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-family: 'DM Sans', sans-serif;
+  font-size: 15px;
+  font-weight: 600;
+  color: var(--sp-teal);
+  text-decoration: none;
+  margin-top: 18px;
+  border-bottom: 1px solid rgba(61,107,98,0.25);
+  transition: border-color 0.2s;
+}
+.sp-ty-credential-link:hover {
+  border-color: var(--sp-teal);
+}
+.sp-ty-credential-link svg {
+  width: 16px;
+  height: 16px;
+}
+
+/* --- Survey Section --- */
+.sp-ty-survey {
+  max-width: 680px;
+  margin: 0 auto;
+}
+.sp-ty-survey-intro {
+  font-family: 'DM Sans', sans-serif;
+  font-size: 15px;
+  line-height: 1.6;
+  color: var(--sp-gray);
+  text-align: center;
+  margin-bottom: 24px;
+}
+.sp-ty-survey-embed {
+  background: var(--sp-white);
+  border: 1px dashed rgba(155,184,173,0.5);
+  border-radius: 12px;
+  padding: 48px 32px;
+  text-align: center;
+  font-family: 'DM Sans', sans-serif;
+  font-size: 14px;
+  color: var(--sp-gray);
+  line-height: 1.7;
+}
+
+/* --- Next Steps --- */
+.sp-ty-next {
+  max-width: 680px;
+  margin: 0 auto;
+  text-align: center;
+}
+.sp-ty-next-label {
+  font-family: 'DM Sans', sans-serif;
+  font-size: 15px;
+  font-weight: 500;
+  color: var(--sp-gray);
+  margin-bottom: 20px;
+}
+.sp-ty-next-links {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  align-items: center;
+}
+.sp-ty-next-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  font-family: 'DM Sans', sans-serif;
+  font-size: 16px;
+  font-weight: 600;
+  color: var(--sp-teal);
+  text-decoration: none;
+  padding: 12px 24px;
+  border: 1px solid rgba(61,107,98,0.2);
+  border-radius: 8px;
+  transition: background 0.2s, border-color 0.2s;
+  min-width: 320px;
+  justify-content: center;
+}
+.sp-ty-next-link:hover {
+  background: rgba(61,107,98,0.04);
+  border-color: var(--sp-teal);
+}
+.sp-ty-next-link svg {
+  width: 18px;
+  height: 18px;
+}
+
+/* --- Divider --- */
+.sp-ty-divider {
+  width: 48px;
+  height: 1px;
+  background: var(--sp-sage);
+  margin: 0 auto;
+}
+
+/* ===== TABLET LAYOUT (768px–1024px) ===== */
+@media (max-width: 1024px) {
+  /* Tappable link underlines for touch devices */
+  .sp-ty-credential-link,
+  .sp-ty-next-link {
+    text-decoration: underline;
+    text-underline-offset: 4px;
+    text-decoration-color: rgba(61,107,98,0.4);
+  }
+}
+
+/* ===== MOBILE LAYOUT (phones: under 768px) ===== */
+@media (max-width: 767px) {
+  .sp-section { padding: 48px 20px; }
+  .sp-ty-hero { padding: 48px 20px 40px; }
+  .sp-h1 { font-size: 32px; }
+  .sp-h2 { font-size: 24px; }
+  .sp-ty-confirm { font-size: 16px; }
+  .sp-ty-credential-card { padding: 24px 20px; }
+  .sp-ty-credential-card p { font-size: 15px; }
+  .sp-ty-survey-embed { padding: 36px 20px; }
+  .sp-ty-next-link {
+    min-width: 0;
+    width: 100%;
+    max-width: 360px;
+  }
+  .sp-ty-checkmark {
+    width: 48px;
+    height: 48px;
+  }
+  .sp-ty-checkmark svg {
+    width: 24px;
+    height: 24px;
+  }
+}
+
+/* ===== SMALL PHONES & FOLDABLE FRONT SCREENS (under 360px) ===== */
+@media (max-width: 360px) {
+  .sp-section { padding: 36px 16px; }
+  .sp-ty-hero { padding: 36px 16px; }
+  .sp-h1 { font-size: 28px; }
+  .sp-h2 { font-size: 21px; }
+  .sp-ty-credential-card { padding: 20px 16px; }
+  .sp-ty-credential-card .sp-h2 { font-size: 19px; }
+  .sp-ty-credential-card p { font-size: 14px; }
+  .sp-ty-next-link { font-size: 15px; padding: 10px 20px; }
+}
+
+
+
+/* --- Colorful Redesign: Brand & Program Colors --- */
+:root {
+  /* Logo Triangle Colors (decorative motifs) */
+  --sp-tri-pink: #FAC1BB;
+  --sp-tri-orange: #F9A054;
+  --sp-tri-yellow: #FFC716;
+  --sp-tri-green: #808E71;
+  --sp-tri-blue: #5E8B96;
+
+  /* Program Color (Teal — Hub/Small Page) */
+  --sp-program: #3D6B62;
+  --sp-program-dark: #2F5A52;
+  --sp-program-deep: #234840;
+  --sp-program-light: rgba(61,107,98,0.08);
+  --sp-program-lighter: rgba(61,107,98,0.05);
+  --sp-program-wash: #EFF5F2;
+  --sp-program-whisper: #E8F0EC;
+  --sp-program-border: rgba(61,107,98,0.20);
+}
+
+/* --- Triangle Section Divider (After Hero) --- */
+.sp-triangle-divider {
+  display: flex;
+  justify-content: center;
+  align-items: flex-end;
+  gap: 10px;
+  padding: 18px 0 14px;
+  background: transparent;
+}
+.sp-tri {
+  width: 0;
+  height: 0;
+  border-left: solid transparent;
+  border-right: solid transparent;
+  border-bottom: solid;
+  opacity: 0.7;
+}
+.sp-tri-1 { border-bottom-color: var(--sp-tri-pink); border-left-width: 14px; border-right-width: 14px; border-bottom-width: 20px; }
+.sp-tri-2 { border-bottom-color: var(--sp-tri-orange); border-left-width: 11px; border-right-width: 11px; border-bottom-width: 16px; }
+.sp-tri-3 { border-bottom-color: var(--sp-tri-yellow); border-left-width: 16px; border-right-width: 16px; border-bottom-width: 23px; }
+.sp-tri-4 { border-bottom-color: var(--sp-tri-green); border-left-width: 10px; border-right-width: 10px; border-bottom-width: 14px; }
+.sp-tri-5 { border-bottom-color: var(--sp-tri-blue); border-left-width: 13px; border-right-width: 13px; border-bottom-width: 18px; }
+
+/* --- Color Bar Divider (Between Sections) --- */
+.sp-color-bar {
+  display: flex;
+  height: 4px;
+  width: 100%;
+}
+.sp-color-bar::before,
+.sp-color-bar::after {
+  content: '';
+  flex: 1;
+}
+.sp-color-bar::before {
+  background: linear-gradient(90deg,
+    var(--sp-tri-pink) 0%,
+    var(--sp-tri-orange) 25%,
+    var(--sp-tri-yellow) 50%
+  );
+}
+.sp-color-bar::after {
+  background: linear-gradient(90deg,
+    var(--sp-tri-yellow) 0%,
+    var(--sp-tri-green) 50%,
+    var(--sp-tri-blue) 100%
+  );
+}
+
+/* --- Footer Triangles --- */
+.sp-footer-triangles {
+  display: flex;
+  justify-content: center;
+  gap: 8px;
+  margin-bottom: 16px;
+}
+.sp-ft {
+  width: 0;
+  height: 0;
+  border-left: 8px solid transparent;
+  border-right: 8px solid transparent;
+  border-bottom: 11px solid;
+  opacity: 0.6;
+}
+
+/* --- Responsive: Triangle Divider --- */
+@media (max-width: 767px) {
+  .sp-triangle-divider {
+    gap: 8px;
+    padding: 14px 0 10px;
+    transform: scale(0.8);
+  }
+}
+@media (max-width: 360px) {
+  .sp-triangle-divider {
+    transform: scale(0.65);
+  }
+}
+
+</style>
+
+
+<!-- ==========================================================
+     BLOCK 1: CONFIRMATION HERO
+     Contains: Checkmark icon, H1, confirmation message.
+     Professional tone — colleague-to-colleague, not school-to-family.
+     To edit: Change text between > and < tags.
+     ========================================================== -->
+
+<section class="sp-ty-hero">
+  <div class="sp-ty-hero-inner">
+
+    <!-- Teal checkmark circle -->
+    <div class="sp-ty-checkmark">
+      <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2.5" stroke="currentColor">
+        <path stroke-linecap="round" stroke-linejoin="round" d="M4.5 12.75l6 6 9-13.5"/>
+      </svg>
+    </div>
+
+    <h1 class="sp-h1">Thank You for <span style="white-space:nowrap;">Reaching Out</span></h1>
+
+    <div class="sp-ty-accent"></div>
+
+    <p class="sp-ty-confirm">Your inquiry has been received. Dr.&nbsp;Peterson reviews every consulting request personally and will be in touch soon to discuss your needs and explore how she can help.</p>
+
+  </div>
+</section>
+
+<!-- Triangle Divider -->
+<div class="sp-triangle-divider">
+  <span class="sp-tri sp-tri-1"></span>
+  <span class="sp-tri sp-tri-2"></span>
+  <span class="sp-tri sp-tri-3"></span>
+  <span class="sp-tri sp-tri-4"></span>
+  <span class="sp-tri sp-tri-5"></span>
+</div>
+
+
+
+<!-- ==========================================================
+     BLOCK 2: CREDENTIAL REINFORCEMENT
+     Contains: Brief About Dr. Peterson credential summary with
+     link to full credentials page. Post-conversion trust signal.
+     To edit: Change text between > and < tags.
+     ========================================================== -->
+
+<section class="sp-section sp-bg-white">
+  <div class="sp-ty-credential">
+
+    <div class="sp-ty-credential-card">
+      <h2 class="sp-h2">About Dr.&nbsp;Peterson</h2>
+
+      <p>Dr.&nbsp;Michelle Peterson, Ed.D., brings more than 20 years in education to every consulting engagement&nbsp;&mdash; from classroom teaching and school administration to founding and leading Spark Academy. Her doctoral research at Illinois State University focused on early childhood development, and she holds Illinois certifications in Superintendent leadership, Chief School Business Official, and Type&nbsp;75 Administrative.</p>
+
+      <a href="/dr-michelle-peterson/" class="sp-ty-credential-link" data-cta-type="consulting-next" data-cta-text="Learn More Dr Peterson - Consulting TY">
+        Learn more about Dr.&nbsp;Peterson&rsquo;s background
+        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M13.5 4.5L21 12m0 0l-7.5 7.5M21 12H3"/></svg>
+      </a>
+    </div>
+
+  </div>
+</section>
+
+
+<!-- ==========================================================
+     BLOCK 3: TALLY SURVEY
+     Contains: Survey headline + placeholder for the Tally embed.
+     
+     PHASE 5 SETUP:
+     Replace the placeholder div below with the Tally embed code.
+     Survey question: "What convinced you to reach out about consulting?"
+     Answer options (configured in Tally, not in HTML):
+       - Dr. Peterson's doctoral research background
+       - A blog post I read
+       - A referral from a colleague
+       - I searched and found her credentials
+       - Spark Academy's reputation and results
+       - Something else
+     Connect to Google Sheet: "Spark — Consulting Conversion Survey"
+     No email collection. Anonymous responses.
+     ========================================================== -->
+
+<section class="sp-section sp-bg-sage">
+  <div class="sp-ty-survey">
+
+    <p class="sp-ty-survey-intro">One quick question to help us understand how educators find Dr.&nbsp;Peterson:</p>
+
+    <!-- ⬇️ REPLACE THIS PLACEHOLDER WITH YOUR TALLY EMBED CODE ⬇️ -->
+    <div class="sp-ty-survey-embed">
+      <strong>Tally Survey Placeholder</strong><br><br>
+      During Phase 5, replace this block with the Tally embed code.<br>
+      Survey: &ldquo;What convinced you to reach out about consulting?&rdquo;<br>
+      6 answer options &middot; No email collection &middot; Connected to Google Sheets
+    </div>
+    <!-- ⬆️ END TALLY PLACEHOLDER ⬆️ -->
+
+  </div>
+</section>
+
+
+<!-- ==========================================================
+     BLOCK 4: NEXT STEPS
+     Contains: "While you wait" label with two next-step links.
+     The blog link URL is a placeholder — update manually when 
+     new educator-facing blog posts are published, or replace 
+     with a dynamic shortcode during Phase 5 if preferred.
+     To edit: Change link text and href values.
+     ========================================================== -->
+
+
+<!-- Color Bar Divider -->
+<div class="sp-color-bar"></div>
+
+<section class="sp-section sp-bg-white">
+  <div class="sp-ty-next">
+
+    <p class="sp-ty-next-label">While you wait:</p>
+
+    <div class="sp-ty-next-links">
+
+      <a href="/dr-michelle-peterson/" class="sp-ty-next-link" data-cta-type="consulting-next" data-cta-text="Explore Credentials - Consulting TY">
+        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M4.26 10.147a60.438 60.438 0 0 0-.491 6.347A48.62 48.62 0 0 1 12 20.904a48.62 48.62 0 0 1 8.232-4.41 60.46 60.46 0 0 0-.491-6.347m-15.482 0a50.636 50.636 0 0 0-2.658-.813A59.906 59.906 0 0 1 12 3.493a59.903 59.903 0 0 1 10.399 5.84c-.896.248-1.783.52-2.658.814m-15.482 0A50.717 50.717 0 0 1 12 13.489a50.702 50.702 0 0 1 7.74-3.342M6.75 15a.75.75 0 1 0 0-1.5.75.75 0 0 0 0 1.5Zm0 0v-3.675A55.378 55.378 0 0 1 12 8.443m-7.007 11.55A5.981 5.981 0 0 0 6.75 15.75v-1.5"/></svg>
+        Explore Dr.&nbsp;Peterson&rsquo;s Full Credentials
+      </a>
+
+      <!-- 
+        ⚠️ BLOG LINK — UPDATE MANUALLY OR USE SHORTCODE
+        Replace the href below with the URL of the most recent 
+        educator-facing blog post. Update each time a new 
+        educator post is published, or implement a dynamic 
+        shortcode during Phase 5 development.
+      -->
+      <a href="/blog/" class="sp-ty-next-link" data-cta-type="consulting-next" data-cta-text="Read Latest Research - Consulting TY">
+        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M12 6.042A8.967 8.967 0 0 0 6 3.75c-1.052 0-2.062.18-3 .512v14.25A8.987 8.987 0 0 1 6 18c2.305 0 4.408.867 6 2.292m0-14.25a8.966 8.966 0 0 1 6-2.292c1.052 0 2.062.18 3 .512v14.25A8.987 8.987 0 0 0 18 18a8.967 8.967 0 0 0-6 2.292m0-14.25v14.25"/></svg>
+        Read Her Latest Research
+      </a>
+
+    </div>
+
+  </div>
+</section>
+
+</body>
+</html>

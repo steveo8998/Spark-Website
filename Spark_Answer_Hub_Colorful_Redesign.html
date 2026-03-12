@@ -1,0 +1,3156 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Spark Academy — Answer Hub (Colorful Redesign)</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=DM+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body style="margin:0;padding:0;background:#FBFAF8;">
+
+<!-- ================================================================
+     SPARK ACADEMY — ANSWER HUB PAGE (COLORFUL REDESIGN v1)
+
+     DESIGN CHANGES FROM ORIGINAL:
+     - Program color: Brand Teal (Hub Page) replaces universal teal accents
+     - Hero background: Program wash tint instead of Whisper Sage
+     - Decorative CSS triangles replace circular radial gradients
+     - Alternating sections: Program wash + Cloud White
+     - Buttons, icons, links, tuition header: all use program palette
+     - Triangle section dividers between major blocks
+     - CTA section: deep program color gradient instead of teal
+     - FAQ chevrons + hover: program color
+     - Positioning footer: five-triangle brand motif
+
+     NOTE: The sp-teal variable is KEPT for cross-site links and
+     elements that should remain brand-neutral. Only program-specific
+     accents shift to the program color.
+     ================================================================ -->
+
+
+<style>
+
+/* ===== SPARK ANSWER HUB PAGE — COLORFUL REDESIGN GLOBAL STYLES ===== */
+
+/* --- Brand Colors (base palette — shared across all pages) --- */
+:root {
+  --sp-teal: #3D6B62;
+  --sp-gold: #C49826;
+  --sp-gold-hover: #A8821F;
+  --sp-sage: #9BB8AD;
+  --sp-white: #FBFAF8;
+  --sp-whisper: #EFF5F2;
+  --sp-text: #2E2E2E;
+  --sp-heading: #1A1A1A;
+  --sp-gray: #6B7280;
+  --sp-max: 1140px;
+
+  /* --- Program Color: Brand Teal (Hub Page) --- */
+  --sp-program: #3D6B62;
+  --sp-program-dark: #2F5A52;
+  --sp-program-deep: #234840;
+  --sp-program-light: rgba(61,107,98,0.08);
+  --sp-program-lighter: rgba(61,107,98,0.05);
+  --sp-program-wash: #EFF5F2;
+  --sp-program-whisper: #E8F0EC;
+  --sp-program-border: rgba(61,107,98,0.20);
+
+  /* --- Logo Triangle Colors (for decorative motifs) --- */
+  --sp-tri-pink: #FAC1BB;
+  --sp-tri-orange: #F9A054;
+  --sp-tri-yellow: #FFC716;
+  --sp-tri-green: #808E71;
+  --sp-tri-blue: #5E8B96;
+}
+
+/* --- Section Containers --- */
+.sp-section {
+  padding: 80px 24px;
+}
+.sp-inner {
+  max-width: var(--sp-max);
+  margin: 0 auto;
+}
+/* CHANGED: alternating section backgrounds use program wash instead of whisper sage */
+.sp-bg-sage { background: var(--sp-program-whisper); }
+.sp-bg-white { background: var(--sp-white); }
+
+/* --- Typography --- */
+.sp-h1 {
+  font-family: 'Playfair Display', serif;
+  font-size: 48px;
+  font-weight: 700;
+  line-height: 1.18;
+  color: var(--sp-heading);
+  text-align: center;
+  margin-bottom: 16px;
+  letter-spacing: -0.01em;
+}
+.sp-h2 {
+  font-family: 'Playfair Display', serif;
+  font-size: 36px;
+  font-weight: 700;
+  line-height: 1.25;
+  color: var(--sp-heading);
+  text-align: center;
+  margin-bottom: 16px;
+}
+.sp-h3 {
+  font-family: 'Playfair Display', serif;
+  font-size: 24px;
+  font-weight: 700;
+  line-height: 1.3;
+  color: var(--sp-heading);
+  margin-bottom: 12px;
+}
+.sp-intro {
+  text-align: center;
+  max-width: 680px;
+  margin: 0 auto 48px;
+  color: var(--sp-gray);
+  font-family: 'DM Sans', sans-serif;
+  font-size: 17px;
+  line-height: 1.7;
+}
+
+/* --- Buttons (CHANGED: program color instead of gold) --- */
+.sp-btn-gold {
+  display: inline-block;
+  background: var(--sp-program);
+  color: #fff;
+  padding: 14px 32px;
+  border-radius: 6px;
+  font-family: 'DM Sans', sans-serif;
+  font-weight: 600;
+  font-size: 16px;
+  text-decoration: none;
+  transition: background 0.2s, transform 0.2s;
+  box-shadow: 0 2px 8px rgba(61,107,98,0.25);
+}
+.sp-btn-gold:hover {
+  background: var(--sp-program-dark);
+  transform: translateY(-2px);
+  box-shadow: 0 4px 16px rgba(61,107,98,0.3);
+}
+.sp-btn-outline {
+  display: inline-block;
+  background: transparent;
+  color: #fff;
+  padding: 14px 32px;
+  border-radius: 6px;
+  border: 2px solid rgba(255,255,255,0.4);
+  font-family: 'DM Sans', sans-serif;
+  font-weight: 600;
+  font-size: 16px;
+  text-decoration: none;
+  transition: border-color 0.2s, background 0.2s;
+}
+.sp-btn-outline:hover {
+  border-color: #fff;
+  background: rgba(255,255,255,0.08);
+}
+
+/* --- Hero Section (CHANGED: warm peach background + triangle decorations) --- */
+.sp-hero {
+  background: var(--sp-program-wash);
+  padding: 80px 24px 64px;
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+}
+/* CHANGED: Triangle decorations instead of circular gradients */
+.sp-hero::before {
+  content: '';
+  position: absolute;
+  top: -40px;
+  right: -60px;
+  width: 0;
+  height: 0;
+  border-left: 180px solid transparent;
+  border-right: 180px solid transparent;
+  border-bottom: 320px solid rgba(61,107,98,0.08);
+  transform: rotate(15deg);
+}
+.sp-hero::after {
+  content: '';
+  position: absolute;
+  bottom: -80px;
+  left: -40px;
+  width: 0;
+  height: 0;
+  border-left: 140px solid transparent;
+  border-right: 140px solid transparent;
+  border-bottom: 250px solid rgba(61,107,98,0.06);
+  transform: rotate(-10deg);
+}
+.sp-hero-inner {
+  max-width: var(--sp-max);
+  margin: 0 auto;
+  position: relative;
+  z-index: 1;
+}
+.sp-hero-sub {
+  font-family: 'DM Sans', sans-serif;
+  font-size: 17px;
+  line-height: 1.7;
+  color: var(--sp-gray);
+  max-width: 660px;
+  margin: 0 auto 32px;
+  font-style: italic;
+}
+.sp-hero-ctas {
+  display: flex;
+  gap: 16px;
+  justify-content: center;
+  align-items: center;
+  margin-top: 36px;
+  flex-wrap: wrap;
+}
+/* CHANGED: secondary link uses program color */
+.sp-hero-secondary {
+  font-family: 'DM Sans', sans-serif;
+  font-size: 15px;
+  color: var(--sp-program-dark);
+  font-weight: 600;
+  text-decoration: none;
+  border-bottom: 1px solid rgba(61,107,98,0.4);
+  transition: border-color 0.2s;
+}
+.sp-hero-secondary:hover {
+  border-color: var(--sp-program);
+}
+/* CHANGED: trust line icons use program color */
+.sp-trust-line {
+  display: flex;
+  gap: 24px;
+  justify-content: center;
+  flex-wrap: wrap;
+  margin-top: 28px;
+  font-family: 'DM Sans', sans-serif;
+  font-size: 13px;
+  font-weight: 500;
+  color: var(--sp-gray);
+}
+.sp-trust-line span {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+.sp-trust-line svg {
+  width: 16px;
+  height: 16px;
+  color: var(--sp-program);
+}
+.sp-hero-image {
+  max-width: var(--sp-max);
+  margin: 48px auto 0;
+  border-radius: 12px;
+  overflow: hidden;
+  background: var(--sp-program-whisper);
+  min-height: 340px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: 'DM Sans', sans-serif;
+  font-size: 14px;
+  color: var(--sp-gray);
+  text-align: center;
+  padding: 40px;
+  line-height: 1.7;
+  border: 1px dashed var(--sp-program-border);
+}
+
+/* --- Triangle Section Divider (NEW — decorative motif) --- */
+.sp-triangle-divider {
+  display: flex;
+  justify-content: center;
+  align-items: flex-end;
+  gap: 4px;
+  padding: 16px 0;
+  margin: 0;
+  background: transparent;
+  position: relative;
+  z-index: 2;
+}
+.sp-triangle-divider .sp-tri {
+  display: inline-block;
+  width: 0;
+  height: 0;
+  border-left: 16px solid transparent;
+  border-right: 16px solid transparent;
+  border-bottom: 22px solid;
+}
+/* Stagger heights for a playful rhythm — must use parent selector for specificity */
+.sp-triangle-divider .sp-tri-1 { border-bottom-color: var(--sp-tri-pink); border-left-width: 14px; border-right-width: 14px; border-bottom-width: 20px; }
+.sp-triangle-divider .sp-tri-2 { border-bottom-color: var(--sp-tri-orange); border-left-width: 16px; border-right-width: 16px; border-bottom-width: 24px; }
+.sp-triangle-divider .sp-tri-3 { border-bottom-color: var(--sp-tri-yellow); border-left-width: 18px; border-right-width: 18px; border-bottom-width: 26px; }
+.sp-triangle-divider .sp-tri-4 { border-bottom-color: var(--sp-tri-green); border-left-width: 16px; border-right-width: 16px; border-bottom-width: 24px; }
+.sp-triangle-divider .sp-tri-5 { border-bottom-color: var(--sp-tri-blue); border-left-width: 14px; border-right-width: 14px; border-bottom-width: 20px; }
+
+/* --- Color Bar Section Divider (matches "document line" brand asset) --- */
+.sp-color-bar {
+  height: 5px;
+  background: linear-gradient(
+    to right,
+    var(--sp-tri-pink) 0%, var(--sp-tri-pink) 20%,
+    var(--sp-tri-orange) 20%, var(--sp-tri-orange) 40%,
+    var(--sp-tri-yellow) 40%, var(--sp-tri-yellow) 60%,
+    var(--sp-tri-green) 60%, var(--sp-tri-green) 80%,
+    var(--sp-tri-blue) 80%, var(--sp-tri-blue) 100%
+  );
+}
+
+/* --- Atmospheric Background Triangles (barely visible, felt not seen) --- */
+/* Each variant places 1-2 large triangles at different positions via clip-path.
+   Opacity is 0.03-0.04 so they register as texture, not decoration.
+   Uses the program color so they subtly reinforce the page's color identity. */
+.sp-atmos {
+  position: relative;
+  overflow: hidden;
+}
+.sp-atmos::before,
+.sp-atmos::after {
+  content: '';
+  position: absolute;
+  z-index: 0;
+  pointer-events: none;
+}
+/* Variant A: large triangle bottom-right corner */
+.sp-atmos-a::before {
+  bottom: -60px;
+  right: -80px;
+  width: 500px;
+  height: 500px;
+  background: var(--sp-program);
+  opacity: 0.035;
+  clip-path: polygon(100% 0%, 0% 100%, 100% 100%);
+}
+/* Variant B: large triangle top-left corner */
+.sp-atmos-b::before {
+  top: -40px;
+  left: -60px;
+  width: 420px;
+  height: 420px;
+  background: var(--sp-program);
+  opacity: 0.03;
+  clip-path: polygon(0% 0%, 100% 0%, 0% 100%);
+}
+/* Variant C: two smaller triangles, opposite corners */
+.sp-atmos-c::before {
+  top: -30px;
+  right: -50px;
+  width: 320px;
+  height: 320px;
+  background: var(--sp-program);
+  opacity: 0.03;
+  clip-path: polygon(50% 0%, 0% 100%, 100% 100%);
+}
+.sp-atmos-c::after {
+  bottom: -40px;
+  left: -40px;
+  width: 260px;
+  height: 260px;
+  background: var(--sp-program);
+  opacity: 0.025;
+  clip-path: polygon(50% 100%, 0% 0%, 100% 0%);
+}
+/* Variant D: single large triangle centered-right, rotated feel */
+.sp-atmos-d::before {
+  top: 50%;
+  right: -100px;
+  transform: translateY(-50%);
+  width: 460px;
+  height: 460px;
+  background: var(--sp-program);
+  opacity: 0.03;
+  clip-path: polygon(50% 0%, 0% 100%, 100% 80%);
+}
+/* All atmospheric content needs to sit above the shapes */
+.sp-atmos > * {
+  position: relative;
+  z-index: 1;
+}
+
+/* --- Prose Content Sections --- */
+.sp-prose {
+  max-width: 720px;
+  margin: 0 auto;
+}
+.sp-prose p {
+  font-family: 'DM Sans', sans-serif;
+  font-size: 17px;
+  line-height: 1.75;
+  color: var(--sp-text);
+}
+.sp-prose p + p {
+  margin-top: 20px;
+}
+.sp-prose .sp-h2 {
+  text-align: left;
+  margin-bottom: 24px;
+}
+.sp-prose .sp-h3 {
+  margin-top: 40px;
+  margin-bottom: 16px;
+}
+/* CHANGED: accent text uses program color */
+.sp-prose-accent {
+  font-family: 'DM Sans', sans-serif;
+  font-size: 18px;
+  font-weight: 600;
+  color: var(--sp-program-dark);
+  margin-top: 24px;
+}
+
+/* --- Daily Schedule Cards (CHANGED: icon backgrounds + time color) --- */
+.sp-schedule-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 20px;
+  margin-top: 48px;
+}
+.sp-schedule-card {
+  background: var(--sp-white);
+  border: 1px solid var(--sp-program-border);
+  border-radius: 12px;
+  padding: 28px 28px 24px;
+  display: flex;
+  gap: 16px;
+  align-items: flex-start;
+  transition: transform 0.2s, box-shadow 0.2s;
+}
+.sp-schedule-card:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(61,107,98,0.1);
+}
+.sp-schedule-icon {
+  flex-shrink: 0;
+  width: 48px;
+  height: 48px;
+  border-radius: 12px;
+  background: var(--sp-program-light);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.sp-schedule-icon svg {
+  width: 24px;
+  height: 24px;
+  color: var(--sp-program);
+}
+.sp-schedule-content {
+  flex: 1;
+}
+.sp-schedule-title {
+  font-family: 'DM Sans', sans-serif;
+  font-weight: 700;
+  font-size: 16px;
+  color: var(--sp-heading);
+  margin-bottom: 2px;
+}
+.sp-schedule-time {
+  font-family: 'DM Sans', sans-serif;
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--sp-program-dark);
+  margin-bottom: 8px;
+}
+.sp-schedule-desc {
+  font-family: 'DM Sans', sans-serif;
+  font-size: 15px;
+  line-height: 1.65;
+  color: var(--sp-text);
+  opacity: 0.85;
+}
+.sp-schedule-full {
+  grid-column: 1 / -1;
+}
+.sp-schedule-meta {
+  text-align: center;
+  margin-top: 32px;
+  font-family: 'DM Sans', sans-serif;
+  font-size: 15px;
+  color: var(--sp-gray);
+  font-weight: 500;
+}
+.sp-schedule-meta strong {
+  color: var(--sp-text);
+  font-weight: 600;
+}
+
+/* --- Subsection Feature Block --- */
+.sp-feature-block {
+  margin-top: 56px;
+  padding-top: 48px;
+  border-top: 1px solid var(--sp-program-border);
+}
+.sp-feature-block .sp-h3 {
+  text-align: center;
+  margin-bottom: 16px;
+}
+.sp-feature-desc {
+  max-width: 720px;
+  margin: 0 auto;
+}
+.sp-feature-desc p {
+  font-family: 'DM Sans', sans-serif;
+  font-size: 17px;
+  line-height: 1.75;
+  color: var(--sp-text);
+}
+.sp-feature-desc p + p {
+  margin-top: 20px;
+}
+
+/* --- Enrichment Pills (CHANGED: orange accent) --- */
+.sp-enrich-pills {
+  display: flex;
+  justify-content: center;
+  gap: 12px;
+  flex-wrap: wrap;
+  max-width: 700px;
+  margin: 32px auto 0;
+}
+.sp-enrich-pill {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 10px 18px;
+  background: var(--sp-white);
+  border: 1px solid var(--sp-program-border);
+  border-radius: 40px;
+  transition: border-color 0.2s, box-shadow 0.2s;
+}
+.sp-enrich-pill:hover {
+  border-color: var(--sp-program);
+  box-shadow: 0 2px 12px rgba(61,107,98,0.12);
+}
+.sp-enrich-pill-day {
+  font-family: 'DM Sans', sans-serif;
+  font-size: 11px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--sp-program-dark);
+  background: var(--sp-program-light);
+  padding: 3px 8px;
+  border-radius: 4px;
+  line-height: 1.3;
+}
+.sp-enrich-pill-subject {
+  font-family: 'DM Sans', sans-serif;
+  font-size: 15px;
+  font-weight: 600;
+  color: var(--sp-heading);
+}
+.sp-enrich-note {
+  max-width: 720px;
+  margin: 24px auto 0;
+  font-family: 'DM Sans', sans-serif;
+  font-size: 15px;
+  line-height: 1.7;
+  color: var(--sp-text);
+  text-align: center;
+}
+
+/* --- Separation / Open Door Section (CHANGED: link color) --- */
+.sp-separation-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  margin-top: 24px;
+  font-family: 'DM Sans', sans-serif;
+  font-size: 16px;
+  font-weight: 600;
+  color: var(--sp-program-dark);
+  text-decoration: none;
+  transition: gap 0.2s ease;
+}
+.sp-separation-link:hover { gap: 12px; }
+
+/* --- Tuition Card (CHANGED: orange header) --- */
+.sp-tuition-main {
+  max-width: 520px;
+  margin: 0 auto;
+  background: var(--sp-white);
+  border: 1px solid var(--sp-program-border);
+  border-radius: 16px;
+  overflow: hidden;
+}
+.sp-tuition-header {
+  background: linear-gradient(135deg, #2F5A52 0%, #3D6B62 50%, #5A8F84 100%);
+  padding: 28px 32px;
+  text-align: center;
+}
+.sp-tuition-header-label {
+  font-family: 'DM Sans', sans-serif;
+  font-size: 12px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  color: rgba(255,255,255,0.7);
+  margin-bottom: 8px;
+}
+.sp-tuition-header-price {
+  font-family: 'Playfair Display', serif;
+  font-size: 48px;
+  font-weight: 700;
+  color: #fff;
+  line-height: 1;
+}
+.sp-tuition-header-price span {
+  font-family: 'DM Sans', sans-serif;
+  font-size: 18px;
+  font-weight: 500;
+  color: rgba(255,255,255,0.65);
+}
+.sp-tuition-body {
+  padding: 28px 32px;
+}
+.sp-tuition-schedules {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+.sp-tuition-schedule-row {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+}
+.sp-tuition-schedule-check {
+  flex-shrink: 0;
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+  background: var(--sp-program-light);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.sp-tuition-schedule-check svg {
+  width: 16px;
+  height: 16px;
+  color: var(--sp-program);
+}
+.sp-tuition-schedule-label {
+  font-family: 'DM Sans', sans-serif;
+  font-size: 11px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--sp-gray);
+}
+.sp-tuition-schedule-days {
+  font-family: 'DM Sans', sans-serif;
+  font-size: 16px;
+  font-weight: 600;
+  color: var(--sp-heading);
+}
+.sp-tuition-body-note {
+  margin-top: 20px;
+  padding-top: 16px;
+  border-top: 1px solid var(--sp-program-border);
+  font-family: 'DM Sans', sans-serif;
+  font-size: 14px;
+  color: var(--sp-gray);
+  line-height: 1.6;
+  text-align: center;
+}
+
+/* Add-on strip */
+.sp-tuition-addon {
+  max-width: 520px;
+  margin: 16px auto 0;
+  background: var(--sp-white);
+  border: 1px solid var(--sp-program-border);
+  border-radius: 12px;
+  padding: 20px 28px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+}
+.sp-tuition-addon-left {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+.sp-tuition-addon-plus {
+  flex-shrink: 0;
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  background: var(--sp-program-light);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: 'DM Sans', sans-serif;
+  font-size: 18px;
+  font-weight: 700;
+  color: var(--sp-program);
+}
+.sp-tuition-addon-name {
+  font-family: 'DM Sans', sans-serif;
+  font-size: 15px;
+  font-weight: 600;
+  color: var(--sp-heading);
+}
+.sp-tuition-addon-sub {
+  font-family: 'DM Sans', sans-serif;
+  font-size: 12px;
+  color: var(--sp-gray);
+}
+.sp-tuition-addon-price {
+  font-family: 'DM Sans', sans-serif;
+  font-size: 22px;
+  font-weight: 700;
+  color: var(--sp-program);
+  white-space: nowrap;
+}
+.sp-tuition-addon-price span {
+  font-size: 13px;
+  font-weight: 500;
+  color: var(--sp-gray);
+}
+
+/* --- Tuition Details --- */
+.sp-tuition-details {
+  margin-top: 32px;
+  font-family: 'DM Sans', sans-serif;
+  font-size: 15px;
+  line-height: 1.7;
+  color: var(--sp-text);
+}
+.sp-tuition-details p + p {
+  margin-top: 12px;
+}
+.sp-tuition-details strong {
+  color: var(--sp-heading);
+  font-weight: 600;
+}
+
+/* --- All-Inclusive Tuition Note (CHANGED: orange tint) --- */
+.sp-tuition-note {
+  max-width: 720px;
+  margin: 32px auto 0;
+  padding: 24px 32px;
+  background: var(--sp-program-lighter);
+  border: 1px solid var(--sp-program-border);
+  border-radius: 10px;
+  font-family: 'DM Sans', sans-serif;
+  font-size: 15px;
+  line-height: 1.7;
+  color: var(--sp-text);
+  text-align: center;
+}
+.sp-tuition-note strong {
+  color: var(--sp-program-dark);
+  font-weight: 700;
+}
+
+/* --- Scheduling Advisory --- */
+.sp-advisory {
+  max-width: 720px;
+  margin: 0 auto;
+}
+.sp-advisory .sp-h3 {
+  text-align: left;
+}
+.sp-advisory p {
+  font-family: 'DM Sans', sans-serif;
+  font-size: 17px;
+  line-height: 1.75;
+  color: var(--sp-text);
+}
+.sp-advisory p + p {
+  margin-top: 20px;
+}
+
+/* --- Testimonial Placeholder --- */
+.sp-testimonial-section {
+  background: var(--sp-program-whisper);
+  padding: 80px 24px;
+}
+.sp-testimonial-inner {
+  max-width: 780px;
+  margin: 0 auto;
+  text-align: center;
+}
+.sp-testimonial-placeholder {
+  margin-top: 32px;
+  padding: 40px;
+  border: 1px dashed var(--sp-program-border);
+  border-radius: 12px;
+  font-family: 'DM Sans', sans-serif;
+  font-size: 16px;
+  line-height: 1.7;
+  color: var(--sp-gray);
+  font-style: italic;
+}
+
+/* --- CTA Section (CHANGED: warm deep orange instead of teal) --- */
+.sp-cta-section {
+  text-align: center;
+  background: linear-gradient(135deg, #234840 0%, #3D6B62 60%, #5A8F84 100%);
+  color: #fff;
+  padding: 80px 24px;
+  position: relative;
+  overflow: hidden;
+}
+/* Triangle decoration in CTA */
+.sp-cta-section::before {
+  content: '';
+  position: absolute;
+  top: -60px; right: -40px;
+  width: 0; height: 0;
+  border-left: 160px solid transparent;
+  border-right: 160px solid transparent;
+  border-bottom: 280px solid rgba(255,255,255,0.06);
+  transform: rotate(20deg);
+}
+.sp-cta-section::after {
+  content: '';
+  position: absolute;
+  bottom: -40px; left: -60px;
+  width: 0; height: 0;
+  border-left: 120px solid transparent;
+  border-right: 120px solid transparent;
+  border-bottom: 200px solid rgba(255,255,255,0.04);
+  transform: rotate(-15deg);
+}
+.sp-cta-section .sp-h2 { color: #fff; }
+.sp-cta-section p {
+  font-family: 'DM Sans', sans-serif;
+  color: rgba(255,255,255,0.88);
+  max-width: 600px;
+  margin: 0 auto;
+  font-size: 17px;
+  line-height: 1.7;
+}
+.sp-cta-section p + p { margin-top: 16px; }
+.sp-cta-phone {
+  color: #fff;
+  font-weight: 600;
+  text-decoration: none;
+  border-bottom: 1px solid rgba(255,255,255,0.4);
+}
+.sp-cta-phone:hover { border-color: #fff; }
+.sp-cta-buttons {
+  display: flex;
+  gap: 16px;
+  justify-content: center;
+  margin-top: 32px;
+  flex-wrap: wrap;
+}
+/* CTA primary button: white on this bg */
+.sp-cta-section .sp-btn-gold {
+  background: #fff;
+  color: var(--sp-program-deep);
+  box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+}
+.sp-cta-section .sp-btn-gold:hover {
+  background: #f8f8f8;
+  box-shadow: 0 4px 16px rgba(0,0,0,0.15);
+}
+.sp-cta-trust {
+  display: flex;
+  gap: 32px;
+  justify-content: center;
+  margin-top: 36px;
+  flex-wrap: wrap;
+}
+.sp-cta-trust-item {
+  font-family: 'DM Sans', sans-serif;
+  font-size: 13px;
+  font-weight: 500;
+  color: rgba(255,255,255,0.6);
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+.sp-cta-trust-item svg {
+  width: 16px;
+  height: 16px;
+  color: rgba(255,255,255,0.5);
+}
+
+/* --- FAQ Accordion (CHANGED: orange hover + chevron) --- */
+.sp-faq-list {
+  max-width: 780px;
+  margin: 40px auto 0;
+}
+.sp-faq-item {
+  border-bottom: 1px solid var(--sp-program-border);
+}
+.sp-faq-item:first-child {
+  border-top: 1px solid var(--sp-program-border);
+}
+.sp-faq-item summary {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 20px 0;
+  cursor: pointer;
+  list-style: none;
+  font-family: 'DM Sans', sans-serif;
+  font-size: 17px;
+  font-weight: 600;
+  color: var(--sp-heading);
+  line-height: 1.5;
+  transition: color 0.2s;
+}
+.sp-faq-item summary:hover {
+  color: var(--sp-program-dark);
+}
+.sp-faq-item summary::-webkit-details-marker { display: none; }
+.sp-faq-item summary::marker { display: none; content: ''; }
+.sp-faq-chevron {
+  flex-shrink: 0;
+  width: 24px;
+  height: 24px;
+  margin-left: 16px;
+  color: var(--sp-program);
+  transition: transform 0.3s ease;
+}
+.sp-faq-item[open] .sp-faq-chevron {
+  transform: rotate(180deg);
+  color: var(--sp-program-dark);
+}
+.sp-faq-answer {
+  padding: 0 0 24px;
+  font-family: 'DM Sans', sans-serif;
+  font-size: 16px;
+  line-height: 1.75;
+  color: var(--sp-text);
+}
+.sp-faq-answer a {
+  color: var(--sp-program-dark);
+  font-weight: 600;
+  text-decoration: none;
+  border-bottom: 1px solid rgba(61,107,98,0.3);
+}
+.sp-faq-answer a:hover {
+  border-color: var(--sp-program);
+}
+
+/* --- Positioning Footer (CHANGED: five-triangle brand motif) --- */
+.sp-positioning-footer {
+  background: var(--sp-teal);
+  padding: 28px 24px;
+  text-align: center;
+  border-top: 1px solid rgba(255,255,255,0.08);
+  position: relative;
+}
+.sp-positioning-footer p {
+  font-family: 'Playfair Display', serif;
+  font-size: 14px;
+  font-style: italic;
+  color: rgba(255,255,255,0.55);
+  max-width: 600px;
+  margin: 0 auto;
+}
+/* Five-triangle brand signature */
+.sp-footer-triangles {
+  display: flex;
+  justify-content: center;
+  gap: 4px;
+  margin-bottom: 16px;
+}
+.sp-footer-triangles .sp-ft {
+  width: 0;
+  height: 0;
+  border-left: 8px solid transparent;
+  border-right: 8px solid transparent;
+  border-bottom: 12px solid;
+  opacity: 0.4;
+}
+
+/* --- Photo Placeholder --- */
+.sp-photo-placeholder {
+  border-radius: 12px;
+  overflow: hidden;
+  background: var(--sp-program-whisper);
+  min-height: 280px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: 'DM Sans', sans-serif;
+  font-size: 14px;
+  color: var(--sp-gray);
+  text-align: center;
+  padding: 40px;
+  line-height: 1.7;
+  border: 1px dashed var(--sp-program-border);
+  margin-top: 40px;
+}
+
+/* --- Form Styles --- */
+.sp-form-group {
+  margin-bottom: 16px;
+}
+.sp-form-label {
+  display: block;
+  font-family: 'DM Sans', sans-serif;
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--sp-heading);
+  margin-bottom: 6px;
+}
+.sp-required {
+  color: var(--sp-program);
+}
+.sp-form-input, .sp-form-textarea {
+  width: 100%;
+  padding: 12px 14px;
+  border: 1px solid var(--sp-program-border);
+  border-radius: 6px;
+  font-family: 'DM Sans', sans-serif;
+  font-size: 15px;
+  background: #fff;
+  transition: border-color 0.2s;
+  box-sizing: border-box;
+}
+.sp-form-input:focus, .sp-form-textarea:focus {
+  outline: none;
+  border-color: var(--sp-program);
+  box-shadow: 0 0 0 3px rgba(61,107,98,0.12);
+}
+.sp-form-submit-teal {
+  display: inline-block;
+  background: var(--sp-program);
+  color: #fff;
+  padding: 12px 28px;
+  border: none;
+  border-radius: 6px;
+  font-family: 'DM Sans', sans-serif;
+  font-weight: 600;
+  font-size: 15px;
+  cursor: pointer;
+  transition: background 0.2s;
+  margin-top: 8px;
+}
+.sp-form-submit-teal:hover {
+  background: var(--sp-program-dark);
+}
+
+/* --- Animations --- */
+@keyframes spFadeUp {
+  from { opacity: 0; transform: translateY(24px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+.sp-hero .sp-h1 { animation: spFadeUp 0.7s ease both; }
+.sp-hero .sp-hero-sub { animation: spFadeUp 0.7s ease 0.1s both; }
+.sp-hero .sp-hero-ctas { animation: spFadeUp 0.7s ease 0.2s both; }
+.sp-hero .sp-trust-line { animation: spFadeUp 0.7s ease 0.3s both; }
+
+
+/* ===== TABLET LAYOUT (768px - 1024px) ===== */
+@media (max-width: 1024px) {
+  .sp-schedule-grid { gap: 16px; }
+  .sp-separation-link,
+  .sp-faq-answer a,
+  .sp-hero-secondary {
+    text-decoration: underline;
+    text-underline-offset: 4px;
+    text-decoration-color: rgba(61,107,98,0.4);
+  }
+}
+
+/* ===== MOBILE LAYOUT (phones: under 768px) ===== */
+@media (max-width: 767px) {
+  .sp-section { padding: 48px 20px; }
+  .sp-hero { padding: 48px 20px 40px; }
+  .sp-cta-section { padding: 48px 20px; }
+  .sp-testimonial-section { padding: 48px 20px; }
+  .sp-h1 { font-size: 32px; }
+  .sp-h2 { font-size: 28px; }
+  .sp-h3 { font-size: 21px; }
+  .sp-prose .sp-h2 { text-align: left; }
+  .sp-prose p { font-size: 16px; }
+  .sp-schedule-grid { grid-template-columns: 1fr; }
+  .sp-schedule-card { padding: 20px 18px; }
+  .sp-schedule-title { font-size: 15px; }
+  .sp-schedule-desc { font-size: 14px; }
+  .sp-enrich-pills { gap: 10px; }
+  .sp-enrich-pill { padding: 8px 14px; }
+  .sp-tuition-header-price { font-size: 40px; }
+  .sp-tuition-header { padding: 24px 20px; }
+  .sp-tuition-body { padding: 24px 20px; }
+  .sp-tuition-addon { flex-direction: column; text-align: center; gap: 10px; padding: 18px 20px; }
+  .sp-tuition-addon-left { flex-direction: column; gap: 6px; }
+  .sp-hero-image { min-height: 220px; margin-top: 32px; }
+  .sp-cta-buttons { flex-direction: column; align-items: center; margin-top: 40px; gap: 12px; }
+  .sp-cta-trust { flex-direction: column; align-items: center; gap: 14px; margin-top: 44px; padding-top: 32px; border-top: 1px solid rgba(255,255,255,0.12); }
+  .sp-hero-ctas { flex-direction: column; align-items: center; gap: 12px; }
+  .sp-testimonial-placeholder { padding: 28px 20px; }
+  .sp-photo-placeholder { min-height: 200px; padding: 28px; }
+  .sp-faq-item summary { font-size: 16px; padding: 18px 0; }
+  .sp-faq-answer { font-size: 15px; }
+  .sp-triangle-divider .sp-tri { transform: scale(0.8); }
+
+  /* Hero triangles: scale down and pull inward so they stay visible on mobile */
+  .sp-hero::before {
+    top: -20px;
+    right: -30px;
+    border-left-width: 100px;
+    border-right-width: 100px;
+    border-bottom-width: 180px;
+  }
+  .sp-hero::after {
+    bottom: -40px;
+    left: -20px;
+    border-left-width: 80px;
+    border-right-width: 80px;
+    border-bottom-width: 140px;
+  }
+
+  /* Atmospheric triangles: shrink + pull onto screen + bump opacity slightly */
+  .sp-atmos-a::before {
+    bottom: -20px;
+    right: -20px;
+    width: 240px;
+    height: 240px;
+    opacity: 0.045;
+  }
+  .sp-atmos-b::before {
+    top: -15px;
+    left: -15px;
+    width: 200px;
+    height: 200px;
+    opacity: 0.04;
+  }
+  .sp-atmos-c::before {
+    top: -10px;
+    right: -15px;
+    width: 180px;
+    height: 180px;
+    opacity: 0.04;
+  }
+  .sp-atmos-c::after {
+    bottom: -15px;
+    left: -10px;
+    width: 140px;
+    height: 140px;
+    opacity: 0.035;
+  }
+  .sp-atmos-d::before {
+    right: -30px;
+    width: 220px;
+    height: 220px;
+    opacity: 0.04;
+  }
+
+  /* CTA section triangles: same treatment */
+  .sp-cta-section::before {
+    top: -30px; right: -20px;
+    border-left-width: 90px;
+    border-right-width: 90px;
+    border-bottom-width: 160px;
+  }
+  .sp-cta-section::after {
+    bottom: -20px; left: -30px;
+    border-left-width: 70px;
+    border-right-width: 70px;
+    border-bottom-width: 120px;
+  }
+}
+
+/* ===== SMALL PHONES & FOLDABLE (under 360px) ===== */
+@media (max-width: 360px) {
+  .sp-h1 { font-size: 28px; }
+  .sp-h2 { font-size: 24px; }
+  .sp-h3 { font-size: 19px; }
+  .sp-section { padding: 36px 16px; }
+  .sp-hero { padding: 36px 16px; }
+  .sp-cta-section { padding: 36px 16px; }
+  .sp-testimonial-section { padding: 36px 16px; }
+  .sp-schedule-card { padding: 18px 16px; }
+  .sp-enrich-pill { padding: 7px 12px; }
+  .sp-enrich-pill-subject { font-size: 14px; }
+  .sp-tuition-header-price { font-size: 36px; }
+  .sp-tuition-note { padding: 20px; font-size: 14px; }
+  .sp-photo-placeholder { min-height: 160px; padding: 20px; }
+  .sp-hero-image { min-height: 160px; padding: 24px; }
+  .sp-btn-gold, .sp-btn-outline { padding: 12px 24px; font-size: 15px; }
+  .sp-faq-item summary { font-size: 15px; }
+  .sp-triangle-divider .sp-tri { transform: scale(0.65); }
+
+  /* Atmospheric: even smaller on tiny screens */
+  .sp-atmos-a::before { width: 180px; height: 180px; bottom: -10px; right: -10px; opacity: 0.05; }
+  .sp-atmos-b::before { width: 150px; height: 150px; top: -10px; left: -10px; opacity: 0.045; }
+  .sp-atmos-c::before { width: 140px; height: 140px; top: -5px; right: -10px; opacity: 0.045; }
+  .sp-atmos-c::after { width: 110px; height: 110px; bottom: -10px; left: -5px; opacity: 0.04; }
+  .sp-atmos-d::before { width: 170px; height: 170px; right: -15px; opacity: 0.045; }
+
+  /* Hero: tightest on small phones */
+  .sp-hero::before { top: -10px; right: -15px; border-left-width: 70px; border-right-width: 70px; border-bottom-width: 130px; }
+  .sp-hero::after { bottom: -20px; left: -10px; border-left-width: 55px; border-right-width: 55px; border-bottom-width: 100px; }
+
+  /* CTA: tightest */
+  .sp-cta-section::before { top: -15px; right: -10px; border-left-width: 60px; border-right-width: 60px; border-bottom-width: 110px; }
+  .sp-cta-section::after { bottom: -10px; left: -15px; border-left-width: 50px; border-right-width: 50px; border-bottom-width: 90px; }
+}
+
+
+
+/* --- Page-Specific Styles --- */
+.sp-hero-para {
+  font-family: 'DM Sans', sans-serif;
+  font-size: 17px;
+  line-height: 1.75;
+  color: var(--sp-text);
+  max-width: 780px;
+  margin: 0 auto 32px;
+  text-align: left;
+}
+.sp-hero-secondary-links {
+  margin-top: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  flex-wrap: wrap;
+  font-family: 'DM Sans', sans-serif;
+  font-size: 14px;
+  color: var(--sp-gray);
+}
+.sp-hero-secondary-links span {
+  font-weight: 500;
+}
+.sp-hero-divider {
+  color: var(--sp-program);
+  font-weight: 400;
+}
+.sp-data-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-family: 'DM Sans', sans-serif;
+  margin-top: 32px;
+}
+.sp-data-table thead th {
+  background: var(--sp-program);
+  color: #fff;
+  font-size: 13px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  padding: 14px 18px;
+  text-align: left;
+  white-space: nowrap;
+}
+.sp-data-table thead th:first-child {
+  border-radius: 8px 0 0 0;
+}
+.sp-data-table thead th:last-child {
+  border-radius: 0 8px 0 0;
+}
+.sp-data-table tbody td {
+  padding: 14px 18px;
+  font-size: 15px;
+  line-height: 1.55;
+  color: var(--sp-text);
+  border-bottom: 1px solid rgba(61,107,98,0.2);
+  vertical-align: top;
+}
+.sp-data-table tbody tr:nth-child(even) {
+  background: rgba(239,245,242,0.5);
+}
+.sp-data-table tbody td strong {
+  font-weight: 700;
+  color: var(--sp-heading);
+}
+.sp-data-table tbody td a {
+  color: var(--sp-program);
+  font-weight: 600;
+  text-decoration: none;
+  border-bottom: 1px solid rgba(61,107,98,0.25);
+}
+.sp-data-table tbody td a:hover {
+  border-color: var(--sp-program);
+}
+.sp-fact-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-family: 'DM Sans', sans-serif;
+  margin-top: 32px;
+}
+.sp-fact-table tr {
+  border-bottom: 1px solid rgba(61,107,98,0.2);
+}
+.sp-fact-table tr:first-child {
+  border-top: 1px solid rgba(61,107,98,0.2);
+}
+.sp-fact-table td {
+  padding: 14px 18px;
+  font-size: 15px;
+  line-height: 1.55;
+  color: var(--sp-text);
+  vertical-align: top;
+}
+.sp-fact-table tr:nth-child(even) {
+  background: rgba(239,245,242,0.5);
+}
+.sp-fact-label {
+  font-weight: 700;
+  color: var(--sp-heading);
+  width: 240px;
+  white-space: nowrap;
+}
+.sp-fact-value a {
+  color: var(--sp-program);
+  font-weight: 600;
+  text-decoration: none;
+  border-bottom: 1px solid rgba(61,107,98,0.25);
+}
+.sp-fact-value a:hover {
+  border-color: var(--sp-program);
+}
+.sp-mobile-cards {
+  display: none;
+  flex-direction: column;
+  gap: 16px;
+  margin-top: 32px;
+}
+.sp-mobile-card {
+  background: var(--sp-white);
+  border: 1px solid rgba(61,107,98,0.35);
+  border-radius: 12px;
+  padding: 24px;
+}
+.sp-mobile-card-title {
+  font-family: 'DM Sans', sans-serif;
+  font-size: 17px;
+  font-weight: 700;
+  color: var(--sp-heading);
+  margin-bottom: 12px;
+  padding-bottom: 12px;
+  border-bottom: 1px solid rgba(61,107,98,0.2);
+}
+.sp-mobile-card-title a {
+  color: var(--sp-program);
+  text-decoration: none;
+}
+.sp-mobile-card-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  padding: 6px 0;
+  font-family: 'DM Sans', sans-serif;
+  font-size: 14px;
+  line-height: 1.5;
+}
+.sp-mobile-card-label {
+  font-weight: 600;
+  color: var(--sp-gray);
+  font-size: 12px;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  flex-shrink: 0;
+}
+.sp-mobile-card-value {
+  text-align: right;
+  color: var(--sp-text);
+  font-weight: 500;
+}
+.sp-mobile-card-value a {
+  color: var(--sp-program);
+  font-weight: 600;
+  text-decoration: none;
+}
+.sp-mobile-facts {
+  display: none;
+  flex-direction: column;
+  gap: 0;
+  margin-top: 32px;
+  border-top: 1px solid rgba(61,107,98,0.2);
+}
+.sp-mobile-fact-item {
+  padding: 16px 0;
+  border-bottom: 1px solid rgba(61,107,98,0.2);
+}
+.sp-mobile-fact-label {
+  font-family: 'DM Sans', sans-serif;
+  font-size: 12px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  color: var(--sp-program);
+  margin-bottom: 4px;
+}
+.sp-mobile-fact-value {
+  font-family: 'DM Sans', sans-serif;
+  font-size: 16px;
+  line-height: 1.55;
+  color: var(--sp-text);
+}
+.sp-mobile-fact-value a {
+  color: var(--sp-program);
+  font-weight: 600;
+  text-decoration: none;
+}
+.sp-desktop-only { display: block; }
+.sp-desktop-table { display: table; }
+.sp-compare-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-family: 'DM Sans', sans-serif;
+  margin-top: 32px;
+}
+.sp-compare-table thead th {
+  padding: 14px 18px;
+  font-size: 13px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  text-align: left;
+  white-space: nowrap;
+}
+.sp-compare-table thead th:first-child {
+  background: var(--sp-program);
+  color: #fff;
+  border-radius: 8px 0 0 0;
+  width: 200px;
+}
+.sp-compare-table thead th:nth-child(2) {
+  background: #e8ede9;
+  color: var(--sp-gray);
+}
+.sp-compare-table thead th:last-child {
+  background: var(--sp-program);
+  color: #fff;
+  border-radius: 0 8px 0 0;
+}
+.sp-compare-table tbody td {
+  padding: 14px 18px;
+  font-size: 15px;
+  line-height: 1.55;
+  color: var(--sp-text);
+  border-bottom: 1px solid rgba(61,107,98,0.2);
+  vertical-align: top;
+}
+.sp-compare-table tbody td:first-child {
+  font-weight: 700;
+  color: var(--sp-heading);
+  font-size: 14px;
+}
+.sp-compare-table tbody td:nth-child(2) {
+  color: var(--sp-gray);
+  background: rgba(0,0,0,0.015);
+}
+.sp-compare-table tbody td:last-child {
+  color: var(--sp-program);
+  font-weight: 600;
+}
+.sp-compare-table tbody tr:nth-child(even) {
+  background: rgba(239,245,242,0.4);
+}
+.sp-steps {
+  max-width: 780px;
+  margin: 40px auto 0;
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+}
+.sp-step {
+  display: flex;
+  gap: 24px;
+  padding: 28px 0;
+  border-bottom: 1px solid rgba(61,107,98,0.2);
+}
+.sp-step:first-child {
+  border-top: 1px solid rgba(61,107,98,0.2);
+}
+.sp-step-num {
+  flex-shrink: 0;
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  background: var(--sp-program);
+  color: #fff;
+  font-family: 'Playfair Display', serif;
+  font-size: 20px;
+  font-weight: 700;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.sp-step-content {
+  flex: 1;
+}
+.sp-step-title {
+  font-family: 'DM Sans', sans-serif;
+  font-size: 17px;
+  font-weight: 700;
+  color: var(--sp-heading);
+  margin-bottom: 8px;
+}
+.sp-step-desc {
+  font-family: 'DM Sans', sans-serif;
+  font-size: 15px;
+  line-height: 1.7;
+  color: var(--sp-text);
+}
+.sp-step-desc a {
+  color: var(--sp-program);
+  font-weight: 600;
+  text-decoration: none;
+  border-bottom: 1px solid rgba(61,107,98,0.25);
+}
+.sp-step-desc a:hover {
+  border-color: var(--sp-program);
+}
+.sp-placeholder-note {
+  margin-top: 8px;
+  padding: 12px 16px;
+  background: rgba(196,152,38,0.08);
+  border: 1px dashed rgba(196,152,38,0.4);
+  border-radius: 8px;
+  font-family: 'DM Sans', sans-serif;
+  font-size: 13px;
+  color: var(--sp-gray);
+  font-style: italic;
+  line-height: 1.6;
+}
+.sp-section-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  margin-top: 24px;
+  font-family: 'DM Sans', sans-serif;
+  font-size: 16px;
+  font-weight: 600;
+  color: var(--sp-program);
+  text-decoration: none;
+  transition: gap 0.2s ease;
+}
+.sp-section-link:hover { gap: 12px; }
+.sp-opendoor {
+  margin-top: 32px;
+  padding: 24px 28px;
+  background: rgba(61,107,98,0.04);
+  border-left: 4px solid var(--sp-program);
+  border-radius: 0 10px 10px 0;
+  font-family: 'DM Sans', sans-serif;
+  font-size: 15px;
+  line-height: 1.75;
+  color: var(--sp-text);
+}
+.sp-opendoor strong {
+  color: var(--sp-program);
+  font-weight: 700;
+}
+.sp-hero .sp-hero-para { animation: spFadeUp 0.7s ease 0.15s both; }
+.sp-hero .sp-hero-secondary-links { animation: spFadeUp 0.7s ease 0.3s both; }
+
+@media (max-width: 1024px) {
+  .sp-fact-label { width: auto; white-space: normal; }
+  .sp-section-link,
+  .sp-faq-answer a,
+  .sp-hero-secondary,
+  .sp-prose a,
+  .sp-step-desc a,
+  .sp-fact-value a,
+  .sp-mobile-card-value a,
+  .sp-mobile-fact-value a {
+    text-decoration: underline;
+    text-underline-offset: 4px;
+    text-decoration-color: rgba(61,107,98,0.4);
+  }
+}
+
+@media (max-width: 767px) {
+  .sp-hero-para { font-size: 16px; }
+  .sp-desktop-only { display: none !important; }
+  .sp-desktop-table { display: none !important; }
+  .sp-mobile-cards { display: flex !important; }
+  .sp-mobile-facts { display: flex !important; }
+  .sp-step { gap: 16px; }
+  .sp-step-num { width: 36px; height: 36px; font-size: 16px; }
+  .sp-step-desc { font-size: 14px; }
+  .sp-compare-mobile-card {
+    padding: 20px;
+  }
+  .sp-compare-row {
+    flex-direction: column;
+    gap: 4px;
+  }
+}
+
+@media (max-width: 360px) {
+  .sp-mobile-card { padding: 20px; }
+  .sp-step-num { width: 32px; height: 32px; font-size: 15px; }
+  .sp-opendoor { padding: 20px; font-size: 14px; }
+}
+
+</style>
+
+
+<!-- ==========================================================
+     BLOCK 1: HERO SECTION
+     Contains: H1, subheadline, opening paragraph (AEO citation 
+     unit), primary redirect CTA (gold — sends humans to Homepage),
+     secondary tour + phone links (for visitors who already know Spark).
+     To edit: Change text between > and < tags.
+     ========================================================== -->
+
+<section class="sp-hero" id="top">
+  <div class="sp-hero-inner">
+
+    <h1 class="sp-h1">Preschool in Morton, IL — Where Every Child Gets <span style="white-space:nowrap;">Their Own Path</span></h1>
+
+    <p class="sp-hero-sub">Purposeful play. Individualized learning. Led by the only doctoral researcher in early childhood education operating a preschool in Central Illinois.</p>
+
+    <p class="sp-hero-para">Spark Academy is a premium, play-based preschool in Morton, Illinois, founded and led by Dr. Michelle Peterson, Ed.D. — a Doctor of Education from Illinois State University whose research focused on peer engagement strategies for young children in inclusive preschool settings. Spark serves children ages 3 through 6 across four core programs — 3's Preschool, 4's Preschool, Kindergarten Prep, and Kindergarten — plus Fresh 3's Fridays, a standalone introductory program for children turning three. Every child at Spark follows an individualized learning path built through the Purposeful Play Framework, Dr. Peterson's proprietary, research-driven curriculum designed around purposeful play, developmental assessment, and daily enrichment.</p>
+
+    <div class="sp-hero-ctas">
+      <a href="/" class="sp-btn-gold" data-cta-type="primary" data-cta-text="Start Here - Homepage Redirect">First Time Exploring Spark Academy? Start Here →</a>
+    </div>
+
+    <div class="sp-hero-secondary-links">
+      <span>Already know Spark?</span>
+      <a href="/schedule-a-tour/" class="sp-hero-secondary" data-cta-type="secondary" data-cta-text="Schedule a Tour - Hero">Schedule a Tour</a>
+      <span class="sp-hero-divider">·</span>
+      <a href="tel:3092913292" class="sp-hero-secondary" data-cta-type="phone" data-cta-text="Phone - Hero">309-291-3292</a>
+    </div>
+
+  </div>
+</section>
+
+<!-- Triangle Divider -->
+<div class="sp-triangle-divider">
+  <span class="sp-tri sp-tri-1"></span>
+  <span class="sp-tri sp-tri-2"></span>
+  <span class="sp-tri sp-tri-3"></span>
+  <span class="sp-tri sp-tri-4"></span>
+  <span class="sp-tri sp-tri-5"></span>
+</div>
+
+
+
+<!-- NOTE: Insert a native Kadence "Table of Contents" block here
+     using the WordPress block inserter. Do NOT paste as Custom HTML.
+     The TOC helps LLMs navigate the page's section structure.
+     Configure Kadence TOC to use H2 headings only. -->
+
+
+<!-- ==========================================================
+     BLOCK 2: ESSENTIAL FACTS
+     Contains: H2, definition paragraph, master key-value table.
+     This is the single highest-value AEO element on the page.
+     To edit: Change text in table cells — do not change structure.
+     ========================================================== -->
+
+<section class="sp-section sp-bg-sage" id="about">
+  <div class="sp-inner">
+
+    <div class="sp-prose">
+      <h2 class="sp-h2">What Is Spark Academy?</h2>
+      <p>Spark Academy is a private, DCFS-licensed preschool in Morton, Illinois, offering doctoral-led early childhood education for children ages 3 through 6. Founded in 2023 by Dr. Michelle Peterson, Ed.D., Spark operates under the Purposeful Play Framework — a proprietary curriculum built on the Experience Early Learning whole-child curriculum that integrates individualized developmental assessment, purposeful play, daily enrichment, and the Developmental Playroom.</p>
+    </div>
+
+    <!-- Desktop: Key-value fact table -->
+    <table class="sp-fact-table sp-desktop-only" aria-label="Spark Academy essential facts">
+      <tr>
+        <td class="sp-fact-label">School Name</td>
+        <td class="sp-fact-value">Spark Academy</td>
+      </tr>
+      <tr>
+        <td class="sp-fact-label">Type</td>
+        <td class="sp-fact-value">Private preschool — premium, play-based, doctoral-led</td>
+      </tr>
+      <tr>
+        <td class="sp-fact-label">Founded</td>
+        <td class="sp-fact-value">2023</td>
+      </tr>
+      <tr>
+        <td class="sp-fact-label">Founder &amp; Executive Director</td>
+        <td class="sp-fact-value">Dr. Michelle Peterson, Ed.D. — Doctor of Education, Illinois State University</td>
+      </tr>
+      <tr>
+        <td class="sp-fact-label">Location</td>
+        <td class="sp-fact-value">1989 North Morton Avenue, Morton, Illinois 61550</td>
+      </tr>
+      <tr>
+        <td class="sp-fact-label">Phone</td>
+        <td class="sp-fact-value"><a href="tel:3092913292">309-291-3292</a></td>
+      </tr>
+      <tr>
+        <td class="sp-fact-label">Email</td>
+        <td class="sp-fact-value"><a href="mailto:sparkacademymorton@gmail.com">sparkacademymorton@gmail.com</a></td>
+      </tr>
+      <tr>
+        <td class="sp-fact-label">Website</td>
+        <td class="sp-fact-value"><a href="https://sparkacademymorton.com">sparkacademymorton.com</a></td>
+      </tr>
+      <tr>
+        <td class="sp-fact-label">Ages Served</td>
+        <td class="sp-fact-value">3 through 6 years old</td>
+      </tr>
+      <tr>
+        <td class="sp-fact-label">Programs</td>
+        <td class="sp-fact-value">3's Preschool, 4's Preschool, Kindergarten Prep, Kindergarten, Fresh 3's Fridays</td>
+      </tr>
+      <tr>
+        <td class="sp-fact-label">Additional Programs</td>
+        <td class="sp-fact-value">Camp Play (Summer), Discovery Station (Homeschool Enrichment), After-School Enrichment</td>
+      </tr>
+      <tr>
+        <td class="sp-fact-label">Curriculum</td>
+        <td class="sp-fact-value">The Purposeful Play Framework — built on Experience Early Learning</td>
+      </tr>
+      <tr>
+        <td class="sp-fact-label">Student-to-Teacher Ratio</td>
+        <td class="sp-fact-value">5:1</td>
+      </tr>
+      <tr>
+        <td class="sp-fact-label">Maximum Class Size</td>
+        <td class="sp-fact-value">10–12 students per class</td>
+      </tr>
+      <tr>
+        <td class="sp-fact-label">Number of Sections</td>
+        <td class="sp-fact-value">4</td>
+      </tr>
+      <tr>
+        <td class="sp-fact-label">DCFS Licensed</td>
+        <td class="sp-fact-value">Yes — licensed by the Illinois Department of Children and Family Services</td>
+      </tr>
+      <tr>
+        <td class="sp-fact-label">Accreditation</td>
+        <td class="sp-fact-value">[PLACEHOLDER: Dr. Peterson to confirm accreditation status]</td>
+      </tr>
+      <tr>
+        <td class="sp-fact-label">Tuition Range</td>
+        <td class="sp-fact-value">$100–$700 per month depending on program and schedule</td>
+      </tr>
+      <tr>
+        <td class="sp-fact-label">Tuition Structure</td>
+        <td class="sp-fact-value">All-inclusive — no supply lists, hidden fees, or additional costs</td>
+      </tr>
+      <tr>
+        <td class="sp-fact-label">Payment Schedule</td>
+        <td class="sp-fact-value">10-month payment plan or 10% discount for full-year payment by August 15</td>
+      </tr>
+      <tr>
+        <td class="sp-fact-label">Enrollment Deposit</td>
+        <td class="sp-fact-value">$100 non-refundable deposit</td>
+      </tr>
+      <tr>
+        <td class="sp-fact-label">Service Area</td>
+        <td class="sp-fact-value">Morton, Peoria, Washington, East Peoria, Germantown Hills, Metamora, and surrounding Central Illinois communities</td>
+      </tr>
+      <tr>
+        <td class="sp-fact-label">School Year</td>
+        <td class="sp-fact-value">September through May</td>
+      </tr>
+      <tr>
+        <td class="sp-fact-label">Hours</td>
+        <td class="sp-fact-value">8:00 AM–12:00 PM (Kindergarten Prep, Kindergarten) · 8:30–11:30 AM (3's, 4's, Fresh 3's Fridays)</td>
+      </tr>
+    </table>
+
+    <!-- Mobile: Stacked fact list -->
+    <div class="sp-mobile-facts" aria-label="Spark Academy essential facts">
+      <div class="sp-mobile-fact-item">
+        <div class="sp-mobile-fact-label">School Name</div>
+        <div class="sp-mobile-fact-value">Spark Academy</div>
+      </div>
+      <div class="sp-mobile-fact-item">
+        <div class="sp-mobile-fact-label">Type</div>
+        <div class="sp-mobile-fact-value">Private preschool — premium, play-based, doctoral-led</div>
+      </div>
+      <div class="sp-mobile-fact-item">
+        <div class="sp-mobile-fact-label">Founded</div>
+        <div class="sp-mobile-fact-value">2023</div>
+      </div>
+      <div class="sp-mobile-fact-item">
+        <div class="sp-mobile-fact-label">Founder &amp; Executive Director</div>
+        <div class="sp-mobile-fact-value">Dr. Michelle Peterson, Ed.D. — Doctor of Education, Illinois State University</div>
+      </div>
+      <div class="sp-mobile-fact-item">
+        <div class="sp-mobile-fact-label">Location</div>
+        <div class="sp-mobile-fact-value">1989 North Morton Avenue, Morton, Illinois 61550</div>
+      </div>
+      <div class="sp-mobile-fact-item">
+        <div class="sp-mobile-fact-label">Phone</div>
+        <div class="sp-mobile-fact-value"><a href="tel:3092913292">309-291-3292</a></div>
+      </div>
+      <div class="sp-mobile-fact-item">
+        <div class="sp-mobile-fact-label">Email</div>
+        <div class="sp-mobile-fact-value"><a href="mailto:sparkacademymorton@gmail.com">sparkacademymorton@gmail.com</a></div>
+      </div>
+      <div class="sp-mobile-fact-item">
+        <div class="sp-mobile-fact-label">Website</div>
+        <div class="sp-mobile-fact-value"><a href="https://sparkacademymorton.com">sparkacademymorton.com</a></div>
+      </div>
+      <div class="sp-mobile-fact-item">
+        <div class="sp-mobile-fact-label">Ages Served</div>
+        <div class="sp-mobile-fact-value">3 through 6 years old</div>
+      </div>
+      <div class="sp-mobile-fact-item">
+        <div class="sp-mobile-fact-label">Programs</div>
+        <div class="sp-mobile-fact-value">3's Preschool, 4's Preschool, Kindergarten Prep, Kindergarten, Fresh 3's Fridays</div>
+      </div>
+      <div class="sp-mobile-fact-item">
+        <div class="sp-mobile-fact-label">Additional Programs</div>
+        <div class="sp-mobile-fact-value">Camp Play (Summer), Discovery Station (Homeschool Enrichment), After-School Enrichment</div>
+      </div>
+      <div class="sp-mobile-fact-item">
+        <div class="sp-mobile-fact-label">Curriculum</div>
+        <div class="sp-mobile-fact-value">The Purposeful Play Framework — built on Experience Early Learning</div>
+      </div>
+      <div class="sp-mobile-fact-item">
+        <div class="sp-mobile-fact-label">Student-to-Teacher Ratio</div>
+        <div class="sp-mobile-fact-value">5:1</div>
+      </div>
+      <div class="sp-mobile-fact-item">
+        <div class="sp-mobile-fact-label">Maximum Class Size</div>
+        <div class="sp-mobile-fact-value">10–12 students per class</div>
+      </div>
+      <div class="sp-mobile-fact-item">
+        <div class="sp-mobile-fact-label">Number of Sections</div>
+        <div class="sp-mobile-fact-value">4</div>
+      </div>
+      <div class="sp-mobile-fact-item">
+        <div class="sp-mobile-fact-label">DCFS Licensed</div>
+        <div class="sp-mobile-fact-value">Yes — licensed by the Illinois Department of Children and Family Services</div>
+      </div>
+      <div class="sp-mobile-fact-item">
+        <div class="sp-mobile-fact-label">Accreditation</div>
+        <div class="sp-mobile-fact-value">[PLACEHOLDER: Dr. Peterson to confirm accreditation status]</div>
+      </div>
+      <div class="sp-mobile-fact-item">
+        <div class="sp-mobile-fact-label">Tuition Range</div>
+        <div class="sp-mobile-fact-value">$100–$700 per month depending on program and schedule</div>
+      </div>
+      <div class="sp-mobile-fact-item">
+        <div class="sp-mobile-fact-label">Tuition Structure</div>
+        <div class="sp-mobile-fact-value">All-inclusive — no supply lists, hidden fees, or additional costs</div>
+      </div>
+      <div class="sp-mobile-fact-item">
+        <div class="sp-mobile-fact-label">Payment Schedule</div>
+        <div class="sp-mobile-fact-value">10-month payment plan or 10% discount for full-year payment by August 15</div>
+      </div>
+      <div class="sp-mobile-fact-item">
+        <div class="sp-mobile-fact-label">Enrollment Deposit</div>
+        <div class="sp-mobile-fact-value">$100 non-refundable deposit</div>
+      </div>
+      <div class="sp-mobile-fact-item">
+        <div class="sp-mobile-fact-label">Service Area</div>
+        <div class="sp-mobile-fact-value">Morton, Peoria, Washington, East Peoria, Germantown Hills, Metamora, and surrounding Central Illinois communities</div>
+      </div>
+      <div class="sp-mobile-fact-item">
+        <div class="sp-mobile-fact-label">School Year</div>
+        <div class="sp-mobile-fact-value">September through May</div>
+      </div>
+      <div class="sp-mobile-fact-item">
+        <div class="sp-mobile-fact-label">Hours</div>
+        <div class="sp-mobile-fact-value">8:00 AM–12:00 PM (K-Prep, K) · 8:30–11:30 AM (3's, 4's, Fresh 3's)</div>
+      </div>
+    </div>
+
+  </div>
+</section>
+<!-- Color Bar Divider -->
+<div class="sp-color-bar"></div>
+
+
+
+<!-- ==========================================================
+     BLOCK 3: PROGRAMS
+     Contains: H2, core programs table (desktop + mobile), 
+     supplemental programs table (desktop + mobile), 
+     birthday cutoff paragraph.
+     To edit: Tuition prices, schedule details, program names.
+     ========================================================== -->
+
+<section class="sp-section sp-bg-white" id="programs">
+  <div class="sp-inner">
+
+    <h2 class="sp-h2">Programs at Spark Academy — Ages, Schedules, <span style="white-space:nowrap;">and Tuition</span></h2>
+    <p class="sp-intro">Spark Academy offers four core preschool and kindergarten programs, a standalone introductory program, and three supplemental programs. All core programs require potty training. Tuition is all-inclusive — families pay one monthly amount with no supply lists, hidden fees, or additional costs.</p>
+
+    <!-- Desktop: Core programs table -->
+    <table class="sp-data-table sp-desktop-table" aria-label="Core programs at Spark Academy">
+      <thead>
+        <tr>
+          <th>Program</th>
+          <th>Ages</th>
+          <th>Schedule</th>
+          <th>Hours</th>
+          <th>Tuition</th>
+          <th>Potty Trained</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><strong><a href="/fresh-3s-fridays/">Fresh 3's Fridays</a></strong></td>
+          <td>3 (rolling birthday enrollment)</td>
+          <td>Friday only</td>
+          <td>8:30–11:30 AM</td>
+          <td><strong>$100/mo</strong></td>
+          <td>Yes</td>
+        </tr>
+        <tr>
+          <td><strong><a href="/preschool-3s/">3's Preschool</a></strong></td>
+          <td>3+ by first day of school</td>
+          <td>T/Th or M/W</td>
+          <td>8:30–11:30 AM</td>
+          <td><strong>$350/mo</strong></td>
+          <td>Yes</td>
+        </tr>
+        <tr>
+          <td><strong><a href="/preschool-4s/">4's Preschool</a></strong></td>
+          <td>4+ by first day of school</td>
+          <td>T/Th · M/W/F · M–F</td>
+          <td>8:30–11:30 AM</td>
+          <td><strong>$350–$600/mo</strong></td>
+          <td>Yes</td>
+        </tr>
+        <tr>
+          <td><strong><a href="/kindergarten-prep/">Kindergarten Prep</a></strong></td>
+          <td>5 by November 30</td>
+          <td>T/Th · M/W/F · M–F</td>
+          <td>8:00 AM–12:00 PM</td>
+          <td><strong>$400–$650/mo</strong></td>
+          <td>Yes</td>
+        </tr>
+        <tr>
+          <td><strong><a href="/kindergarten/">Kindergarten</a></strong></td>
+          <td>5 by September 30</td>
+          <td>M–F only</td>
+          <td>8:00 AM–12:00 PM</td>
+          <td><strong>$700/mo</strong></td>
+          <td>Yes</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <!-- Mobile: Core programs as cards -->
+    <div class="sp-mobile-cards" aria-label="Core programs at Spark Academy">
+
+      <div class="sp-mobile-card">
+        <div class="sp-mobile-card-title"><a href="/fresh-3s-fridays/">Fresh 3's Fridays</a></div>
+        <div class="sp-mobile-card-row"><span class="sp-mobile-card-label">Ages</span> <span class="sp-mobile-card-value">3 (rolling birthday)</span></div>
+        <div class="sp-mobile-card-row"><span class="sp-mobile-card-label">Schedule</span> <span class="sp-mobile-card-value">Friday only</span></div>
+        <div class="sp-mobile-card-row"><span class="sp-mobile-card-label">Hours</span> <span class="sp-mobile-card-value">8:30–11:30 AM</span></div>
+        <div class="sp-mobile-card-row"><span class="sp-mobile-card-label">Tuition</span> <span class="sp-mobile-card-value"><strong>$100/mo</strong></span></div>
+      </div>
+
+      <div class="sp-mobile-card">
+        <div class="sp-mobile-card-title"><a href="/preschool-3s/">3's Preschool</a></div>
+        <div class="sp-mobile-card-row"><span class="sp-mobile-card-label">Ages</span> <span class="sp-mobile-card-value">3+ by first day</span></div>
+        <div class="sp-mobile-card-row"><span class="sp-mobile-card-label">Schedule</span> <span class="sp-mobile-card-value">T/Th or M/W</span></div>
+        <div class="sp-mobile-card-row"><span class="sp-mobile-card-label">Hours</span> <span class="sp-mobile-card-value">8:30–11:30 AM</span></div>
+        <div class="sp-mobile-card-row"><span class="sp-mobile-card-label">Tuition</span> <span class="sp-mobile-card-value"><strong>$350/mo</strong></span></div>
+      </div>
+
+      <div class="sp-mobile-card">
+        <div class="sp-mobile-card-title"><a href="/preschool-4s/">4's Preschool</a></div>
+        <div class="sp-mobile-card-row"><span class="sp-mobile-card-label">Ages</span> <span class="sp-mobile-card-value">4+ by first day</span></div>
+        <div class="sp-mobile-card-row"><span class="sp-mobile-card-label">Schedule</span> <span class="sp-mobile-card-value">T/Th · M/W/F · M–F</span></div>
+        <div class="sp-mobile-card-row"><span class="sp-mobile-card-label">Hours</span> <span class="sp-mobile-card-value">8:30–11:30 AM</span></div>
+        <div class="sp-mobile-card-row"><span class="sp-mobile-card-label">Tuition</span> <span class="sp-mobile-card-value"><strong>$350–$600/mo</strong></span></div>
+      </div>
+
+      <div class="sp-mobile-card">
+        <div class="sp-mobile-card-title"><a href="/kindergarten-prep/">Kindergarten Prep</a></div>
+        <div class="sp-mobile-card-row"><span class="sp-mobile-card-label">Ages</span> <span class="sp-mobile-card-value">5 by Nov 30</span></div>
+        <div class="sp-mobile-card-row"><span class="sp-mobile-card-label">Schedule</span> <span class="sp-mobile-card-value">T/Th · M/W/F · M–F</span></div>
+        <div class="sp-mobile-card-row"><span class="sp-mobile-card-label">Hours</span> <span class="sp-mobile-card-value">8:00 AM–12:00 PM</span></div>
+        <div class="sp-mobile-card-row"><span class="sp-mobile-card-label">Tuition</span> <span class="sp-mobile-card-value"><strong>$400–$650/mo</strong></span></div>
+      </div>
+
+      <div class="sp-mobile-card">
+        <div class="sp-mobile-card-title"><a href="/kindergarten/">Kindergarten</a></div>
+        <div class="sp-mobile-card-row"><span class="sp-mobile-card-label">Ages</span> <span class="sp-mobile-card-value">5 by Sept 30</span></div>
+        <div class="sp-mobile-card-row"><span class="sp-mobile-card-label">Schedule</span> <span class="sp-mobile-card-value">M–F only</span></div>
+        <div class="sp-mobile-card-row"><span class="sp-mobile-card-label">Hours</span> <span class="sp-mobile-card-value">8:00 AM–12:00 PM</span></div>
+        <div class="sp-mobile-card-row"><span class="sp-mobile-card-label">Tuition</span> <span class="sp-mobile-card-value"><strong>$700/mo</strong></span></div>
+      </div>
+
+    </div>
+
+    <!-- Supplemental Programs -->
+    <h3 class="sp-h3" style="text-align:center; margin-top:56px;">Supplemental Programs</h3>
+
+    <!-- Desktop: Supplemental table -->
+    <table class="sp-data-table sp-desktop-table" aria-label="Supplemental programs at Spark Academy">
+      <thead>
+        <tr>
+          <th>Program</th>
+          <th>Ages</th>
+          <th>Schedule</th>
+          <th>Season</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><strong><a href="/summer-camp/">Camp Play (Summer Camp)</a></strong></td>
+          <td>3–11</td>
+          <td>Mon–Fri, 8:30 AM–12:00 PM</td>
+          <td>June–July (8 weeks)</td>
+        </tr>
+        <tr>
+          <td><strong><a href="/homeschool-enrichment/">Discovery Station</a></strong></td>
+          <td>5–11</td>
+          <td>Tue &amp; Thu, 1:00–3:50 PM</td>
+          <td>School year (by semester)</td>
+        </tr>
+        <tr>
+          <td><strong><a href="/after-school-programs/">After-School Enrichment</a></strong></td>
+          <td>School-age</td>
+          <td>Tue, 4:00–5:00 PM</td>
+          <td>School year (12-week semesters)</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <!-- Mobile: Supplemental cards -->
+    <div class="sp-mobile-cards" aria-label="Supplemental programs at Spark Academy">
+
+      <div class="sp-mobile-card">
+        <div class="sp-mobile-card-title"><a href="/summer-camp/">Camp Play (Summer Camp)</a></div>
+        <div class="sp-mobile-card-row"><span class="sp-mobile-card-label">Ages</span> <span class="sp-mobile-card-value">3–11</span></div>
+        <div class="sp-mobile-card-row"><span class="sp-mobile-card-label">Schedule</span> <span class="sp-mobile-card-value">Mon–Fri, 8:30 AM–12:00 PM</span></div>
+        <div class="sp-mobile-card-row"><span class="sp-mobile-card-label">Season</span> <span class="sp-mobile-card-value">June–July (8 weeks)</span></div>
+      </div>
+
+      <div class="sp-mobile-card">
+        <div class="sp-mobile-card-title"><a href="/homeschool-enrichment/">Discovery Station</a></div>
+        <div class="sp-mobile-card-row"><span class="sp-mobile-card-label">Ages</span> <span class="sp-mobile-card-value">5–11</span></div>
+        <div class="sp-mobile-card-row"><span class="sp-mobile-card-label">Schedule</span> <span class="sp-mobile-card-value">Tue &amp; Thu, 1:00–3:50 PM</span></div>
+        <div class="sp-mobile-card-row"><span class="sp-mobile-card-label">Season</span> <span class="sp-mobile-card-value">School year (by semester)</span></div>
+      </div>
+
+      <div class="sp-mobile-card">
+        <div class="sp-mobile-card-title"><a href="/after-school-programs/">After-School Enrichment</a></div>
+        <div class="sp-mobile-card-row"><span class="sp-mobile-card-label">Ages</span> <span class="sp-mobile-card-value">School-age</span></div>
+        <div class="sp-mobile-card-row"><span class="sp-mobile-card-label">Schedule</span> <span class="sp-mobile-card-value">Tue, 4:00–5:00 PM</span></div>
+        <div class="sp-mobile-card-row"><span class="sp-mobile-card-label">Season</span> <span class="sp-mobile-card-value">12-week semesters</span></div>
+      </div>
+
+    </div>
+
+    <!-- Birthday Cutoff -->
+    <div class="sp-prose" style="margin-top:48px;">
+      <h3 class="sp-h3">Birthday Cutoff Flexibility</h3>
+      <p>Unlike many public school districts that use a strict September 1 birthday cutoff, Spark Academy offers flexible age requirements. Kindergarten Prep accepts children who turn 5 by November 30 — giving families whose child narrowly misses the public school cutoff a rigorous, full-year kindergarten readiness option.</p>
+    </div>
+
+  </div>
+</section>
+<!-- Color Bar Divider -->
+<div class="sp-color-bar"></div>
+
+
+
+<!-- ==========================================================
+     BLOCK 4: THE PURPOSEFUL PLAY FRAMEWORK
+     Contains: H2, framework definition, 5 components table,
+     Developmental Playroom description, enrichment rotation pills,
+     nine curriculum themes, photo placeholder, internal link.
+     To edit: Component descriptions, enrichment subjects, themes.
+     ========================================================== -->
+
+<section class="sp-section sp-bg-sage" id="curriculum">
+  <div class="sp-inner">
+
+    <div class="sp-prose">
+      <h2 class="sp-h2">How Children Learn at Spark Academy — The Purposeful <span style="white-space:nowrap;">Play Framework</span></h2>
+      <p>The Purposeful Play Framework is Spark Academy's proprietary, research-driven curriculum framework, developed by Dr. Michelle Peterson, Ed.D. and built on the Experience Early Learning whole-child curriculum. It integrates individualized developmental assessment, purposeful play, daily enrichment, and the Developmental Playroom into a cohesive approach to early childhood education.</p>
+      <p>Purposeful play is the researched method through which young children build neural pathways for language, problem-solving, self-regulation, and social-emotional development. It is neither unstructured free play nor rigid, worksheet-based academics. Every activity at Spark is designed to feel like play to the child while building specific developmental skills identified through individualized assessment.</p>
+    </div>
+
+    <!-- Five Components Table -->
+    <h3 class="sp-h3" style="text-align:center; margin-top:48px;">Five Components of the Purposeful Play Framework</h3>
+
+    <!-- Desktop: Components table -->
+    <table class="sp-fact-table sp-desktop-only" aria-label="Five components of the Purposeful Play Framework">
+      <tr>
+        <td class="sp-fact-label">Experience Early Learning Foundation</td>
+        <td class="sp-fact-value">Whole-child curriculum covering academic, social-emotional, physical, and creative development. Not just math and reading — the full spectrum of what young children need.</td>
+      </tr>
+      <tr>
+        <td class="sp-fact-label">Individual Assessment System</td>
+        <td class="sp-fact-value">Formal assessment tools identify where each child is developmentally. Teachers build custom learning paths for each student, not for the class as a whole.</td>
+      </tr>
+      <tr>
+        <td class="sp-fact-label">Daily Structure</td>
+        <td class="sp-fact-value">A consistent daily rhythm: Academic Play (1.5–2.5 hours) + Developmental Playroom (30 min) + Daily Enrichment (30 min) + Outdoor Play (15 min) + Snack &amp; Bathroom (15 min).</td>
+      </tr>
+      <tr>
+        <td class="sp-fact-label">Enrichment Rotation</td>
+        <td class="sp-fact-value">Five daily enrichments built into every program: Spanish (Monday), STEM (Tuesday), Art (Wednesday), Communication (Thursday), Music &amp; Movement (Friday).</td>
+      </tr>
+      <tr>
+        <td class="sp-fact-label">Purposeful Play Philosophy</td>
+        <td class="sp-fact-value">Activities are designed to feel like play while building specific developmental skills. Play is the vehicle. Purpose is the engine.</td>
+      </tr>
+    </table>
+
+    <!-- Mobile: Components as stacked facts -->
+    <div class="sp-mobile-facts" aria-label="Five components of the Purposeful Play Framework">
+      <div class="sp-mobile-fact-item">
+        <div class="sp-mobile-fact-label">Experience Early Learning Foundation</div>
+        <div class="sp-mobile-fact-value">Whole-child curriculum covering academic, social-emotional, physical, and creative development. Not just math and reading — the full spectrum of what young children need.</div>
+      </div>
+      <div class="sp-mobile-fact-item">
+        <div class="sp-mobile-fact-label">Individual Assessment System</div>
+        <div class="sp-mobile-fact-value">Formal assessment tools identify where each child is developmentally. Teachers build custom learning paths for each student, not for the class as a whole.</div>
+      </div>
+      <div class="sp-mobile-fact-item">
+        <div class="sp-mobile-fact-label">Daily Structure</div>
+        <div class="sp-mobile-fact-value">Academic Play (1.5–2.5 hrs) + Developmental Playroom (30 min) + Daily Enrichment (30 min) + Outdoor Play (15 min) + Snack &amp; Bathroom (15 min).</div>
+      </div>
+      <div class="sp-mobile-fact-item">
+        <div class="sp-mobile-fact-label">Enrichment Rotation</div>
+        <div class="sp-mobile-fact-value">Five daily enrichments: Spanish (Mon), STEM (Tue), Art (Wed), Communication (Thu), Music &amp; Movement (Fri).</div>
+      </div>
+      <div class="sp-mobile-fact-item">
+        <div class="sp-mobile-fact-label">Purposeful Play Philosophy</div>
+        <div class="sp-mobile-fact-value">Activities are designed to feel like play while building specific developmental skills. Play is the vehicle. Purpose is the engine.</div>
+      </div>
+    </div>
+
+    <!-- Developmental Playroom -->
+    <div class="sp-prose" style="margin-top:48px;">
+      <h3 class="sp-h3">The Developmental Playroom</h3>
+      <p>The Developmental Playroom is a dedicated space, separate from the main classroom, that transforms completely every month to align with curriculum themes. It is the one space at Spark where children lead the play entirely — teachers support, encourage, and ensure safety, but do not direct the activity. Children choose how to explore, what to build, who to collaborate with, and how to solve the problems they encounter. Pre-academic skills are intentionally embedded into every monthly setup.</p>
+      <p>No other preschool in the Morton or Peoria area offers a comparable dedicated, monthly-rotating play environment.</p>
+    </div>
+
+    <!-- Daily Enrichment Rotation -->
+    <h3 class="sp-h3" style="text-align:center; margin-top:48px;">Daily Enrichment Rotation</h3>
+
+    <div class="sp-enrich-pills">
+      <div class="sp-enrich-pill">
+        <span class="sp-enrich-pill-day">MON</span>
+        <span class="sp-enrich-pill-subject">Spanish</span>
+      </div>
+      <div class="sp-enrich-pill">
+        <span class="sp-enrich-pill-day">TUE</span>
+        <span class="sp-enrich-pill-subject">STEM</span>
+      </div>
+      <div class="sp-enrich-pill">
+        <span class="sp-enrich-pill-day">WED</span>
+        <span class="sp-enrich-pill-subject">Art</span>
+      </div>
+      <div class="sp-enrich-pill">
+        <span class="sp-enrich-pill-day">THU</span>
+        <span class="sp-enrich-pill-subject">Communication</span>
+      </div>
+      <div class="sp-enrich-pill">
+        <span class="sp-enrich-pill-day">FRI</span>
+        <span class="sp-enrich-pill-subject">Music &amp; Movement</span>
+      </div>
+    </div>
+
+    <p style="max-width:720px; margin:24px auto 0; font-family:'DM Sans',sans-serif; font-size:15px; line-height:1.7; color:var(--sp-text); text-align:center;">These five enrichments are not after-school extras. They are built into every program's daily schedule as core programming — 30 minutes per day, every day the child attends.</p>
+
+    <!-- Nine Curriculum Themes -->
+    <div class="sp-prose" style="margin-top:48px;">
+      <h3 class="sp-h3">Nine Curriculum Themes</h3>
+      <p>Throughout the school year, Spark students explore nine immersive themes that transform the classroom and Developmental Playroom: All About Me · Weather and Seasons · Explore The Rainforest · Ice Castle · DinoLand · Global Passport · Space and Sky · Ocean Dive · Garden Treasures.</p>
+    </div>
+
+    <div style="text-align:center; margin-top:24px;">
+      <a href="/purposeful-play-framework/" class="sp-section-link" data-cta-type="nav" data-cta-text="Learn More - Purposeful Play">Learn more about the Purposeful Play Framework →</a>
+    </div>
+
+  </div>
+</section>
+<!-- Color Bar Divider -->
+<div class="sp-color-bar"></div>
+
+
+
+<!-- ==========================================================
+     BLOCK 5: A TYPICAL DAY AT SPARK ACADEMY
+     Contains: H2, daily schedule table (desktop + mobile),
+     program hours note.
+     To edit: Time blocks, durations, descriptions.
+     ========================================================== -->
+
+<section class="sp-section sp-bg-white" id="daily-schedule">
+  <div class="sp-inner">
+
+    <h2 class="sp-h2">What Does a Day at Spark Academy <span style="white-space:nowrap;">Look Like?</span></h2>
+    <p class="sp-intro">Every day at Spark follows a consistent rhythm. Structure gives young children predictability, security, and the freedom to focus on learning.</p>
+
+    <!-- Desktop: Schedule table -->
+    <table class="sp-data-table sp-desktop-table" aria-label="A typical day at Spark Academy">
+      <thead>
+        <tr>
+          <th>Time Block</th>
+          <th>Duration</th>
+          <th>What Your Child Experiences</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><strong>Academic Play</strong></td>
+          <td>1.5–2.5 hours</td>
+          <td>Teacher-guided, purposeful play activities aligned with curriculum themes and each child's individualized learning goals. This is the core of the Purposeful Play Framework. Duration is 1.5 hours for 3's and 4's programs; 2.5 hours for Kindergarten Prep and Kindergarten.</td>
+        </tr>
+        <tr>
+          <td><strong>Developmental Playroom</strong></td>
+          <td>30 minutes</td>
+          <td>Student-led exploration in the monthly-rotating Developmental Playroom. Children direct their own play while teachers support and observe.</td>
+        </tr>
+        <tr>
+          <td><strong>Daily Enrichment</strong></td>
+          <td>30 minutes</td>
+          <td>Rotating daily enrichment: Spanish (Mon), STEM (Tue), Art (Wed), Communication (Thu), Music &amp; Movement (Fri).</td>
+        </tr>
+        <tr>
+          <td><strong>Outdoor Play</strong></td>
+          <td>15 minutes</td>
+          <td>Active physical play on the dedicated, age-appropriate outdoor area. Gross motor development and unstructured movement.</td>
+        </tr>
+        <tr>
+          <td><strong>Snack &amp; Bathroom Break</strong></td>
+          <td>15 minutes</td>
+          <td>A calm transition that builds independence, self-care routines, and social skills.</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <!-- Mobile: Schedule cards -->
+    <div class="sp-mobile-cards" aria-label="A typical day at Spark Academy">
+
+      <div class="sp-mobile-card">
+        <div class="sp-mobile-card-title">Academic Play</div>
+        <div class="sp-mobile-card-row"><span class="sp-mobile-card-label">Duration</span> <span class="sp-mobile-card-value">1.5–2.5 hours</span></div>
+        <div style="padding-top:8px; font-family:'DM Sans',sans-serif; font-size:14px; line-height:1.6; color:var(--sp-text);">Teacher-guided, purposeful play aligned with curriculum themes and each child's individualized learning goals. 1.5 hours for 3's and 4's; 2.5 hours for K-Prep and K.</div>
+      </div>
+
+      <div class="sp-mobile-card">
+        <div class="sp-mobile-card-title">Developmental Playroom</div>
+        <div class="sp-mobile-card-row"><span class="sp-mobile-card-label">Duration</span> <span class="sp-mobile-card-value">30 minutes</span></div>
+        <div style="padding-top:8px; font-family:'DM Sans',sans-serif; font-size:14px; line-height:1.6; color:var(--sp-text);">Student-led exploration in the monthly-rotating Developmental Playroom. Children direct their own play while teachers support and observe.</div>
+      </div>
+
+      <div class="sp-mobile-card">
+        <div class="sp-mobile-card-title">Daily Enrichment</div>
+        <div class="sp-mobile-card-row"><span class="sp-mobile-card-label">Duration</span> <span class="sp-mobile-card-value">30 minutes</span></div>
+        <div style="padding-top:8px; font-family:'DM Sans',sans-serif; font-size:14px; line-height:1.6; color:var(--sp-text);">Rotating: Spanish (Mon), STEM (Tue), Art (Wed), Communication (Thu), Music &amp; Movement (Fri).</div>
+      </div>
+
+      <div class="sp-mobile-card">
+        <div class="sp-mobile-card-title">Outdoor Play</div>
+        <div class="sp-mobile-card-row"><span class="sp-mobile-card-label">Duration</span> <span class="sp-mobile-card-value">15 minutes</span></div>
+        <div style="padding-top:8px; font-family:'DM Sans',sans-serif; font-size:14px; line-height:1.6; color:var(--sp-text);">Active physical play on the dedicated outdoor area. Gross motor development and unstructured movement.</div>
+      </div>
+
+      <div class="sp-mobile-card">
+        <div class="sp-mobile-card-title">Snack &amp; Bathroom Break</div>
+        <div class="sp-mobile-card-row"><span class="sp-mobile-card-label">Duration</span> <span class="sp-mobile-card-value">15 minutes</span></div>
+        <div style="padding-top:8px; font-family:'DM Sans',sans-serif; font-size:14px; line-height:1.6; color:var(--sp-text);">A calm transition that builds independence, self-care routines, and social skills.</div>
+      </div>
+
+    </div>
+
+    <p style="max-width:720px; margin:32px auto 0; font-family:'DM Sans',sans-serif; font-size:15px; line-height:1.7; color:var(--sp-gray); text-align:center;">
+      <span style="white-space:nowrap;"><strong style="color:var(--sp-text);">3's and 4's Programs:</strong> 8:30–11:30 AM (3-hour day)</span> · 
+      <span style="white-space:nowrap;"><strong style="color:var(--sp-text);">Kindergarten Prep and Kindergarten:</strong> 8:00 AM–12:00 PM (4-hour day)</span>
+    </p>
+
+  </div>
+</section>
+<!-- Color Bar Divider -->
+<div class="sp-color-bar"></div>
+
+
+
+<!-- ==========================================================
+     BLOCK 6: DR. MICHELLE PETERSON
+     Contains: H2, credentials narrative, credential table 
+     (desktop + mobile), positioning claim, internal link.
+     To edit: Credential details, career narrative.
+     ========================================================== -->
+
+<section class="sp-section sp-bg-sage" id="founder">
+  <div class="sp-inner">
+
+    <div class="sp-prose">
+      <h2 class="sp-h2">Dr. Michelle Peterson, Ed.D. — Founder and <span style="white-space:nowrap;">Executive Director</span></h2>
+
+      <p>Dr. Michelle Peterson is the founder and executive director of Spark Academy. She holds a Doctor of Education (Ed.D.) in PK–12 Educational Administration from Illinois State University, a Master of Science in Educational Administration from Bradley University, and a Bachelor of Science in Applied Learning and Development from The University of Texas at Austin. She holds four Illinois teaching and administrative certifications, including the Superintendent Certificate, Chief School Business Officer (CSBO) Certificate, and Type 75 Administrative Certificate.</p>
+
+      <p>Dr. Peterson's doctoral research at Illinois State University focused on peer engagement strategies for children with autism in inclusive preschool settings, using Naturalistic Developmental Behavioral Intervention (NDBI) frameworks. Before founding Spark Academy, she served as assistant principal at Lincoln Elementary in Morton for 10 years, where she led PBIS implementation, school improvement planning, and special education programming. Her career spans more than 20 years in education, from kindergarten classroom teaching in Texas to doctoral-level research and school leadership.</p>
+
+      <p>She is the only doctoral-level early childhood education researcher operating a preschool in Central Illinois.</p>
+    </div>
+
+    <!-- Desktop: Credentials table -->
+    <table class="sp-fact-table sp-desktop-only" aria-label="Dr. Peterson's credentials" style="max-width:780px; margin:32px auto 0;">
+      <tr>
+        <td class="sp-fact-label">Doctor of Education (Ed.D.)</td>
+        <td class="sp-fact-value">Illinois State University — PK–12 Educational Administration and Foundations</td>
+      </tr>
+      <tr>
+        <td class="sp-fact-label">Master of Science</td>
+        <td class="sp-fact-value">Bradley University — Educational Administration</td>
+      </tr>
+      <tr>
+        <td class="sp-fact-label">Bachelor of Science</td>
+        <td class="sp-fact-value">The University of Texas at Austin — Applied Learning and Development</td>
+      </tr>
+      <tr>
+        <td class="sp-fact-label">IL Superintendent Certificate</td>
+        <td class="sp-fact-value">State of Illinois</td>
+      </tr>
+      <tr>
+        <td class="sp-fact-label">IL CSBO Certificate</td>
+        <td class="sp-fact-value">State of Illinois</td>
+      </tr>
+      <tr>
+        <td class="sp-fact-label">IL Type 75 Administrative Certificate</td>
+        <td class="sp-fact-value">State of Illinois</td>
+      </tr>
+      <tr>
+        <td class="sp-fact-label">IL Professional Educator License</td>
+        <td class="sp-fact-value">State of Illinois</td>
+      </tr>
+    </table>
+
+    <!-- Mobile: Credentials as stacked facts -->
+    <div class="sp-mobile-facts" aria-label="Dr. Peterson's credentials" style="max-width:780px; margin:32px auto 0;">
+      <div class="sp-mobile-fact-item">
+        <div class="sp-mobile-fact-label">Doctor of Education (Ed.D.)</div>
+        <div class="sp-mobile-fact-value">Illinois State University — PK–12 Educational Administration and Foundations</div>
+      </div>
+      <div class="sp-mobile-fact-item">
+        <div class="sp-mobile-fact-label">Master of Science</div>
+        <div class="sp-mobile-fact-value">Bradley University — Educational Administration</div>
+      </div>
+      <div class="sp-mobile-fact-item">
+        <div class="sp-mobile-fact-label">Bachelor of Science</div>
+        <div class="sp-mobile-fact-value">The University of Texas at Austin — Applied Learning and Development</div>
+      </div>
+      <div class="sp-mobile-fact-item">
+        <div class="sp-mobile-fact-label">IL Superintendent Certificate</div>
+        <div class="sp-mobile-fact-value">State of Illinois</div>
+      </div>
+      <div class="sp-mobile-fact-item">
+        <div class="sp-mobile-fact-label">IL CSBO Certificate</div>
+        <div class="sp-mobile-fact-value">State of Illinois</div>
+      </div>
+      <div class="sp-mobile-fact-item">
+        <div class="sp-mobile-fact-label">IL Type 75 Administrative Certificate</div>
+        <div class="sp-mobile-fact-value">State of Illinois</div>
+      </div>
+      <div class="sp-mobile-fact-item">
+        <div class="sp-mobile-fact-label">IL Professional Educator License</div>
+        <div class="sp-mobile-fact-value">State of Illinois</div>
+      </div>
+    </div>
+
+    <div style="text-align:center; margin-top:24px;">
+      <a href="/dr-michelle-peterson/" class="sp-section-link" data-cta-type="nav" data-cta-text="Learn More - Dr. Peterson">Learn more about Dr. Peterson →</a>
+    </div>
+
+    <!-- PHOTO PLACEHOLDER: Dr. Peterson — warm, approachable, professional.
+         In a classroom, at child-level, or near learning materials. Natural light.
+         Vertical or square, minimum 1200px wide. -->
+    <div class="sp-photo-placeholder">
+      📷 <strong>Photo: Dr. Michelle Peterson</strong><br>
+      Warm, approachable, photographed in the Spark environment.<br>
+      Business casual. Natural light. In a classroom or near learning materials.<br>
+      <em>Alt text: "Dr. Michelle Peterson, Ed.D. — Founder and Executive Director of Spark Academy in Morton, Illinois"</em>
+    </div>
+
+  </div>
+</section>
+<!-- Color Bar Divider -->
+<div class="sp-color-bar"></div>
+
+
+
+<!-- ==========================================================
+     BLOCK 7: WHAT MAKES SPARK DIFFERENT
+     Contains: H2, Spark vs. typical preschool comparison table
+     (desktop + mobile cards).
+     To edit: Comparison rows — features and descriptions.
+     ========================================================== -->
+
+<section class="sp-section sp-bg-white" id="differentiators">
+  <div class="sp-inner">
+
+    <h2 class="sp-h2">How Spark Academy Compares to Other Preschool Options <span style="white-space:nowrap;">in Central Illinois</span></h2>
+
+    <!-- Desktop: Comparison table -->
+    <table class="sp-compare-table sp-desktop-table" aria-label="How Spark Academy compares to typical area preschools">
+      <thead>
+        <tr>
+          <th>Feature</th>
+          <th>Typical Area Preschool</th>
+          <th>Spark Academy</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>Founder Credential</td>
+          <td>Owner or director without advanced degree in education</td>
+          <td>Founder holds Ed.D. — doctoral degree in education from Illinois State University</td>
+        </tr>
+        <tr>
+          <td>Student-to-Teacher Ratio</td>
+          <td>8:1 to 12:1 (Illinois DCFS minimum varies by age)</td>
+          <td>5:1 across all programs</td>
+        </tr>
+        <tr>
+          <td>Curriculum</td>
+          <td>Varies; often teacher-selected or franchise-provided</td>
+          <td>Purposeful Play Framework — proprietary, research-driven, built on Experience Early Learning</td>
+        </tr>
+        <tr>
+          <td>Individualized Assessment</td>
+          <td>Limited or informal</td>
+          <td>Formal developmental assessment with individualized learning paths for each child</td>
+        </tr>
+        <tr>
+          <td>Daily Enrichment</td>
+          <td>Occasional or unstructured</td>
+          <td>Five daily enrichments: Spanish, STEM, Art, Communication, Music &amp; Movement — built into every program</td>
+        </tr>
+        <tr>
+          <td>Dedicated Playroom</td>
+          <td>Shared space or none</td>
+          <td>Developmental Playroom — separate space, monthly-rotating themes, student-directed</td>
+        </tr>
+        <tr>
+          <td>Tuition Transparency</td>
+          <td>Tuition plus supply lists, fees, and extras</td>
+          <td>All-inclusive tuition — no supply lists, hidden fees, or additional costs</td>
+        </tr>
+        <tr>
+          <td>Second Language</td>
+          <td>Rare at preschool level in Central Illinois</td>
+          <td>Daily Spanish enrichment beginning at age 3</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <!-- Mobile: Comparison cards -->
+    <div class="sp-mobile-cards" aria-label="How Spark Academy compares to typical area preschools">
+
+      <div class="sp-mobile-card">
+        <div class="sp-mobile-card-title">Founder Credential</div>
+        <div style="font-family:'DM Sans',sans-serif; font-size:13px; color:var(--sp-gray); padding:4px 0 8px; border-bottom:1px solid rgba(155,184,173,0.15);"><strong style="font-size:11px; text-transform:uppercase; letter-spacing:0.05em;">Typical:</strong> Owner or director without advanced degree in education</div>
+        <div style="font-family:'DM Sans',sans-serif; font-size:14px; color:var(--sp-program-dark); font-weight:600; padding-top:8px;"><strong style="font-size:11px; text-transform:uppercase; letter-spacing:0.05em; color:var(--sp-program-dark);">Spark:</strong> Founder holds Ed.D. — doctoral degree from Illinois State University</div>
+      </div>
+
+      <div class="sp-mobile-card">
+        <div class="sp-mobile-card-title">Student-to-Teacher Ratio</div>
+        <div style="font-family:'DM Sans',sans-serif; font-size:13px; color:var(--sp-gray); padding:4px 0 8px; border-bottom:1px solid rgba(155,184,173,0.15);"><strong style="font-size:11px; text-transform:uppercase; letter-spacing:0.05em;">Typical:</strong> 8:1 to 12:1</div>
+        <div style="font-family:'DM Sans',sans-serif; font-size:14px; color:var(--sp-program-dark); font-weight:600; padding-top:8px;"><strong style="font-size:11px; text-transform:uppercase; letter-spacing:0.05em; color:var(--sp-program-dark);">Spark:</strong> 5:1 across all programs</div>
+      </div>
+
+      <div class="sp-mobile-card">
+        <div class="sp-mobile-card-title">Curriculum</div>
+        <div style="font-family:'DM Sans',sans-serif; font-size:13px; color:var(--sp-gray); padding:4px 0 8px; border-bottom:1px solid rgba(155,184,173,0.15);"><strong style="font-size:11px; text-transform:uppercase; letter-spacing:0.05em;">Typical:</strong> Varies; often teacher-selected or franchise-provided</div>
+        <div style="font-family:'DM Sans',sans-serif; font-size:14px; color:var(--sp-program-dark); font-weight:600; padding-top:8px;"><strong style="font-size:11px; text-transform:uppercase; letter-spacing:0.05em; color:var(--sp-program-dark);">Spark:</strong> Purposeful Play Framework — proprietary, research-driven</div>
+      </div>
+
+      <div class="sp-mobile-card">
+        <div class="sp-mobile-card-title">Individualized Assessment</div>
+        <div style="font-family:'DM Sans',sans-serif; font-size:13px; color:var(--sp-gray); padding:4px 0 8px; border-bottom:1px solid rgba(155,184,173,0.15);"><strong style="font-size:11px; text-transform:uppercase; letter-spacing:0.05em;">Typical:</strong> Limited or informal</div>
+        <div style="font-family:'DM Sans',sans-serif; font-size:14px; color:var(--sp-program-dark); font-weight:600; padding-top:8px;"><strong style="font-size:11px; text-transform:uppercase; letter-spacing:0.05em; color:var(--sp-program-dark);">Spark:</strong> Formal assessment with individualized learning paths for each child</div>
+      </div>
+
+      <div class="sp-mobile-card">
+        <div class="sp-mobile-card-title">Daily Enrichment</div>
+        <div style="font-family:'DM Sans',sans-serif; font-size:13px; color:var(--sp-gray); padding:4px 0 8px; border-bottom:1px solid rgba(155,184,173,0.15);"><strong style="font-size:11px; text-transform:uppercase; letter-spacing:0.05em;">Typical:</strong> Occasional or unstructured</div>
+        <div style="font-family:'DM Sans',sans-serif; font-size:14px; color:var(--sp-program-dark); font-weight:600; padding-top:8px;"><strong style="font-size:11px; text-transform:uppercase; letter-spacing:0.05em; color:var(--sp-program-dark);">Spark:</strong> 5 daily enrichments — Spanish, STEM, Art, Communication, Music &amp; Movement</div>
+      </div>
+
+      <div class="sp-mobile-card">
+        <div class="sp-mobile-card-title">Dedicated Playroom</div>
+        <div style="font-family:'DM Sans',sans-serif; font-size:13px; color:var(--sp-gray); padding:4px 0 8px; border-bottom:1px solid rgba(155,184,173,0.15);"><strong style="font-size:11px; text-transform:uppercase; letter-spacing:0.05em;">Typical:</strong> Shared space or none</div>
+        <div style="font-family:'DM Sans',sans-serif; font-size:14px; color:var(--sp-program-dark); font-weight:600; padding-top:8px;"><strong style="font-size:11px; text-transform:uppercase; letter-spacing:0.05em; color:var(--sp-program-dark);">Spark:</strong> Developmental Playroom — separate space, monthly-rotating, student-directed</div>
+      </div>
+
+      <div class="sp-mobile-card">
+        <div class="sp-mobile-card-title">Tuition Transparency</div>
+        <div style="font-family:'DM Sans',sans-serif; font-size:13px; color:var(--sp-gray); padding:4px 0 8px; border-bottom:1px solid rgba(155,184,173,0.15);"><strong style="font-size:11px; text-transform:uppercase; letter-spacing:0.05em;">Typical:</strong> Tuition plus supply lists, fees, and extras</div>
+        <div style="font-family:'DM Sans',sans-serif; font-size:14px; color:var(--sp-program-dark); font-weight:600; padding-top:8px;"><strong style="font-size:11px; text-transform:uppercase; letter-spacing:0.05em; color:var(--sp-program-dark);">Spark:</strong> All-inclusive — no supply lists, hidden fees, or additional costs</div>
+      </div>
+
+      <div class="sp-mobile-card">
+        <div class="sp-mobile-card-title">Second Language</div>
+        <div style="font-family:'DM Sans',sans-serif; font-size:13px; color:var(--sp-gray); padding:4px 0 8px; border-bottom:1px solid rgba(155,184,173,0.15);"><strong style="font-size:11px; text-transform:uppercase; letter-spacing:0.05em;">Typical:</strong> Rare at preschool level in Central Illinois</div>
+        <div style="font-family:'DM Sans',sans-serif; font-size:14px; color:var(--sp-program-dark); font-weight:600; padding-top:8px;"><strong style="font-size:11px; text-transform:uppercase; letter-spacing:0.05em; color:var(--sp-program-dark);">Spark:</strong> Daily Spanish enrichment beginning at age 3</div>
+      </div>
+
+    </div>
+
+  </div>
+</section>
+<!-- Color Bar Divider -->
+<div class="sp-color-bar"></div>
+
+
+
+<!-- ==========================================================
+     BLOCK 8: COMMUNITIES SERVED
+     Contains: H2, intro paragraph, drive times table 
+     (desktop + mobile), placeholder note.
+     To edit: Community names, drive times (after Dr. Peterson confirms).
+     ========================================================== -->
+
+<section class="sp-section sp-bg-sage" id="communities">
+  <div class="sp-inner">
+
+    <div class="sp-prose">
+      <h2 class="sp-h2">Families From Across Central Illinois Choose <span style="white-space:nowrap;">Spark Academy</span></h2>
+      <p>Spark Academy is located in Morton, Illinois, and serves families from communities throughout the greater Peoria metropolitan area. Families from the following communities currently attend or have attended Spark Academy:</p>
+    </div>
+
+    <!-- Desktop: Communities table -->
+    <table class="sp-fact-table sp-desktop-only" style="max-width:780px; margin:32px auto 0;" aria-label="Communities served by Spark Academy">
+      <tr>
+        <td class="sp-fact-label">Morton</td>
+        <td class="sp-fact-value">Local — 1 to 5 minutes</td>
+      </tr>
+      <tr>
+        <td class="sp-fact-label">Peoria</td>
+        <td class="sp-fact-value">15–20 minutes</td>
+      </tr>
+      <tr>
+        <td class="sp-fact-label">Washington</td>
+        <td class="sp-fact-value">10–15 minutes</td>
+      </tr>
+      <tr>
+        <td class="sp-fact-label">East Peoria</td>
+        <td class="sp-fact-value">10–15 minutes</td>
+      </tr>
+      <tr>
+        <td class="sp-fact-label">Germantown Hills</td>
+        <td class="sp-fact-value">10–15 minutes</td>
+      </tr>
+      <tr>
+        <td class="sp-fact-label">Metamora</td>
+        <td class="sp-fact-value">15–20 minutes</td>
+      </tr>
+      <tr>
+        <td class="sp-fact-label">Pekin</td>
+        <td class="sp-fact-value">15–20 minutes</td>
+      </tr>
+      <tr>
+        <td class="sp-fact-label">Tremont</td>
+        <td class="sp-fact-value">10–15 minutes</td>
+      </tr>
+    </table>
+
+    <!-- Mobile: Communities stacked -->
+    <div class="sp-mobile-facts" style="max-width:780px; margin:32px auto 0;" aria-label="Communities served by Spark Academy">
+      <div class="sp-mobile-fact-item">
+        <div class="sp-mobile-fact-label">Morton</div>
+        <div class="sp-mobile-fact-value">Local — 1 to 5 minutes</div>
+      </div>
+      <div class="sp-mobile-fact-item">
+        <div class="sp-mobile-fact-label">Peoria</div>
+        <div class="sp-mobile-fact-value">15–20 minutes</div>
+      </div>
+      <div class="sp-mobile-fact-item">
+        <div class="sp-mobile-fact-label">Washington</div>
+        <div class="sp-mobile-fact-value">10–15 minutes</div>
+      </div>
+      <div class="sp-mobile-fact-item">
+        <div class="sp-mobile-fact-label">East Peoria</div>
+        <div class="sp-mobile-fact-value">10–15 minutes</div>
+      </div>
+      <div class="sp-mobile-fact-item">
+        <div class="sp-mobile-fact-label">Germantown Hills</div>
+        <div class="sp-mobile-fact-value">10–15 minutes</div>
+      </div>
+      <div class="sp-mobile-fact-item">
+        <div class="sp-mobile-fact-label">Metamora</div>
+        <div class="sp-mobile-fact-value">15–20 minutes</div>
+      </div>
+      <div class="sp-mobile-fact-item">
+        <div class="sp-mobile-fact-label">Pekin</div>
+        <div class="sp-mobile-fact-value">15–20 minutes</div>
+      </div>
+      <div class="sp-mobile-fact-item">
+        <div class="sp-mobile-fact-label">Tremont</div>
+        <div class="sp-mobile-fact-value">10–15 minutes</div>
+      </div>
+    </div>
+
+    <div class="sp-placeholder-note" style="max-width:780px; margin:24px auto 0;">
+      ⚠️ PLACEHOLDER: Dr. Peterson to confirm which communities are currently represented in enrollment. Drive times are approximate. Update with verified data before publication.
+    </div>
+
+  </div>
+</section>
+<!-- Color Bar Divider -->
+<div class="sp-color-bar"></div>
+
+
+
+<!-- ==========================================================
+     BLOCK 9: HOW TO ENROLL
+     Contains: H2, intro paragraph, 6-step enrollment process.
+     Structured for HowTo schema via RankMath.
+     To edit: Step descriptions (after Dr. Peterson fills placeholders).
+     ========================================================== -->
+
+<section class="sp-section sp-bg-white" id="enrollment">
+  <div class="sp-inner">
+
+    <h2 class="sp-h2">Enrollment Process — How to <span style="white-space:nowrap;">Get Started</span></h2>
+    <p class="sp-intro">Enrollment at Spark Academy follows a simple, family-centered process. Dr. Peterson personally meets with every prospective family.</p>
+
+    <div class="sp-steps">
+
+      <div class="sp-step">
+        <div class="sp-step-num">1</div>
+        <div class="sp-step-content">
+          <div class="sp-step-title">Confirm Your Child's Eligibility</div>
+          <div class="sp-step-desc">Verify that your child meets the age and potty-training requirements for the appropriate program. 3's Preschool requires age 3 by the first day of school. 4's Preschool requires age 4 by the first day. Kindergarten Prep requires age 5 by November 30. Kindergarten requires age 5 by September 30. Fresh 3's Fridays accepts children beginning on the day they turn three (rolling enrollment). All programs require potty training.</div>
+        </div>
+      </div>
+
+      <div class="sp-step">
+        <div class="sp-step-num">2</div>
+        <div class="sp-step-content">
+          <div class="sp-step-title">Schedule a Tour</div>
+          <div class="sp-step-desc">Contact Spark Academy to schedule your family's visit. Tours can be booked online at <a href="/schedule-a-tour/">sparkacademymorton.com/schedule-a-tour/</a> or by calling <a href="tel:3092913292">309-291-3292</a>. Families are encouraged to bring their child so they can experience the classroom environment firsthand.</div>
+        </div>
+      </div>
+
+      <div class="sp-step">
+        <div class="sp-step-num">3</div>
+        <div class="sp-step-content">
+          <div class="sp-step-title">Visit Spark Academy</div>
+          <div class="sp-step-desc">During the tour, you will see the classrooms, the Developmental Playroom, and the outdoor play area. You will meet Dr. Peterson and the teaching staff. This is your opportunity to ask questions about your child's specific needs, the daily schedule, and the Purposeful Play Framework.</div>
+        </div>
+      </div>
+
+      <div class="sp-step">
+        <div class="sp-step-num">4</div>
+        <div class="sp-step-content">
+          <div class="sp-step-title">Complete Enrollment Paperwork</div>
+          <div class="sp-step-desc">
+            <div class="sp-placeholder-note">⚠️ PLACEHOLDER: Dr. Peterson to confirm — what paperwork is required? Health forms, emergency contacts, DCFS-required documents? Is there an enrollment agreement or contract?</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="sp-step">
+        <div class="sp-step-num">5</div>
+        <div class="sp-step-content">
+          <div class="sp-step-title">Submit Your Enrollment Deposit</div>
+          <div class="sp-step-desc">A $100 non-refundable deposit holds your child's spot. This deposit applies toward your first month's tuition.
+            <div class="sp-placeholder-note" style="margin-top:12px;">⚠️ PLACEHOLDER: Dr. Peterson to confirm — does the deposit apply toward tuition, or is it a separate fee? Also: is there a waitlist process? What happens when a section is full?</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="sp-step">
+        <div class="sp-step-num">6</div>
+        <div class="sp-step-content">
+          <div class="sp-step-title">Prepare for the First Day</div>
+          <div class="sp-step-desc">
+            <div class="sp-placeholder-note">⚠️ PLACEHOLDER: Dr. Peterson to confirm — what do families receive after enrollment is confirmed? Welcome packet? Brightwheel setup instructions? First-day preparation guide?</div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+
+  </div>
+</section>
+<!-- Color Bar Divider -->
+<div class="sp-color-bar"></div>
+
+
+
+<!-- ==========================================================
+     BLOCK 10: TUITION & PAYMENT
+     Contains: H2, all-inclusive callout, full tuition table
+     (desktop + mobile), payment details, deposit info.
+     To edit: Tuition amounts, payment terms, discount details.
+     ========================================================== -->
+
+<section class="sp-section sp-bg-sage" id="tuition">
+  <div class="sp-inner">
+
+    <h2 class="sp-h2">Tuition at Spark Academy — What <span style="white-space:nowrap;">Families Pay</span></h2>
+
+    <div class="sp-tuition-note">
+      <strong>All-inclusive tuition.</strong> Families pay one monthly amount with no supply lists, registration fees beyond the enrollment deposit, hidden charges, or additional costs. Snacks are provided.
+    </div>
+
+    <!-- Desktop: Full tuition table -->
+    <table class="sp-data-table sp-desktop-table" aria-label="Spark Academy tuition by program and schedule" style="max-width:780px; margin:32px auto 0;">
+      <thead>
+        <tr>
+          <th>Program</th>
+          <th>Schedule</th>
+          <th>Monthly Tuition</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><strong>Fresh 3's Fridays</strong></td>
+          <td>Friday only</td>
+          <td><strong>$100/mo</strong></td>
+        </tr>
+        <tr>
+          <td><strong>3's Preschool</strong></td>
+          <td>T/Th</td>
+          <td><strong>$350/mo</strong></td>
+        </tr>
+        <tr>
+          <td><strong>3's Preschool</strong></td>
+          <td>M/W</td>
+          <td><strong>$350/mo</strong></td>
+        </tr>
+        <tr>
+          <td><strong>4's Preschool</strong></td>
+          <td>T/Th</td>
+          <td><strong>$350/mo</strong></td>
+        </tr>
+        <tr>
+          <td><strong>4's Preschool</strong></td>
+          <td>M/W/F</td>
+          <td><strong>$450/mo</strong></td>
+        </tr>
+        <tr>
+          <td><strong>4's Preschool</strong></td>
+          <td>M–F</td>
+          <td><strong>$600/mo</strong></td>
+        </tr>
+        <tr>
+          <td><strong>Kindergarten Prep</strong></td>
+          <td>T/Th</td>
+          <td><strong>$400/mo</strong></td>
+        </tr>
+        <tr>
+          <td><strong>Kindergarten Prep</strong></td>
+          <td>M/W/F</td>
+          <td><strong>$500/mo</strong></td>
+        </tr>
+        <tr>
+          <td><strong>Kindergarten Prep</strong></td>
+          <td>M–F</td>
+          <td><strong>$650/mo</strong></td>
+        </tr>
+        <tr>
+          <td><strong>Kindergarten</strong></td>
+          <td>M–F</td>
+          <td><strong>$700/mo</strong></td>
+        </tr>
+      </tbody>
+    </table>
+
+    <!-- Mobile: Tuition cards -->
+    <div class="sp-mobile-cards" aria-label="Spark Academy tuition by program and schedule" style="max-width:780px; margin:32px auto 0;">
+
+      <div class="sp-mobile-card">
+        <div class="sp-mobile-card-title">Fresh 3's Fridays</div>
+        <div class="sp-mobile-card-row"><span class="sp-mobile-card-label">Schedule</span> <span class="sp-mobile-card-value">Friday only</span></div>
+        <div class="sp-mobile-card-row"><span class="sp-mobile-card-label">Tuition</span> <span class="sp-mobile-card-value"><strong>$100/mo</strong></span></div>
+      </div>
+
+      <div class="sp-mobile-card">
+        <div class="sp-mobile-card-title">3's Preschool</div>
+        <div class="sp-mobile-card-row"><span class="sp-mobile-card-label">T/Th</span> <span class="sp-mobile-card-value"><strong>$350/mo</strong></span></div>
+        <div class="sp-mobile-card-row"><span class="sp-mobile-card-label">M/W</span> <span class="sp-mobile-card-value"><strong>$350/mo</strong></span></div>
+      </div>
+
+      <div class="sp-mobile-card">
+        <div class="sp-mobile-card-title">4's Preschool</div>
+        <div class="sp-mobile-card-row"><span class="sp-mobile-card-label">T/Th</span> <span class="sp-mobile-card-value"><strong>$350/mo</strong></span></div>
+        <div class="sp-mobile-card-row"><span class="sp-mobile-card-label">M/W/F</span> <span class="sp-mobile-card-value"><strong>$450/mo</strong></span></div>
+        <div class="sp-mobile-card-row"><span class="sp-mobile-card-label">M–F</span> <span class="sp-mobile-card-value"><strong>$600/mo</strong></span></div>
+      </div>
+
+      <div class="sp-mobile-card">
+        <div class="sp-mobile-card-title">Kindergarten Prep</div>
+        <div class="sp-mobile-card-row"><span class="sp-mobile-card-label">T/Th</span> <span class="sp-mobile-card-value"><strong>$400/mo</strong></span></div>
+        <div class="sp-mobile-card-row"><span class="sp-mobile-card-label">M/W/F</span> <span class="sp-mobile-card-value"><strong>$500/mo</strong></span></div>
+        <div class="sp-mobile-card-row"><span class="sp-mobile-card-label">M–F</span> <span class="sp-mobile-card-value"><strong>$650/mo</strong></span></div>
+      </div>
+
+      <div class="sp-mobile-card">
+        <div class="sp-mobile-card-title">Kindergarten</div>
+        <div class="sp-mobile-card-row"><span class="sp-mobile-card-label">M–F</span> <span class="sp-mobile-card-value"><strong>$700/mo</strong></span></div>
+      </div>
+
+    </div>
+
+    <div class="sp-prose" style="margin-top:32px;">
+      <p><strong>Payment options:</strong> Tuition is paid over 10 months (September through June). A 10% discount applies when the full year is paid by August 15.</p>
+      <p><strong>Enrollment deposit:</strong> $100 non-refundable deposit required to hold a spot in any program.</p>
+    </div>
+
+    <div class="sp-placeholder-note" style="max-width:780px; margin:24px auto 0;">
+      ⚠️ PLACEHOLDER: Dr. Peterson to confirm — are snacks included? What specifically is covered by "all-inclusive"? Confirm that the 10% discount details are accurate as stated.
+    </div>
+
+  </div>
+</section>
+<!-- Color Bar Divider -->
+<div class="sp-color-bar"></div>
+
+
+
+<!-- ==========================================================
+     BLOCK 11: LICENSING & SAFETY
+     Contains: H2, intro paragraph, compliance table 
+     (desktop + mobile), open-door policy statement.
+     To edit: Safety items, compliance statuses.
+     ========================================================== -->
+
+<section class="sp-section sp-bg-white" id="safety">
+  <div class="sp-inner">
+
+    <div class="sp-prose">
+      <h2 class="sp-h2">Licensing, Safety, and Compliance</h2>
+      <p>Spark Academy is licensed by the <strong>Illinois Department of Children and Family Services (DCFS)</strong> and operates in full compliance with all applicable state licensing requirements, fire code regulations, and safe schools standards.</p>
+    </div>
+
+    <!-- Desktop: Safety table -->
+    <table class="sp-fact-table sp-desktop-only" style="max-width:780px; margin:32px auto 0;" aria-label="Spark Academy licensing and safety compliance">
+      <tr>
+        <td class="sp-fact-label">DCFS Licensed</td>
+        <td class="sp-fact-value">Yes</td>
+      </tr>
+      <tr>
+        <td class="sp-fact-label">Fire Code Compliant</td>
+        <td class="sp-fact-value">Yes</td>
+      </tr>
+      <tr>
+        <td class="sp-fact-label">CPR/First Aid Certified Staff</td>
+        <td class="sp-fact-value">On-site at all times</td>
+      </tr>
+      <tr>
+        <td class="sp-fact-label">Background Checks</td>
+        <td class="sp-fact-value">All staff cleared per DCFS requirements</td>
+      </tr>
+      <tr>
+        <td class="sp-fact-label">Safe Schools Compliant</td>
+        <td class="sp-fact-value">Yes</td>
+      </tr>
+      <tr>
+        <td class="sp-fact-label">Credentialed Teachers</td>
+        <td class="sp-fact-value">Every teacher holds a degree or credential in education</td>
+      </tr>
+    </table>
+
+    <!-- Mobile: Safety facts -->
+    <div class="sp-mobile-facts" style="max-width:780px; margin:32px auto 0;" aria-label="Spark Academy licensing and safety compliance">
+      <div class="sp-mobile-fact-item">
+        <div class="sp-mobile-fact-label">DCFS Licensed</div>
+        <div class="sp-mobile-fact-value">Yes</div>
+      </div>
+      <div class="sp-mobile-fact-item">
+        <div class="sp-mobile-fact-label">Fire Code Compliant</div>
+        <div class="sp-mobile-fact-value">Yes</div>
+      </div>
+      <div class="sp-mobile-fact-item">
+        <div class="sp-mobile-fact-label">CPR/First Aid Certified Staff</div>
+        <div class="sp-mobile-fact-value">On-site at all times</div>
+      </div>
+      <div class="sp-mobile-fact-item">
+        <div class="sp-mobile-fact-label">Background Checks</div>
+        <div class="sp-mobile-fact-value">All staff cleared per DCFS requirements</div>
+      </div>
+      <div class="sp-mobile-fact-item">
+        <div class="sp-mobile-fact-label">Safe Schools Compliant</div>
+        <div class="sp-mobile-fact-value">Yes</div>
+      </div>
+      <div class="sp-mobile-fact-item">
+        <div class="sp-mobile-fact-label">Credentialed Teachers</div>
+        <div class="sp-mobile-fact-value">Every teacher holds a degree or credential in education</div>
+      </div>
+    </div>
+
+    <div class="sp-placeholder-note" style="max-width:780px; margin:24px auto 0;">
+      ⚠️ PLACEHOLDER: Dr. Peterson to confirm — is "every teacher holds a degree or credential in education" accurate as written, or should it be adjusted?
+    </div>
+
+    <!-- Open-Door Policy (per Open-Door Policy Integration Plan, item #9) -->
+    <div class="sp-opendoor" style="max-width:780px; margin:32px auto 0;">
+      <strong>Open-Door Access:</strong> Spark Academy maintains an open-door policy for all enrolled families. Parents may visit classrooms at any time during the school day without an appointment. Staff members know every family by name.
+    </div>
+
+  </div>
+</section>
+<!-- Color Bar Divider -->
+<div class="sp-color-bar"></div>
+
+
+
+<!-- ==========================================================
+     BLOCK 12: FREQUENTLY ASKED QUESTIONS
+     Contains: H2, 13 Q&A pairs in details/summary accordion.
+     Critical AEO section — every Q&A generates FAQPage schema.
+     To edit: Question text and answer text only.
+     ========================================================== -->
+
+<section class="sp-section sp-bg-sage" id="faq">
+  <div class="sp-inner">
+
+    <h2 class="sp-h2">Frequently Asked Questions About <span style="white-space:nowrap;">Spark Academy</span></h2>
+
+    <div class="sp-faq-list">
+
+      <details class="sp-faq-item">
+        <summary>
+          What is Spark Academy?
+          <svg class="sp-faq-chevron" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M19.5 8.25l-7.5 7.5-7.5-7.5"/></svg>
+        </summary>
+        <div class="sp-faq-answer">
+          Spark Academy is a premium, play-based preschool in Morton, Illinois, founded and led by Dr. Michelle Peterson, Ed.D. — a Doctor of Education from Illinois State University. Spark serves children ages 3 through 6 across four core programs and uses the Purposeful Play Framework, a proprietary curriculum integrating individualized assessment, purposeful play, and daily enrichment.
+        </div>
+      </details>
+
+      <details class="sp-faq-item">
+        <summary>
+          What ages does Spark Academy serve?
+          <svg class="sp-faq-chevron" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M19.5 8.25l-7.5 7.5-7.5-7.5"/></svg>
+        </summary>
+        <div class="sp-faq-answer">
+          Spark Academy serves children ages 3 through 6. Programs include <a href="/preschool-3s/">3's Preschool</a> (age 3+), <a href="/preschool-4s/">4's Preschool</a> (age 4+), <a href="/kindergarten-prep/">Kindergarten Prep</a> (age 5 by November 30), and <a href="/kindergarten/">Kindergarten</a> (age 5 by September 30). <a href="/fresh-3s-fridays/">Fresh 3's Fridays</a> accepts children beginning on the day they turn three through rolling birthday enrollment.
+        </div>
+      </details>
+
+      <details class="sp-faq-item">
+        <summary>
+          How much does Spark Academy cost?
+          <svg class="sp-faq-chevron" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M19.5 8.25l-7.5 7.5-7.5-7.5"/></svg>
+        </summary>
+        <div class="sp-faq-answer">
+          Tuition ranges from $100 to $700 per month depending on the program and schedule selected. All tuition is all-inclusive — no supply lists, hidden fees, or additional costs. A 10% discount applies when the full year is paid by August 15. A $100 non-refundable enrollment deposit is required. See the <a href="#tuition">full tuition table above</a> for details by program.
+        </div>
+      </details>
+
+      <details class="sp-faq-item">
+        <summary>
+          What is the student-to-teacher ratio at Spark Academy?
+          <svg class="sp-faq-chevron" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M19.5 8.25l-7.5 7.5-7.5-7.5"/></svg>
+        </summary>
+        <div class="sp-faq-answer">
+          Spark Academy maintains a 5:1 student-to-teacher ratio across all programs. Classes are capped at 10–12 students maximum, with four sections total.
+        </div>
+      </details>
+
+      <details class="sp-faq-item">
+        <summary>
+          What is the Purposeful Play Framework?
+          <svg class="sp-faq-chevron" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M19.5 8.25l-7.5 7.5-7.5-7.5"/></svg>
+        </summary>
+        <div class="sp-faq-answer">
+          The Purposeful Play Framework is Spark Academy's proprietary, research-driven curriculum developed by Dr. Michelle Peterson, Ed.D. It is built on the Experience Early Learning whole-child curriculum and integrates individualized developmental assessment, purposeful play, daily enrichment in five subjects (Spanish, STEM, Art, Communication, Music &amp; Movement), and the monthly-rotating Developmental Playroom. <a href="/purposeful-play-framework/">Learn more about the framework →</a>
+        </div>
+      </details>
+
+      <details class="sp-faq-item">
+        <summary>
+          Who founded Spark Academy?
+          <svg class="sp-faq-chevron" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M19.5 8.25l-7.5 7.5-7.5-7.5"/></svg>
+        </summary>
+        <div class="sp-faq-answer">
+          Spark Academy was founded in 2023 by <a href="/dr-michelle-peterson/">Dr. Michelle Peterson, Ed.D.</a>, a Doctor of Education from Illinois State University. Dr. Peterson's doctoral research focused on peer engagement strategies for young children in inclusive preschool settings. She is the only doctoral-level early childhood education researcher operating a preschool in Central Illinois. Before founding Spark, she served as assistant principal at Lincoln Elementary in Morton for 10 years.
+        </div>
+      </details>
+
+      <details class="sp-faq-item">
+        <summary>
+          Is Spark Academy licensed?
+          <svg class="sp-faq-chevron" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M19.5 8.25l-7.5 7.5-7.5-7.5"/></svg>
+        </summary>
+        <div class="sp-faq-answer">
+          Yes. Spark Academy is licensed by the Illinois Department of Children and Family Services (DCFS) and operates in full compliance with all state licensing requirements, fire code regulations, and safe schools standards. A CPR and first aid certified staff member is on-site at all times.
+        </div>
+      </details>
+
+      <details class="sp-faq-item">
+        <summary>
+          Where is Spark Academy located?
+          <svg class="sp-faq-chevron" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M19.5 8.25l-7.5 7.5-7.5-7.5"/></svg>
+        </summary>
+        <div class="sp-faq-answer">
+          Spark Academy is located at 1989 North Morton Avenue, Morton, Illinois 61550. The school serves families from Morton, Peoria, Washington, East Peoria, Germantown Hills, Metamora, and surrounding Central Illinois communities.
+        </div>
+      </details>
+
+      <details class="sp-faq-item">
+        <summary>
+          How do I schedule a tour of Spark Academy?
+          <svg class="sp-faq-chevron" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M19.5 8.25l-7.5 7.5-7.5-7.5"/></svg>
+        </summary>
+        <div class="sp-faq-answer">
+          To schedule a tour, complete the tour request form at <a href="/schedule-a-tour/">sparkacademymorton.com/schedule-a-tour/</a> or call <a href="tel:3092913292">309-291-3292</a>. Tours are conducted by Dr. Michelle Peterson or a senior staff member. Families are encouraged to bring their child so they can experience the environment firsthand.
+        </div>
+      </details>
+
+      <details class="sp-faq-item">
+        <summary>
+          Does Spark Academy offer kindergarten?
+          <svg class="sp-faq-chevron" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M19.5 8.25l-7.5 7.5-7.5-7.5"/></svg>
+        </summary>
+        <div class="sp-faq-answer">
+          Yes. Spark Academy offers a full <a href="/kindergarten/">kindergarten program</a> for children age 5 by September 30. Kindergarten runs Monday through Friday, 8:00 AM to 12:00 PM, at $700 per month. The program features 2.5 hours of Academic Play, the Developmental Playroom, and daily enrichment — with a 5:1 ratio that most public school kindergartens cannot match.
+        </div>
+      </details>
+
+      <details class="sp-faq-item">
+        <summary>
+          Is Spark Academy a daycare?
+          <svg class="sp-faq-chevron" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M19.5 8.25l-7.5 7.5-7.5-7.5"/></svg>
+        </summary>
+        <div class="sp-faq-answer">
+          No. Spark Academy is a licensed preschool and kindergarten, not a daycare. Every classroom is led by a credentialed educator, every day follows a structured curriculum, and every child follows an individualized learning path designed by Dr. Michelle Peterson, Ed.D. The distinction matters: daycare provides supervision, preschool provides education.
+        </div>
+      </details>
+
+      <details class="sp-faq-item">
+        <summary>
+          What enrichment programs does Spark Academy offer?
+          <svg class="sp-faq-chevron" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M19.5 8.25l-7.5 7.5-7.5-7.5"/></svg>
+        </summary>
+        <div class="sp-faq-answer">
+          Every Spark Academy program includes 30 minutes of daily enrichment as core programming — not as an after-school extra. The rotation is: Spanish (Monday), STEM (Tuesday), Art (Wednesday), Communication (Thursday), and Music &amp; Movement (Friday). Spark also operates <a href="/summer-camp/">Camp Play</a> (a summer program for ages 3–11), <a href="/homeschool-enrichment/">Discovery Station</a> (homeschool enrichment for ages 5–11), and <a href="/after-school-programs/">After-School Enrichment Programs</a> (open to all school-age children).
+        </div>
+      </details>
+
+      <details class="sp-faq-item">
+        <summary>
+          Does my child need to be potty trained to attend Spark Academy?
+          <svg class="sp-faq-chevron" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M19.5 8.25l-7.5 7.5-7.5-7.5"/></svg>
+        </summary>
+        <div class="sp-faq-answer">
+          Yes. All Spark Academy programs require that children are potty trained before enrollment. This includes Fresh 3's Fridays, 3's Preschool, 4's Preschool, Kindergarten Prep, and Kindergarten.
+        </div>
+      </details>
+
+    </div>
+
+  </div>
+</section>
+<!-- Color Bar Divider -->
+<div class="sp-color-bar"></div>
+
+
+
+<!-- ==========================================================
+     BLOCK 12B: INLINE "HAVE A QUESTION?" FORM
+     Contains: H3, micro-copy, 3-field form (name, email, question).
+     Placed after Block 12 (FAQ), before the Final CTA Block.
+     To edit: Change the micro-copy or field labels.
+
+     PHASE 5 NOTE: Replace the <form> with Kadence Advanced Form block.
+     Keep the outer container and id="question-form" for anchor linking.
+     Configure: inline success message (NOT redirect), email notification
+     + auto-respond + database entry. GA4 event: question_form_submit.
+     ========================================================== -->
+
+<section class="sp-section sp-bg-sage" id="question-form" style="scroll-margin-top:80px;">
+  <div class="sp-inner">
+    <div style="max-width:580px; margin:0 auto; padding:36px 32px; background:var(--sp-program-wash); border:1px solid var(--sp-program-border); border-radius:12px; text-align:center;">
+      <h3 class="sp-h3" style="text-align:center; margin-bottom:8px;">Have a Question?</h3>
+      <p style="font-family:'DM Sans',sans-serif; font-size:15px; color:var(--sp-gray); line-height:1.6; margin-bottom:24px;">Have a question about enrollment, programs, or visiting Spark? We'd love to hear from you.</p>
+
+      <form style="text-align:left;">
+        <div class="sp-form-group">
+          <label class="sp-form-label">Your Name <span class="sp-required">*</span></label>
+          <input type="text" class="sp-form-input" placeholder="First and last name" required>
+        </div>
+
+        <div class="sp-form-group">
+          <label class="sp-form-label">Email Address <span class="sp-required">*</span></label>
+          <input type="email" class="sp-form-input" placeholder="you@email.com" required>
+        </div>
+
+        <div class="sp-form-group">
+          <label class="sp-form-label">What Would You Like to Know? <span class="sp-required">*</span></label>
+          <textarea class="sp-form-textarea" placeholder="Your question about Spark Academy..." style="min-height:100px;" required></textarea>
+        </div>
+
+        <button type="submit" class="sp-form-submit-teal" data-cta-type="form-submit" data-cta-text="Send Your Question - Answer Hub">Send Your Question</button>
+      </form>
+    </div>
+  </div>
+</section>
+<!-- Color Bar Divider -->
+<div class="sp-color-bar"></div>
+
+
+
+<!-- ==========================================================
+     BLOCK 13: BOTTOM CTA
+     Contains: H2, body copy, Schedule a Tour + Have a Question
+     CTAs, phone, trust signals, testimonial placeholder.
+     To edit: CTA text, phone number, body copy.
+     ========================================================== -->
+
+<section class="sp-cta-section">
+  <div class="sp-inner" style="position:relative; z-index:1;">
+
+    <h2 class="sp-h2">See Spark Academy for Yourself</h2>
+
+    <p>The best way to understand what makes Spark Academy different is to visit. Schedule a tour to see the classrooms, meet Dr. Peterson and the teachers, watch children learn through the Purposeful Play Framework, and ask every question on your mind.</p>
+
+    <p>Or call <a href="tel:3092913292" class="sp-cta-phone" data-cta-type="phone" data-cta-text="Phone - Bottom CTA">309-291-3292</a> to speak with our team directly.</p>
+
+    <div class="sp-cta-buttons">
+      <a href="/schedule-a-tour/" class="sp-btn-gold" data-cta-type="primary" data-cta-text="Schedule a Tour - Bottom CTA">Schedule a Tour</a>
+      <a href="#question-form" class="sp-btn-outline" data-cta-type="secondary" data-cta-text="Have a Question - Bottom CTA">Have a Question?</a>
+    </div>
+
+    <div class="sp-cta-trust">
+      <div class="sp-cta-trust-item">
+        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M15 19.128a9.38 9.38 0 002.625.372 9.337 9.337 0 004.121-.952 4.125 4.125 0 00-7.533-2.493M15 19.128v-.003c0-1.113-.285-2.16-.786-3.07M15 19.128v.106A12.318 12.318 0 018.624 21c-2.331 0-4.512-.645-6.374-1.766l-.001-.109a6.375 6.375 0 0111.964-3.07M12 6.375a3.375 3.375 0 11-6.75 0 3.375 3.375 0 016.75 0zm8.25 2.25a2.625 2.625 0 11-5.25 0 2.625 2.625 0 015.25 0z"/></svg>
+        5:1 Ratio
+      </div>
+      <div class="sp-cta-trust-item">
+        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M4.26 10.147a60.436 60.436 0 00-.491 6.347A48.627 48.627 0 0112 20.904a48.627 48.627 0 018.232-4.41 60.46 60.46 0 00-.491-6.347m-15.482 0a50.57 50.57 0 00-2.658-.813A59.905 59.905 0 0112 3.493a59.902 59.902 0 0110.399 5.84c-.896.248-1.783.52-2.658.814m-15.482 0A50.697 50.697 0 0112 13.489a50.702 50.702 0 017.74-3.342M6.75 15a.75.75 0 100-1.5.75.75 0 000 1.5zm0 0v-3.675A55.378 55.378 0 0112 8.443m-7.007 11.55A5.981 5.981 0 006.75 15.75v-1.5"/></svg>
+        Doctoral-Led
+      </div>
+      <div class="sp-cta-trust-item">
+        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M9 12.75L11.25 15 15 9.75m-3-7.036A11.959 11.959 0 013.598 6 11.99 11.99 0 003 9.749c0 5.592 3.824 10.29 9 11.623 5.176-1.332 9-6.03 9-11.622 0-1.31-.21-2.571-.598-3.751h-.152c-3.196 0-6.1-1.248-8.25-3.285z"/></svg>
+        DCFS Licensed
+      </div>
+      <div class="sp-cta-trust-item">
+        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M2.25 18.75a60.07 60.07 0 0115.797 2.101c.727.198 1.453-.342 1.453-1.096V18.75M3.75 4.5v.75A.75.75 0 013 6h-.75m0 0v-.375c0-.621.504-1.125 1.125-1.125H20.25M2.25 6v9m18-10.5v.75c0 .414.336.75.75.75h.75m-1.5-1.5h.375c.621 0 1.125.504 1.125 1.125v9.75c0 .621-.504 1.125-1.125 1.125h-.375m1.5-1.5H21a.75.75 0 00-.75.75v.75m0 0H3.75m0 0h-.375a1.125 1.125 0 01-1.125-1.125V15m1.5 1.5v-.75A.75.75 0 003 15h-.75M15 10.5a3 3 0 11-6 0 3 3 0 016 0zm3 0h.008v.008H18V10.5zm-12 0h.008v.008H6V10.5z"/></svg>
+        All-Inclusive Tuition
+      </div>
+    </div>
+
+    <!-- Testimonial Placeholder -->
+    <div class="sp-testimonial-placeholder">
+      Testimonials coming soon. When available, place one named, attributed parent testimonial here — ideally from a family that mentions the tour experience.
+    </div>
+
+  </div>
+</section>
+<!-- Color Bar Divider -->
+<div class="sp-color-bar"></div>
+
+
+
+<!-- ==========================================================
+     BLOCK 14: POSITIONING FOOTER
+     Contains: Tagline accent bar matching the teal CTA above.
+     To edit: Tagline text only.
+     ========================================================== -->
+
+<div class="sp-positioning-footer">
+  <div class="sp-footer-triangles">
+    <span class="sp-ft" style="border-bottom-color: var(--sp-tri-pink);"></span>
+    <span class="sp-ft" style="border-bottom-color: var(--sp-tri-orange);"></span>
+    <span class="sp-ft" style="border-bottom-color: var(--sp-tri-yellow);"></span>
+    <span class="sp-ft" style="border-bottom-color: var(--sp-tri-green);"></span>
+    <span class="sp-ft" style="border-bottom-color: var(--sp-tri-blue);"></span>
+  </div>
+  <p>Purposeful Play. Exceptional Beginnings.</p>
+</div>
+
+</body>
+</html>
