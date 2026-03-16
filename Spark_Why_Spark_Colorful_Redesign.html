@@ -1088,6 +1088,19 @@
   .sp-faq-answer { font-size: 15px; }
   .sp-triangle-divider .sp-tri { transform: scale(0.8); }
 
+  /* Fix: Stack stat number + label vertically on mobile for better alignment */
+  .sp-diff-stat { flex-direction: column; gap: 4px; }
+
+  /* Fix: Allow long headings to wrap naturally on mobile */
+  .sp-diff-block .sp-h3 span[style*="white-space:nowrap"] { white-space: normal !important; }
+
+  /* Fix: Hide "in depth" text on mobile for shorter link */
+  .sp-mobile-hide { display: none !important; }
+
+  /* Fix: Simplify mid-page CTA text on mobile */
+  .sp-mid-cta-desktop { display: none; }
+  .sp-mid-cta-mobile { display: inline; }
+
   /* Hero triangles: scale down and pull inward so they stay visible on mobile */
   .sp-hero::before {
     top: -20px;
@@ -1280,6 +1293,11 @@
   transition: all 0.25s ease;
 }
 .sp-mid-cta a:hover { gap: 12px; border-color: var(--sp-program); background: rgba(61,107,98,0.04); color: var(--sp-gold); }
+/* Default: show desktop text, hide mobile text */
+.sp-mid-cta-mobile { display: none; }
+.sp-mid-cta-desktop { display: inline; }
+/* Default: show "in depth" span */
+.sp-mobile-hide { display: inline; }
 .sp-mid-cta-sub { font-family: 'DM Sans', sans-serif; font-size: 14px; color: var(--sp-gray); margin-top: 12px; }
 .sp-values-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 32px; margin-top: 48px; }
 .sp-value-item { display: flex; gap: 16px; align-items: flex-start; }
@@ -1299,9 +1317,13 @@
   transition: gap 0.2s ease, color 0.2s ease;
 }
 .sp-testimonial-link:hover { gap: 10px; color: var(--sp-gold); }
+/* Fix: Give testimonial link proper standalone spacing on desktop/tablet */
+.sp-testimonial-link { display: block; margin-top: 32px; padding-top: 24px; }
 .sp-cta-tuition { margin-top: 20px; font-family: 'DM Sans', sans-serif; font-size: 14px; color: rgba(255,255,255,0.55); }
 .sp-cta-tuition a { color: rgba(255,255,255,0.75); font-weight: 600; text-decoration: none; border-bottom: 1px solid rgba(255,255,255,0.3); }
 .sp-cta-tuition a:hover { border-color: rgba(255,255,255,0.6); }
+/* Fix: Give "See program pricing" its own row with proper spacing */
+.sp-cta-pricing-link { margin-top: 12px !important; }
 .sp-hero-body { animation: spFadeUp 0.7s ease 0.25s both; }
 
 @media (max-width: 1024px) {
@@ -1462,7 +1484,7 @@
       <p>Research shows that young children build the neural pathways for language, problem-solving, executive function, and self-regulation through play &mdash; not through worksheets or rote memorization. But not all play is created equal.</p>
       <p>The Purposeful Play Framework, developed by Dr. Peterson and built on the Experience Early Learning curriculum, structures every part of your child's day around intentional, research-based learning experiences. Academic play sessions, a Developmental Play Room that transforms monthly around new themes, and daily enrichment in Spanish, STEM, art, communication, and music.</p>
       <div class="sp-diff-pullquote">All designed to meet your child exactly where they are.</div>
-      <a href="/purposeful-play-framework/" class="sp-diff-link">Explore the Purposeful Play Framework in depth &#8594;</a>
+      <a href="/purposeful-play-framework/" class="sp-diff-link">Explore the Purposeful Play Framework<span class="sp-mobile-hide"> in depth</span> &#8594;</a>
     </div>
 
     <!-- Diff 5: Credentialed Educators (white) -->
@@ -1577,7 +1599,7 @@
      ========================================================== -->
 
 <div class="sp-mid-cta">
-  <a href="/schedule-a-tour/" data-cta-type="mid-page" data-cta-text="Schedule a Tour - Mid CTA">Ready to see it in person? Schedule a Tour &#8594;</a>
+  <a href="/schedule-a-tour/" data-cta-type="mid-page" data-cta-text="Schedule a Tour - Mid CTA"><span class="sp-mid-cta-desktop">Ready to see it in person? Schedule a Tour</span><span class="sp-mid-cta-mobile">Schedule a Tour</span> &#8594;</a>
   <p class="sp-mid-cta-sub">Or keep reading &mdash; there's more to discover below.</p>
 </div>
 
@@ -1672,11 +1694,12 @@
       <a href="/schedule-a-tour/" class="sp-btn-gold" data-cta-type="primary" data-cta-text="Schedule a Tour - Bottom CTA">Schedule a Tour</a>
       <a href="/programs/" class="sp-btn-outline" data-cta-type="secondary" data-cta-text="Find the Right Program - Bottom CTA">Find the Right Program for Your Child</a>
     </div>
-    <p class="sp-cta-tuition">All-inclusive tuition &mdash; no supply lists, no hidden fees. <a href="/programs/">See program pricing &#8594;</a></p>
+    <p class="sp-cta-tuition">All-inclusive tuition &mdash; no supply lists, no hidden fees.</p>
+    <p class="sp-cta-tuition sp-cta-pricing-link"><a href="/programs/">See program pricing &#8594;</a></p>
     <div class="sp-cta-trust">
-      <span><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M4.26 10.147a60.436 60.436 0 00-.491 6.347A48.627 48.627 0 0112 20.904a48.627 48.627 0 018.232-4.41 60.46 60.46 0 00-.491-6.347m-15.482 0a50.57 50.57 0 00-2.658-.813A59.905 59.905 0 0112 3.493a59.902 59.902 0 0110.399 5.84c-.896.248-1.783.52-2.658.814m-15.482 0A50.697 50.697 0 0112 13.489a50.702 50.702 0 017.74-3.342"/></svg> Dr. Michelle Peterson, Ed.D.</span>
-      <span><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M18 18.72a9.094 9.094 0 003.741-.479 3 3 0 00-4.682-2.72m.94 3.198l.001.031c0 .225-.012.447-.037.666A11.944 11.944 0 0112 21c-2.17 0-4.207-.576-5.963-1.584A6.062 6.062 0 016 18.719m12 0a5.971 5.971 0 00-.941-3.197m0 0A5.995 5.995 0 0012 12.75a5.995 5.995 0 00-5.058 2.772m0 0a3 3 0 00-4.681 2.72 8.986 8.986 0 003.74.477m.94-3.197a5.971 5.971 0 00-.94 3.197M15 6.75a3 3 0 11-6 0 3 3 0 016 0zm6 3a2.25 2.25 0 11-4.5 0 2.25 2.25 0 014.5 0zm-13.5 0a2.25 2.25 0 11-4.5 0 2.25 2.25 0 014.5 0z"/></svg> 5:1 Student-to-Teacher Ratio</span>
-      <span><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M9 12.75L11.25 15 15 9.75m-3-7.036A11.959 11.959 0 013.598 6 11.99 11.99 0 003 9.749c0 5.592 3.824 10.29 9 11.623 5.176-1.332 9-6.03 9-11.622 0-1.31-.21-2.571-.598-3.751h-.152c-3.196 0-6.1-1.248-8.25-3.285z"/></svg> DCFS Licensed &middot; Serving Central Illinois</span>
+      <span class="sp-cta-trust-item"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M4.26 10.147a60.436 60.436 0 00-.491 6.347A48.627 48.627 0 0112 20.904a48.627 48.627 0 018.232-4.41 60.46 60.46 0 00-.491-6.347m-15.482 0a50.57 50.57 0 00-2.658-.813A59.905 59.905 0 0112 3.493a59.902 59.902 0 0110.399 5.84c-.896.248-1.783.52-2.658.814m-15.482 0A50.697 50.697 0 0112 13.489a50.702 50.702 0 017.74-3.342"/></svg> Dr. Michelle Peterson, Ed.D.</span>
+      <span class="sp-cta-trust-item"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M18 18.72a9.094 9.094 0 003.741-.479 3 3 0 00-4.682-2.72m.94 3.198l.001.031c0 .225-.012.447-.037.666A11.944 11.944 0 0112 21c-2.17 0-4.207-.576-5.963-1.584A6.062 6.062 0 016 18.719m12 0a5.971 5.971 0 00-.941-3.197m0 0A5.995 5.995 0 0012 12.75a5.995 5.995 0 00-5.058 2.772m0 0a3 3 0 00-4.681 2.72 8.986 8.986 0 003.74.477m.94-3.197a5.971 5.971 0 00-.94 3.197M15 6.75a3 3 0 11-6 0 3 3 0 016 0zm6 3a2.25 2.25 0 11-4.5 0 2.25 2.25 0 014.5 0zm-13.5 0a2.25 2.25 0 11-4.5 0 2.25 2.25 0 014.5 0z"/></svg> 5:1 Student-to-Teacher Ratio</span>
+      <span class="sp-cta-trust-item"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M9 12.75L11.25 15 15 9.75m-3-7.036A11.959 11.959 0 013.598 6 11.99 11.99 0 003 9.749c0 5.592 3.824 10.29 9 11.623 5.176-1.332 9-6.03 9-11.622 0-1.31-.21-2.571-.598-3.751h-.152c-3.196 0-6.1-1.248-8.25-3.285z"/></svg> DCFS Licensed &middot; Serving Central Illinois</span>
     </div>
   </div>
 </section>
@@ -1691,9 +1714,16 @@
      To edit: Change the tagline text.
      ========================================================== -->
 
-<section class="sp-positioning">
+<div class="sp-positioning-footer">
+  <div class="sp-footer-triangles">
+    <span class="sp-ft" style="border-bottom-color: var(--sp-tri-pink);"></span>
+    <span class="sp-ft" style="border-bottom-color: var(--sp-tri-orange);"></span>
+    <span class="sp-ft" style="border-bottom-color: var(--sp-tri-yellow);"></span>
+    <span class="sp-ft" style="border-bottom-color: var(--sp-tri-green);"></span>
+    <span class="sp-ft" style="border-bottom-color: var(--sp-tri-blue);"></span>
+  </div>
   <p>Purposeful Play. Exceptional Beginnings.</p>
-</section>
+</div>
 
 </body>
 </html>

@@ -1296,7 +1296,7 @@
   border-bottom: none;
 }
 .sp-cred-table tr:nth-child(odd) {
-  background: rgba(61,107,98,0.03);
+  background: #fff;
 }
 .sp-cred-cards {
   display: flex;
@@ -1577,6 +1577,88 @@
 }
 .sp-hero .sp-hero-body { animation: spFadeUp 0.7s ease 0.2s both; }
 
+/* --- Hero Tagline Styling (Fix: visual distinction from body text) --- */
+.sp-hero-tagline {
+  font-family: 'DM Sans', sans-serif;
+  font-size: 17px;
+  font-weight: 600;
+  line-height: 1.65;
+  color: var(--sp-program-dark);
+  max-width: 620px;
+  margin: 0 auto 12px;
+  text-align: center;
+  letter-spacing: 0.01em;
+}
+/* Mini triangle divider below tagline */
+.sp-hero-tagline-divider {
+  display: flex;
+  justify-content: center;
+  align-items: flex-end;
+  gap: 3px;
+  margin: 16px auto 32px;
+}
+.sp-hero-tagline-divider .sp-tri-mini {
+  width: 0; height: 0;
+  border-left: 8px solid transparent;
+  border-right: 8px solid transparent;
+}
+.sp-hero-tagline-divider .sp-tri-mini-1 { border-bottom: 11px solid var(--sp-tri-pink); }
+.sp-hero-tagline-divider .sp-tri-mini-2 { border-bottom: 13px solid var(--sp-tri-orange); }
+.sp-hero-tagline-divider .sp-tri-mini-3 { border-bottom: 15px solid var(--sp-tri-yellow); }
+.sp-hero-tagline-divider .sp-tri-mini-4 { border-bottom: 13px solid var(--sp-tri-green); }
+.sp-hero-tagline-divider .sp-tri-mini-5 { border-bottom: 11px solid var(--sp-tri-blue); }
+
+/* --- Desktop Credential Tables: white bg, no green alternating rows (Fix) --- */
+.sp-cred-table tr:nth-child(odd) {
+  background: #fff;
+}
+.sp-cred-table tr:nth-child(even) {
+  background: var(--sp-white);
+}
+.sp-cred-table {
+  background: #fff;
+}
+
+/* --- Consulting CTA: styled as clear button (Fix) --- */
+.sp-consulting-btn {
+  display: inline-block;
+  background: #fff;
+  color: var(--sp-program-deep);
+  padding: 16px 36px;
+  border-radius: 6px;
+  font-family: 'DM Sans', sans-serif;
+  font-weight: 600;
+  font-size: 16px;
+  text-decoration: none;
+  transition: background 0.2s, transform 0.2s, box-shadow 0.2s;
+  box-shadow: 0 2px 12px rgba(0,0,0,0.15);
+}
+.sp-consulting-btn:hover {
+  background: #f8f8f8;
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(0,0,0,0.2);
+}
+
+/* --- Trust icons mobile: left-align with consistent layout (Fix) --- */
+@media (max-width: 767px) {
+  .sp-cta-trust {
+    align-items: flex-start !important;
+    text-align: left;
+    gap: 12px !important;
+  }
+  .sp-cta-trust-item {
+    font-size: 12px;
+    gap: 10px;
+    width: 100%;
+    justify-content: center;
+  }
+  .sp-cta-trust-item svg {
+    width: 20px;
+    height: 20px;
+    flex-shrink: 0;
+  }
+}
+
 @media print {
   .sp-hero::before, .sp-hero::after,
   .sp-cta-section::before,
@@ -1641,7 +1723,14 @@
 
     <h1 class="sp-h1">Dr. Michelle Peterson, Ed.D. &mdash; Educator, Researcher, and the Founder Who Built Spark for <span style="white-space:nowrap;">Children Like Yours</span></h1>
 
-    <p class="sp-positioning">The only preschool in Central Illinois founded and led by a doctoral researcher in early childhood education.</p>
+    <p class="sp-hero-tagline">The only preschool in Central Illinois founded and led by a doctoral researcher in early childhood education.</p>
+    <div class="sp-hero-tagline-divider">
+      <span class="sp-tri-mini sp-tri-mini-1"></span>
+      <span class="sp-tri-mini sp-tri-mini-2"></span>
+      <span class="sp-tri-mini sp-tri-mini-3"></span>
+      <span class="sp-tri-mini sp-tri-mini-4"></span>
+      <span class="sp-tri-mini sp-tri-mini-5"></span>
+    </div>
 
     <div class="sp-hero-body">
       <p>Some educators study early childhood development. Others spend decades in the classroom. Dr.&nbsp;Michelle Peterson did both &mdash; and then built a school to put it all into practice.</p>
@@ -1688,7 +1777,7 @@
   <div class="sp-inner">
     <div class="sp-prose">
 
-      <h2 class="sp-h2">A Collision of Professional Life and <span style="white-space:nowrap;">Having Children of Her Own</span></h2>
+      <h2 class="sp-h2">A Collision of Professional Life and Having Children of Her Own</h2>
 
       <p>Dr.&nbsp;Peterson spent the first decade of her career in the classroom &mdash; teaching kindergarten in Texas, fourth and fifth grade in Peoria, and then moving into school administration, where she served as an assistant principal for 10 years at Lincoln Elementary in Morton. She led school improvement teams, co-chaired PBIS implementation, coached teachers, and drove curriculum alignment across an entire building.</p>
 
@@ -2055,7 +2144,7 @@
          inside the teal background — the text is the focus. -->
 
     <div class="sp-educators-ctas">
-      <a href="/consulting/" class="sp-btn-gold" data-cta-type="consulting-primary" data-cta-text="Explore Consulting Services - Founder Hub">Work with Dr. Peterson &mdash; Explore Consulting Services</a>
+      <a href="/consulting/" class="sp-consulting-btn" data-cta-type="consulting-primary" data-cta-text="Explore Consulting Services - Founder Hub">Explore Consulting Services &#8594;</a>
       <p class="sp-educators-email">Or email Dr.&nbsp;Peterson directly: <a href="mailto:consulting@sparkacademymorton.com" data-cta-type="consulting-email" data-cta-text="Consulting Email - Founder Hub">consulting@sparkacademymorton.com</a></p>
     </div>
 
@@ -2164,14 +2253,11 @@
 
     <p>Everything on this page becomes real the moment you walk through our doors. Schedule a tour and see the classrooms, meet Dr.&nbsp;Peterson, and discover what a preschool built on doctoral-level research and genuine care looks like from the inside.</p>
 
-    <p>Or, if you'd prefer to explore further first, take a closer look at our programs and find the right fit for your child.</p>
-
-    <p>Prefer to call? Reach us at <a href="tel:3092913292" class="sp-cta-phone" data-cta-type="phone" data-cta-text="Phone - Bottom CTA Founder Hub">309-291-3292</a></p>
-
     <div class="sp-cta-buttons">
       <a href="/schedule-a-tour/" class="sp-btn-gold" data-cta-type="primary" data-cta-text="Schedule a Tour - Bottom Founder Hub">Schedule a Tour</a>
-      <a href="/programs/" class="sp-cta-secondary" data-cta-type="secondary" data-cta-text="Explore Programs - Bottom Founder Hub">Explore Our Programs &#8594;</a>
+      <a href="#question-form" class="sp-btn-outline" data-cta-type="secondary" data-cta-text="Have a Question - Bottom Founder Hub">Have a Question? We'd Love to Hear From You</a>
     </div>
+    <p style="margin-top:24px;">Prefer to call? Reach us at <a href="tel:3092913292" class="sp-cta-phone" data-cta-type="phone" data-cta-text="Phone - Bottom CTA Founder Hub">309-291-3292</a>.<br>We're likely in the classroom, but leave a message and we'll return your call within 24 hours.</p>
 
     <div class="sp-cta-trust">
       <span class="sp-cta-trust-item">
