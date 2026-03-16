@@ -393,6 +393,16 @@
   margin-top: 40px;
   margin-bottom: 16px;
 }
+.sp-prose a {
+  color: var(--sp-program-deep);
+  font-weight: 600;
+  text-decoration: none;
+  border-bottom: 1px solid rgba(94,139,150,0.4);
+  transition: border-color 0.2s;
+}
+.sp-prose a:hover {
+  border-color: var(--sp-program);
+}
 /* CHANGED: accent text uses program color */
 .sp-prose-accent {
   font-family: 'DM Sans', sans-serif;
@@ -1040,6 +1050,7 @@
 }
 .sp-hero .sp-h1 { animation: spFadeUp 0.7s ease both; }
 .sp-hero .sp-hero-sub { animation: spFadeUp 0.7s ease 0.1s both; }
+.sp-hero .sp-hero-triangles { animation: spFadeUp 0.7s ease 0.15s both; padding: 28px 0 32px; margin: 0; }
 .sp-hero .sp-hero-ctas { animation: spFadeUp 0.7s ease 0.2s both; }
 .sp-hero .sp-trust-line { animation: spFadeUp 0.7s ease 0.3s both; }
 
@@ -1304,6 +1315,15 @@
     <h1 class="sp-h1">Kindergarten the Way It Was Always <span style="white-space:nowrap;">Supposed to Be</span></h1>
 
     <p class="sp-hero-sub">Spark Academy's Kindergarten program combines the rigor your five-year-old is ready for with the intimacy, play-based learning, and individualized attention that research shows produces the best long-term outcomes. Monday through Friday. Small class. Big beginning.</p>
+
+    <!-- Colorful triangle break between tagline and CTAs -->
+    <div class="sp-triangle-divider sp-hero-triangles">
+      <span class="sp-tri sp-tri-1"></span>
+      <span class="sp-tri sp-tri-2"></span>
+      <span class="sp-tri sp-tri-3"></span>
+      <span class="sp-tri sp-tri-4"></span>
+      <span class="sp-tri sp-tri-5"></span>
+    </div>
 
     <div class="sp-hero-ctas">
       <a href="/schedule-a-tour/" class="sp-btn-gold" data-cta-type="primary" data-cta-text="Schedule a Tour - Hero">Schedule a Tour</a>
@@ -1711,7 +1731,7 @@
             <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M4.5 12.75l6 6 9-13.5"/></svg>
           </div>
           <div>
-            <span style="font-weight:600; color:var(--sp-heading);">Age:</span> Must be 5 by September 30
+            <span style="font-weight:600; color:var(--sp-heading);">Age:</span> Must be 5 by September 30th
           </div>
         </div>
         <div class="sp-tuition-detail-line">
@@ -1773,7 +1793,7 @@
      Contains: H2, body copy, primary CTA (Schedule a Tour),
      secondary CTA (Have a Question?), phone link, K-Prep 
      escape link (lower-commitment path for parents whose child 
-     misses the Sept 30 cutoff), trust signals.
+     misses the Sept 30th cutoff), trust signals.
      To edit: Change the paragraph text or phone number.
      ========================================================== -->
 
@@ -1784,15 +1804,14 @@
 
     <p>The best way to understand what Spark's Kindergarten offers is to stand in the classroom, meet the teachers, and watch what happens when ten five-year-olds show up ready to learn.</p>
     <p>Schedule a tour and we'll show you everything &mdash; the daily rhythm, the Developmental Playroom, the enrichment setup, and the culture that makes this one of the most intentional kindergarten programs in Central Illinois.</p>
-    <p style="margin-top:8px;">Or call us directly: <a href="tel:3092913292" class="sp-cta-phone" data-cta-type="phone" data-cta-text="Phone Call - CTA Block">309-291-3292</a></p>
 
     <div class="sp-cta-buttons">
       <a href="/schedule-a-tour/" class="sp-btn-gold" data-cta-type="primary" data-cta-text="Schedule a Tour - CTA Block">Schedule a Tour</a>
       <a href="#question-form" class="sp-btn-outline" data-cta-type="secondary" data-cta-text="Have a Question - CTA Block">Have a Question?</a>
     </div>
 
-    <p style="font-family:'DM Sans',sans-serif;font-size:14px;color:rgba(255,255,255,0.55);margin-top:20px;max-width:460px;">If you're not quite ready for a tour, that's okay too. Send us a question, and someone from our team will be in touch.</p>
-    <p style="font-family:'DM Sans',sans-serif;font-size:14px;margin-top:14px;"><a href="/kindergarten-prep/" style="color:rgba(255,255,255,0.5);text-decoration:none;border-bottom:1px solid rgba(255,255,255,0.25);transition:color 0.2s,border-color 0.2s;" onmouseover="this.style.color='#fff';this.style.borderColor='rgba(255,255,255,0.6)'" onmouseout="this.style.color='rgba(255,255,255,0.5)';this.style.borderColor='rgba(255,255,255,0.25)'">Child turns 5 after September 30? Learn about Kindergarten Prep &#8594;</a></p>
+    <p style="font-family:'DM Sans',sans-serif;font-size:14px;color:rgba(255,255,255,0.55);margin-top:20px;max-width:460px;">If you're not quite ready for a tour, that's okay too. Send us a question, and someone from our team will be in touch. <span style="white-space:nowrap;">Or call <a href="tel:3092913292" class="sp-cta-phone" style="font-size:14px;" data-cta-type="phone" data-cta-text="Phone Call - CTA Block">309-291-3292</a>.</span></p>
+    <p style="font-family:'DM Sans',sans-serif;font-size:14px;margin-top:14px;"><a href="/kindergarten-prep/" style="color:rgba(255,255,255,0.5);text-decoration:none;border-bottom:1px solid rgba(255,255,255,0.25);transition:color 0.2s,border-color 0.2s;" onmouseover="this.style.color='#fff';this.style.borderColor='rgba(255,255,255,0.6)'" onmouseout="this.style.color='rgba(255,255,255,0.5)';this.style.borderColor='rgba(255,255,255,0.25)'">Child turns 5 after September 30th? Learn about Kindergarten Prep &#8594;</a></p>
 
     <div class="sp-cta-trust">
       <span class="sp-cta-trust-item">
@@ -1882,7 +1901,7 @@
           <svg class="sp-faq-chevron" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M19.5 8.25l-7.5 7.5-7.5-7.5"/></svg>
         </summary>
         <div class="sp-faq-answer">
-          Your child must be five years old by September 30 and must be fully potty trained. Children who turn 5 between October 1 and November 30 should consider our <a href="/kindergarten-prep/">Kindergarten Prep</a> program.
+          Your child must be five years old by September 30th and must be fully potty trained. Children who turn 5 between October 1st and November 30th should consider our <a href="/kindergarten-prep/">Kindergarten Prep</a> program.
         </div>
       </details>
 

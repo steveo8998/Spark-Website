@@ -112,6 +112,9 @@
   font-size: 17px;
   line-height: 1.7;
 }
+/* Mobile-only line break: hidden on desktop, shown on mobile */
+.sp-mobile-br { display: none; }
+@media (max-width: 767px) { .sp-mobile-br { display: block; } }
 
 /* --- Buttons (CHANGED: program color instead of gold) --- */
 .sp-btn-gold {
@@ -1054,6 +1057,7 @@
     text-underline-offset: 4px;
     text-decoration-color: rgba(61,107,98,0.4);
   }
+  .sp-hero-secondary { border-bottom: none; }
 }
 
 /* ===== MOBILE LAYOUT (phones: under 768px) ===== */
@@ -1263,7 +1267,7 @@
 .sp-timeline{display:flex;align-items:center;justify-content:center;gap:0;margin:48px auto 40px;max-width:800px}
 .sp-timeline-step{text-align:center;flex:1}
 .sp-timeline-dot{width:56px;height:56px;border-radius:50%;background:var(--sp-program);color:#fff;display:flex;align-items:center;justify-content:center;font-family:'Playfair Display',serif;font-size:18px;font-weight:700;margin:0 auto 10px;position:relative;z-index:2}
-.sp-timeline-step:nth-child(3) .sp-timeline-dot,.sp-timeline-step:nth-child(5) .sp-timeline-dot{background:var(--sp-program);color:var(--sp-heading)}
+.sp-timeline-step:nth-child(3) .sp-timeline-dot,.sp-timeline-step:nth-child(5) .sp-timeline-dot{background:var(--sp-program);color:#fff}
 .sp-timeline-step:nth-child(9) .sp-timeline-dot{background:var(--sp-gold)}
 .sp-timeline-label{font-family:'DM Sans',sans-serif;font-size:13px;font-weight:600;color:var(--sp-text)}
 .sp-timeline-age{font-family:'DM Sans',sans-serif;font-size:11px;color:var(--sp-gray);margin-top:2px}
@@ -1402,16 +1406,9 @@
 
 <section class="sp-hero">
   <div class="sp-hero-inner">
-    <h1 class="sp-h1">A Program for Every Age.<br>One School for <span style="white-space:nowrap;">Every Beginning.</span></h1>
+    <h1 class="sp-h1"><span style="white-space:nowrap;">A Program for</span> <span style="white-space:nowrap;">Every Age.</span><br><span style="white-space:nowrap;">One School for</span> <span style="white-space:nowrap;">Every Beginning.</span></h1>
     <p class="sp-hero-sub">From your child's very first Friday to the last day of kindergarten -- Spark Academy offers programs designed for every stage of early childhood. All rooted in the same doctoral-led, play-based approach. All in one community.</p>
-    <p class="sp-hero-prompt">Not sure which program fits your child? Use the age guide below -- or give us a call at <a href="tel:3092913292">309-291-3292</a></p>
-    <div class="sp-age-finder">
-      <a href="#card-fresh3s" class="sp-age-btn" onclick="event.preventDefault();document.getElementById('card-fresh3s').scrollIntoView({behavior:'smooth',block:'center'});">Age 3 (New)</a>
-      <a href="#card-3s" class="sp-age-btn" onclick="event.preventDefault();document.getElementById('card-3s').scrollIntoView({behavior:'smooth',block:'center'});">Age 3</a>
-      <a href="#card-4s" class="sp-age-btn" onclick="event.preventDefault();document.getElementById('card-4s').scrollIntoView({behavior:'smooth',block:'center'});">Age 4</a>
-      <a href="#card-kprep" class="sp-age-btn" onclick="event.preventDefault();document.getElementById('card-kprep').scrollIntoView({behavior:'smooth',block:'center'});">Age 5</a>
-      <a href="#card-kinder" class="sp-age-btn" onclick="event.preventDefault();document.getElementById('card-kinder').scrollIntoView({behavior:'smooth',block:'center'});">Age 5+</a>
-    </div>
+    <p class="sp-hero-prompt">Not sure which program fits your child? Use the age guide below.</p>
   </div>
 </section>
 
@@ -1434,6 +1431,14 @@
   <div class="sp-inner">
     <h2 class="sp-h2">Start with Your <span style="white-space:nowrap;">Child's Age</span></h2>
     <p class="sp-intro">Select the program that matches your child's age and stage -- each link takes you to the full program page with schedule, tuition, and daily schedule details.</p>
+
+    <div class="sp-age-finder">
+      <a href="#card-fresh3s" class="sp-age-btn" onclick="event.preventDefault();document.getElementById('card-fresh3s').scrollIntoView({behavior:'smooth',block:'center'});">Age 3 (New)</a>
+      <a href="#card-3s" class="sp-age-btn" onclick="event.preventDefault();document.getElementById('card-3s').scrollIntoView({behavior:'smooth',block:'center'});">Age 3</a>
+      <a href="#card-4s" class="sp-age-btn" onclick="event.preventDefault();document.getElementById('card-4s').scrollIntoView({behavior:'smooth',block:'center'});">Age 4</a>
+      <a href="#card-kprep" class="sp-age-btn" onclick="event.preventDefault();document.getElementById('card-kprep').scrollIntoView({behavior:'smooth',block:'center'});">Age 5</a>
+      <a href="#card-kinder" class="sp-age-btn" onclick="event.preventDefault();document.getElementById('card-kinder').scrollIntoView({behavior:'smooth',block:'center'});">Age 5+</a>
+    </div>
 
     <div class="sp-photo-placeholder" style="height:320px;margin-bottom:40px;border-radius:16px;">
       PHOTO: Wide shot of children from multiple age groups engaged in different activities. Warm, natural light. Homelike environment.
@@ -1532,11 +1537,11 @@
         </div>
         <div class="sp-hcard-body">
           <dl class="sp-hcard-details">
-            <dt>Ages</dt><dd>Must be 5 by November 30</dd>
+            <dt>Ages</dt><dd>Must be 5 by November 30th</dd>
             <dt>Schedule</dt><dd>T/Th, M/W/F, or M&ndash;F, 8:00 AM&ndash;12:00 PM</dd>
             <dt>Starting At</dt><dd>$400/month</dd>
           </dl>
-          <p class="sp-hcard-desc">Designed for five-year-olds ready for the most intensive academic preparation Spark offers -- including children who turn 5 between September 2 and November 30 and miss the public school kindergarten cutoff.</p>
+          <p class="sp-hcard-desc">Designed for five-year-olds ready for the most intensive academic preparation Spark offers -- including children who turn 5 between September 2nd and November 30th and miss the public school kindergarten cutoff.</p>
           <span class="sp-hcard-cta">Explore Kindergarten Prep &#8594;</span>
         </div>
       </a>
@@ -1556,7 +1561,7 @@
         </div>
         <div class="sp-hcard-body">
           <dl class="sp-hcard-details">
-            <dt>Ages</dt><dd>Must be 5 by September 30</dd>
+            <dt>Ages</dt><dd>Must be 5 by September 30th</dd>
             <dt>Schedule</dt><dd>M&ndash;F only, 8:00 AM&ndash;12:00 PM</dd>
             <dt>Tuition</dt><dd>$700/month</dd>
           </dl>
@@ -1629,19 +1634,19 @@
 <section class="sp-section sp-bg-sage sp-atmos sp-atmos-d">
   <div class="sp-inner">
     <h2 class="sp-h2">Beyond the Classroom</h2>
-    <p class="sp-intro">Enrichment, adventure, and community -- for kids of every age, every season.</p>
+    <p class="sp-intro">Enrichment, adventure, and community &mdash;<br class="sp-mobile-br"> for kids of every age, every season.</p>
     <div class="sp-supp-grid">
       <a href="/homeschool-enrichment/" class="sp-supp-card">
         <div class="sp-supp-visual sp-supp-visual-1"><div class="sp-supp-icon sp-supp-icon-1"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M12 21v-8.25M15.75 21v-8.25M8.25 21v-8.25M3 9l9-6 9 6m-1.5 12V10.332A48.36 48.36 0 0012 9.75c-2.551 0-5.056.2-7.5.582V21M3 21h18M12 6.75h.008v.008H12V6.75z"/></svg></div><div class="sp-supp-visual-label">Tues &amp; Thurs<br>Ages 5-11</div></div>
-        <div class="sp-supp-content"><span class="sp-supp-badge sp-supp-badge-1">Homeschool Enrichment</span><h3 class="sp-supp-title">Discovery Station</h3><p class="sp-supp-meta"><strong>Tuesdays &amp; Thursdays, 1:00-3:50 PM</strong> &middot; Up to 6 classes/week &middot; Starting at $180/class</p><p class="sp-supp-desc">Drop-off enrichment classes built specifically for homeschool families. Credentialed teachers, no co-op hours, and real friendships built week after week. Choose one class or all six -- your child stays, you don't have to.</p><span class="sp-supp-cta sp-supp-cta-1">Explore Discovery Station &#8594;</span></div>
+        <div class="sp-supp-content"><span class="sp-supp-badge sp-supp-badge-1">Homeschool Enrichment</span><h3 class="sp-supp-title">Discovery Station</h3><p class="sp-supp-meta"><strong>Tuesdays &amp; Thursdays, 1:00-3:50 PM</strong><br class="sp-mobile-br"> Up to 6 classes/week &middot; Starting at $180/class</p><p class="sp-supp-desc">Drop-off enrichment classes built specifically for homeschool families. Credentialed teachers, no co-op hours, and real friendships built week after week. Choose one class or all six -- your child stays, you don't have to.</p><span class="sp-supp-cta sp-supp-cta-1">Explore Discovery Station &#8594;</span></div>
       </a>
       <a href="/after-school-programs/" class="sp-supp-card">
         <div class="sp-supp-visual sp-supp-visual-2"><div class="sp-supp-icon sp-supp-icon-2"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M16.5 18.75h-9m9 0a3 3 0 013 3h-15a3 3 0 013-3m9 0v-3.375c0-.621-.503-1.125-1.125-1.125h-.871M7.5 18.75v-3.375c0-.621.504-1.125 1.125-1.125h.872m5.007 0H9.497m5.007 0a7.454 7.454 0 01-.982-3.172M9.497 14.25a7.454 7.454 0 00.981-3.172M5.25 4.236c-.982.143-1.954.317-2.916.52A6.003 6.003 0 007.73 9.728M5.25 4.236V4.5c0 2.108.966 3.99 2.48 5.228M5.25 4.236V2.721C7.456 2.41 9.71 2.25 12 2.25c2.291 0 4.545.16 6.75.47v1.516M18.75 4.236c.982.143 1.954.317 2.916.52A6.003 6.003 0 0016.27 9.728M18.75 4.236V4.5c0 2.108-.966 3.99-2.48 5.228m0 0a6.01 6.01 0 01-4.27 1.772 6.01 6.01 0 01-4.27-1.772"/></svg></div><div class="sp-supp-visual-label">Tuesdays 4-5 PM<br>Ages 5-11+</div></div>
-        <div class="sp-supp-content"><span class="sp-supp-badge sp-supp-badge-2">Open to All Kids</span><h3 class="sp-supp-title">After-School Enrichment</h3><p class="sp-supp-meta"><strong>Tuesdays, 4:00-5:00 PM</strong> &middot; 12-week semesters &middot; $180/semester</p><p class="sp-supp-desc">Semester-based activity classes for any school-age child -- public, private, or homeschool. Theater, cooking, games, art, and more. One hour a week, twelve weeks of something new. Not homework help -- the best hour of their week.</p><span class="sp-supp-cta sp-supp-cta-2">See What's Running Now &#8594;</span></div>
+        <div class="sp-supp-content"><span class="sp-supp-badge sp-supp-badge-2">Open to All Kids</span><h3 class="sp-supp-title">After-School Enrichment</h3><p class="sp-supp-meta"><strong>Tuesdays, 4:00-5:00 PM</strong><br class="sp-mobile-br"> 12-week semesters &middot; $180/semester</p><p class="sp-supp-desc">Semester-based activity classes for any school-age child -- public, private, or homeschool. Theater, cooking, games, art, and more. One hour a week, twelve weeks of something new. Not homework help -- the best hour of their week.</p><span class="sp-supp-cta sp-supp-cta-2">See What's Running Now &#8594;</span></div>
       </a>
       <a href="/summer-camp/" class="sp-supp-card">
         <div class="sp-supp-visual sp-supp-visual-3"><div class="sp-supp-icon sp-supp-icon-3"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M12 3v2.25m6.364.386l-1.591 1.591M21 12h-2.25m-.386 6.364l-1.591-1.591M12 18.75V21m-4.773-4.227l-1.591 1.591M5.25 12H3m4.227-4.773L5.636 5.636M15.75 12a3.75 3.75 0 11-7.5 0 3.75 3.75 0 017.5 0z"/></svg></div><div class="sp-supp-visual-label">Summer 2026<br>Ages 3-11</div></div>
-        <div class="sp-supp-content"><span class="sp-supp-badge sp-supp-badge-3">Summer 2026</span><h3 class="sp-supp-title">Camp Play</h3><p class="sp-supp-meta"><strong>Mon-Fri, 8:30 AM-12:00 PM</strong> &middot; June 1-July 31 &middot; Starting at $50/day</p><p class="sp-supp-desc">Eight weeks of science, art, cooking, LEGOs, dramatic play, and outdoor adventures in small groups led by Spark's credentialed team. Mornings only, June through July. Designed for happy, tired kids at pickup.</p><span class="sp-supp-cta sp-supp-cta-3">Plan Your Child's Summer &#8594;</span></div>
+        <div class="sp-supp-content"><span class="sp-supp-badge sp-supp-badge-3">Summer 2026</span><h3 class="sp-supp-title">Camp Play</h3><p class="sp-supp-meta"><strong>Mon-Fri, 8:30 AM-12:00 PM</strong><br class="sp-mobile-br"> June 1-July 31 &middot; Starting at $50/day</p><p class="sp-supp-desc">Eight weeks of science, art, cooking, LEGOs, dramatic play, and outdoor adventures in small groups led by Spark's credentialed team. Mornings only, June through July. Designed for happy, tired kids at pickup.</p><span class="sp-supp-cta sp-supp-cta-3">Plan Your Child's Summer &#8594;</span></div>
       </a>
     </div>
   </div>
@@ -1662,8 +1667,8 @@
       <tr><td class="sp-prog">Fresh 3's Fridays</td><td>3 (on birthday)</td><td>Fridays only</td><td class="sp-price">$100/mo</td></tr>
       <tr><td class="sp-prog">3's Preschool</td><td>Must be 3 by first day</td><td>T/Th or M/W</td><td class="sp-price">$350/mo</td></tr>
       <tr><td class="sp-prog">4's Preschool</td><td>Must be 4 by first day</td><td>T/Th, M/W/F, or M-F</td><td class="sp-price">$350/mo</td></tr>
-      <tr><td class="sp-prog">Kindergarten Prep</td><td>Must be 5 by Nov 30</td><td>T/Th, M/W/F, or M-F</td><td class="sp-price">$400/mo</td></tr>
-      <tr><td class="sp-prog">Kindergarten</td><td>Must be 5 by Sept 30</td><td>M-F only</td><td class="sp-price">$700/mo</td></tr>
+      <tr><td class="sp-prog">Kindergarten Prep</td><td>Must be 5 by Nov 30th</td><td>T/Th, M/W/F, or M-F</td><td class="sp-price">$400/mo</td></tr>
+      <tr><td class="sp-prog">Kindergarten</td><td>Must be 5 by Sept 30th</td><td>M-F only</td><td class="sp-price">$700/mo</td></tr>
       <tr class="sp-table-divider"><td colspan="4">Enrichment &amp; Seasonal Programs</td></tr>
       <tr><td class="sp-prog">Discovery Station</td><td>5-11</td><td>Tues &amp; Thurs, 1:00-3:50 PM</td><td class="sp-price">$180/class</td></tr>
       <tr><td class="sp-prog">After-School Enrichment</td><td>5-11+</td><td>Tuesdays, 4:00-5:00 PM</td><td class="sp-price">$180/semester</td></tr>
@@ -1673,17 +1678,15 @@
       <div class="sp-tuition-card"><div class="sp-tuition-card-name">Fresh 3's Fridays</div><div class="sp-tuition-card-row"><span class="sp-tuition-card-label">Ages</span><span class="sp-tuition-card-value">3 (on birthday)</span></div><div class="sp-tuition-card-row"><span class="sp-tuition-card-label">Schedule</span><span class="sp-tuition-card-value">Fridays only</span></div><div class="sp-tuition-card-row"><span class="sp-tuition-card-label">Tuition</span><span class="sp-tuition-card-value sp-highlight">$100/mo</span></div></div>
       <div class="sp-tuition-card"><div class="sp-tuition-card-name">3's Preschool</div><div class="sp-tuition-card-row"><span class="sp-tuition-card-label">Ages</span><span class="sp-tuition-card-value">Must be 3 by first day</span></div><div class="sp-tuition-card-row"><span class="sp-tuition-card-label">Schedule</span><span class="sp-tuition-card-value">T/Th or M/W</span></div><div class="sp-tuition-card-row"><span class="sp-tuition-card-label">Tuition</span><span class="sp-tuition-card-value sp-highlight">$350/mo</span></div></div>
       <div class="sp-tuition-card"><div class="sp-tuition-card-name">4's Preschool</div><div class="sp-tuition-card-row"><span class="sp-tuition-card-label">Ages</span><span class="sp-tuition-card-value">Must be 4 by first day</span></div><div class="sp-tuition-card-row"><span class="sp-tuition-card-label">Schedule</span><span class="sp-tuition-card-value">T/Th, M/W/F, or M-F</span></div><div class="sp-tuition-card-row"><span class="sp-tuition-card-label">Tuition</span><span class="sp-tuition-card-value sp-highlight">$350/mo</span></div></div>
-      <div class="sp-tuition-card"><div class="sp-tuition-card-name">Kindergarten Prep</div><div class="sp-tuition-card-row"><span class="sp-tuition-card-label">Ages</span><span class="sp-tuition-card-value">Must be 5 by Nov 30</span></div><div class="sp-tuition-card-row"><span class="sp-tuition-card-label">Schedule</span><span class="sp-tuition-card-value">T/Th, M/W/F, or M-F</span></div><div class="sp-tuition-card-row"><span class="sp-tuition-card-label">Tuition</span><span class="sp-tuition-card-value sp-highlight">$400/mo</span></div></div>
-      <div class="sp-tuition-card"><div class="sp-tuition-card-name">Kindergarten</div><div class="sp-tuition-card-row"><span class="sp-tuition-card-label">Ages</span><span class="sp-tuition-card-value">Must be 5 by Sept 30</span></div><div class="sp-tuition-card-row"><span class="sp-tuition-card-label">Schedule</span><span class="sp-tuition-card-value">M-F only</span></div><div class="sp-tuition-card-row"><span class="sp-tuition-card-label">Tuition</span><span class="sp-tuition-card-value sp-highlight">$700/mo</span></div></div>
+      <div class="sp-tuition-card"><div class="sp-tuition-card-name">Kindergarten Prep</div><div class="sp-tuition-card-row"><span class="sp-tuition-card-label">Ages</span><span class="sp-tuition-card-value">Must be 5 by Nov 30th</span></div><div class="sp-tuition-card-row"><span class="sp-tuition-card-label">Schedule</span><span class="sp-tuition-card-value">T/Th, M/W/F, or M-F</span></div><div class="sp-tuition-card-row"><span class="sp-tuition-card-label">Tuition</span><span class="sp-tuition-card-value sp-highlight">$400/mo</span></div></div>
+      <div class="sp-tuition-card"><div class="sp-tuition-card-name">Kindergarten</div><div class="sp-tuition-card-row"><span class="sp-tuition-card-label">Ages</span><span class="sp-tuition-card-value">Must be 5 by Sept 30th</span></div><div class="sp-tuition-card-row"><span class="sp-tuition-card-label">Schedule</span><span class="sp-tuition-card-value">M-F only</span></div><div class="sp-tuition-card-row"><span class="sp-tuition-card-label">Tuition</span><span class="sp-tuition-card-value sp-highlight">$700/mo</span></div></div>
       <div class="sp-tuition-card-divider">Enrichment &amp; Seasonal Programs</div>
       <div class="sp-tuition-card"><div class="sp-tuition-card-name">Discovery Station</div><div class="sp-tuition-card-row"><span class="sp-tuition-card-label">Ages</span><span class="sp-tuition-card-value">5-11</span></div><div class="sp-tuition-card-row"><span class="sp-tuition-card-label">Schedule</span><span class="sp-tuition-card-value">Tues &amp; Thurs</span></div><div class="sp-tuition-card-row"><span class="sp-tuition-card-label">Pricing</span><span class="sp-tuition-card-value sp-highlight">$180/class</span></div></div>
       <div class="sp-tuition-card"><div class="sp-tuition-card-name">After-School Enrichment</div><div class="sp-tuition-card-row"><span class="sp-tuition-card-label">Ages</span><span class="sp-tuition-card-value">5-11+</span></div><div class="sp-tuition-card-row"><span class="sp-tuition-card-label">Schedule</span><span class="sp-tuition-card-value">Tuesdays, 4-5 PM</span></div><div class="sp-tuition-card-row"><span class="sp-tuition-card-label">Pricing</span><span class="sp-tuition-card-value sp-highlight">$180/semester</span></div></div>
       <div class="sp-tuition-card"><div class="sp-tuition-card-name">Camp Play (Summer)</div><div class="sp-tuition-card-row"><span class="sp-tuition-card-label">Ages</span><span class="sp-tuition-card-value">3-11</span></div><div class="sp-tuition-card-row"><span class="sp-tuition-card-label">Schedule</span><span class="sp-tuition-card-value">M-F, 8:30 AM-12 PM</span></div><div class="sp-tuition-card-row"><span class="sp-tuition-card-label">Pricing</span><span class="sp-tuition-card-value sp-highlight">$50/day</span></div></div>
     </div>
     <div class="sp-table-note"><div style="max-width:600px;margin:0 auto;">
-      <p style="margin-bottom:12px;"><strong>Core programs: All-inclusive tuition.</strong> No supply lists. No hidden fees. $100 non-refundable deposit holds your spot. 10% discount for full-year tuition paid by August 15. Tuition billed over 10 months.</p>
-      <p style="margin-bottom:12px;"><strong>Discovery Station &amp; After-School Enrichment:</strong> Phone registration -- call <a href="tel:3092913292">309-291-3292</a>.</p>
-      <p><strong>Camp Play:</strong> Weekly ($225) and full-summer ($1,500) pricing available through May 30.</p>
+      <p><strong>Core programs: All-inclusive tuition.</strong> No supply lists. No hidden fees. $100 non-refundable deposit holds your spot. 10% discount for full-year tuition paid by August 15. Tuition billed over 10 months.</p>
     </div></div>
   </div>
 </section>

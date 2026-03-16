@@ -567,6 +567,7 @@
   transition: gap 0.2s ease;
 }
 .sp-separation-link:hover { gap: 12px; }
+.sp-separation-link span { text-decoration: none !important; }
 
 /* --- Tuition Card (CHANGED: orange header) --- */
 .sp-tuition-main {
@@ -1040,6 +1041,7 @@
 }
 .sp-hero .sp-h1 { animation: spFadeUp 0.7s ease both; }
 .sp-hero .sp-hero-sub { animation: spFadeUp 0.7s ease 0.1s both; }
+.sp-hero .sp-hero-triangles { animation: spFadeUp 0.7s ease 0.15s both; padding: 28px 0 32px; margin: 0; }
 .sp-hero .sp-hero-ctas { animation: spFadeUp 0.7s ease 0.2s both; }
 .sp-hero .sp-trust-line { animation: spFadeUp 0.7s ease 0.3s both; }
 
@@ -1208,6 +1210,15 @@
 
     <p class="sp-hero-sub">First friendships. First questions answered. And through purposeful play, the confidence that they belong.</p>
 
+    <!-- Colorful triangle break between tagline and CTAs -->
+    <div class="sp-triangle-divider sp-hero-triangles">
+      <span class="sp-tri sp-tri-1"></span>
+      <span class="sp-tri sp-tri-2"></span>
+      <span class="sp-tri sp-tri-3"></span>
+      <span class="sp-tri sp-tri-4"></span>
+      <span class="sp-tri sp-tri-5"></span>
+    </div>
+
     <div class="sp-hero-ctas">
       <a href="/schedule-a-tour/" class="sp-btn-gold" data-cta-type="primary" data-cta-text="Schedule a Tour - Hero">Schedule a Tour</a>
       <a href="#question-form" class="sp-hero-secondary" data-cta-type="secondary" data-cta-text="Have a Question - Hero">Have a Question? We'd Love to Hear From You</a>
@@ -1367,12 +1378,12 @@
 
     </div>
 
-    <p class="sp-schedule-meta"><span style="white-space:nowrap;"><strong>Hours:</strong> 8:30&ndash;11:30 AM</span> &nbsp;&middot;&nbsp; <span style="white-space:nowrap;"><strong>Schedule Options:</strong> Tuesday/Thursday or Monday/Wednesday</span></p>
+    <p class="sp-schedule-meta"><span style="white-space:nowrap;"><strong>Hours:</strong> 8:30&ndash;11:30 AM</span> &nbsp;&middot;&nbsp; <strong>Schedule Options:</strong> Tuesday/Thursday or Monday/Wednesday</p>
 
 
     <!-- Developmental Playroom Deep-Dive -->
     <div class="sp-feature-block">
-      <h3 class="sp-h3">The Developmental Playroom &mdash; A Spark Exclusive</h3>
+      <h3 class="sp-h3">The Developmental Playroom &mdash; <span style="white-space:nowrap;">A Spark Exclusive</span></h3>
       <div class="sp-feature-desc">
         <p>Every day, your child spends 30 minutes in a dedicated, separate environment unlike anything they'll find at another preschool in the area.</p>
         <p>The Developmental Playroom changes completely every month, rotating with our nine curriculum themes throughout the year. One month it's set up for space exploration. The next, an ocean adventure. Each setup intentionally embeds pre-academic skills &mdash; but your child just thinks they're having an extraordinary time.</p>
@@ -1388,8 +1399,8 @@
         <span><strong>Photo Placeholder</strong><br>Child engaged in Developmental Playroom activity.<br>Intentionally designed space, monthly theme visible.<br>Horizontal, min 1600px wide. See Copy Deck &mdash; Photo Direction.</span>
       </div>
 
-      <div style="text-align:center; margin-top:24px;">
-        <a href="/purposeful-play-framework/" class="sp-separation-link">Learn more about the Purposeful Play Framework &#8594;</a>
+      <div style="text-align:left; margin-top:24px;">
+        <a href="/purposeful-play-framework/" class="sp-separation-link">Learn about the Purposeful Play Framework <span style="text-decoration:none; display:inline-block;">&#8594;</span></a>
       </div>
 
     </div>
@@ -1425,7 +1436,7 @@
         </div>
       </div>
 
-      <p class="sp-enrich-note">Most preschools in Central Illinois don't offer a second language. At Spark, Spanish is part of every Monday &mdash; not because we expect three-year-olds to become fluent, but because the research on language acquisition is clear: exposing children to a second language during the preschool years builds neural pathways that make learning any language easier for the rest of their lives.</p>
+      <p class="sp-enrich-note" style="text-align:left;">Most preschools in Central Illinois don't offer a second language. At Spark, Spanish is part of every Monday &mdash; not because we expect three-year-olds to become fluent, but because the research on language acquisition is clear: exposing children to a second language during the preschool years builds neural pathways that make learning any language easier for the rest of their lives.</p>
     </div>
 
     <!-- PHOTO PLACEHOLDER -->
@@ -1647,8 +1658,7 @@
       <a href="/schedule-a-tour/" class="sp-btn-gold" data-cta-type="primary" data-cta-text="Schedule a Tour - Bottom">Schedule a Tour</a>
       <a href="#question-form" class="sp-btn-outline" data-cta-type="secondary" data-cta-text="Have a Question - Bottom">Have a Question? We'd Love to Hear From You</a>
     </div>
-    <p style="font-family:'DM Sans',sans-serif;font-size:14px;color:rgba(255,255,255,0.55);margin-top:20px;max-width:460px;">Have a question first? Scroll up to send it &mdash; someone from our team will get back to you personally.</p>
-    <p style="font-family:'DM Sans',sans-serif;font-size:14px;margin-top:14px;"><a href="/fresh-3s-fridays/" style="color:rgba(255,255,255,0.5);text-decoration:none;border-bottom:1px solid rgba(255,255,255,0.25);transition:color 0.2s,border-color 0.2s;" onmouseover="this.style.color='#fff';this.style.borderColor='rgba(255,255,255,0.6)'" onmouseout="this.style.color='rgba(255,255,255,0.5)';this.style.borderColor='rgba(255,255,255,0.25)'">Looking for something smaller? Learn about Fresh 3's Fridays &#8594;</a></p>
+    <p style="font-family:'DM Sans',sans-serif;font-size:14px;margin-top:20px;"><a href="/fresh-3s-fridays/" style="color:rgba(255,255,255,0.5);text-decoration:none;border-bottom:1px solid rgba(255,255,255,0.25);transition:color 0.2s,border-color 0.2s;" onmouseover="this.style.color='#fff';this.style.borderColor='rgba(255,255,255,0.6)'" onmouseout="this.style.color='rgba(255,255,255,0.5)';this.style.borderColor='rgba(255,255,255,0.25)'">Looking for something smaller? Learn about Fresh 3's Fridays &#8594;</a></p>
 
     <div class="sp-cta-trust">
       <span class="sp-cta-trust-item">
