@@ -1040,6 +1040,7 @@
 }
 .sp-hero .sp-h1 { animation: spFadeUp 0.7s ease both; }
 .sp-hero .sp-hero-sub { animation: spFadeUp 0.7s ease 0.1s both; }
+.sp-hero .sp-hero-triangles { animation: spFadeUp 0.7s ease 0.15s both; }
 .sp-hero .sp-hero-ctas { animation: spFadeUp 0.7s ease 0.2s both; }
 .sp-hero .sp-trust-line { animation: spFadeUp 0.7s ease 0.3s both; }
 
@@ -1097,9 +1098,8 @@
   /* Fix: Hide "in depth" text on mobile for shorter link */
   .sp-mobile-hide { display: none !important; }
 
-  /* Fix: Simplify mid-page CTA text on mobile */
-  .sp-mid-cta-desktop { display: none; }
-  .sp-mid-cta-mobile { display: inline; }
+  /* Mid-CTA: prompt text scales down on mobile */
+  .sp-mid-cta-prompt { font-size: 19px; }
 
   /* Hero triangles: scale down and pull inward so they stay visible on mobile */
   .sp-hero::before {
@@ -1208,6 +1208,9 @@
 
 /* --- Page-Specific Styles --- */
 .sp-bg-teal { background: var(--sp-program); }
+/* --- Hero Triangle Break (between tagline and body copy) --- */
+.sp-hero-triangles { padding: 28px 0 32px; margin: 0; }
+
 .sp-hero-body {
   font-family: 'DM Sans', sans-serif; font-size: 17px; line-height: 1.75;
   color: var(--sp-text); max-width: 640px; margin: 0 auto 0;
@@ -1285,20 +1288,13 @@
 .sp-schedule-links a { color: var(--sp-program); font-weight: 600; text-decoration: none; border-bottom: 1px solid rgba(61,107,98,0.25); }
 .sp-schedule-links a:hover { border-color: var(--sp-program); }
 .sp-mid-cta { text-align: center; padding: 48px 24px; background: var(--sp-white); }
-.sp-mid-cta a {
-  font-family: 'DM Sans', sans-serif; font-size: 17px; font-weight: 600;
-  color: var(--sp-program); text-decoration: none; display: inline-flex;
-  align-items: center; gap: 8px; padding: 14px 28px;
-  border: 2px solid rgba(61,107,98,0.25); border-radius: 8px;
-  transition: all 0.25s ease;
+.sp-mid-cta-prompt {
+  font-family: 'Playfair Display', serif; font-size: 22px; font-weight: 700;
+  color: var(--sp-heading); margin-bottom: 20px;
 }
-.sp-mid-cta a:hover { gap: 12px; border-color: var(--sp-program); background: rgba(61,107,98,0.04); color: var(--sp-gold); }
-/* Default: show desktop text, hide mobile text */
-.sp-mid-cta-mobile { display: none; }
-.sp-mid-cta-desktop { display: inline; }
 /* Default: show "in depth" span */
 .sp-mobile-hide { display: inline; }
-.sp-mid-cta-sub { font-family: 'DM Sans', sans-serif; font-size: 14px; color: var(--sp-gray); margin-top: 12px; }
+.sp-mid-cta-sub { font-family: 'DM Sans', sans-serif; font-size: 14px; color: var(--sp-gray); margin-top: 16px; }
 .sp-values-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 32px; margin-top: 48px; }
 .sp-value-item { display: flex; gap: 16px; align-items: flex-start; }
 .sp-value-icon {
@@ -1309,16 +1305,29 @@
 .sp-value-title { font-family: 'DM Sans', sans-serif; font-weight: 700; font-size: 16px; color: var(--sp-heading); margin-bottom: 6px; }
 .sp-value-text { font-family: 'DM Sans', sans-serif; font-size: 15px; line-height: 1.65; color: var(--sp-text); opacity: 0.85; }
 .sp-value-full { grid-column: 1 / -1; max-width: 540px; margin: 0 auto; }
-.sp-testimonial-quote-mark { font-family: 'Playfair Display', serif; font-size: 72px; line-height: 1; color: var(--sp-program); margin-bottom: -8px; display: block; opacity: 0.6; }
-.sp-testimonial-link {
-  display: inline-flex; align-items: center; gap: 6px;
-  font-family: 'DM Sans', sans-serif; font-size: 15px; font-weight: 600;
-  color: var(--sp-program); text-decoration: none; margin-top: 24px;
-  transition: gap 0.2s ease, color 0.2s ease;
+.sp-testimonial-content { margin-top: 40px; }
+.sp-testimonial-quote {
+  font-family: 'Playfair Display', serif; font-size: 20px; line-height: 1.8;
+  color: var(--sp-text); font-style: italic; text-align: center;
+  position: relative; padding: 0;
 }
-.sp-testimonial-link:hover { gap: 10px; color: var(--sp-gold); }
-/* Fix: Give testimonial link proper standalone spacing on desktop/tablet */
-.sp-testimonial-link { display: block; margin-top: 32px; padding-top: 24px; }
+.sp-testimonial-quote::before {
+  content: '\201C'; display: block; text-align: center;
+  font-size: 72px; color: var(--sp-program); opacity: 0.5;
+  font-family: 'Playfair Display', serif; line-height: 1; margin-bottom: 12px;
+}
+.sp-testimonial-attr {
+  margin-top: 28px; font-family: 'DM Sans', sans-serif;
+  font-size: 15px; font-weight: 600; color: var(--sp-program); text-align: center;
+}
+.sp-testimonial-link {
+  display: inline-block; margin-top: 28px;
+  font-family: 'DM Sans', sans-serif; font-size: 15px; font-weight: 600;
+  color: var(--sp-program); text-decoration: underline;
+  text-decoration-color: rgba(61,107,98,0.3); text-underline-offset: 3px;
+  transition: text-decoration-color 0.2s;
+}
+.sp-testimonial-link:hover { text-decoration-color: var(--sp-program); }
 .sp-cta-tuition { margin-top: 20px; font-family: 'DM Sans', sans-serif; font-size: 14px; color: rgba(255,255,255,0.55); }
 .sp-cta-tuition a { color: rgba(255,255,255,0.75); font-weight: 600; text-decoration: none; border-bottom: 1px solid rgba(255,255,255,0.3); }
 .sp-cta-tuition a:hover { border-color: rgba(255,255,255,0.6); }
@@ -1327,13 +1336,14 @@
 .sp-hero-body { animation: spFadeUp 0.7s ease 0.25s both; }
 
 @media (max-width: 1024px) {
-  .sp-diff-link, .sp-testimonial-link, .sp-schedule-links a, .sp-mid-cta a {
+  .sp-diff-link, .sp-testimonial-link, .sp-schedule-links a {
     text-decoration: underline; text-underline-offset: 4px;
     text-decoration-color: rgba(61,107,98,0.4);
   }
 }
 
 @media (max-width: 767px) {
+  .sp-hero-triangles { padding: 20px 0 16px; }
   .sp-hero-body { text-align: left; }
   .sp-diff-block { padding: 24px 20px; margin-bottom: 36px; }
   .sp-diff-block .sp-h3 { font-size: 21px; }
@@ -1345,7 +1355,8 @@
   .sp-mid-cta { padding: 36px 20px; }
   .sp-values-grid { grid-template-columns: 1fr; }
   .sp-value-full { max-width: none; }
-  .sp-testimonial-quote-mark { font-size: 56px; }
+  .sp-testimonial-quote { font-size: 18px; }
+  .sp-testimonial-quote::before { font-size: 56px; }
 }
 
 @media (max-width: 360px) {
@@ -1355,7 +1366,7 @@
   .sp-diff-stat-number { font-size: 32px; }
   .sp-diff-stat { gap: 8px; }
   .sp-diff-pullquote { font-size: 15px; }
-  .sp-mid-cta a { font-size: 15px; padding: 12px 20px; }
+  .sp-mid-cta-prompt { font-size: 17px; }
   .sp-value-icon { width: 38px; height: 38px; }
   .sp-value-icon svg { width: 18px; height: 18px; }
   .sp-value-title { font-size: 15px; }
@@ -1377,6 +1388,16 @@
   <div class="sp-hero-inner">
     <h1 class="sp-h1">Why Families Across <span style="white-space:nowrap;">Central Illinois</span><br><span style="white-space:nowrap;">Choose Spark Academy</span></h1>
     <p class="sp-hero-sub">A play-based preschool where every child is known, every moment is intentional, and every beginning is exceptional.</p>
+
+    <!-- Colorful triangle break between tagline and body copy -->
+    <div class="sp-triangle-divider sp-hero-triangles">
+      <span class="sp-tri sp-tri-1"></span>
+      <span class="sp-tri sp-tri-2"></span>
+      <span class="sp-tri sp-tri-3"></span>
+      <span class="sp-tri sp-tri-4"></span>
+      <span class="sp-tri sp-tri-5"></span>
+    </div>
+
     <div class="sp-hero-body">
       <p>You're not looking for just any preschool. You're looking for the right one &mdash; a place where your child is more than a name on a roster. Where the teachers have real credentials. Where the learning is backed by research, not just tradition.</p>
       <p>That's Spark Academy.</p>
@@ -1599,7 +1620,8 @@
      ========================================================== -->
 
 <div class="sp-mid-cta">
-  <a href="/schedule-a-tour/" data-cta-type="mid-page" data-cta-text="Schedule a Tour - Mid CTA"><span class="sp-mid-cta-desktop">Ready to see it in person? Schedule a Tour</span><span class="sp-mid-cta-mobile">Schedule a Tour</span> &#8594;</a>
+  <p class="sp-mid-cta-prompt">Ready to see it in person?</p>
+  <a href="/schedule-a-tour/" class="sp-btn-gold" data-cta-type="mid-page" data-cta-text="Schedule a Tour - Mid CTA">Schedule a Tour</a>
   <p class="sp-mid-cta-sub">Or keep reading &mdash; there's more to discover below.</p>
 </div>
 
@@ -1666,12 +1688,13 @@
 
 <section class="sp-section sp-bg-white sp-atmos sp-atmos-b">
   <div class="sp-inner">
-    <div class="sp-testimonial">
-      <span class="sp-testimonial-quote-mark">&ldquo;</span>
-      <blockquote>Enrolling my son at Spark Academy has been the best decision I've made. Michelle and her entire team truly meet each child at their level and begin to foster a love of learning. Most importantly, my son absolutely loves his school and all of his teachers.</blockquote>
-      <cite>&mdash; April, Spark Academy Parent</cite>
-      <a href="/testimonials/" class="sp-testimonial-link">Read more from Spark families &#8594;</a>
+    <div class="sp-testimonial-content">
+      <div class="sp-testimonial-quote">
+        Enrolling my son at Spark Academy has been the best decision I've made. Michelle and her entire team truly meet each child at their level and begin to foster a love of learning. Most importantly, my son absolutely loves his school and all of his teachers.
+      </div>
+      <p class="sp-testimonial-attr">&mdash; April, Spark Academy Parent</p>
     </div>
+    <a href="/testimonials/" class="sp-testimonial-link">Read more from Spark families &#8594;</a>
   </div>
 </section>
 <!-- Color Bar Divider -->

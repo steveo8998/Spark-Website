@@ -1061,9 +1061,7 @@
     text-decoration-color: rgba(61,107,98,0.4);
   }
 
-  /* Testimonial — prevent quote icon clipping on tablet */
-  .sp-testimonial-quote { padding-left: 36px; }
-  .sp-testimonial-quote::before { left: 0px; }
+  /* Testimonial — quote icon is now block-centered, no positioning overrides needed */
 }
 
 /* ===== MOBILE LAYOUT (phones: under 768px) ===== */
@@ -1262,6 +1260,12 @@
   color: var(--sp-program);
   margin-bottom: 24px;
 }
+/* --- Hero Triangle Break (between positioning tagline and body copy) --- */
+.sp-hero-triangles {
+  padding: 28px 0 32px;
+  margin: 0;
+}
+
 .sp-hero-body {
   font-family: 'DM Sans', sans-serif;
   font-size: 17px;
@@ -1664,18 +1668,18 @@
   color: var(--sp-text);
   font-style: italic;
   position: relative;
-  padding: 0 20px;
+  padding: 0;
 }
 .sp-testimonial-quote::before {
   content: '\201C';
-  position: absolute;
-  top: -20px;
-  left: -10px;
+  display: block;
+  text-align: center;
   font-size: 72px;
   color: var(--sp-program);
   opacity: 0.5;
   font-family: 'Playfair Display', serif;
   line-height: 1;
+  margin-bottom: 12px;
 }
 .sp-testimonial-attr {
   margin-top: 28px;
@@ -1757,6 +1761,7 @@
   border: 1px dashed rgba(61,107,98,0.3);
 }
 .sp-hero .sp-tagline { animation: spFadeUp 0.7s ease 0.1s both; }
+.sp-hero .sp-hero-triangles { animation: spFadeUp 0.7s ease 0.25s both; }
 .sp-hero .sp-hero-body { animation: spFadeUp 0.7s ease 0.3s both; }
 
 @media (max-width: 1024px) {
@@ -1780,9 +1785,9 @@
   .sp-split-image { min-height: 260px; }
   .sp-community-grid { grid-template-columns: 1fr; gap: 32px; }
   .sp-community-map { min-height: 260px; }
-  /* Testimonial — ensure quote icon is not clipped */
-  .sp-testimonial-quote { font-size: 18px; padding: 0 0 0 32px; }
-  .sp-testimonial-quote::before { font-size: 56px; top: -16px; left: 0px; }
+  /* Testimonial — scale down on mobile */
+  .sp-testimonial-quote { font-size: 18px; }
+  .sp-testimonial-quote::before { font-size: 56px; }
 
   /* Split-link: add spacing below before image on mobile */
   .sp-split-link { margin-bottom: 16px; }
@@ -1800,10 +1805,11 @@
   .sp-hero-inner .sp-tagline { order: 1; }
   .sp-hero-inner .sp-h1 { order: 2; }
   .sp-hero-inner .sp-positioning { order: 3; }
-  .sp-hero-inner .sp-hero-image { order: 4; margin-top: 24px; }
-  .sp-hero-inner .sp-hero-ctas { order: 5; }
-  .sp-hero-inner .sp-hero-body { order: 6; font-size: 16px; margin-top: 32px; }
-  .sp-hero-inner .sp-hero-secondary-bottom { order: 7; display: inline-block; margin-top: 24px; text-align: center; }
+  .sp-hero-inner .sp-hero-triangles { order: 4; padding: 20px 0 16px; }
+  .sp-hero-inner .sp-hero-image { order: 5; margin-top: 24px; }
+  .sp-hero-inner .sp-hero-ctas { order: 6; }
+  .sp-hero-inner .sp-hero-secondary-bottom { order: 7; display: inline-block; margin-top: 16px; text-align: center; }
+  .sp-hero-inner .sp-hero-body { order: 8; font-size: 16px; margin-top: 32px; }
   .sp-hero-secondary-desktop { display: none; }
   .sp-tagline { font-size: 11px; letter-spacing: 0.12em; margin-bottom: 16px; }
 }
@@ -1857,6 +1863,15 @@
     <h1 class="sp-h1">Where Curious Minds Become<br>Confident Learners</h1>
 
     <p class="sp-positioning">The only preschool in Central Illinois founded and led by a doctoral researcher in early childhood education.</p>
+
+    <!-- Colorful triangle break between tagline and body copy -->
+    <div class="sp-triangle-divider sp-hero-triangles">
+      <span class="sp-tri sp-tri-1"></span>
+      <span class="sp-tri sp-tri-2"></span>
+      <span class="sp-tri sp-tri-3"></span>
+      <span class="sp-tri sp-tri-4"></span>
+      <span class="sp-tri sp-tri-5"></span>
+    </div>
 
     <div class="sp-hero-body">
       <p>Your child's first school experience shapes everything that follows &mdash; how they see themselves as learners, how they build friendships, how they walk into kindergarten. At Spark Academy, every part of their day is designed with that in mind.</p>
@@ -2047,7 +2062,7 @@
         </div>
         <div class="sp-hcard-body">
           <dl class="sp-hcard-details">
-            <dt>Ages</dt><dd>Must be 5 by <span style="white-space:nowrap;">November&nbsp;30th</span></dd>
+            <dt>Ages</dt><dd>Must be 5 by November 30th</dd>
             <dt>Schedule</dt><dd>2, 3, or 5 day options, 8:00&ndash;12:00 PM</dd>
             <dt>Starting At</dt><dd>$400/month</dd>
           </dl>
@@ -2070,7 +2085,7 @@
         </div>
         <div class="sp-hcard-body">
           <dl class="sp-hcard-details">
-            <dt>Ages</dt><dd>Must be 5 by <span style="white-space:nowrap;">September&nbsp;30th</span></dd>
+            <dt>Ages</dt><dd>Must be 5 by September 30th</dd>
             <dt>Schedule</dt><dd>M&ndash;F, 8:00&ndash;12:00 PM</dd>
             <dt>Tuition</dt><dd>$700/month</dd>
           </dl>
@@ -2280,7 +2295,7 @@
         <div class="sp-contact-block">
           <div class="sp-contact-row">
             <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M15 10.5a3 3 0 11-6 0 3 3 0 016 0z"/><path stroke-linecap="round" stroke-linejoin="round" d="M19.5 10.5c0 7.142-7.5 11.25-7.5 11.25S4.5 17.642 4.5 10.5a7.5 7.5 0 1115 0z"/></svg>
-            <span class="sp-address">1989 North Morton Avenue<span class="sp-address-sep">,</span><br class="sp-address-br"> Morton, IL 61550</span>
+            <a href="https://www.google.com/maps/place/1989+North+Morton+Avenue,+Morton,+IL+61550" target="_blank" rel="noopener" data-cta-type="address" data-cta-text="Google Maps - Contact Block"><span class="sp-address">1989 North Morton Avenue<span class="sp-address-sep">,</span><br class="sp-address-br"> Morton, IL 61550</span></a>
           </div>
           <div class="sp-contact-row">
             <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M2.25 6.75c0 8.284 6.716 15 15 15h2.25a2.25 2.25 0 002.25-2.25v-1.372c0-.516-.351-.966-.852-1.091l-4.423-1.106c-.44-.11-.902.055-1.173.417l-.97 1.293c-.282.376-.769.542-1.21.38a12.035 12.035 0 01-7.143-7.143c-.162-.441.004-.928.38-1.21l1.293-.97c.363-.271.527-.734.417-1.173L6.963 3.102a1.125 1.125 0 00-1.091-.852H4.5A2.25 2.25 0 002.25 4.5v2.25z"/></svg>
