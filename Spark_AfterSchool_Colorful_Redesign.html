@@ -1055,7 +1055,21 @@
 }
 .sp-hero .sp-h1 { animation: spFadeUp 0.7s ease both; }
 .sp-hero .sp-hero-sub { animation: spFadeUp 0.7s ease 0.1s both; }
-.sp-hero .sp-hero-triangles { animation: spFadeUp 0.7s ease 0.15s both; padding: 28px 0 32px; margin: 0; }
+/* --- Hero Brand Accent: Five colored dots --- */
+.sp-hero-accent-dots {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 8px;
+  padding: 2px 0 6px;
+  animation: spFadeUp 0.7s ease 0.05s both;
+}
+.sp-hero-accent-dots .sp-dot {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  opacity: 0.6;
+}
 .sp-hero .sp-hero-ctas { animation: spFadeUp 0.7s ease 0.2s both; }
 .sp-hero .sp-trust-line { animation: spFadeUp 0.7s ease 0.3s both; }
 
@@ -1486,16 +1500,16 @@
 
     <h1 class="sp-h1">The Activities Their School Doesn't Offer — But Your Child <span style="white-space:nowrap;">Keeps Asking About</span></h1>
 
-    <p class="sp-hero-sub">Spark Academy's After-School Enrichment program gives kids a place to try the things they're curious about &mdash; theater, cooking, games, art, and more. One hour. One afternoon. A whole semester of something new.</p>
-
-    <!-- Colorful triangle break between tagline and CTAs -->
-    <div class="sp-triangle-divider sp-hero-triangles">
-      <span class="sp-tri sp-tri-1"></span>
-      <span class="sp-tri sp-tri-2"></span>
-      <span class="sp-tri sp-tri-3"></span>
-      <span class="sp-tri sp-tri-4"></span>
-      <span class="sp-tri sp-tri-5"></span>
+    <!-- Brand accent dots -->
+    <div class="sp-hero-accent-dots">
+      <span class="sp-dot" style="background:var(--sp-tri-pink);"></span>
+      <span class="sp-dot" style="background:var(--sp-tri-orange);"></span>
+      <span class="sp-dot" style="background:var(--sp-tri-yellow);"></span>
+      <span class="sp-dot" style="background:var(--sp-tri-green);"></span>
+      <span class="sp-dot" style="background:var(--sp-tri-blue);"></span>
     </div>
+
+    <p class="sp-hero-sub">Spark Academy's After-School Enrichment program gives kids a place to try the things they're curious about &mdash; theater, cooking, games, art, and more. One hour. One afternoon. A whole semester of something new.</p>
 
     <div class="sp-hero-ctas">
       <a href="#registration-form" class="sp-btn-gold" data-cta-type="primary" data-cta-text="Register Now - Hero">Register Now</a>
