@@ -1370,6 +1370,10 @@
 .sp-activity-cta a:hover {
   border-color: var(--sp-program);
 }
+.sp-activity-cta .sp-btn-gold {
+  color: #fff;
+  border-bottom: none;
+}
 .sp-tuition-detail-row {
   display: flex;
   align-items: flex-start;
@@ -1441,7 +1445,7 @@
 }
 .sp-register-prose .sp-btn-outline-dark {
   color: var(--sp-program);
-  border-bottom: none;
+  border-bottom: 2px solid rgba(212,148,74,0.3);
 }
 .sp-register-ctas {
   display: flex;
@@ -1578,7 +1582,7 @@
 
       <p class="sp-prose-accent">Open to everyone.</p>
 
-      <p>Public school, private school, homeschool &mdash; any child in the age range is welcome. Some of our <a href="/homeschool-enrichment/">Discovery Station</a> homeschool students stay for After-School Enrichment on the same Tuesday, making it a seamless afternoon of enrichment and connection.</p>
+      <p>Public school, private school, homeschool &mdash; any child in the age range is welcome. Some of our <a href="/homeschool-enrichment/" style="color:var(--sp-program-dark); font-weight:600; text-decoration:none; border-bottom:1px solid rgba(212,148,74,0.3);">Discovery Station</a> homeschool students stay for After-School Enrichment on the same Tuesday, making it a seamless afternoon of enrichment and connection.</p>
 
     </div>
   </div>
@@ -1692,7 +1696,8 @@
     <p class="sp-activity-note">The specific program changes, but the format is consistent: twelve weeks, Tuesdays from 4:00 to 5:00 PM, and an instructor who is genuinely excited about what they're teaching.</p>
 
     <div class="sp-activity-cta">
-      <a href="#registration-form" data-cta-type="secondary" data-cta-text="Register - What's Next">Ready to sign up for next semester? Register now &rarr;</a>
+      <p style="font-family:'DM Sans',sans-serif; font-size:16px; font-weight:600; color:var(--sp-heading); margin:0 0 16px;">Ready to sign up for next semester?</p>
+      <a href="#registration-form" class="sp-btn-gold" data-cta-type="primary" data-cta-text="Register Now - What's Next">Register Now</a>
     </div>
 
   </div>
@@ -1924,7 +1929,7 @@
       <a href="#question-form" class="sp-btn-outline" data-cta-type="secondary" data-cta-text="Have a Question - Bottom CTA">Have a Question?</a>
     </div>
 
-    <p style="font-family:'DM Sans',sans-serif; font-size:14px; color:rgba(255,255,255,0.55); margin-top:20px; max-width:460px;">Not sure yet? Send us a question and someone from our team will be in touch. <span style="white-space:nowrap;">Or call <a href="tel:3092913292" class="sp-cta-phone" style="font-size:14px;">309-291-3292</a>.</span></p>
+    <p style="font-family:'DM Sans',sans-serif; font-size:14px; color:rgba(255,255,255,0.55); margin-top:20px; max-width:500px; line-height:1.7;">Not sure yet? Send us a question and someone from our team will be in touch. Prefer to call? Reach us at <a href="tel:3092913292" class="sp-cta-phone" style="font-size:14px;">309-291-3292</a>. We're likely in the classroom, but leave a message and we'll return your call within 24 hours.</p>
 
     <div class="sp-cta-trust">
       <span class="sp-cta-trust-item">

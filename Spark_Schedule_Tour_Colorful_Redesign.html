@@ -693,10 +693,10 @@
     gap: 36px;
   }
   /* Tappable link underlines on touch devices */
-  .sp-hero-phone a,
+  /* sp-hero-phone a excluded — styled as a button on mobile with its own full border */
+  /* sp-contact-row a excluded — already uses border-bottom as its underline */
   .sp-testimonial-link,
-  .sp-faq-answer a,
-  .sp-contact-row a {
+  .sp-faq-answer a {
     text-decoration: underline;
     text-underline-offset: 4px;
     text-decoration-color: rgba(61,107,98,0.4);
@@ -797,7 +797,7 @@
     font-weight: 700;
     color: var(--sp-teal);
     text-decoration: none;
-    border-bottom: none;
+    border-bottom: 1px solid var(--sp-sage);
     margin-top: 4px;
   }
   .sp-hero-phone svg {
